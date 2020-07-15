@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DtsAccLst" targetNamespace="http://tempuri.org/DtsAccLst.xsd" xmlns:mstns="http://tempuri.org/DtsAccLst.xsd" xmlns="http://tempuri.org/DtsAccLst.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ESL_LiqConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="ESL_LiqConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ESL.My.MySettings.GlobalReference.Default.ESL_LiqConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="STCLTMASTERTableAdapter" GeneratorDataComponentClassName="STCLTMASTERTableAdapter" Name="STCLTMASTER" UserDataComponentName="STCLTMASTERTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ESL_LiqConnectionString (MySettings)" DbObjectName="ESL_Liq.dbo.STCLTMASTER" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select clt_code, 
+clt_name, run_code, clt_type,
+dr_bal, cr_bal,
+interest, 
+mc_act_ratio,
+margin_ratio,
+mc_due,
+mc_t2, 
+mc_total, 
+net_trade, mkt_value,
+cast(0 as decimal(18,2)) as liq_day,
+ cast(0 as decimal(18,2)) as ledger_bal ,
+ cast(0 as decimal(18,2)) as t1_trade,
+ cast(0 as decimal(18,2)) as t2_trade,
+               cast(0 as decimal(18,2)) as ava_bal
+from stcltmaster</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="liq_day" DataSetColumn="liq_day" />
+              <Mapping SourceColumn="ledger_bal" DataSetColumn="ledger_bal" />
+              <Mapping SourceColumn="t1_trade" DataSetColumn="t1_trade" />
+              <Mapping SourceColumn="t2_trade" DataSetColumn="t2_trade" />
+              <Mapping SourceColumn="ava_bal" DataSetColumn="ava_bal" />
+              <Mapping SourceColumn="clt_code" DataSetColumn="clt_code" />
+              <Mapping SourceColumn="clt_name" DataSetColumn="clt_name" />
+              <Mapping SourceColumn="dr_bal" DataSetColumn="dr_bal" />
+              <Mapping SourceColumn="cr_bal" DataSetColumn="cr_bal" />
+              <Mapping SourceColumn="interest" DataSetColumn="interest" />
+              <Mapping SourceColumn="mc_act_ratio" DataSetColumn="mc_act_ratio" />
+              <Mapping SourceColumn="margin_ratio" DataSetColumn="margin_ratio" />
+              <Mapping SourceColumn="mc_due" DataSetColumn="mc_due" />
+              <Mapping SourceColumn="mc_t2" DataSetColumn="mc_t2" />
+              <Mapping SourceColumn="mc_total" DataSetColumn="mc_total" />
+              <Mapping SourceColumn="net_trade" DataSetColumn="net_trade" />
+              <Mapping SourceColumn="run_code" DataSetColumn="run_code" />
+              <Mapping SourceColumn="clt_type" DataSetColumn="clt_type" />
+              <Mapping SourceColumn="mkt_value" DataSetColumn="mkt_value" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DtsAccLst" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DtsAccLst" msprop:Generator_DataSetName="DtsAccLst">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="STCLTMASTER" msprop:Generator_UserTableName="STCLTMASTER" msprop:Generator_RowDeletedName="STCLTMASTERRowDeleted" msprop:Generator_TableClassName="STCLTMASTERDataTable" msprop:Generator_RowChangedName="STCLTMASTERRowChanged" msprop:Generator_RowClassName="STCLTMASTERRow" msprop:Generator_RowChangingName="STCLTMASTERRowChanging" msprop:Generator_RowEvArgName="STCLTMASTERRowChangeEvent" msprop:Generator_RowEvHandlerName="STCLTMASTERRowChangeEventHandler" msprop:Generator_TablePropName="STCLTMASTER" msprop:Generator_TableVarName="tableSTCLTMASTER" msprop:Generator_RowDeletingName="STCLTMASTERRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="liq_day" msdata:ReadOnly="true" msprop:Generator_UserColumnName="liq_day" msprop:Generator_ColumnPropNameInRow="liq_day" msprop:Generator_ColumnVarNameInTable="columnliq_day" msprop:Generator_ColumnPropNameInTable="liq_dayColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ledger_bal" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ledger_bal" msprop:Generator_ColumnPropNameInRow="ledger_bal" msprop:Generator_ColumnVarNameInTable="columnledger_bal" msprop:Generator_ColumnPropNameInTable="ledger_balColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="t1_trade" msdata:ReadOnly="true" msprop:Generator_UserColumnName="t1_trade" msprop:Generator_ColumnPropNameInRow="t1_trade" msprop:Generator_ColumnVarNameInTable="columnt1_trade" msprop:Generator_ColumnPropNameInTable="t1_tradeColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="t2_trade" msdata:ReadOnly="true" msprop:Generator_UserColumnName="t2_trade" msprop:Generator_ColumnPropNameInRow="t2_trade" msprop:Generator_ColumnVarNameInTable="columnt2_trade" msprop:Generator_ColumnPropNameInTable="t2_tradeColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ava_bal" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ava_bal" msprop:Generator_ColumnPropNameInRow="ava_bal" msprop:Generator_ColumnVarNameInTable="columnava_bal" msprop:Generator_ColumnPropNameInTable="ava_balColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="clt_code" msprop:Generator_UserColumnName="clt_code" msprop:Generator_ColumnPropNameInRow="clt_code" msprop:Generator_ColumnVarNameInTable="columnclt_code" msprop:Generator_ColumnPropNameInTable="clt_codeColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="clt_name" msprop:Generator_UserColumnName="clt_name" msprop:Generator_ColumnPropNameInRow="clt_name" msprop:Generator_ColumnVarNameInTable="columnclt_name" msprop:Generator_ColumnPropNameInTable="clt_nameColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dr_bal" msprop:Generator_UserColumnName="dr_bal" msprop:Generator_ColumnPropNameInRow="dr_bal" msprop:Generator_ColumnVarNameInTable="columndr_bal" msprop:Generator_ColumnPropNameInTable="dr_balColumn" type="xs:decimal" />
+              <xs:element name="cr_bal" msprop:Generator_UserColumnName="cr_bal" msprop:Generator_ColumnPropNameInRow="cr_bal" msprop:Generator_ColumnVarNameInTable="columncr_bal" msprop:Generator_ColumnPropNameInTable="cr_balColumn" type="xs:decimal" />
+              <xs:element name="interest" msprop:Generator_UserColumnName="interest" msprop:Generator_ColumnPropNameInRow="interest" msprop:Generator_ColumnVarNameInTable="columninterest" msprop:Generator_ColumnPropNameInTable="interestColumn" type="xs:decimal" />
+              <xs:element name="mc_act_ratio" msprop:Generator_UserColumnName="mc_act_ratio" msprop:Generator_ColumnPropNameInRow="mc_act_ratio" msprop:Generator_ColumnVarNameInTable="columnmc_act_ratio" msprop:Generator_ColumnPropNameInTable="mc_act_ratioColumn" type="xs:decimal" />
+              <xs:element name="margin_ratio" msprop:Generator_UserColumnName="margin_ratio" msprop:Generator_ColumnPropNameInRow="margin_ratio" msprop:Generator_ColumnVarNameInTable="columnmargin_ratio" msprop:Generator_ColumnPropNameInTable="margin_ratioColumn" type="xs:decimal" />
+              <xs:element name="mc_due" msprop:Generator_UserColumnName="mc_due" msprop:Generator_ColumnPropNameInRow="mc_due" msprop:Generator_ColumnVarNameInTable="columnmc_due" msprop:Generator_ColumnPropNameInTable="mc_dueColumn" type="xs:decimal" />
+              <xs:element name="mc_t2" msprop:Generator_UserColumnName="mc_t2" msprop:Generator_ColumnPropNameInRow="mc_t2" msprop:Generator_ColumnVarNameInTable="columnmc_t2" msprop:Generator_ColumnPropNameInTable="mc_t2Column" type="xs:decimal" />
+              <xs:element name="mc_total" msprop:Generator_UserColumnName="mc_total" msprop:Generator_ColumnPropNameInRow="mc_total" msprop:Generator_ColumnVarNameInTable="columnmc_total" msprop:Generator_ColumnPropNameInTable="mc_totalColumn" type="xs:decimal" />
+              <xs:element name="net_trade" msprop:Generator_UserColumnName="net_trade" msprop:Generator_ColumnPropNameInRow="net_trade" msprop:Generator_ColumnVarNameInTable="columnnet_trade" msprop:Generator_ColumnPropNameInTable="net_tradeColumn" type="xs:decimal" />
+              <xs:element name="run_code" msprop:Generator_UserColumnName="run_code" msprop:Generator_ColumnPropNameInRow="run_code" msprop:Generator_ColumnVarNameInTable="columnrun_code" msprop:Generator_ColumnPropNameInTable="run_codeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="clt_type" msprop:Generator_UserColumnName="clt_type" msprop:Generator_ColumnPropNameInRow="clt_type" msprop:Generator_ColumnVarNameInTable="columnclt_type" msprop:Generator_ColumnPropNameInTable="clt_typeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mkt_value" msprop:Generator_UserColumnName="mkt_value" msprop:Generator_ColumnPropNameInRow="mkt_value" msprop:Generator_ColumnVarNameInTable="columnmkt_value" msprop:Generator_ColumnPropNameInTable="mkt_valueColumn" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

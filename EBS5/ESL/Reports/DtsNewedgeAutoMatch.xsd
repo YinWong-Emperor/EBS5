@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DtsNewedgeAutoMatch" targetNamespace="http://tempuri.org/DtsNewedgeAutoMatch.xsd" xmlns:mstns="http://tempuri.org/DtsNewedgeAutoMatch.xsd" xmlns="http://tempuri.org/DtsNewedgeAutoMatch.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DtsNewedgeAutoMatch" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="DtsNewedgeAutoMatch" msprop:Generator_UserDSName="DtsNewedgeAutoMatch">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="G2BF" msprop:Generator_UserTableName="G2BF" msprop:Generator_RowEvArgName="G2BFRowChangeEvent" msprop:Generator_TableVarName="tableG2BF" msprop:Generator_TablePropName="G2BF" msprop:Generator_RowDeletingName="G2BFRowDeleting" msprop:Generator_RowChangingName="G2BFRowChanging" msprop:Generator_RowDeletedName="G2BFRowDeleted" msprop:Generator_RowEvHandlerName="G2BFRowChangeEventHandler" msprop:Generator_TableClassName="G2BFDataTable" msprop:Generator_RowChangedName="G2BFRowChanged" msprop:Generator_RowClassName="G2BFRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="prod_code" msprop:Generator_ColumnVarNameInTable="columnprod_code" msprop:Generator_ColumnPropNameInRow="prod_code" msprop:Generator_ColumnPropNameInTable="prod_codeColumn" msprop:Generator_UserColumnName="prod_code" type="xs:string" minOccurs="0" />
+              <xs:element name="prod_name" msprop:Generator_ColumnVarNameInTable="columnprod_name" msprop:Generator_ColumnPropNameInRow="prod_name" msprop:Generator_ColumnPropNameInTable="prod_nameColumn" msprop:Generator_UserColumnName="prod_name" type="xs:string" minOccurs="0" />
+              <xs:element name="sysdate" msprop:Generator_ColumnVarNameInTable="columnsysdate" msprop:Generator_ColumnPropNameInRow="sysdate" msprop:Generator_ColumnPropNameInTable="sysdateColumn" msprop:Generator_UserColumnName="sysdate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="tdate" msprop:Generator_ColumnVarNameInTable="columntdate" msprop:Generator_ColumnPropNameInRow="tdate" msprop:Generator_ColumnPropNameInTable="tdateColumn" msprop:Generator_UserColumnName="tdate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="buy" msprop:Generator_ColumnVarNameInTable="columnbuy" msprop:Generator_ColumnPropNameInRow="buy" msprop:Generator_ColumnPropNameInTable="buyColumn" msprop:Generator_UserColumnName="buy" type="xs:decimal" minOccurs="0" />
+              <xs:element name="sell" msprop:Generator_ColumnVarNameInTable="columnsell" msprop:Generator_ColumnPropNameInRow="sell" msprop:Generator_ColumnPropNameInTable="sellColumn" msprop:Generator_UserColumnName="sell" type="xs:decimal" minOccurs="0" />
+              <xs:element name="monthcode" msprop:Generator_ColumnVarNameInTable="columnmonthcode" msprop:Generator_ColumnPropNameInRow="monthcode" msprop:Generator_ColumnPropNameInTable="monthcodeColumn" msprop:Generator_UserColumnName="monthcode" type="xs:string" minOccurs="0" />
+              <xs:element name="accno" msprop:Generator_ColumnVarNameInTable="columnaccno" msprop:Generator_ColumnPropNameInRow="accno" msprop:Generator_ColumnPropNameInTable="accnoColumn" msprop:Generator_UserColumnName="accno" type="xs:string" minOccurs="0" />
+              <xs:element name="price" msprop:Generator_ColumnVarNameInTable="columnprice" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_ColumnPropNameInTable="priceColumn" msprop:Generator_UserColumnName="price" type="xs:decimal" minOccurs="0" />
+              <xs:element name="settle_date" msprop:Generator_ColumnVarNameInTable="columnsettle_date" msprop:Generator_ColumnPropNameInRow="settle_date" msprop:Generator_ColumnPropNameInTable="settle_dateColumn" msprop:Generator_UserColumnName="settle_date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="group_name" msprop:Generator_ColumnVarNameInTable="columngroup_name" msprop:Generator_ColumnPropNameInRow="group_name" msprop:Generator_ColumnPropNameInTable="group_nameColumn" msprop:Generator_UserColumnName="group_name" type="xs:string" minOccurs="0" />
+              <xs:element name="checked" msprop:Generator_ColumnVarNameInTable="columnchecked" msprop:Generator_ColumnPropNameInRow="checked" msprop:Generator_ColumnPropNameInTable="checkedColumn" msprop:Generator_UserColumnName="checked" type="xs:string" minOccurs="0" />
+              <xs:element name="matched" msprop:Generator_ColumnVarNameInTable="columnmatched" msprop:Generator_ColumnPropNameInRow="matched" msprop:Generator_ColumnPropNameInTable="matchedColumn" msprop:Generator_UserColumnName="matched" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Newedge" msprop:Generator_UserTableName="Newedge" msprop:Generator_RowEvArgName="NewedgeRowChangeEvent" msprop:Generator_TableVarName="tableNewedge" msprop:Generator_TablePropName="Newedge" msprop:Generator_RowDeletingName="NewedgeRowDeleting" msprop:Generator_RowChangingName="NewedgeRowChanging" msprop:Generator_RowDeletedName="NewedgeRowDeleted" msprop:Generator_RowEvHandlerName="NewedgeRowChangeEventHandler" msprop:Generator_TableClassName="NewedgeDataTable" msprop:Generator_RowChangedName="NewedgeRowChanged" msprop:Generator_RowClassName="NewedgeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="prod_code" msprop:Generator_ColumnVarNameInTable="columnprod_code" msprop:Generator_ColumnPropNameInRow="prod_code" msprop:Generator_ColumnPropNameInTable="prod_codeColumn" msprop:Generator_UserColumnName="prod_code" type="xs:string" minOccurs="0" />
+              <xs:element name="prod_name" msprop:Generator_ColumnVarNameInTable="columnprod_name" msprop:Generator_ColumnPropNameInRow="prod_name" msprop:Generator_ColumnPropNameInTable="prod_nameColumn" msprop:Generator_UserColumnName="prod_name" type="xs:string" minOccurs="0" />
+              <xs:element name="tdate" msprop:Generator_ColumnVarNameInTable="columntdate" msprop:Generator_ColumnPropNameInRow="tdate" msprop:Generator_ColumnPropNameInTable="tdateColumn" msprop:Generator_UserColumnName="tdate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="odate" msprop:Generator_ColumnVarNameInTable="columnodate" msprop:Generator_ColumnPropNameInRow="odate" msprop:Generator_ColumnPropNameInTable="odateColumn" msprop:Generator_UserColumnName="odate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="buy" msprop:Generator_ColumnVarNameInTable="columnbuy" msprop:Generator_ColumnPropNameInRow="buy" msprop:Generator_ColumnPropNameInTable="buyColumn" msprop:Generator_UserColumnName="buy" type="xs:decimal" minOccurs="0" />
+              <xs:element name="sell" msprop:Generator_ColumnVarNameInTable="columnsell" msprop:Generator_ColumnPropNameInRow="sell" msprop:Generator_ColumnPropNameInTable="sellColumn" msprop:Generator_UserColumnName="sell" type="xs:decimal" minOccurs="0" />
+              <xs:element name="monthcode" msprop:Generator_ColumnVarNameInTable="columnmonthcode" msprop:Generator_ColumnPropNameInRow="monthcode" msprop:Generator_ColumnPropNameInTable="monthcodeColumn" msprop:Generator_UserColumnName="monthcode" type="xs:string" minOccurs="0" />
+              <xs:element name="price" msprop:Generator_ColumnVarNameInTable="columnprice" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_ColumnPropNameInTable="priceColumn" msprop:Generator_UserColumnName="price" type="xs:decimal" minOccurs="0" />
+              <xs:element name="settle_date" msprop:Generator_ColumnVarNameInTable="columnsettle_date" msprop:Generator_ColumnPropNameInRow="settle_date" msprop:Generator_ColumnPropNameInTable="settle_dateColumn" msprop:Generator_UserColumnName="settle_date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="monthly_daily" msprop:Generator_ColumnVarNameInTable="columnmonthly_daily" msprop:Generator_ColumnPropNameInRow="monthly_daily" msprop:Generator_ColumnPropNameInTable="monthly_dailyColumn" msprop:Generator_UserColumnName="monthly_daily" type="xs:string" minOccurs="0" />
+              <xs:element name="tid" msprop:Generator_ColumnVarNameInTable="columntid" msprop:Generator_ColumnPropNameInRow="tid" msprop:Generator_ColumnPropNameInTable="tidColumn" msprop:Generator_UserColumnName="tid" type="xs:long" minOccurs="0" />
+              <xs:element name="group_name" msprop:Generator_ColumnVarNameInTable="columngroup_name" msprop:Generator_ColumnPropNameInRow="group_name" msprop:Generator_ColumnPropNameInTable="group_nameColumn" msprop:Generator_UserColumnName="group_name" type="xs:string" minOccurs="0" />
+              <xs:element name="checked" msprop:Generator_ColumnVarNameInTable="columnchecked" msprop:Generator_ColumnPropNameInRow="checked" msprop:Generator_ColumnPropNameInTable="checkedColumn" msprop:Generator_UserColumnName="checked" type="xs:string" minOccurs="0" />
+              <xs:element name="matched" msprop:Generator_ColumnVarNameInTable="columnmatched" msprop:Generator_ColumnPropNameInRow="matched" msprop:Generator_ColumnPropNameInTable="matchedColumn" msprop:Generator_UserColumnName="matched" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="main" msprop:Generator_UserTableName="main" msprop:Generator_RowEvArgName="mainRowChangeEvent" msprop:Generator_TableVarName="tablemain" msprop:Generator_TablePropName="main" msprop:Generator_RowDeletingName="mainRowDeleting" msprop:Generator_RowChangingName="mainRowChanging" msprop:Generator_RowDeletedName="mainRowDeleted" msprop:Generator_RowEvHandlerName="mainRowChangeEventHandler" msprop:Generator_TableClassName="mainDataTable" msprop:Generator_RowChangedName="mainRowChanged" msprop:Generator_RowClassName="mainRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="group_name" msprop:Generator_ColumnVarNameInTable="columngroup_name" msprop:Generator_ColumnPropNameInRow="group_name" msprop:Generator_ColumnPropNameInTable="group_nameColumn" msprop:Generator_UserColumnName="group_name" type="xs:string" minOccurs="0" />
+              <xs:element name="fbuy" msprop:Generator_ColumnVarNameInTable="columnfbuy" msprop:Generator_ColumnPropNameInRow="fbuy" msprop:Generator_ColumnPropNameInTable="fbuyColumn" msprop:Generator_UserColumnName="fbuy" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fsell" msprop:Generator_ColumnVarNameInTable="columnfsell" msprop:Generator_ColumnPropNameInRow="fsell" msprop:Generator_ColumnPropNameInTable="fsellColumn" msprop:Generator_UserColumnName="fsell" type="xs:decimal" minOccurs="0" />
+              <xs:element name="nbuy" msprop:Generator_ColumnVarNameInTable="columnnbuy" msprop:Generator_ColumnPropNameInRow="nbuy" msprop:Generator_ColumnPropNameInTable="nbuyColumn" msprop:Generator_UserColumnName="nbuy" type="xs:decimal" minOccurs="0" />
+              <xs:element name="nsell" msprop:Generator_ColumnVarNameInTable="columnnsell" msprop:Generator_ColumnPropNameInRow="nsell" msprop:Generator_ColumnPropNameInTable="nsellColumn" msprop:Generator_UserColumnName="nsell" type="xs:decimal" minOccurs="0" />
+              <xs:element name="matched" msprop:Generator_ColumnVarNameInTable="columnmatched" msprop:Generator_ColumnPropNameInRow="matched" msprop:Generator_ColumnPropNameInTable="matchedColumn" msprop:Generator_UserColumnName="matched" type="xs:string" minOccurs="0" />
+              <xs:element name="product_name" msprop:Generator_ColumnVarNameInTable="columnproduct_name" msprop:Generator_ColumnPropNameInRow="product_name" msprop:Generator_ColumnPropNameInTable="product_nameColumn" msprop:Generator_UserColumnName="product_name" type="xs:string" minOccurs="0" />
+              <xs:element name="group_mcode" msprop:Generator_ColumnVarNameInTable="columngroup_mcode" msprop:Generator_ColumnPropNameInRow="group_mcode" msprop:Generator_ColumnPropNameInTable="group_mcodeColumn" msprop:Generator_UserColumnName="group_mcode" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="monthly_daily" msprop:Generator_ColumnVarNameInTable="columnmonthly_daily" msprop:Generator_ColumnPropNameInRow="monthly_daily" msprop:Generator_ColumnPropNameInTable="monthly_dailyColumn" msprop:Generator_UserColumnName="monthly_daily" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DtsCommAEDetail" targetNamespace="http://tempuri.org/DtsCommAEDetail.xsd" xmlns:mstns="http://tempuri.org/DtsCommAEDetail.xsd" xmlns="http://tempuri.org/DtsCommAEDetail.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ESL_LIQConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="ESL_LIQConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ESL.My.MySettings.GlobalReference.Default.ESL_LIQConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CommAEDetail_sTableAdapter" GeneratorDataComponentClassName="CommAEDetail_sTableAdapter" Name="CommAEDetail_s" UserDataComponentName="CommAEDetail_sTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ESL_LIQConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select 
+cast ('' as nvarchar(10)) as ae_no,
+cast ('' as nvarchar(50)) as ae_name,
+cast ('' as nvarchar(10)) as acc_group,
+cast ('' as nvarchar(10)) as acc_no,
+cast ('' as nvarchar(50)) as acc_name,
+cast ('' as nvarchar(20)) as tradetype,
+cast (0.00 as numeric(18,2)) as grossamt,
+cast (0.00 as numeric(18,2)) as commission,
+cast (0.000000 as numeric(18,6)) as comm_rate,
+cast (0.00 as numeric(18,2)) as co_comm,
+cast (0.00 as numeric(18,2)) as ae_comm,
+cast (0.0000 as numeric(18,4)) as CoRate,
+cast (0.00 as numeric(18,2)) as MinTO,
+cast (0.0000 as numeric(18,4)) as MinRate,
+cast (0 as numeric(18,6)) as CoRateComm,
+cast (0 as numeric(18,6)) as MinRateComm,
+cast (0 as numeric(18,2)) as MinTOComm,
+cast (0 as numeric(18,2)) as GrpTO,
+cast ('' as nvarchar(20)) as oid,
+cast ('' as datetime) as tdate,
+cast ('' as nvarchar(4)) as currency_code_set</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ae_no" DataSetColumn="ae_no" />
+              <Mapping SourceColumn="acc_group" DataSetColumn="acc_group" />
+              <Mapping SourceColumn="acc_no" DataSetColumn="acc_no" />
+              <Mapping SourceColumn="tradetype" DataSetColumn="tradetype" />
+              <Mapping SourceColumn="grossamt" DataSetColumn="grossamt" />
+              <Mapping SourceColumn="commission" DataSetColumn="commission" />
+              <Mapping SourceColumn="comm_rate" DataSetColumn="comm_rate" />
+              <Mapping SourceColumn="co_comm" DataSetColumn="co_comm" />
+              <Mapping SourceColumn="ae_comm" DataSetColumn="ae_comm" />
+              <Mapping SourceColumn="CoRate" DataSetColumn="CoRate" />
+              <Mapping SourceColumn="MinTO" DataSetColumn="MinTO" />
+              <Mapping SourceColumn="MinRate" DataSetColumn="MinRate" />
+              <Mapping SourceColumn="CoRateComm" DataSetColumn="CoRateComm" />
+              <Mapping SourceColumn="MinRateComm" DataSetColumn="MinRateComm" />
+              <Mapping SourceColumn="MinTOComm" DataSetColumn="MinTOComm" />
+              <Mapping SourceColumn="GrpTO" DataSetColumn="GrpTO" />
+              <Mapping SourceColumn="ae_name" DataSetColumn="ae_name" />
+              <Mapping SourceColumn="acc_name" DataSetColumn="acc_name" />
+              <Mapping SourceColumn="oid" DataSetColumn="oid" />
+              <Mapping SourceColumn="tdate" DataSetColumn="tdate" />
+              <Mapping SourceColumn="currency_code_set" DataSetColumn="currency_code_set" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CommAEDetail_fTableAdapter" GeneratorDataComponentClassName="CommAEDetail_fTableAdapter" Name="CommAEDetail_f" UserDataComponentName="CommAEDetail_fTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ESL_LIQConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select 
+cast ('' as nvarchar(10)) as txmonth,
+cast ('' as nvarchar(20)) as acc_group,
+cast ('' as nvarchar(10)) as acc_no,
+cast ('' as nvarchar(10)) as ae_no,
+cast ('' as nvarchar(20)) as commod,
+cast ('' as nvarchar(10)) as txtype,
+cast (0 as numeric(18,0)) as isconsolid,
+cast (0 as numeric(18,2)) as day_nor,
+cast (0 as numeric(18,2)) as day_int,
+cast (0 as numeric(18,2)) as night_int,
+cast (0 as numeric(18,2)) as night_nor,
+cast (0 as numeric(18,2)) as day_comm,
+cast (0 as numeric(18,2)) as night_comm,
+cast (0 as numeric(18,4)) as day_rate,
+cast (0 as numeric(18,4)) as night_rate,
+cast (0 as numeric(18,4)) as ae_comm,
+cast ('' as nvarchar(50)) as ae_name,
+cast ('' as nvarchar(50)) as acc_name,
+cast ('' as nvarchar(60)) as prod_name,
+cast ('' as nvarchar(10)) as consolid</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="txmonth" DataSetColumn="txmonth" />
+              <Mapping SourceColumn="acc_group" DataSetColumn="acc_group" />
+              <Mapping SourceColumn="acc_no" DataSetColumn="acc_no" />
+              <Mapping SourceColumn="ae_no" DataSetColumn="ae_no" />
+              <Mapping SourceColumn="commod" DataSetColumn="commod" />
+              <Mapping SourceColumn="txtype" DataSetColumn="txtype" />
+              <Mapping SourceColumn="day_nor" DataSetColumn="day_nor" />
+              <Mapping SourceColumn="day_int" DataSetColumn="day_int" />
+              <Mapping SourceColumn="night_int" DataSetColumn="night_int" />
+              <Mapping SourceColumn="night_nor" DataSetColumn="night_nor" />
+              <Mapping SourceColumn="day_comm" DataSetColumn="day_comm" />
+              <Mapping SourceColumn="night_comm" DataSetColumn="night_comm" />
+              <Mapping SourceColumn="day_rate" DataSetColumn="day_rate" />
+              <Mapping SourceColumn="night_rate" DataSetColumn="night_rate" />
+              <Mapping SourceColumn="ae_comm" DataSetColumn="ae_comm" />
+              <Mapping SourceColumn="isconsolid" DataSetColumn="isconsolid" />
+              <Mapping SourceColumn="ae_name" DataSetColumn="ae_name" />
+              <Mapping SourceColumn="acc_name" DataSetColumn="acc_name" />
+              <Mapping SourceColumn="prod_name" DataSetColumn="prod_name" />
+              <Mapping SourceColumn="consolid" DataSetColumn="consolid" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DtsCommAEDetail" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DtsCommAEDetail" msprop:Generator_DataSetName="DtsCommAEDetail">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CommAEDetail_s" msprop:Generator_UserTableName="CommAEDetail_s" msprop:Generator_RowDeletedName="CommAEDetail_sRowDeleted" msprop:Generator_RowChangedName="CommAEDetail_sRowChanged" msprop:Generator_RowClassName="CommAEDetail_sRow" msprop:Generator_RowChangingName="CommAEDetail_sRowChanging" msprop:Generator_RowEvArgName="CommAEDetail_sRowChangeEvent" msprop:Generator_RowEvHandlerName="CommAEDetail_sRowChangeEventHandler" msprop:Generator_TableClassName="CommAEDetail_sDataTable" msprop:Generator_TableVarName="tableCommAEDetail_s" msprop:Generator_RowDeletingName="CommAEDetail_sRowDeleting" msprop:Generator_TablePropName="CommAEDetail_s">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ae_no" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ae_no" msprop:Generator_ColumnPropNameInRow="ae_no" msprop:Generator_ColumnVarNameInTable="columnae_no" msprop:Generator_ColumnPropNameInTable="ae_noColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="acc_group" msdata:ReadOnly="true" msprop:Generator_UserColumnName="acc_group" msprop:Generator_ColumnPropNameInRow="acc_group" msprop:Generator_ColumnVarNameInTable="columnacc_group" msprop:Generator_ColumnPropNameInTable="acc_groupColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="acc_no" msdata:ReadOnly="true" msprop:Generator_UserColumnName="acc_no" msprop:Generator_ColumnPropNameInRow="acc_no" msprop:Generator_ColumnVarNameInTable="columnacc_no" msprop:Generator_ColumnPropNameInTable="acc_noColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tradetype" msdata:ReadOnly="true" msprop:Generator_UserColumnName="tradetype" msprop:Generator_ColumnPropNameInRow="tradetype" msprop:Generator_ColumnVarNameInTable="columntradetype" msprop:Generator_ColumnPropNameInTable="tradetypeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="grossamt" msdata:ReadOnly="true" msprop:Generator_UserColumnName="grossamt" msprop:Generator_ColumnPropNameInRow="grossamt" msprop:Generator_ColumnVarNameInTable="columngrossamt" msprop:Generator_ColumnPropNameInTable="grossamtColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="commission" msdata:ReadOnly="true" msprop:Generator_UserColumnName="commission" msprop:Generator_ColumnPropNameInRow="commission" msprop:Generator_ColumnVarNameInTable="columncommission" msprop:Generator_ColumnPropNameInTable="commissionColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="comm_rate" msdata:ReadOnly="true" msprop:Generator_UserColumnName="comm_rate" msprop:Generator_ColumnPropNameInRow="comm_rate" msprop:Generator_ColumnVarNameInTable="columncomm_rate" msprop:Generator_ColumnPropNameInTable="comm_rateColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="co_comm" msdata:ReadOnly="true" msprop:Generator_UserColumnName="co_comm" msprop:Generator_ColumnPropNameInRow="co_comm" msprop:Generator_ColumnVarNameInTable="columnco_comm" msprop:Generator_ColumnPropNameInTable="co_commColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ae_comm" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ae_comm" msprop:Generator_ColumnPropNameInRow="ae_comm" msprop:Generator_ColumnVarNameInTable="columnae_comm" msprop:Generator_ColumnPropNameInTable="ae_commColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CoRate" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CoRate" msprop:Generator_ColumnPropNameInRow="CoRate" msprop:Generator_ColumnVarNameInTable="columnCoRate" msprop:Generator_ColumnPropNameInTable="CoRateColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MinTO" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MinTO" msprop:Generator_ColumnPropNameInRow="MinTO" msprop:Generator_ColumnVarNameInTable="columnMinTO" msprop:Generator_ColumnPropNameInTable="MinTOColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MinRate" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MinRate" msprop:Generator_ColumnPropNameInRow="MinRate" msprop:Generator_ColumnVarNameInTable="columnMinRate" msprop:Generator_ColumnPropNameInTable="MinRateColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CoRateComm" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CoRateComm" msprop:Generator_ColumnPropNameInRow="CoRateComm" msprop:Generator_ColumnVarNameInTable="columnCoRateComm" msprop:Generator_ColumnPropNameInTable="CoRateCommColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MinRateComm" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MinRateComm" msprop:Generator_ColumnPropNameInRow="MinRateComm" msprop:Generator_ColumnVarNameInTable="columnMinRateComm" msprop:Generator_ColumnPropNameInTable="MinRateCommColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MinTOComm" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MinTOComm" msprop:Generator_ColumnPropNameInRow="MinTOComm" msprop:Generator_ColumnVarNameInTable="columnMinTOComm" msprop:Generator_ColumnPropNameInTable="MinTOCommColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GrpTO" msdata:ReadOnly="true" msprop:Generator_UserColumnName="GrpTO" msprop:Generator_ColumnPropNameInRow="GrpTO" msprop:Generator_ColumnVarNameInTable="columnGrpTO" msprop:Generator_ColumnPropNameInTable="GrpTOColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ae_name" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ae_name" msprop:Generator_ColumnPropNameInRow="ae_name" msprop:Generator_ColumnVarNameInTable="columnae_name" msprop:Generator_ColumnPropNameInTable="ae_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="acc_name" msdata:ReadOnly="true" msprop:Generator_UserColumnName="acc_name" msprop:Generator_ColumnPropNameInRow="acc_name" msprop:Generator_ColumnVarNameInTable="columnacc_name" msprop:Generator_ColumnPropNameInTable="acc_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oid" msdata:ReadOnly="true" msprop:Generator_UserColumnName="oid" msprop:Generator_ColumnPropNameInRow="oid" msprop:Generator_ColumnVarNameInTable="columnoid" msprop:Generator_ColumnPropNameInTable="oidColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tdate" msdata:ReadOnly="true" msprop:Generator_UserColumnName="tdate" msprop:Generator_ColumnPropNameInRow="tdate" msprop:Generator_ColumnVarNameInTable="columntdate" msprop:Generator_ColumnPropNameInTable="tdateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="currency_code_set" msdata:ReadOnly="true" msprop:Generator_UserColumnName="currency_code_set" msprop:Generator_ColumnPropNameInRow="currency_code_set" msprop:Generator_ColumnVarNameInTable="columncurrency_code_set" msprop:Generator_ColumnPropNameInTable="currency_code_setColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CommAEDetail_f" msprop:Generator_UserTableName="CommAEDetail_f" msprop:Generator_RowDeletedName="CommAEDetail_fRowDeleted" msprop:Generator_RowChangedName="CommAEDetail_fRowChanged" msprop:Generator_RowClassName="CommAEDetail_fRow" msprop:Generator_RowChangingName="CommAEDetail_fRowChanging" msprop:Generator_RowEvArgName="CommAEDetail_fRowChangeEvent" msprop:Generator_RowEvHandlerName="CommAEDetail_fRowChangeEventHandler" msprop:Generator_TableClassName="CommAEDetail_fDataTable" msprop:Generator_TableVarName="tableCommAEDetail_f" msprop:Generator_RowDeletingName="CommAEDetail_fRowDeleting" msprop:Generator_TablePropName="CommAEDetail_f">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="txmonth" msdata:ReadOnly="true" msprop:Generator_UserColumnName="txmonth" msprop:Generator_ColumnVarNameInTable="columntxmonth" msprop:Generator_ColumnPropNameInRow="txmonth" msprop:Generator_ColumnPropNameInTable="txmonthColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="acc_group" msdata:ReadOnly="true" msprop:Generator_UserColumnName="acc_group" msprop:Generator_ColumnVarNameInTable="columnacc_group" msprop:Generator_ColumnPropNameInRow="acc_group" msprop:Generator_ColumnPropNameInTable="acc_groupColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="acc_no" msdata:ReadOnly="true" msprop:Generator_UserColumnName="acc_no" msprop:Generator_ColumnVarNameInTable="columnacc_no" msprop:Generator_ColumnPropNameInRow="acc_no" msprop:Generator_ColumnPropNameInTable="acc_noColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ae_no" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ae_no" msprop:Generator_ColumnVarNameInTable="columnae_no" msprop:Generator_ColumnPropNameInRow="ae_no" msprop:Generator_ColumnPropNameInTable="ae_noColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="commod" msdata:ReadOnly="true" msprop:Generator_UserColumnName="commod" msprop:Generator_ColumnVarNameInTable="columncommod" msprop:Generator_ColumnPropNameInRow="commod" msprop:Generator_ColumnPropNameInTable="commodColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="txtype" msdata:ReadOnly="true" msprop:Generator_UserColumnName="txtype" msprop:Generator_ColumnVarNameInTable="columntxtype" msprop:Generator_ColumnPropNameInRow="txtype" msprop:Generator_ColumnPropNameInTable="txtypeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="day_nor" msdata:ReadOnly="true" msprop:Generator_UserColumnName="day_nor" msprop:Generator_ColumnVarNameInTable="columnday_nor" msprop:Generator_ColumnPropNameInRow="day_nor" msprop:Generator_ColumnPropNameInTable="day_norColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="day_int" msdata:ReadOnly="true" msprop:Generator_UserColumnName="day_int" msprop:Generator_ColumnVarNameInTable="columnday_int" msprop:Generator_ColumnPropNameInRow="day_int" msprop:Generator_ColumnPropNameInTable="day_intColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="night_int" msdata:ReadOnly="true" msprop:Generator_UserColumnName="night_int" msprop:Generator_ColumnVarNameInTable="columnnight_int" msprop:Generator_ColumnPropNameInRow="night_int" msprop:Generator_ColumnPropNameInTable="night_intColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="night_nor" msdata:ReadOnly="true" msprop:Generator_UserColumnName="night_nor" msprop:Generator_ColumnVarNameInTable="columnnight_nor" msprop:Generator_ColumnPropNameInRow="night_nor" msprop:Generator_ColumnPropNameInTable="night_norColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="day_comm" msdata:ReadOnly="true" msprop:Generator_UserColumnName="day_comm" msprop:Generator_ColumnVarNameInTable="columnday_comm" msprop:Generator_ColumnPropNameInRow="day_comm" msprop:Generator_ColumnPropNameInTable="day_commColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="night_comm" msdata:ReadOnly="true" msprop:Generator_UserColumnName="night_comm" msprop:Generator_ColumnVarNameInTable="columnnight_comm" msprop:Generator_ColumnPropNameInRow="night_comm" msprop:Generator_ColumnPropNameInTable="night_commColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="day_rate" msdata:ReadOnly="true" msprop:Generator_UserColumnName="day_rate" msprop:Generator_ColumnVarNameInTable="columnday_rate" msprop:Generator_ColumnPropNameInRow="day_rate" msprop:Generator_ColumnPropNameInTable="day_rateColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="night_rate" msdata:ReadOnly="true" msprop:Generator_UserColumnName="night_rate" msprop:Generator_ColumnVarNameInTable="columnnight_rate" msprop:Generator_ColumnPropNameInRow="night_rate" msprop:Generator_ColumnPropNameInTable="night_rateColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ae_comm" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ae_comm" msprop:Generator_ColumnVarNameInTable="columnae_comm" msprop:Generator_ColumnPropNameInRow="ae_comm" msprop:Generator_ColumnPropNameInTable="ae_commColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="isconsolid" msdata:ReadOnly="true" msprop:Generator_UserColumnName="isconsolid" msprop:Generator_ColumnPropNameInRow="isconsolid" msprop:Generator_ColumnVarNameInTable="columnisconsolid" msprop:Generator_ColumnPropNameInTable="isconsolidColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ae_name" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ae_name" msprop:Generator_ColumnPropNameInRow="ae_name" msprop:Generator_ColumnVarNameInTable="columnae_name" msprop:Generator_ColumnPropNameInTable="ae_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="acc_name" msdata:ReadOnly="true" msprop:Generator_UserColumnName="acc_name" msprop:Generator_ColumnPropNameInRow="acc_name" msprop:Generator_ColumnVarNameInTable="columnacc_name" msprop:Generator_ColumnPropNameInTable="acc_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="prod_name" msdata:ReadOnly="true" msprop:Generator_UserColumnName="prod_name" msprop:Generator_ColumnPropNameInRow="prod_name" msprop:Generator_ColumnVarNameInTable="columnprod_name" msprop:Generator_ColumnPropNameInTable="prod_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="consolid" msdata:ReadOnly="true" msprop:Generator_UserColumnName="consolid" msprop:Generator_ColumnVarNameInTable="columnconsolid" msprop:Generator_ColumnPropNameInRow="consolid" msprop:Generator_ColumnPropNameInTable="consolidColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

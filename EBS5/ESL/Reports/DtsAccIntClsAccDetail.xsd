@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DtsAccIntClsAccDetail" targetNamespace="http://tempuri.org/DtsAccIntClsAccDetail.xsd" xmlns:mstns="http://tempuri.org/DtsAccIntClsAccDetail.xsd" xmlns="http://tempuri.org/DtsAccIntClsAccDetail.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ESL_LIQConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="ESL_LIQConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ESL.My.MySettings.GlobalReference.Default.ESL_LIQConnectionString1" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DtsAccIntClsAccDetailTableAdapter" GeneratorDataComponentClassName="DtsAccIntClsAccDetailTableAdapter" Name="DtsAccIntClsAccDetail" UserDataComponentName="DtsAccIntClsAccDetailTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ESL_LIQConnectionString1 (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT CAST('' as nvarchar(50)) as accno, CAST('' as nvarchar(50)) as name_1, CAST('' as nvarchar(15)) as aeno, CAST('' as nvarchar(10)) as client_type, CAST('' as nvarchar(15)) as int_code, CAST(0.0000 as Numeric(8,4)) as int_1, CAST(0.0000 as Numeric(8,4)) as int_2, CAST(0.0000 as Numeric(8,4)) as int_3 </CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="accno" DataSetColumn="accno" />
+              <Mapping SourceColumn="name_1" DataSetColumn="name_1" />
+              <Mapping SourceColumn="aeno" DataSetColumn="aeno" />
+              <Mapping SourceColumn="client_type" DataSetColumn="client_type" />
+              <Mapping SourceColumn="int_code" DataSetColumn="int_code" />
+              <Mapping SourceColumn="int_1" DataSetColumn="int_1" />
+              <Mapping SourceColumn="int_2" DataSetColumn="int_2" />
+              <Mapping SourceColumn="int_3" DataSetColumn="int_3" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DtsAccIntClsAccDetail" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DtsAccIntClsAccDetail" msprop:Generator_DataSetName="DtsAccIntClsAccDetail">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtsAccIntClsAccDetail" msprop:Generator_UserTableName="DtsAccIntClsAccDetail" msprop:Generator_RowDeletedName="DtsAccIntClsAccDetailRowDeleted" msprop:Generator_TableClassName="DtsAccIntClsAccDetailDataTable" msprop:Generator_RowChangedName="DtsAccIntClsAccDetailRowChanged" msprop:Generator_RowClassName="DtsAccIntClsAccDetailRow" msprop:Generator_RowChangingName="DtsAccIntClsAccDetailRowChanging" msprop:Generator_RowEvArgName="DtsAccIntClsAccDetailRowChangeEvent" msprop:Generator_RowEvHandlerName="DtsAccIntClsAccDetailRowChangeEventHandler" msprop:Generator_TablePropName="_DtsAccIntClsAccDetail" msprop:Generator_TableVarName="tableDtsAccIntClsAccDetail" msprop:Generator_RowDeletingName="DtsAccIntClsAccDetailRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="accno" msdata:ReadOnly="true" msprop:Generator_UserColumnName="accno" msprop:Generator_ColumnPropNameInRow="accno" msprop:Generator_ColumnVarNameInTable="columnaccno" msprop:Generator_ColumnPropNameInTable="accnoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name_1" msdata:ReadOnly="true" msprop:Generator_UserColumnName="name_1" msprop:Generator_ColumnPropNameInRow="name_1" msprop:Generator_ColumnVarNameInTable="columnname_1" msprop:Generator_ColumnPropNameInTable="name_1Column" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="aeno" msdata:ReadOnly="true" msprop:Generator_UserColumnName="aeno" msprop:Generator_ColumnPropNameInRow="aeno" msprop:Generator_ColumnVarNameInTable="columnaeno" msprop:Generator_ColumnPropNameInTable="aenoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="client_type" msdata:ReadOnly="true" msprop:Generator_UserColumnName="client_type" msprop:Generator_ColumnPropNameInRow="client_type" msprop:Generator_ColumnVarNameInTable="columnclient_type" msprop:Generator_ColumnPropNameInTable="client_typeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="int_code" msdata:ReadOnly="true" msprop:Generator_UserColumnName="int_code" msprop:Generator_ColumnPropNameInRow="int_code" msprop:Generator_ColumnVarNameInTable="columnint_code" msprop:Generator_ColumnPropNameInTable="int_codeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="int_1" msdata:ReadOnly="true" msprop:Generator_UserColumnName="int_1" msprop:Generator_ColumnPropNameInRow="int_1" msprop:Generator_ColumnVarNameInTable="columnint_1" msprop:Generator_ColumnPropNameInTable="int_1Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="int_2" msdata:ReadOnly="true" msprop:Generator_UserColumnName="int_2" msprop:Generator_ColumnPropNameInRow="int_2" msprop:Generator_ColumnVarNameInTable="columnint_2" msprop:Generator_ColumnPropNameInTable="int_2Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="int_3" msdata:ReadOnly="true" msprop:Generator_UserColumnName="int_3" msprop:Generator_ColumnPropNameInRow="int_3" msprop:Generator_ColumnVarNameInTable="columnint_3" msprop:Generator_ColumnPropNameInTable="int_3Column" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

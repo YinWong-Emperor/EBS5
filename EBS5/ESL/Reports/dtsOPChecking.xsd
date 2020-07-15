@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dtsOPChecking" targetNamespace="http://tempuri.org/dtsOPChecking.xsd" xmlns:mstns="http://tempuri.org/dtsOPChecking.xsd" xmlns="http://tempuri.org/dtsOPChecking.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dtsOPChecking" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dtsOPChecking" msprop:Generator_UserDSName="dtsOPChecking">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="rptOPChecking" msprop:Generator_UserTableName="rptOPChecking" msprop:Generator_RowEvArgName="rptOPCheckingRowChangeEvent" msprop:Generator_TableVarName="tablerptOPChecking" msprop:Generator_TablePropName="rptOPChecking" msprop:Generator_RowDeletingName="rptOPCheckingRowDeleting" msprop:Generator_RowChangingName="rptOPCheckingRowChanging" msprop:Generator_RowDeletedName="rptOPCheckingRowDeleted" msprop:Generator_TableClassName="rptOPCheckingDataTable" msprop:Generator_RowChangedName="rptOPCheckingRowChanged" msprop:Generator_RowEvHandlerName="rptOPCheckingRowChangeEventHandler" msprop:Generator_RowClassName="rptOPCheckingRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="product" msprop:Generator_ColumnVarNameInTable="columnproduct" msprop:Generator_ColumnPropNameInRow="product" msprop:Generator_ColumnPropNameInTable="productColumn" msprop:Generator_UserColumnName="product" type="xs:string" minOccurs="0" />
+              <xs:element name="g2b_1_pl" msprop:Generator_ColumnVarNameInTable="columng2b_1_pl" msprop:Generator_ColumnPropNameInRow="g2b_1_pl" msprop:Generator_ColumnPropNameInTable="g2b_1_plColumn" msprop:Generator_UserColumnName="g2b_1_pl" type="xs:decimal" minOccurs="0" />
+              <xs:element name="g2b_1_floating" msprop:Generator_ColumnVarNameInTable="columng2b_1_floating" msprop:Generator_ColumnPropNameInRow="g2b_1_floating" msprop:Generator_ColumnPropNameInTable="g2b_1_floatingColumn" msprop:Generator_UserColumnName="g2b_1_floating" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0031__pl" msprop:Generator_ColumnVarNameInTable="column1_pl" msprop:Generator_ColumnPropNameInRow="_1_pl" msprop:Generator_ColumnPropNameInTable="_1_plColumn" msprop:Generator_UserColumnName="1_pl" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0031__floating" msprop:Generator_ColumnVarNameInTable="column1_floating" msprop:Generator_ColumnPropNameInRow="_1_floating" msprop:Generator_ColumnPropNameInTable="_1_floatingColumn" msprop:Generator_UserColumnName="1_floating" type="xs:decimal" minOccurs="0" />
+              <xs:element name="g2b_2_pl" msprop:Generator_ColumnVarNameInTable="columng2b_2_pl" msprop:Generator_ColumnPropNameInRow="g2b_2_pl" msprop:Generator_ColumnPropNameInTable="g2b_2_plColumn" msprop:Generator_UserColumnName="g2b_2_pl" type="xs:decimal" minOccurs="0" />
+              <xs:element name="g2b_2_floating" msprop:Generator_ColumnVarNameInTable="columng2b_2_floating" msprop:Generator_ColumnPropNameInRow="g2b_2_floating" msprop:Generator_ColumnPropNameInTable="g2b_2_floatingColumn" msprop:Generator_UserColumnName="g2b_2_floating" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0032__pl" msprop:Generator_ColumnVarNameInTable="column2_pl" msprop:Generator_ColumnPropNameInRow="_2_pl" msprop:Generator_ColumnPropNameInTable="_2_plColumn" msprop:Generator_UserColumnName="2_pl" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0032__floating" msprop:Generator_ColumnVarNameInTable="column2_floating" msprop:Generator_ColumnPropNameInRow="_2_floating" msprop:Generator_ColumnPropNameInTable="_2_floatingColumn" msprop:Generator_UserColumnName="2_floating" type="xs:decimal" minOccurs="0" />
+              <xs:element name="pre_g2b_1_floating" msprop:Generator_ColumnVarNameInTable="columnpre_g2b_1_floating" msprop:Generator_ColumnPropNameInRow="pre_g2b_1_floating" msprop:Generator_ColumnPropNameInTable="pre_g2b_1_floatingColumn" msprop:Generator_UserColumnName="pre_g2b_1_floating" type="xs:decimal" minOccurs="0" />
+              <xs:element name="pre_broker_1_floating" msprop:Generator_ColumnVarNameInTable="columnpre_broker_1_floating" msprop:Generator_ColumnPropNameInRow="pre_broker_1_floating" msprop:Generator_ColumnPropNameInTable="pre_broker_1_floatingColumn" msprop:Generator_UserColumnName="pre_broker_1_floating" type="xs:decimal" minOccurs="0" />
+              <xs:element name="pre_g2b_2_floating" msprop:Generator_ColumnVarNameInTable="columnpre_g2b_2_floating" msprop:Generator_ColumnPropNameInRow="pre_g2b_2_floating" msprop:Generator_ColumnPropNameInTable="pre_g2b_2_floatingColumn" msprop:Generator_UserColumnName="pre_g2b_2_floating" type="xs:decimal" minOccurs="0" />
+              <xs:element name="pre_broker_2_floating" msprop:Generator_ColumnVarNameInTable="columnpre_broker_2_floating" msprop:Generator_ColumnPropNameInRow="pre_broker_2_floating" msprop:Generator_ColumnPropNameInTable="pre_broker_2_floatingColumn" msprop:Generator_UserColumnName="pre_broker_2_floating" type="xs:decimal" minOccurs="0" />
+              <xs:element name="strike" msprop:Generator_ColumnVarNameInTable="columnstrike" msprop:Generator_ColumnPropNameInRow="strike" msprop:Generator_ColumnPropNameInTable="strikeColumn" msprop:Generator_UserColumnName="strike" type="xs:string" minOccurs="0" />
+              <xs:element name="callput" msprop:Generator_ColumnVarNameInTable="columncallput" msprop:Generator_ColumnPropNameInRow="callput" msprop:Generator_ColumnPropNameInTable="callputColumn" msprop:Generator_UserColumnName="callput" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
