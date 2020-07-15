@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DtsDailyNetTrade" targetNamespace="http://tempuri.org/DtsDailyNetTrade.xsd" xmlns:mstns="http://tempuri.org/DtsDailyNetTrade.xsd" xmlns="http://tempuri.org/DtsDailyNetTrade.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ESL_LIQConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="ESL_LIQConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ESL.My.MySettings.GlobalReference.Default.ESL_LIQConnectionString1" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DtsDailyNetTradeTableAdapter" GeneratorDataComponentClassName="DtsDailyNetTradeTableAdapter" Name="DtsDailyNetTrade" UserDataComponentName="DtsDailyNetTradeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ESL_LIQConnectionString1 (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select CAST('' as nvarchar(10)) as accno, CAST('' as nvarchar(50)) as name_1, CAST(0 as decimal(18,2)) as credit_lmt, CAST(0 as decimal(18,2)) as net_trade</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="accno" DataSetColumn="accno" />
+              <Mapping SourceColumn="name_1" DataSetColumn="name_1" />
+              <Mapping SourceColumn="credit_lmt" DataSetColumn="credit_lmt" />
+              <Mapping SourceColumn="net_trade" DataSetColumn="net_trade" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DtsDailyNetTrade" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DtsDailyNetTrade" msprop:Generator_DataSetName="DtsDailyNetTrade">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtsDailyNetTrade" msprop:Generator_UserTableName="DtsDailyNetTrade" msprop:Generator_RowDeletedName="DtsDailyNetTradeRowDeleted" msprop:Generator_TableClassName="DtsDailyNetTradeDataTable" msprop:Generator_RowChangedName="DtsDailyNetTradeRowChanged" msprop:Generator_RowClassName="DtsDailyNetTradeRow" msprop:Generator_RowChangingName="DtsDailyNetTradeRowChanging" msprop:Generator_RowEvArgName="DtsDailyNetTradeRowChangeEvent" msprop:Generator_RowEvHandlerName="DtsDailyNetTradeRowChangeEventHandler" msprop:Generator_TablePropName="_DtsDailyNetTrade" msprop:Generator_TableVarName="tableDtsDailyNetTrade" msprop:Generator_RowDeletingName="DtsDailyNetTradeRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="accno" msdata:ReadOnly="true" msprop:Generator_UserColumnName="accno" msprop:Generator_ColumnPropNameInRow="accno" msprop:Generator_ColumnVarNameInTable="columnaccno" msprop:Generator_ColumnPropNameInTable="accnoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name_1" msdata:ReadOnly="true" msprop:Generator_UserColumnName="name_1" msprop:Generator_ColumnPropNameInRow="name_1" msprop:Generator_ColumnVarNameInTable="columnname_1" msprop:Generator_ColumnPropNameInTable="name_1Column" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="credit_lmt" msdata:ReadOnly="true" msprop:Generator_UserColumnName="credit_lmt" msprop:Generator_ColumnPropNameInRow="credit_lmt" msprop:Generator_ColumnVarNameInTable="columncredit_lmt" msprop:Generator_ColumnPropNameInTable="credit_lmtColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="net_trade" msdata:ReadOnly="true" msprop:Generator_UserColumnName="net_trade" msprop:Generator_ColumnPropNameInRow="net_trade" msprop:Generator_ColumnVarNameInTable="columnnet_trade" msprop:Generator_ColumnPropNameInTable="net_tradeColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

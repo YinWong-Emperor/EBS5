@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dtsRptExternalAC" targetNamespace="http://tempuri.org/dtsRptExternalAC.xsd" xmlns:mstns="http://tempuri.org/dtsRptExternalAC.xsd" xmlns="http://tempuri.org/dtsRptExternalAC.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dtsRptExternalAC" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dtsRptExternalAC" msprop:Generator_DataSetName="dtsRptExternalAC">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtsRptExternalAC" msprop:Generator_UserTableName="dtsRptExternalAC" msprop:Generator_RowDeletedName="dtsRptExternalACRowDeleted" msprop:Generator_TableClassName="dtsRptExternalACDataTable" msprop:Generator_RowChangedName="dtsRptExternalACRowChanged" msprop:Generator_RowClassName="dtsRptExternalACRow" msprop:Generator_RowChangingName="dtsRptExternalACRowChanging" msprop:Generator_RowEvArgName="dtsRptExternalACRowChangeEvent" msprop:Generator_RowEvHandlerName="dtsRptExternalACRowChangeEventHandler" msprop:Generator_TablePropName="_dtsRptExternalAC" msprop:Generator_TableVarName="tabledtsRptExternalAC" msprop:Generator_RowDeletingName="dtsRptExternalACRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="d_acc_no" msprop:Generator_UserColumnName="d_acc_no" msprop:Generator_ColumnPropNameInRow="d_acc_no" msprop:Generator_ColumnVarNameInTable="columnd_acc_no" msprop:Generator_ColumnPropNameInTable="d_acc_noColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="d_acc_name" msprop:Generator_UserColumnName="d_acc_name" msprop:Generator_ColumnPropNameInRow="d_acc_name" msprop:Generator_ColumnVarNameInTable="columnd_acc_name" msprop:Generator_ColumnPropNameInTable="d_acc_nameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="d_ae_no" msprop:Generator_UserColumnName="d_ae_no" msprop:Generator_ColumnPropNameInRow="d_ae_no" msprop:Generator_ColumnVarNameInTable="columnd_ae_no" msprop:Generator_ColumnPropNameInTable="d_ae_noColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="d_ae_name" msprop:Generator_UserColumnName="d_ae_name" msprop:Generator_ColumnPropNameInRow="d_ae_name" msprop:Generator_ColumnVarNameInTable="columnd_ae_name" msprop:Generator_ColumnPropNameInTable="d_ae_nameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="d_ext_acc_no" msprop:Generator_UserColumnName="d_ext_acc_no" msprop:Generator_ColumnPropNameInRow="d_ext_acc_no" msprop:Generator_ColumnVarNameInTable="columnd_ext_acc_no" msprop:Generator_ColumnPropNameInTable="d_ext_acc_noColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="d_ext_credit_limit" msprop:Generator_UserColumnName="d_ext_credit_limit" msprop:Generator_ColumnPropNameInRow="d_ext_credit_limit" msprop:Generator_ColumnVarNameInTable="columnd_ext_credit_limit" msprop:Generator_ColumnPropNameInTable="d_ext_credit_limitColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dtsRptLog" targetNamespace="http://tempuri.org/dtsRptLog.xsd" xmlns:mstns="http://tempuri.org/dtsRptLog.xsd" xmlns="http://tempuri.org/dtsRptLog.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ESL_LIQConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="ESL_LIQConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ESL.My.MySettings.GlobalReference.Default.ESL_LIQConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dtsRptLogTableAdapter" GeneratorDataComponentClassName="dtsRptLogTableAdapter" Name="dtsRptLog" UserDataComponentName="dtsRptLogTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ESL_LIQConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select 
+cast('' as nvarchar(20)) AS D_USER,
+cast(getdate() as datetime) AS D_DATE,
+cast('' as nvarchar(1)) AS D_ACTION,
+cast('' as nvarchar(20)) AS D_TYPE,
+cast('' as nvarchar(20)) AS D_AE,
+cast('' as nvarchar(20)) AS D_AC,
+cast(getdate() as datetime) AS D_O_TDATE,
+cast('' as nvarchar(50)) AS D_OID,
+cast('' as nvarchar(6)) AS D_TXMONTH,
+cast('' as nvarchar(500)) AS D_LOG</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="D_USER" DataSetColumn="D_USER" />
+              <Mapping SourceColumn="D_DATE" DataSetColumn="D_DATE" />
+              <Mapping SourceColumn="D_ACTION" DataSetColumn="D_ACTION" />
+              <Mapping SourceColumn="D_TYPE" DataSetColumn="D_TYPE" />
+              <Mapping SourceColumn="D_AE" DataSetColumn="D_AE" />
+              <Mapping SourceColumn="D_AC" DataSetColumn="D_AC" />
+              <Mapping SourceColumn="D_O_TDATE" DataSetColumn="D_O_TDATE" />
+              <Mapping SourceColumn="D_OID" DataSetColumn="D_OID" />
+              <Mapping SourceColumn="D_TXMONTH" DataSetColumn="D_TXMONTH" />
+              <Mapping SourceColumn="D_LOG" DataSetColumn="D_LOG" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dtsRptLog" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dtsRptLog" msprop:Generator_DataSetName="dtsRptLog">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtsRptLog" msprop:Generator_UserTableName="dtsRptLog" msprop:Generator_RowDeletedName="dtsRptLogRowDeleted" msprop:Generator_TableClassName="dtsRptLogDataTable" msprop:Generator_RowChangedName="dtsRptLogRowChanged" msprop:Generator_RowClassName="dtsRptLogRow" msprop:Generator_RowChangingName="dtsRptLogRowChanging" msprop:Generator_RowEvArgName="dtsRptLogRowChangeEvent" msprop:Generator_RowEvHandlerName="dtsRptLogRowChangeEventHandler" msprop:Generator_TablePropName="_dtsRptLog" msprop:Generator_TableVarName="tabledtsRptLog" msprop:Generator_RowDeletingName="dtsRptLogRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="D_USER" msdata:ReadOnly="true" msprop:Generator_UserColumnName="D_USER" msprop:Generator_ColumnPropNameInRow="D_USER" msprop:Generator_ColumnVarNameInTable="columnD_USER" msprop:Generator_ColumnPropNameInTable="D_USERColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="D_DATE" msdata:ReadOnly="true" msprop:Generator_UserColumnName="D_DATE" msprop:Generator_ColumnPropNameInRow="D_DATE" msprop:Generator_ColumnVarNameInTable="columnD_DATE" msprop:Generator_ColumnPropNameInTable="D_DATEColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="D_ACTION" msdata:ReadOnly="true" msprop:Generator_UserColumnName="D_ACTION" msprop:Generator_ColumnPropNameInRow="D_ACTION" msprop:Generator_ColumnVarNameInTable="columnD_ACTION" msprop:Generator_ColumnPropNameInTable="D_ACTIONColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="D_TYPE" msdata:ReadOnly="true" msprop:Generator_UserColumnName="D_TYPE" msprop:Generator_ColumnPropNameInRow="D_TYPE" msprop:Generator_ColumnVarNameInTable="columnD_TYPE" msprop:Generator_ColumnPropNameInTable="D_TYPEColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="D_AE" msdata:ReadOnly="true" msprop:Generator_UserColumnName="D_AE" msprop:Generator_ColumnPropNameInRow="D_AE" msprop:Generator_ColumnVarNameInTable="columnD_AE" msprop:Generator_ColumnPropNameInTable="D_AEColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="D_AC" msdata:ReadOnly="true" msprop:Generator_UserColumnName="D_AC" msprop:Generator_ColumnPropNameInRow="D_AC" msprop:Generator_ColumnVarNameInTable="columnD_AC" msprop:Generator_ColumnPropNameInTable="D_ACColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="D_O_TDATE" msdata:ReadOnly="true" msprop:Generator_UserColumnName="D_O_TDATE" msprop:Generator_ColumnPropNameInRow="D_O_TDATE" msprop:Generator_ColumnVarNameInTable="columnD_O_TDATE" msprop:Generator_ColumnPropNameInTable="D_O_TDATEColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="D_OID" msdata:ReadOnly="true" msprop:Generator_UserColumnName="D_OID" msprop:Generator_ColumnPropNameInRow="D_OID" msprop:Generator_ColumnVarNameInTable="columnD_OID" msprop:Generator_ColumnPropNameInTable="D_OIDColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="D_TXMONTH" msdata:ReadOnly="true" msprop:Generator_UserColumnName="D_TXMONTH" msprop:Generator_ColumnPropNameInRow="D_TXMONTH" msprop:Generator_ColumnVarNameInTable="columnD_TXMONTH" msprop:Generator_ColumnPropNameInTable="D_TXMONTHColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="D_LOG" msdata:ReadOnly="true" msprop:Generator_UserColumnName="D_LOG" msprop:Generator_ColumnPropNameInRow="D_LOG" msprop:Generator_ColumnVarNameInTable="columnD_LOG" msprop:Generator_ColumnPropNameInTable="D_LOGColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

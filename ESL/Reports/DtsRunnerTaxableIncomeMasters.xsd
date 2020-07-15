@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DtsRunnerTaxableIncomeMasters" targetNamespace="http://tempuri.org/DtsRunnerTaxableIncomeMasters.xsd" xmlns:mstns="http://tempuri.org/DtsRunnerTaxableIncomeMasters.xsd" xmlns="http://tempuri.org/DtsRunnerTaxableIncomeMasters.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DtsRunnerTaxableIncomeMasters" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DtsRunnerTaxableIncomeMasters" msprop:Generator_UserDSName="DtsRunnerTaxableIncomeMasters">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtsRunnerTaxableIncomeMasterSummary" msprop:Generator_TableClassName="DtsRunnerTaxableIncomeMasterSummaryDataTable" msprop:Generator_TableVarName="tableDtsRunnerTaxableIncomeMasterSummary" msprop:Generator_RowChangedName="DtsRunnerTaxableIncomeMasterSummaryRowChanged" msprop:Generator_TablePropName="DtsRunnerTaxableIncomeMasterSummary" msprop:Generator_RowDeletingName="DtsRunnerTaxableIncomeMasterSummaryRowDeleting" msprop:Generator_RowChangingName="DtsRunnerTaxableIncomeMasterSummaryRowChanging" msprop:Generator_RowEvHandlerName="DtsRunnerTaxableIncomeMasterSummaryRowChangeEventHandler" msprop:Generator_RowDeletedName="DtsRunnerTaxableIncomeMasterSummaryRowDeleted" msprop:Generator_RowClassName="DtsRunnerTaxableIncomeMasterSummaryRow" msprop:Generator_UserTableName="DtsRunnerTaxableIncomeMasterSummary" msprop:Generator_RowEvArgName="DtsRunnerTaxableIncomeMasterSummaryRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RUN_CODE" msprop:Generator_ColumnVarNameInTable="columnRUN_CODE" msprop:Generator_ColumnPropNameInRow="RUN_CODE" msprop:Generator_ColumnPropNameInTable="RUN_CODEColumn" msprop:Generator_UserColumnName="RUN_CODE" type="xs:string" />
+              <xs:element name="RUN_MEMBER" msprop:Generator_ColumnVarNameInTable="columnRUN_MEMBER" msprop:Generator_ColumnPropNameInRow="RUN_MEMBER" msprop:Generator_ColumnPropNameInTable="RUN_MEMBERColumn" msprop:Generator_UserColumnName="RUN_MEMBER" type="xs:string" />
+              <xs:element name="GroupID" msprop:Generator_ColumnVarNameInTable="columnGroupID" msprop:Generator_ColumnPropNameInRow="GroupID" msprop:Generator_ColumnPropNameInTable="GroupIDColumn" msprop:Generator_UserColumnName="GroupID" type="xs:string" />
+              <xs:element name="TXN_MONTH" msprop:Generator_ColumnVarNameInTable="columnTXN_MONTH" msprop:Generator_ColumnPropNameInRow="TXN_MONTH" msprop:Generator_ColumnPropNameInTable="TXN_MONTHColumn" msprop:Generator_UserColumnName="TXN_MONTH" type="xs:int" minOccurs="0" />
+              <xs:element name="TXN_YEAR" msprop:Generator_ColumnVarNameInTable="columnTXN_YEAR" msprop:Generator_ColumnPropNameInRow="TXN_YEAR" msprop:Generator_ColumnPropNameInTable="TXN_YEARColumn" msprop:Generator_UserColumnName="TXN_YEAR" type="xs:int" minOccurs="0" />
+              <xs:element name="HIDE" msprop:Generator_ColumnVarNameInTable="columnHIDE" msprop:Generator_ColumnPropNameInRow="HIDE" msprop:Generator_ColumnPropNameInTable="HIDEColumn" msprop:Generator_UserColumnName="HIDE" type="xs:int" minOccurs="0" />
+              <xs:element name="STK_TO" msprop:Generator_ColumnVarNameInTable="columnSTK_TO" msprop:Generator_ColumnPropNameInRow="STK_TO" msprop:Generator_ColumnPropNameInTable="STK_TOColumn" msprop:Generator_UserColumnName="STK_TO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="EO_TO" msprop:Generator_ColumnVarNameInTable="columnEO_TO" msprop:Generator_ColumnPropNameInRow="EO_TO" msprop:Generator_ColumnPropNameInTable="EO_TOColumn" msprop:Generator_UserColumnName="EO_TO" type="xs:int" minOccurs="0" />
+              <xs:element name="HSI_TO" msprop:Generator_ColumnVarNameInTable="columnHSI_TO" msprop:Generator_ColumnPropNameInRow="HSI_TO" msprop:Generator_ColumnPropNameInTable="HSI_TOColumn" msprop:Generator_UserColumnName="HSI_TO" type="xs:int" minOccurs="0" />
+              <xs:element name="HSIO_TO" msprop:Generator_ColumnVarNameInTable="columnHSIO_TO" msprop:Generator_ColumnPropNameInRow="HSIO_TO" msprop:Generator_ColumnPropNameInTable="HSIO_TOColumn" msprop:Generator_UserColumnName="HSIO_TO" type="xs:int" minOccurs="0" />
+              <xs:element name="HSI100_TO" msprop:Generator_ColumnVarNameInTable="columnHSI100_TO" msprop:Generator_ColumnPropNameInRow="HSI100_TO" msprop:Generator_ColumnPropNameInTable="HSI100_TOColumn" msprop:Generator_UserColumnName="HSI100_TO" type="xs:int" minOccurs="0" />
+              <xs:element name="HSI100O_TO" msprop:Generator_ColumnVarNameInTable="columnHSI100O_TO" msprop:Generator_ColumnPropNameInRow="HSI100O_TO" msprop:Generator_ColumnPropNameInTable="HSI100O_TOColumn" msprop:Generator_UserColumnName="HSI100O_TO" type="xs:int" minOccurs="0" />
+              <xs:element name="MHSI_TO" msprop:Generator_ColumnVarNameInTable="columnMHSI_TO" msprop:Generator_ColumnPropNameInRow="MHSI_TO" msprop:Generator_ColumnPropNameInTable="MHSI_TOColumn" msprop:Generator_UserColumnName="MHSI_TO" type="xs:int" minOccurs="0" />
+              <xs:element name="RC_TO" msprop:Generator_ColumnVarNameInTable="columnRC_TO" msprop:Generator_ColumnPropNameInRow="RC_TO" msprop:Generator_ColumnPropNameInTable="RC_TOColumn" msprop:Generator_UserColumnName="RC_TO" type="xs:int" minOccurs="0" />
+              <xs:element name="RCO_TO" msprop:Generator_ColumnVarNameInTable="columnRCO_TO" msprop:Generator_ColumnPropNameInRow="RCO_TO" msprop:Generator_ColumnPropNameInTable="RCO_TOColumn" msprop:Generator_UserColumnName="RCO_TO" type="xs:int" minOccurs="0" />
+              <xs:element name="SF_TO" msprop:Generator_ColumnVarNameInTable="columnSF_TO" msprop:Generator_ColumnPropNameInRow="SF_TO" msprop:Generator_ColumnPropNameInTable="SF_TOColumn" msprop:Generator_UserColumnName="SF_TO" type="xs:int" minOccurs="0" />
+              <xs:element name="ABSENCE" msprop:Generator_ColumnVarNameInTable="columnABSENCE" msprop:Generator_ColumnPropNameInRow="ABSENCE" msprop:Generator_ColumnPropNameInTable="ABSENCEColumn" msprop:Generator_UserColumnName="ABSENCE" type="xs:int" minOccurs="0" />
+              <xs:element name="ADJUST_TAX" msprop:Generator_ColumnVarNameInTable="columnADJUST_TAX" msprop:Generator_ColumnPropNameInRow="ADJUST_TAX" msprop:Generator_ColumnPropNameInTable="ADJUST_TAXColumn" msprop:Generator_UserColumnName="ADJUST_TAX" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MPF" msprop:Generator_ColumnVarNameInTable="columnMPF" msprop:Generator_ColumnPropNameInRow="MPF" msprop:Generator_ColumnPropNameInTable="MPFColumn" msprop:Generator_UserColumnName="MPF" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VOL" msprop:Generator_ColumnVarNameInTable="columnVOL" msprop:Generator_ColumnPropNameInRow="VOL" msprop:Generator_ColumnPropNameInTable="VOLColumn" msprop:Generator_UserColumnName="VOL" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PAY_DATE" msprop:Generator_ColumnVarNameInTable="columnPAY_DATE" msprop:Generator_ColumnPropNameInRow="PAY_DATE" msprop:Generator_ColumnPropNameInTable="PAY_DATEColumn" msprop:Generator_UserColumnName="PAY_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MPF_CO" msprop:Generator_ColumnVarNameInTable="columnMPF_CO" msprop:Generator_ColumnPropNameInRow="MPF_CO" msprop:Generator_ColumnPropNameInTable="MPF_COColumn" msprop:Generator_UserColumnName="MPF_CO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VOL_CO" msprop:Generator_ColumnVarNameInTable="columnVOL_CO" msprop:Generator_ColumnPropNameInRow="VOL_CO" msprop:Generator_ColumnPropNameInTable="VOL_COColumn" msprop:Generator_UserColumnName="VOL_CO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="HELD_REMUN" msprop:Generator_ColumnVarNameInTable="columnHELD_REMUN" msprop:Generator_ColumnPropNameInRow="HELD_REMUN" msprop:Generator_ColumnPropNameInTable="HELD_REMUNColumn" msprop:Generator_UserColumnName="HELD_REMUN" type="xs:decimal" minOccurs="0" />
+              <xs:element name="REMARK" msprop:Generator_ColumnVarNameInTable="columnREMARK" msprop:Generator_ColumnPropNameInRow="REMARK" msprop:Generator_ColumnPropNameInTable="REMARKColumn" msprop:Generator_UserColumnName="REMARK" type="xs:string" minOccurs="0" />
+              <xs:element name="RUN_NAME" msprop:Generator_ColumnVarNameInTable="columnRUN_NAME" msprop:Generator_ColumnPropNameInRow="RUN_NAME" msprop:Generator_ColumnPropNameInTable="RUN_NAMEColumn" msprop:Generator_UserColumnName="RUN_NAME" type="xs:string" default="&quot;&quot;" minOccurs="0" />
+
+              <xs:element name="LAST_MPF" msprop:Generator_ColumnVarNameInTable="columnLAST_MPF" msprop:Generator_ColumnPropNameInRow="LAST_MPF" msprop:Generator_ColumnPropNameInTable="LAST_MPFColumn" msprop:Generator_UserColumnName="LAST_MPF" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LAST_REMUN" msprop:Generator_ColumnVarNameInTable="columnLAST_REMUN" msprop:Generator_ColumnPropNameInRow="LAST_REMUN" msprop:Generator_ColumnPropNameInTable="LAST_REMUNColumn" msprop:Generator_UserColumnName="LAST_REMUN" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LAST_TAX" msprop:Generator_ColumnVarNameInTable="columnLAST_TAX" msprop:Generator_ColumnPropNameInRow="LAST_TAX" msprop:Generator_ColumnPropNameInTable="LAST_TAXColumn" msprop:Generator_UserColumnName="LAST_TAX" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtsRunnerTaxableIncomeMasterDetail" msprop:Generator_TableClassName="DtsRunnerTaxableIncomeMasterDetailDataTable" msprop:Generator_TableVarName="tableDtsRunnerTaxableIncomeMasterDetail" msprop:Generator_RowChangedName="DtsRunnerTaxableIncomeMasterDetailRowChanged" msprop:Generator_TablePropName="DtsRunnerTaxableIncomeMasterDetail" msprop:Generator_RowDeletingName="DtsRunnerTaxableIncomeMasterDetailRowDeleting" msprop:Generator_RowChangingName="DtsRunnerTaxableIncomeMasterDetailRowChanging" msprop:Generator_RowEvHandlerName="DtsRunnerTaxableIncomeMasterDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="DtsRunnerTaxableIncomeMasterDetailRowDeleted" msprop:Generator_RowClassName="DtsRunnerTaxableIncomeMasterDetailRow" msprop:Generator_UserTableName="DtsRunnerTaxableIncomeMasterDetail" msprop:Generator_RowEvArgName="DtsRunnerTaxableIncomeMasterDetailRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RUN_CODE" msprop:Generator_ColumnVarNameInTable="columnRUN_CODE" msprop:Generator_ColumnPropNameInRow="RUN_CODE" msprop:Generator_ColumnPropNameInTable="RUN_CODEColumn" msprop:Generator_UserColumnName="RUN_CODE" type="xs:string" />
+              <xs:element name="RUN_MEMBER" msprop:Generator_ColumnVarNameInTable="columnRUN_MEMBER" msprop:Generator_ColumnPropNameInRow="RUN_MEMBER" msprop:Generator_ColumnPropNameInTable="RUN_MEMBERColumn" msprop:Generator_UserColumnName="RUN_MEMBER" type="xs:string" />
+              <xs:element name="GroupID" msprop:Generator_ColumnVarNameInTable="columnGroupID" msprop:Generator_ColumnPropNameInRow="GroupID" msprop:Generator_ColumnPropNameInTable="GroupIDColumn" msprop:Generator_UserColumnName="GroupID" type="xs:string" />
+              <xs:element name="TXN_MONTH" msprop:Generator_ColumnVarNameInTable="columnTXN_MONTH" msprop:Generator_ColumnPropNameInRow="TXN_MONTH" msprop:Generator_ColumnPropNameInTable="TXN_MONTHColumn" msprop:Generator_UserColumnName="TXN_MONTH" type="xs:int" minOccurs="0" />
+              <xs:element name="TXN_YEAR" msprop:Generator_ColumnVarNameInTable="columnTXN_YEAR" msprop:Generator_ColumnPropNameInRow="TXN_YEAR" msprop:Generator_ColumnPropNameInTable="TXN_YEARColumn" msprop:Generator_UserColumnName="TXN_YEAR" type="xs:int" minOccurs="0" />
+              <xs:element name="ITEM" msprop:Generator_ColumnVarNameInTable="columnITEM" msprop:Generator_ColumnPropNameInRow="ITEM" msprop:Generator_ColumnPropNameInTable="ITEMColumn" msprop:Generator_UserColumnName="ITEM" type="xs:int" minOccurs="0" />
+              <xs:element name="AMOUNT" msprop:Generator_ColumnVarNameInTable="columnAMOUNT" msprop:Generator_ColumnPropNameInRow="AMOUNT" msprop:Generator_ColumnPropNameInTable="AMOUNTColumn" msprop:Generator_UserColumnName="AMOUNT" type="xs:decimal" default="0.00" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" default="&quot;&quot;" minOccurs="0" />
+              <xs:element name="TAXTYPE" msprop:Generator_ColumnVarNameInTable="columnTAXTYPE" msprop:Generator_ColumnPropNameInRow="TAXTYPE" msprop:Generator_ColumnPropNameInTable="TAXTYPEColumn" msprop:Generator_UserColumnName="TAXTYPE" type="xs:string" minOccurs="0" />
+              <xs:element name="DESCPT" msprop:Generator_ColumnVarNameInTable="columnDESCPT" msprop:Generator_ColumnPropNameInRow="DESCPT" msprop:Generator_ColumnPropNameInTable="DESCPTColumn" msprop:Generator_UserColumnName="DESCPT" type="xs:string" default="&quot;&quot;" minOccurs="0" />
+              <xs:element name="COMPANY" msprop:Generator_ColumnVarNameInTable="columnCOMPANY" msprop:Generator_ColumnPropNameInRow="COMPANY" msprop:Generator_ColumnPropNameInTable="COMPANYColumn" msprop:Generator_UserColumnName="COMPANY" type="xs:string" default="&quot;&quot;" minOccurs="0" />
+
+              <xs:element name="TYPE_ID" msprop:Generator_ColumnVarNameInTable="columnTYPE_ID" msprop:Generator_ColumnPropNameInRow="TYPE_ID" msprop:Generator_ColumnPropNameInTable="TYPE_IDColumn" msprop:Generator_UserColumnName="TYPE_ID" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:DtsRunnerTaxableIncomeMasterSummary" />
+      <xs:field xpath="mstns:RUN_MEMBER" />
+      <xs:field xpath="mstns:RUN_CODE" />
+    </xs:unique>
+    <xs:unique name="Constraint2" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DtsRunnerTaxableIncomeMasterSummary" />
+      <xs:field xpath="mstns:GroupID" />
+    </xs:unique>
+    <xs:unique name="DtsRunnerTaxableIncomeMasterDetail_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DtsRunnerTaxableIncomeMasterDetail" />
+      <xs:field xpath="mstns:GroupID" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="DtsRunnerTaxableIncomeMasterSummary_DtsRunnerTaxableIncomeMasterDetail" msdata:parent="DtsRunnerTaxableIncomeMasterSummary" msdata:child="DtsRunnerTaxableIncomeMasterDetail" msdata:parentkey="GroupID RUN_CODE RUN_MEMBER" msdata:childkey="GroupID RUN_CODE RUN_MEMBER" msprop:Generator_UserChildTable="DtsRunnerTaxableIncomeMasterDetail" msprop:Generator_ChildPropName="GetDtsRunnerTaxableIncomeMasterDetailRows" msprop:Generator_UserRelationName="DtsRunnerTaxableIncomeMasterSummary_DtsRunnerTaxableIncomeMasterDetail" msprop:Generator_RelationVarName="relationDtsRunnerTaxableIncomeMasterSummary_DtsRunnerTaxableIncomeMasterDetail" msprop:Generator_UserParentTable="DtsRunnerTaxableIncomeMasterSummary" msprop:Generator_ParentPropName="DtsRunnerTaxableIncomeMasterSummaryRowParent" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

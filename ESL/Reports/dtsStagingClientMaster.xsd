@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dtsStagingClientMaster" targetNamespace="http://tempuri.org/dtsStagingClientMaster.xsd" xmlns:mstns="http://tempuri.org/dtsStagingClientMaster.xsd" xmlns="http://tempuri.org/dtsStagingClientMaster.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dtsStagingClientMaster" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dtsStagingClientMaster" msprop:Generator_UserDSName="dtsStagingClientMaster">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="FATCAInfo" msprop:Generator_TableClassName="FATCAInfoDataTable" msprop:Generator_TableVarName="tableFATCAInfo" msprop:Generator_TablePropName="FATCAInfo" msprop:Generator_RowDeletingName="FATCAInfoRowDeleting" msprop:Generator_RowChangingName="FATCAInfoRowChanging" msprop:Generator_RowEvHandlerName="FATCAInfoRowChangeEventHandler" msprop:Generator_RowDeletedName="FATCAInfoRowDeleted" msprop:Generator_UserTableName="FATCAInfo" msprop:Generator_RowChangedName="FATCAInfoRowChanged" msprop:Generator_RowEvArgName="FATCAInfoRowChangeEvent" msprop:Generator_RowClassName="FATCAInfoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="acc_no" msprop:Generator_ColumnVarNameInTable="columnacc_no" msprop:Generator_ColumnPropNameInRow="acc_no" msprop:Generator_ColumnPropNameInTable="acc_noColumn" msprop:Generator_UserColumnName="acc_no" type="xs:string" minOccurs="0" />
+              <xs:element name="client_type" msprop:Generator_ColumnVarNameInTable="columnclient_type" msprop:Generator_ColumnPropNameInRow="client_type" msprop:Generator_ColumnPropNameInTable="client_typeColumn" msprop:Generator_UserColumnName="client_type" type="xs:string" minOccurs="0" />
+              <xs:element name="FATCA_acc_type" msprop:Generator_ColumnVarNameInTable="columnFATCA_acc_type" msprop:Generator_ColumnPropNameInRow="FATCA_acc_type" msprop:Generator_ColumnPropNameInTable="FATCA_acc_typeColumn" msprop:Generator_UserColumnName="FATCA_acc_type" type="xs:string" minOccurs="0" />
+              <xs:element name="us_citizen" msprop:Generator_ColumnVarNameInTable="columnus_citizen" msprop:Generator_ColumnPropNameInRow="us_citizen" msprop:Generator_ColumnPropNameInTable="us_citizenColumn" msprop:Generator_UserColumnName="us_citizen" type="xs:string" minOccurs="0" />
+              <xs:element name="us_born" msprop:Generator_ColumnVarNameInTable="columnus_born" msprop:Generator_ColumnPropNameInRow="us_born" msprop:Generator_ColumnPropNameInTable="us_bornColumn" msprop:Generator_UserColumnName="us_born" type="xs:string" minOccurs="0" />
+              <xs:element name="us_address" msprop:Generator_ColumnVarNameInTable="columnus_address" msprop:Generator_ColumnPropNameInRow="us_address" msprop:Generator_ColumnPropNameInTable="us_addressColumn" msprop:Generator_UserColumnName="us_address" type="xs:string" minOccurs="0" />
+              <xs:element name="us_phone" msprop:Generator_ColumnVarNameInTable="columnus_phone" msprop:Generator_ColumnPropNameInRow="us_phone" msprop:Generator_ColumnPropNameInTable="us_phoneColumn" msprop:Generator_UserColumnName="us_phone" type="xs:string" minOccurs="0" />
+              <xs:element name="us_fund_transfer" msprop:Generator_ColumnVarNameInTable="columnus_fund_transfer" msprop:Generator_ColumnPropNameInRow="us_fund_transfer" msprop:Generator_ColumnPropNameInTable="us_fund_transferColumn" msprop:Generator_UserColumnName="us_fund_transfer" type="xs:string" minOccurs="0" />
+              <xs:element name="us_auth_person" msprop:Generator_ColumnVarNameInTable="columnus_auth_person" msprop:Generator_ColumnPropNameInRow="us_auth_person" msprop:Generator_ColumnPropNameInTable="us_auth_personColumn" msprop:Generator_UserColumnName="us_auth_person" type="xs:string" minOccurs="0" />
+              <xs:element name="us_passport_holder" msprop:Generator_ColumnVarNameInTable="columnus_passport_holder" msprop:Generator_ColumnPropNameInRow="us_passport_holder" msprop:Generator_ColumnPropNameInTable="us_passport_holderColumn" msprop:Generator_UserColumnName="us_passport_holder" type="xs:string" minOccurs="0" />
+              <xs:element name="us_tin" msprop:Generator_ColumnVarNameInTable="columnus_tin" msprop:Generator_ColumnPropNameInRow="us_tin" msprop:Generator_ColumnPropNameInTable="us_tinColumn" msprop:Generator_UserColumnName="us_tin" type="xs:string" minOccurs="0" />
+              <xs:element name="us_review_date" msprop:Generator_ColumnVarNameInTable="columnus_review_date" msprop:Generator_ColumnPropNameInRow="us_review_date" msprop:Generator_ColumnPropNameInTable="us_review_dateColumn" msprop:Generator_UserColumnName="us_review_date" type="xs:string" minOccurs="0" />
+              <xs:element name="FATCA_Remarks" msprop:Generator_ColumnVarNameInTable="columnFATCA_Remarks" msprop:Generator_ColumnPropNameInRow="FATCA_Remarks" msprop:Generator_ColumnPropNameInTable="FATCA_RemarksColumn" msprop:Generator_UserColumnName="FATCA_Remarks" type="xs:string" minOccurs="0" />
+              <xs:element name="FATCA_GIIN" msprop:Generator_ColumnVarNameInTable="columnFATCA_GIIN" msprop:Generator_ColumnPropNameInRow="FATCA_GIIN" msprop:Generator_ColumnPropNameInTable="FATCA_GIINColumn" msprop:Generator_UserColumnName="FATCA_GIIN" type="xs:string" minOccurs="0" />
+              <xs:element name="w8_form_signed" msprop:Generator_ColumnVarNameInTable="columnw8_form_signed" msprop:Generator_ColumnPropNameInRow="w8_form_signed" msprop:Generator_ColumnPropNameInTable="w8_form_signedColumn" msprop:Generator_UserColumnName="w8_form_signed" type="xs:string" minOccurs="0" />
+              <xs:element name="w8_form_date" msprop:Generator_ColumnVarNameInTable="columnw8_form_date" msprop:Generator_ColumnPropNameInRow="w8_form_date" msprop:Generator_ColumnPropNameInTable="w8_form_dateColumn" msprop:Generator_UserColumnName="w8_form_date" type="xs:string" minOccurs="0" />
+              <xs:element name="w8_form_expiry_date" msprop:Generator_ColumnVarNameInTable="columnw8_form_expiry_date" msprop:Generator_ColumnPropNameInRow="w8_form_expiry_date" msprop:Generator_ColumnPropNameInTable="w8_form_expiry_dateColumn" msprop:Generator_UserColumnName="w8_form_expiry_date" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

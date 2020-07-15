@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DtsRptClientTurnover" targetNamespace="http://tempuri.org/DtsRptClientTurnover.xsd" xmlns:mstns="http://tempuri.org/DtsRptClientTurnover.xsd" xmlns="http://tempuri.org/DtsRptClientTurnover.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DtsRptClientTurnover" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DtsRptClientTurnover" msprop:Generator_DataSetName="DtsRptClientTurnover">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtsRptClientTurnover" msprop:Generator_UserTableName="DtsRptClientTurnover" msprop:Generator_RowDeletedName="DtsRptClientTurnoverRowDeleted" msprop:Generator_RowChangedName="DtsRptClientTurnoverRowChanged" msprop:Generator_RowClassName="DtsRptClientTurnoverRow" msprop:Generator_RowChangingName="DtsRptClientTurnoverRowChanging" msprop:Generator_RowEvArgName="DtsRptClientTurnoverRowChangeEvent" msprop:Generator_RowEvHandlerName="DtsRptClientTurnoverRowChangeEventHandler" msprop:Generator_TableClassName="DtsRptClientTurnoverDataTable" msprop:Generator_TableVarName="tableDtsRptClientTurnover" msprop:Generator_RowDeletingName="DtsRptClientTurnoverRowDeleting" msprop:Generator_TablePropName="_DtsRptClientTurnover">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="d_acc_no" msprop:Generator_UserColumnName="d_acc_no" msprop:Generator_ColumnPropNameInRow="d_acc_no" msprop:Generator_ColumnVarNameInTable="columnd_acc_no" msprop:Generator_ColumnPropNameInTable="d_acc_noColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="d_client_name" msprop:Generator_UserColumnName="d_client_name" msprop:Generator_ColumnPropNameInRow="d_client_name" msprop:Generator_ColumnVarNameInTable="columnd_client_name" msprop:Generator_ColumnPropNameInTable="d_client_nameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="d_ae_code" msprop:Generator_UserColumnName="d_ae_code" msprop:Generator_ColumnPropNameInRow="d_ae_code" msprop:Generator_ColumnVarNameInTable="columnd_ae_code" msprop:Generator_ColumnPropNameInTable="d_ae_codeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="d_ae_name" msprop:Generator_UserColumnName="d_ae_name" msprop:Generator_ColumnPropNameInRow="d_ae_name" msprop:Generator_ColumnVarNameInTable="columnd_ae_name" msprop:Generator_ColumnPropNameInTable="d_ae_nameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="d_exchange" msprop:Generator_UserColumnName="d_exchange" msprop:Generator_ColumnPropNameInRow="d_exchange" msprop:Generator_ColumnVarNameInTable="columnd_exchange" msprop:Generator_ColumnPropNameInTable="d_exchangeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="d_average" msprop:Generator_UserColumnName="d_average" msprop:Generator_ColumnPropNameInRow="d_average" msprop:Generator_ColumnVarNameInTable="columnd_average" msprop:Generator_ColumnPropNameInTable="d_averageColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_prev_month" msprop:Generator_UserColumnName="d_prev_month" msprop:Generator_ColumnPropNameInRow="d_prev_month" msprop:Generator_ColumnVarNameInTable="columnd_prev_month" msprop:Generator_ColumnPropNameInTable="d_prev_monthColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_prec_prev_month" msprop:Generator_UserColumnName="d_prec_prev_month" msprop:Generator_ColumnPropNameInRow="d_prec_prev_month" msprop:Generator_ColumnVarNameInTable="columnd_prec_prev_month" msprop:Generator_ColumnPropNameInTable="d_prec_prev_monthColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_turnover_lots" msprop:Generator_UserColumnName="d_turnover_lots" msprop:Generator_ColumnPropNameInRow="d_turnover_lots" msprop:Generator_ColumnVarNameInTable="columnd_turnover_lots" msprop:Generator_ColumnPropNameInTable="d_turnover_lotsColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_turnover_amt" msprop:Generator_UserColumnName="d_turnover_amt" msprop:Generator_ColumnPropNameInRow="d_turnover_amt" msprop:Generator_ColumnVarNameInTable="columnd_turnover_amt" msprop:Generator_ColumnPropNameInTable="d_turnover_amtColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_comm" msprop:Generator_UserColumnName="d_comm" msprop:Generator_ColumnPropNameInRow="d_comm" msprop:Generator_ColumnVarNameInTable="columnd_comm" msprop:Generator_ColumnPropNameInTable="d_commColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_margin" msprop:Generator_UserColumnName="d_margin" msprop:Generator_ColumnPropNameInRow="d_margin" msprop:Generator_ColumnVarNameInTable="columnd_margin" msprop:Generator_ColumnPropNameInTable="d_marginColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_sort" msprop:Generator_UserColumnName="d_sort" msprop:Generator_ColumnPropNameInRow="d_sort" msprop:Generator_ColumnVarNameInTable="columnd_sort" msprop:Generator_ColumnPropNameInTable="d_sortColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="d_average_total" msprop:Generator_UserColumnName="d_average_total" msprop:Generator_ColumnPropNameInRow="d_average_total" msprop:Generator_ColumnVarNameInTable="columnd_average_total" msprop:Generator_ColumnPropNameInTable="d_average_totalColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtsRptClientTurnoverSub" msprop:Generator_UserTableName="DtsRptClientTurnoverSub" msprop:Generator_RowDeletedName="DtsRptClientTurnoverSubRowDeleted" msprop:Generator_RowChangedName="DtsRptClientTurnoverSubRowChanged" msprop:Generator_RowClassName="DtsRptClientTurnoverSubRow" msprop:Generator_RowChangingName="DtsRptClientTurnoverSubRowChanging" msprop:Generator_RowEvArgName="DtsRptClientTurnoverSubRowChangeEvent" msprop:Generator_RowEvHandlerName="DtsRptClientTurnoverSubRowChangeEventHandler" msprop:Generator_TableClassName="DtsRptClientTurnoverSubDataTable" msprop:Generator_TableVarName="tableDtsRptClientTurnoverSub" msprop:Generator_RowDeletingName="DtsRptClientTurnoverSubRowDeleting" msprop:Generator_TablePropName="DtsRptClientTurnoverSub">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="d_exchange" msprop:Generator_UserColumnName="d_exchange" msprop:Generator_ColumnPropNameInRow="d_exchange" msprop:Generator_ColumnVarNameInTable="columnd_exchange" msprop:Generator_ColumnPropNameInTable="d_exchangeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="d_average" msprop:Generator_UserColumnName="d_average" msprop:Generator_ColumnPropNameInRow="d_average" msprop:Generator_ColumnVarNameInTable="columnd_average" msprop:Generator_ColumnPropNameInTable="d_averageColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_prev_month" msprop:Generator_UserColumnName="d_prev_month" msprop:Generator_ColumnPropNameInRow="d_prev_month" msprop:Generator_ColumnVarNameInTable="columnd_prev_month" msprop:Generator_ColumnPropNameInTable="d_prev_monthColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_prec_prev_month" msprop:Generator_UserColumnName="d_prec_prev_month" msprop:Generator_ColumnPropNameInRow="d_prec_prev_month" msprop:Generator_ColumnVarNameInTable="columnd_prec_prev_month" msprop:Generator_ColumnPropNameInTable="d_prec_prev_monthColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_turnover_lots" msprop:Generator_UserColumnName="d_turnover_lots" msprop:Generator_ColumnPropNameInRow="d_turnover_lots" msprop:Generator_ColumnVarNameInTable="columnd_turnover_lots" msprop:Generator_ColumnPropNameInTable="d_turnover_lotsColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_turnover_amt" msprop:Generator_UserColumnName="d_turnover_amt" msprop:Generator_ColumnPropNameInRow="d_turnover_amt" msprop:Generator_ColumnVarNameInTable="columnd_turnover_amt" msprop:Generator_ColumnPropNameInTable="d_turnover_amtColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_comm" msprop:Generator_UserColumnName="d_comm" msprop:Generator_ColumnPropNameInRow="d_comm" msprop:Generator_ColumnVarNameInTable="columnd_comm" msprop:Generator_ColumnPropNameInTable="d_commColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_margin" msprop:Generator_UserColumnName="d_margin" msprop:Generator_ColumnPropNameInRow="d_margin" msprop:Generator_ColumnVarNameInTable="columnd_margin" msprop:Generator_ColumnPropNameInTable="d_marginColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_average_cnt" msprop:Generator_UserColumnName="d_average_cnt" msprop:Generator_ColumnVarNameInTable="columnd_average_cnt" msprop:Generator_ColumnPropNameInRow="d_average_cnt" msprop:Generator_ColumnPropNameInTable="d_average_cntColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_prev_month_cnt" msprop:Generator_UserColumnName="d_prev_month_cnt" msprop:Generator_ColumnVarNameInTable="columnd_prev_month_cnt" msprop:Generator_ColumnPropNameInRow="d_prev_month_cnt" msprop:Generator_ColumnPropNameInTable="d_prev_month_cntColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_prec_prev_month_cnt" msprop:Generator_UserColumnName="d_prec_prev_month_cnt" msprop:Generator_ColumnVarNameInTable="columnd_prec_prev_month_cnt" msprop:Generator_ColumnPropNameInRow="d_prec_prev_month_cnt" msprop:Generator_ColumnPropNameInTable="d_prec_prev_month_cntColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtsRptClientTurnoverCompanyTotal" msprop:Generator_UserTableName="DtsRptClientTurnoverCompanyTotal" msprop:Generator_RowDeletedName="DtsRptClientTurnoverCompanyTotalRowDeleted" msprop:Generator_RowChangedName="DtsRptClientTurnoverCompanyTotalRowChanged" msprop:Generator_RowClassName="DtsRptClientTurnoverCompanyTotalRow" msprop:Generator_RowChangingName="DtsRptClientTurnoverCompanyTotalRowChanging" msprop:Generator_RowEvArgName="DtsRptClientTurnoverCompanyTotalRowChangeEvent" msprop:Generator_RowEvHandlerName="DtsRptClientTurnoverCompanyTotalRowChangeEventHandler" msprop:Generator_TableClassName="DtsRptClientTurnoverCompanyTotalDataTable" msprop:Generator_TableVarName="tableDtsRptClientTurnoverCompanyTotal" msprop:Generator_RowDeletingName="DtsRptClientTurnoverCompanyTotalRowDeleting" msprop:Generator_TablePropName="DtsRptClientTurnoverCompanyTotal">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="d_exchange" msprop:Generator_UserColumnName="d_exchange" msprop:Generator_ColumnPropNameInRow="d_exchange" msprop:Generator_ColumnVarNameInTable="columnd_exchange" msprop:Generator_ColumnPropNameInTable="d_exchangeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="d_average_lots" msprop:Generator_UserColumnName="d_average_lots" msprop:Generator_ColumnPropNameInRow="d_average_lots" msprop:Generator_ColumnVarNameInTable="columnd_average_lots" msprop:Generator_ColumnPropNameInTable="d_average_lotsColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_prev_month_lots" msprop:Generator_UserColumnName="d_prev_month_lots" msprop:Generator_ColumnPropNameInRow="d_prev_month_lots" msprop:Generator_ColumnVarNameInTable="columnd_prev_month_lots" msprop:Generator_ColumnPropNameInTable="d_prev_month_lotsColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_prec_prev_month_lots" msprop:Generator_UserColumnName="d_prec_prev_month_lots" msprop:Generator_ColumnPropNameInRow="d_prec_prev_month_lots" msprop:Generator_ColumnVarNameInTable="columnd_prec_prev_month_lots" msprop:Generator_ColumnPropNameInTable="d_prec_prev_month_lotsColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_average_cnt" msprop:Generator_UserColumnName="d_average_cnt" msprop:Generator_ColumnVarNameInTable="columnd_average_cnt" msprop:Generator_ColumnPropNameInRow="d_average_cnt" msprop:Generator_ColumnPropNameInTable="d_average_cntColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_prev_month_cnt" msprop:Generator_UserColumnName="d_prev_month_cnt" msprop:Generator_ColumnVarNameInTable="columnd_prev_month_cnt" msprop:Generator_ColumnPropNameInRow="d_prev_month_cnt" msprop:Generator_ColumnPropNameInTable="d_prev_month_cntColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="d_prec_prev_month_cnt" msprop:Generator_UserColumnName="d_prec_prev_month_cnt" msprop:Generator_ColumnVarNameInTable="columnd_prec_prev_month_cnt" msprop:Generator_ColumnPropNameInRow="d_prec_prev_month_cnt" msprop:Generator_ColumnPropNameInTable="d_prec_prev_month_cntColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
