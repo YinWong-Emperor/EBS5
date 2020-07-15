@@ -116,7 +116,8 @@ Public Class frmMenu
 
         If GIsUAT Then strUAT = " - UAT"
 
-        Me.Text = "ESL (" & g_branch_name & ")" & Space(5) & "Ver (" & Assembly.GetExecutingAssembly.GetName.Version.ToString & strUAT & ")"
+        'Me.Text = "ESL (" & g_branch_name & ")" & Space(5) & "Ver (" & Assembly.GetExecutingAssembly.GetName.Version.ToString & strUAT & ")"
+        Me.Text = "EBS5 (" & g_branch_name & ")" & Space(5) & "Ver (" & Assembly.GetExecutingAssembly.GetName.Version.ToString & strUAT & ")"
 
         lsubGenSCMenu()
         For i As Integer = 1 To strSCMenu.GetUpperBound(0)
