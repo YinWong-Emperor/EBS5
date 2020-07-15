@@ -256,6 +256,7 @@ Partial Class frmMenu
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.BackColor = System.Drawing.Color.Salmon
         Me.MenuStrip1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.FunctionsToolStripMenuItem, Me.ClientMasterStripMenuItem, Me.ReportsStripMenuItem, Me.MaintenanceToolStripMenuItem1, Me.ToolStripMenuItem5, Me.ToolStripMenuItem2, Me.ToolStripMenuItem3, Me.WindowsWToolStripMenuItem, Me.ExitToolStripMenuItem2})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
@@ -400,7 +401,7 @@ Partial Class frmMenu
         '
         Me.FATCAToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AccountMasterToolStripMenuItem, Me.IRSToolStripMenuItem, Me.ImportFATCAInfoToolStripMenuItem})
         Me.FATCAToolStripMenuItem.Name = "FATCAToolStripMenuItem"
-        Me.FATCAToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.FATCAToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
         Me.FATCAToolStripMenuItem.Text = "FATCA"
         '
         'AccountMasterToolStripMenuItem
@@ -425,7 +426,7 @@ Partial Class frmMenu
         '
         Me.CRSToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImportCRSInfoToolStripMenuItem, Me.ImportCRSAccountInfoToolStripMenuItem, Me.ImportCRSCountryInfoToolStripMenuItem, Me.CRSXMLGenerationToolStripMenuItem, Me.CRSMasterMaintenceToolStripMenuItem})
         Me.CRSToolStripMenuItem.Name = "CRSToolStripMenuItem"
-        Me.CRSToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CRSToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
         Me.CRSToolStripMenuItem.Text = "CRS"
         '
         'ImportCRSInfoToolStripMenuItem
@@ -1581,6 +1582,7 @@ Partial Class frmMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(802, 522)
         Me.Controls.Add(Me.toolbarMenu)
         Me.Controls.Add(Me.StatusStrip)
