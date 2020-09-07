@@ -172,7 +172,9 @@ Public Class FrmImportData
         pImportIsDone = True
         DoneCount = 0
 
-        Me.lblNextTradeDate.Text = Format(GDteTradeDate, "dd/MM/yyyy")
+        Dim g2bDate As Date = cls.FncGetG2BLastTradeDate()
+        'Me.lblNextTradeDate.Text = Format(GDteTradeDate, "dd/MM/yyyy")
+        Me.lblNextTradeDate.Text = Format(g2bDate, "dd/MM/yyyy")
         Me.lblCurrentTradeDate.Text = ""
 
         Dim data As DataTable
@@ -201,7 +203,8 @@ Public Class FrmImportData
                     txtMessage.Enabled = False
                     txtMessage.ForeColor = Color.Red
                 End If
-            ElseIf tradeDate >= GDteTradeDate Then
+                'ElseIf tradeDate >= GDteTradeDate Then
+            ElseIf tradeDate >= g2bDate Then
                 txtMessage.Text = String.Format("Already imported {0} data!", Format(GDteTradeDate, "dd/MM/yyyy"))
                 GSubWriteEventLog(String.Format("Already imported {0} data!", Format(GDteTradeDate, "dd/MM/yyyy")), GStrEPath)
                 txtMessage.ReadOnly = False
