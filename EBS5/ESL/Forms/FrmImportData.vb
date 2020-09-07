@@ -17,6 +17,7 @@ Public Class FrmImportData
     Private EmailFrom As String = ""
     Private EmailTo As String = ""
     Public DoImportIsDone = False
+    Public g2bDate As Date = Nothing
 
 #Region "进度条更新"
     ' 用来区分每次Import，用于查询进度
@@ -172,7 +173,7 @@ Public Class FrmImportData
         pImportIsDone = True
         DoneCount = 0
 
-        Dim g2bDate As Date = cls.FncGetG2BLastTradeDate()
+        g2bDate = cls.FncGetG2BLastTradeDate()
         'Me.lblNextTradeDate.Text = Format(GDteTradeDate, "dd/MM/yyyy")
         Me.lblNextTradeDate.Text = Format(g2bDate, "dd/MM/yyyy")
         Me.lblCurrentTradeDate.Text = ""
@@ -190,23 +191,29 @@ Public Class FrmImportData
                 Dim groupTB As Object = cls.FncGetExecutingGroup()
                 If Not groupTB = Nothing And Not groupTB = "" Then
                     SetStatus(EnumFormStatus.Loading)
-                    showProgressText(String.Format("Continue to import data of date {0}!", Format(GDteTradeDate, "dd/MM/yyyy")))
-                    GSubWriteEventLog(String.Format("Continue to import data of date {0}!", Format(GDteTradeDate, "dd/MM/yyyy")), GStrEPath)
+                    'showProgressText(String.Format("Continue to import data of date {0}!", Format(GDteTradeDate, "dd/MM/yyyy")))
+                    showProgressText(String.Format("Continue to import data of date {0}!", Format(g2bDate, "dd/MM/yyyy")))
+                    'GSubWriteEventLog(String.Format("Continue to import data of date {0}!", Format(GDteTradeDate, "dd/MM/yyyy")), GStrEPath)
+                    GSubWriteEventLog(String.Format("Continue to import data of date {0}!", Format(g2bDate, "dd/MM/yyyy")), GStrEPath)
                     pImportCurrentGroup = groupTB
                     progressThread = New Thread(New ThreadStart(AddressOf DoImportProgress))
                     progressThread.Start()
                 Else
                     SetStatus(EnumFormStatus.Invalid)
-                    txtMessage.Text = String.Format("{0} data import failed!", Format(GDteTradeDate, "dd/MM/yyyy"))
-                    GSubWriteEventLog(String.Format("{0} data import failed!", Format(GDteTradeDate, "dd/MM/yyyy")), GStrEPath)
+                    'txtMessage.Text = String.Format("{0} data import failed!", Format(GDteTradeDate, "dd/MM/yyyy"))
+                    txtMessage.Text = String.Format("{0} data import failed!", Format(g2bDate, "dd/MM/yyyy"))
+                    'GSubWriteEventLog(String.Format("{0} data import failed!", Format(GDteTradeDate, "dd/MM/yyyy")), GStrEPath)
+                    GSubWriteEventLog(String.Format("{0} data import failed!", Format(g2bDate, "dd/MM/yyyy")), GStrEPath)
                     txtMessage.ReadOnly = False
                     txtMessage.Enabled = False
                     txtMessage.ForeColor = Color.Red
                 End If
                 'ElseIf tradeDate >= GDteTradeDate Then
             ElseIf tradeDate >= g2bDate Then
-                txtMessage.Text = String.Format("Already imported {0} data!", Format(GDteTradeDate, "dd/MM/yyyy"))
-                GSubWriteEventLog(String.Format("Already imported {0} data!", Format(GDteTradeDate, "dd/MM/yyyy")), GStrEPath)
+                'txtMessage.Text = String.Format("Already imported {0} data!", Format(GDteTradeDate, "dd/MM/yyyy"))
+                txtMessage.Text = String.Format("Already imported {0} data!", Format(g2bDate, "dd/MM/yyyy"))
+                'GSubWriteEventLog(String.Format("Already imported {0} data!", Format(GDteTradeDate, "dd/MM/yyyy")), GStrEPath)
+                GSubWriteEventLog(String.Format("Already imported {0} data!", Format(g2bDate, "dd/MM/yyyy")), GStrEPath)
                 txtMessage.ReadOnly = False
                 txtMessage.Enabled = False
                 txtMessage.ForeColor = Color.Red
@@ -272,20 +279,23 @@ Public Class FrmImportData
         'End If
 
         Try
-            result = cls.FncImportData(pImportCurrentGroup, GDteTradeDate)
+            'result = cls.FncImportData(pImportCurrentGroup, GDteTradeDate)
+            result = cls.FncImportData(pImportCurrentGroup, g2bDate)
         Finally
             pImportIsDone = True
         End Try
 
         If Not result Is Nothing Then
             ImportErrorHandle("Import Error: " + result)
-            mySendEmail(EmailFrom, EmailTo, EmailSubjectPrefix & " - [FAIL] - Liq. Data Imported " & Format(GDteTradeDate, "dd/MM/yyyy"), "Import Error: " & result, GStrEIP)
+            'mySendEmail(EmailFrom, EmailTo, EmailSubjectPrefix & " - [FAIL] - Liq. Data Imported " & Format(GDteTradeDate, "dd/MM/yyyy"), "Import Error: " & result, GStrEIP)
+            mySendEmail(EmailFrom, EmailTo, EmailSubjectPrefix & " - [FAIL] - Liq. Data Imported " & Format(g2bDate, "dd/MM/yyyy"), "Import Error: " & result, GStrEIP)
             Return
         Else
             Dim actionTarget As Action
             actionTarget = Sub() ImportDoneHandle()
             Me.Invoke(actionTarget)
-            mySendEmail(EmailFrom, EmailTo, EmailSubjectPrefix & " - [SUCCESS] - Liq. Data Imported " & Format(GDteTradeDate, "dd/MM/yyyy"), "Liq. Data Imported sucessfully ", GStrEIP)
+            'mySendEmail(EmailFrom, EmailTo, EmailSubjectPrefix & " - [SUCCESS] - Liq. Data Imported " & Format(GDteTradeDate, "dd/MM/yyyy"), "Liq. Data Imported sucessfully ", GStrEIP)
+            mySendEmail(EmailFrom, EmailTo, EmailSubjectPrefix & " - [SUCCESS] - Liq. Data Imported " & Format(g2bDate, "dd/MM/yyyy"), "Liq. Data Imported sucessfully ", GStrEIP)
         End If
         DoImportIsDone = True
     End Sub
@@ -298,7 +308,8 @@ Public Class FrmImportData
         messageTarget = Sub(s) showProgressText(s, False)
         Me.Invoke(messageTarget, New Object() {Message})
 
-        Me.lblNextTradeDate.Text = Format(GDteTradeDate, "dd/MM/yyyy")
+        'Me.lblNextTradeDate.Text = Format(GDteTradeDate, "dd/MM/yyyy")
+        Me.lblNextTradeDate.Text = Format(g2bDate, "dd/MM/yyyy")
         Me.lblCurrentTradeDate.Text = ""
         Dim data As DataTable
         data = cls.FncGetTradeData()

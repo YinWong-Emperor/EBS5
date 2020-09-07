@@ -44,7 +44,7 @@ Public Class ClsImportData
         sqlCmd.CommandType = CommandType.StoredProcedure
         AddParameter(sqlCmd, "G2BSDB", GStrG2BSDB)
         Dim dt As DataTable = GFncRtnDS(sqlCmd).Tables(0)
-        Dim g2bDate As Date = GFncNoNullDate(dt.Rows(0)("tradedate"))
+        Dim g2bDate As Date = GFncNoNullDate(dt.Rows(0)("trade_date"))
         Return g2bDate
     End Function
 
