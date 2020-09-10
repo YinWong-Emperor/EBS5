@@ -46,9 +46,9 @@
     <InstallUrl>\\ebs.prod.ecg.emperorgroup.net\ebs\EBS5\</InstallUrl>
     <ProductName>EBS5</ProductName>
     <PublisherName>EBS5</PublisherName>
-    <MinimumRequiredVersion>1.0.1.3</MinimumRequiredVersion>
-    <ApplicationRevision>3</ApplicationRevision>
-    <ApplicationVersion>1.0.1.3</ApplicationVersion>
+    <MinimumRequiredVersion>1.0.2.0</MinimumRequiredVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.2.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1836,12 +1836,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\RptMarginCall2.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RptMarginCall2.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\RptMarginCall21.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RptMarginCall2.rpt</DependentUpon>
