@@ -51,6 +51,7 @@ Partial Class FrmChequePrintingPrints
         Me.lblTxnDate = New System.Windows.Forms.Label()
         Me.btnPrint = New ESL.myButton(Me.components)
         Me.DlgPrint = New System.Windows.Forms.PrintDialog()
+        Me.chk_PrinterSelect = New System.Windows.Forms.CheckBox()
         Me.gbxMain.SuspendLayout()
         Me.gbxPrintReport.SuspendLayout()
         Me.gbxRecordRange.SuspendLayout()
@@ -89,6 +90,7 @@ Partial Class FrmChequePrintingPrints
         '
         'gbxPrintReport
         '
+        Me.gbxPrintReport.Controls.Add(Me.chk_PrinterSelect)
         Me.gbxPrintReport.Controls.Add(Me.rbtDirectly4PrintReport)
         Me.gbxPrintReport.Controls.Add(Me.rbtPreview4PrintReport)
         Me.gbxPrintReport.Location = New System.Drawing.Point(116, 357)
@@ -359,6 +361,16 @@ Partial Class FrmChequePrintingPrints
         '
         Me.DlgPrint.UseEXDialog = True
         '
+        'chk_PrinterSelect
+        '
+        Me.chk_PrinterSelect.AutoSize = True
+        Me.chk_PrinterSelect.Location = New System.Drawing.Point(223, 54)
+        Me.chk_PrinterSelect.Name = "chk_PrinterSelect"
+        Me.chk_PrinterSelect.Size = New System.Drawing.Size(99, 19)
+        Me.chk_PrinterSelect.TabIndex = 2
+        Me.chk_PrinterSelect.Text = "Select Printer"
+        Me.chk_PrinterSelect.UseVisualStyleBackColor = True
+        '
         'FrmChequePrintingPrints
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -416,4 +428,5 @@ Partial Class FrmChequePrintingPrints
     Friend WithEvents cbbClientCodeTo As System.Windows.Forms.ComboBox
     Friend WithEvents cbbClientCodeFrom As System.Windows.Forms.ComboBox
     Friend WithEvents DlgPrint As System.Windows.Forms.PrintDialog
+    Friend WithEvents chk_PrinterSelect As System.Windows.Forms.CheckBox
 End Class
