@@ -85,6 +85,9 @@ Public Class FrmChequePrintingPrints
         rbtAll4RecordRange.Checked = True
         rbtPreview4PrintReport.Checked = True
 
+        'checkbox Print Dialog
+        Me.chk_PrinterSelect.Checked = False
+        Me.chk_PrinterSelect.Visible = False
     End Sub
 
 #End Region
