@@ -184,27 +184,103 @@ Public Class FrmChequePrintingPrints
             Else
                 '##Printer
 
-                'Init
-                If lpt.IsInited = False Then
-                    If lpt.Init() = False Then
-                        MsgBox("Printer is not ready.", MsgBoxStyle.Exclamation, "Not Ready")
-                        Return
+                If Not chk_PrinterSelect.Checked Then
+                    ''''[Start] For lpt direct printing 
+
+                    'Init
+                    If lpt.IsInited = False Then
+                        If lpt.Init() = False Then
+                            MsgBox("Printer is not ready.", MsgBoxStyle.Exclamation, "Not Ready")
+                            Return
+                        End If
                     End If
+
+                    'Combine datas
+                    Dim ret As String = DoPrintHelper_GetStringData_CheuqeToPrinter(dt)
+
+                    'Send datas
+                    Try
+                        lpt.WriteDatas(ret)
+                        MsgBox("Print Success.", MsgBoxStyle.Information, "Success")
+                    Catch ex As Exception
+                        MsgBox("Printer is not ready.", MsgBoxStyle.Exclamation, "Not Ready")
+                    End Try
+
+                    ''''[End] For lpt direct printing 
+                Else
+                    ''''[Start] For Printer Dialog printing 
+
+                    Dim ret As String = DoPrintHelper_GetStringData_CheuqeToPrinter(dt)
+                    Dim encoding As System.Text.Encoding = System.Text.Encoding.UTF8
+                    Dim datas As Byte() = encoding.GetBytes(ret)
+                    Dim dirPath As String = String.Empty
+                    Dim filePath As String = String.Empty
+                    Try
+                        dirPath = "c:\\itas\\printout\\"
+                        filePath = IO.Path.Combine(dirPath, "output.prn")
+
+                        If IO.Directory.Exists(dirPath) = False Then IO.Directory.CreateDirectory(dirPath)
+                        If IO.File.Exists(filePath) Then IO.File.Delete(filePath)
+                        IO.File.WriteAllBytes(filePath, datas)
+                    Catch ex As Exception
+                        Dim errMsg As String = "ClsLptControl::WriteDatasx 无法生成临时文件:" + ex.Message
+                        System.Diagnostics.Trace.WriteLine(errMsg)
+                        GSubWriteErrLog(errMsg)
+                        MsgBox(errMsg)
+                    End Try
+
+                    Dim pDoc As System.Drawing.Printing.PrintDocument = New System.Drawing.Printing.PrintDocument()
+                    pDoc.DocumentName = "Cheque Print"
+                    DlgPrint.Document = pDoc
+                    If DlgPrint.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                        streamToPrint = New System.IO.StreamReader(filePath)
+                        printFont = New Font("Arial", 10)
+                        AddHandler pDoc.PrintPage, AddressOf Me.pDoc_PrintPage
+                        pDoc.Print()
+                        streamToPrint.Close()
+                    Else
+                        Exit Sub
+                    End If
+
+                    ''''[End] For Printer Dialog printing
                 End If
-
-                'Combine datas
-                Dim ret As String = DoPrintHelper_GetStringData_CheuqeToPrinter(dt)
-
-                'Send datas
-                Try
-                    lpt.WriteDatas(ret)
-                    MsgBox("Print Success.", MsgBoxStyle.Information, "Success")
-                Catch ex As Exception
-                    MsgBox("Printer is not ready.", MsgBoxStyle.Exclamation, "Not Ready")
-                End Try
 
             End If
 
+            End If
+    End Sub
+
+    Private streamToPrint As System.IO.StreamReader
+    Private printFont As Font
+
+    Private Sub pDoc_PrintPage(ByVal sender As Object, ByVal ev As System.Drawing.Printing.PrintPageEventArgs)
+        Dim linesPerPage As Single = 0
+        Dim yPos As Single = 0
+        Dim count As Integer = 0
+        Dim leftMargin As Single = ev.MarginBounds.Left
+        Dim topMargin As Single = ev.MarginBounds.Top
+        Dim line As String = Nothing
+
+        ' Calculate the number of lines per page.
+        linesPerPage = ev.MarginBounds.Height / printFont.GetHeight(ev.Graphics)
+
+        ' Iterate over the file, printing each line.
+        While count < linesPerPage
+            line = streamToPrint.ReadLine()
+            If line Is Nothing Then
+                Exit While
+            End If
+            yPos = topMargin + count * printFont.GetHeight(ev.Graphics)
+            ev.Graphics.DrawString(line, printFont, Brushes.Black, leftMargin, _
+                yPos, New StringFormat())
+            count += 1
+        End While
+
+        ' If more lines exist, print another page.
+        If (line IsNot Nothing) Then
+            ev.HasMorePages = True
+        Else
+            ev.HasMorePages = False
         End If
     End Sub
 
