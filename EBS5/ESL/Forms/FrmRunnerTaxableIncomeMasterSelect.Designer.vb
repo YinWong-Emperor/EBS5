@@ -19,8 +19,8 @@ Partial Class FrmRunnerTaxableIncomeMasterSelect
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dgvMain = New System.Windows.Forms.DataGridView()
         Me.colDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -41,7 +41,6 @@ Partial Class FrmRunnerTaxableIncomeMasterSelect
         Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnCancel.Location = New System.Drawing.Point(555, 406)
         Me.btnCancel.Size = New System.Drawing.Size(54, 55)
-        Me.btnCancel.Text = "Exit"
         '
         'btnSave
         '
@@ -68,14 +67,14 @@ Partial Class FrmRunnerTaxableIncomeMasterSelect
         Me.dgvMain.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText
         Me.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvMain.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colDescription, Me.colAmount, Me.colITEM})
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvMain.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvMain.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgvMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvMain.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvMain.Location = New System.Drawing.Point(10, 18)
@@ -99,8 +98,8 @@ Partial Class FrmRunnerTaxableIncomeMasterSelect
         'colAmount
         '
         Me.colAmount.DataPropertyName = "AMOUNT"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.colAmount.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.colAmount.DefaultCellStyle = DataGridViewCellStyle1
         Me.colAmount.HeaderText = "Amount"
         Me.colAmount.Name = "colAmount"
         Me.colAmount.Width = 200
@@ -170,7 +169,7 @@ Partial Class FrmRunnerTaxableIncomeMasterSelect
         Me.lblTip.Size = New System.Drawing.Size(290, 54)
         Me.lblTip.TabIndex = 9
         Me.lblTip.Text = "The value you are inputing is not a vaild Amount." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Must be a Numer and range bet" & _
-    "ween:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " 0.00 ~ 99999999999999.99)"
+    "ween:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " -99999999999999.99 ~ 99999999999999.99)"
         Me.lblTip.Visible = False
         '
         'FrmRunnerTaxableIncomeMasterSelect
