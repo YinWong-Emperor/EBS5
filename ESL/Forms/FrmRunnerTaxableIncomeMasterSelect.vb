@@ -347,7 +347,8 @@
                 Case 1  'Amount数字范围
                     Dim checkedNumberValue As Decimal
                     If Decimal.TryParse(dgvMain.CurrentCell.Value.ToString(), checkedNumberValue) Then
-                        If (checkedNumberValue < 0) Then dgvMain.CurrentCell.Value = 0D
+                        'If (checkedNumberValue < 0) Then dgvMain.CurrentCell.Value = 0D
+                        If (checkedNumberValue < -99999999999999.99D) Then dgvMain.CurrentCell.Value = -99999999999999.99D
                         If (checkedNumberValue > 99999999999999.99D) Then dgvMain.CurrentCell.Value = 99999999999999.99D
                     End If
 
