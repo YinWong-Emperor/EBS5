@@ -70,7 +70,8 @@ Public Class ClsHSBC
     Public Function lFncExptHSBC(ByVal stocks As List(Of HSBCEntity), ByVal strExptDir As String, ByVal strExFile As String) As Boolean
         Try
             Dim dtData As DataTable = New DataTable()
-            dtData.Columns.Add("ValueDate")
+            'dtData.Columns.Add("ValueDate")
+            dtData.Columns.Add("ValueDate", GetType(Date))
             dtData.Columns.Add("T Code")
             dtData.Columns.Add("Account No")
             dtData.Columns.Add("Ccy")

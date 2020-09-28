@@ -239,6 +239,7 @@ Public Class FrmChequePrintingPrints
                         streamToPrint = New System.IO.StreamReader(filePath)
                         printFont = New Font("Arial", 10)
                         AddHandler pDoc.PrintPage, AddressOf Me.pDoc_PrintPage
+                        'pDoc.DefaultPageSettings.Landscape = True
                         pDoc.Print()
                         streamToPrint.Close()
                     Else

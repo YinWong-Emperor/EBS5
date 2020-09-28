@@ -161,22 +161,31 @@ Public Class FrmIntAdjS
                 Return
             End If
 
-            Me.txtAdjClient.Text = Me.dtgDetail.Item(0, Me.dtgDetail.CurrentRow.Index).Value
-            If (IsDBNull(Me.dtgDetail.Item(1, Me.dtgDetail.CurrentRow.Index).Value) = False) Then
+            'Me.txtAdjClient.Text = Me.dtgDetail.Item(0, Me.dtgDetail.CurrentRow.Index).Value
+            'If (IsDBNull(Me.dtgDetail.Item(1, Me.dtgDetail.CurrentRow.Index).Value) = False) Then
 
-            End If
-            Me.txtAdjName.Text = Me.dtgDetail.Item(1, Me.dtgDetail.CurrentRow.Index).Value
-            Me.txtAdjDate.Text = Me.dtgDetail.Item(2, Me.dtgDetail.CurrentRow.Index).Value
-            If (Me.dtgDetail.Item(3, Me.dtgDetail.CurrentRow.Index).Value > 0) Then
-                Me.txtAdjInt.Text = Me.dtgDetail.Item(3, Me.dtgDetail.CurrentRow.Index).Value
-                Me.txtAdjCrInt.Text = 0.0
-            Else
-                Me.txtAdjInt.Text = 0.0
-                Me.txtAdjCrInt.Text = Me.dtgDetail.Item(3, Me.dtgDetail.CurrentRow.Index).Value
-            End If
-            Me.txtAdjAdj.Text = Me.dtgDetail.Item(4, Me.dtgDetail.CurrentRow.Index).Value
-            Me.txtAdjIPO.Text = Me.dtgDetail.Item(5, Me.dtgDetail.CurrentRow.Index).Value
-            Me.txtAdjTtl.Text = Me.dtgDetail.Item(6, Me.dtgDetail.CurrentRow.Index).Value
+            'End If
+            'Me.txtAdjName.Text = Me.dtgDetail.Item(1, Me.dtgDetail.CurrentRow.Index).Value
+            'Me.txtAdjDate.Text = Me.dtgDetail.Item(2, Me.dtgDetail.CurrentRow.Index).Value
+            'If (Me.dtgDetail.Item(3, Me.dtgDetail.CurrentRow.Index).Value > 0) Then
+            '    Me.txtAdjInt.Text = Me.dtgDetail.Item(3, Me.dtgDetail.CurrentRow.Index).Value
+            '    Me.txtAdjCrInt.Text = 0.0
+            'Else
+            '    Me.txtAdjInt.Text = 0.0
+            '    Me.txtAdjCrInt.Text = Me.dtgDetail.Item(3, Me.dtgDetail.CurrentRow.Index).Value
+            'End If
+            'Me.txtAdjAdj.Text = Me.dtgDetail.Item(4, Me.dtgDetail.CurrentRow.Index).Value
+            'Me.txtAdjIPO.Text = Me.dtgDetail.Item(5, Me.dtgDetail.CurrentRow.Index).Value
+            'Me.txtAdjTtl.Text = Me.dtgDetail.Item(6, Me.dtgDetail.CurrentRow.Index).Value
+            'Me.lblAdjInfo.Text = ""
+            Me.txtAdjClient.Text = Me.dtgDetail.Item("accno", Me.dtgDetail.CurrentRow.Index).Value
+            Me.txtAdjName.Text = Me.dtgDetail.Item("accname", Me.dtgDetail.CurrentRow.Index).Value
+            Me.txtAdjDate.Text = Me.dtgDetail.Item("mth", Me.dtgDetail.CurrentRow.Index).Value
+            Me.txtAdjInt.Text = Me.dtgDetail.Item("interest", Me.dtgDetail.CurrentRow.Index).Value
+            Me.txtAdjCrInt.Text = Me.dtgDetail.Item("creint", Me.dtgDetail.CurrentRow.Index).Value
+            Me.txtAdjAdj.Text = Me.dtgDetail.Item("adj", Me.dtgDetail.CurrentRow.Index).Value
+            Me.txtAdjIPO.Text = Me.dtgDetail.Item("ipo", Me.dtgDetail.CurrentRow.Index).Value
+            Me.txtAdjTtl.Text = Me.dtgDetail.Item("total", Me.dtgDetail.CurrentRow.Index).Value
             Me.lblAdjInfo.Text = ""
         Else
             Me.txtAddClient.Text = ""

@@ -22,6 +22,11 @@ Partial Class FrmIntAdjS
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmIntAdjS))
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -29,11 +34,6 @@ Partial Class FrmIntAdjS
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.tc = New System.Windows.Forms.TabControl()
         Me.tp1 = New System.Windows.Forms.TabPage()
@@ -46,13 +46,6 @@ Partial Class FrmIntAdjS
         Me.cbZero = New ESL.myCheckBox(Me.components)
         Me.txtFromClient = New ESL.myTextbox()
         Me.dtgDetail = New System.Windows.Forms.DataGridView()
-        Me.accno = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.accname = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.mth = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.interest = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.adj = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dtgTotal = New System.Windows.Forms.DataGridView()
         Me.tmth = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tinterest = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -95,6 +88,14 @@ Partial Class FrmIntAdjS
         Me.nudAddYear = New ESL.myNumericUpDown(Me.components)
         Me.nudAddMonth = New ESL.myNumericUpDown(Me.components)
         Me.txtAddClient = New ESL.myTextbox()
+        Me.accno = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.accname = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.mth = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.interest = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.creint = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.adj = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tc.SuspendLayout()
         Me.tp1.SuspendLayout()
         CType(Me.dtgDetail, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -249,7 +250,7 @@ Partial Class FrmIntAdjS
         Me.dtgDetail.AllowUserToDeleteRows = False
         Me.dtgDetail.BackgroundColor = System.Drawing.Color.Linen
         Me.dtgDetail.ColumnHeadersHeight = 20
-        Me.dtgDetail.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.accno, Me.accname, Me.mth, Me.interest, Me.adj, Me.ipo, Me.total})
+        Me.dtgDetail.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.accno, Me.accname, Me.mth, Me.interest, Me.creint, Me.adj, Me.ipo, Me.total})
         Me.dtgDetail.GridColor = System.Drawing.Color.Linen
         Me.dtgDetail.Location = New System.Drawing.Point(3, 14)
         Me.dtgDetail.MultiSelect = False
@@ -262,80 +263,6 @@ Partial Class FrmIntAdjS
         Me.dtgDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dtgDetail.Size = New System.Drawing.Size(724, 189)
         Me.dtgDetail.TabIndex = 6
-        '
-        'accno
-        '
-        Me.accno.DataPropertyName = "accno"
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.accno.DefaultCellStyle = DataGridViewCellStyle1
-        Me.accno.HeaderText = "Client Code"
-        Me.accno.Name = "accno"
-        Me.accno.ReadOnly = True
-        Me.accno.Width = 72
-        '
-        'accname
-        '
-        Me.accname.DataPropertyName = "accname"
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 8.25!)
-        Me.accname.DefaultCellStyle = DataGridViewCellStyle2
-        Me.accname.HeaderText = "Client Name"
-        Me.accname.Name = "accname"
-        Me.accname.ReadOnly = True
-        Me.accname.Width = 115
-        '
-        'mth
-        '
-        Me.mth.DataPropertyName = "mth"
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Arial", 8.25!)
-        Me.mth.DefaultCellStyle = DataGridViewCellStyle3
-        Me.mth.HeaderText = "Month"
-        Me.mth.Name = "mth"
-        Me.mth.ReadOnly = True
-        Me.mth.Width = 52
-        '
-        'interest
-        '
-        Me.interest.DataPropertyName = "interest"
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Arial", 8.25!)
-        DataGridViewCellStyle4.Format = "N2"
-        Me.interest.DefaultCellStyle = DataGridViewCellStyle4
-        Me.interest.HeaderText = "Interest"
-        Me.interest.Name = "interest"
-        Me.interest.ReadOnly = True
-        Me.interest.Width = 120
-        '
-        'adj
-        '
-        Me.adj.DataPropertyName = "adj"
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Arial", 8.25!)
-        DataGridViewCellStyle5.Format = "N2"
-        Me.adj.DefaultCellStyle = DataGridViewCellStyle5
-        Me.adj.HeaderText = "Adjustment"
-        Me.adj.Name = "adj"
-        Me.adj.ReadOnly = True
-        Me.adj.Width = 110
-        '
-        'ipo
-        '
-        Me.ipo.DataPropertyName = "ipo"
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Arial", 8.25!)
-        DataGridViewCellStyle6.Format = "N2"
-        Me.ipo.DefaultCellStyle = DataGridViewCellStyle6
-        Me.ipo.HeaderText = "IPO"
-        Me.ipo.Name = "ipo"
-        Me.ipo.ReadOnly = True
-        Me.ipo.Width = 110
-        '
-        'total
-        '
-        Me.total.DataPropertyName = "total"
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Arial", 8.25!)
-        DataGridViewCellStyle7.Format = "N2"
-        Me.total.DefaultCellStyle = DataGridViewCellStyle7
-        Me.total.HeaderText = "Total"
-        Me.total.Name = "total"
-        Me.total.ReadOnly = True
-        Me.total.Width = 120
         '
         'dtgTotal
         '
@@ -802,6 +729,87 @@ Partial Class FrmIntAdjS
         Me.txtAddClient.Size = New System.Drawing.Size(83, 20)
         Me.txtAddClient.TabIndex = 15
         '
+        'accno
+        '
+        Me.accno.DataPropertyName = "accno"
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.accno.DefaultCellStyle = DataGridViewCellStyle1
+        Me.accno.HeaderText = "Client Code"
+        Me.accno.Name = "accno"
+        Me.accno.ReadOnly = True
+        Me.accno.Width = 72
+        '
+        'accname
+        '
+        Me.accname.DataPropertyName = "accname"
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.accname.DefaultCellStyle = DataGridViewCellStyle2
+        Me.accname.HeaderText = "Client Name"
+        Me.accname.Name = "accname"
+        Me.accname.ReadOnly = True
+        Me.accname.Width = 115
+        '
+        'mth
+        '
+        Me.mth.DataPropertyName = "mth"
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.mth.DefaultCellStyle = DataGridViewCellStyle3
+        Me.mth.HeaderText = "Month"
+        Me.mth.Name = "mth"
+        Me.mth.ReadOnly = True
+        Me.mth.Width = 52
+        '
+        'interest
+        '
+        Me.interest.DataPropertyName = "int"
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Arial", 8.25!)
+        DataGridViewCellStyle4.Format = "N2"
+        Me.interest.DefaultCellStyle = DataGridViewCellStyle4
+        Me.interest.HeaderText = "Interest"
+        Me.interest.Name = "interest"
+        Me.interest.ReadOnly = True
+        Me.interest.Width = 120
+        '
+        'creint
+        '
+        Me.creint.DataPropertyName = "creint"
+        Me.creint.HeaderText = "Credit Interest"
+        Me.creint.Name = "creint"
+        Me.creint.ReadOnly = True
+        '
+        'adj
+        '
+        Me.adj.DataPropertyName = "adj"
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Arial", 8.25!)
+        DataGridViewCellStyle5.Format = "N2"
+        Me.adj.DefaultCellStyle = DataGridViewCellStyle5
+        Me.adj.HeaderText = "Adjustment"
+        Me.adj.Name = "adj"
+        Me.adj.ReadOnly = True
+        Me.adj.Width = 110
+        '
+        'ipo
+        '
+        Me.ipo.DataPropertyName = "ipo"
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Arial", 8.25!)
+        DataGridViewCellStyle6.Format = "N2"
+        Me.ipo.DefaultCellStyle = DataGridViewCellStyle6
+        Me.ipo.HeaderText = "IPO"
+        Me.ipo.Name = "ipo"
+        Me.ipo.ReadOnly = True
+        Me.ipo.Width = 110
+        '
+        'total
+        '
+        Me.total.DataPropertyName = "total"
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Arial", 8.25!)
+        DataGridViewCellStyle7.Format = "N2"
+        Me.total.DefaultCellStyle = DataGridViewCellStyle7
+        Me.total.HeaderText = "Total"
+        Me.total.Name = "total"
+        Me.total.ReadOnly = True
+        Me.total.Width = 120
+        '
         'FrmIntAdjS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -882,17 +890,18 @@ Partial Class FrmIntAdjS
     Friend WithEvents txtAdjCrInt As ESL.myAmountBox
     Friend WithEvents txtAdjInt As ESL.myAmountBox
     Friend WithEvents txtAdjIPO As ESL.myAmountBox
-    Friend WithEvents accno As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents accname As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents mth As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents interest As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents adj As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ipo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents total As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents tmth As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents tinterest As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents tadj As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents tipo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ttotal As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents accno As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents accname As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents mth As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents interest As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents creint As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents adj As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ipo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents total As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class

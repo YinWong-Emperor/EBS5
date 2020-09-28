@@ -108,7 +108,7 @@ Public Class ClsImportFuturesComm
         strSQL = "SELECT ae, acct, tdate, oid, stk, price, qty, grossamt, commission, comm_rate, tradetype, rebate " & _
                   "into #trades " & _
                   "FROM OPENQUERY (" & dbStoreProS & ", 'SET FMTONLY OFF EXEC rpt_MSSAERDR03_ER ''366'', ''" & smonth & _
-                  " " & nyear & "'', ''''  WITH RESULT SETS((p_month char(8),  p_cnt money,    groupfield varchar(111),  tdate char(15),  oid char(12),    tradetype char(1),  mkt char(44),  ccy_charge char(4),  AE char(60),  acct char(82),  stk char(41),  price decimal(19,6), qty decimal(18,6), grossamt decimal(38,6)  ,  commission money,  rebate money,  netamt_charge_ccy  decimal(38,6),  comm_rate varchar,  stamp varchar,  price_dp int,  qty_dp int,company_ccy char(4),grossamt_company_ccy decimal(18,6),commission_company_ccy decimal(18,6),  rebate_company_ccy decimal(18,6)) )' ) "
+                  " " & nyear & "'', ''''  WITH RESULT SETS((p_month char(8),  p_cnt money,    groupfield varchar(111),  tdate char(15),  oid char(12),    tradetype char(1),  mkt char(44),  ccy_charge char(4),  AE char(60),  acct char(82),  stk char(41),  price decimal(19,6), qty decimal(18,6), grossamt decimal(38,6)  ,  commission money,  rebate money,  netamt_charge_ccy  decimal(38,6),  comm_rate decimal(18,6),  stamp varchar,  price_dp int,  qty_dp int,company_ccy char(4),grossamt_company_ccy decimal(18,6),commission_company_ccy decimal(18,6),  rebate_company_ccy decimal(18,6)) )' ) "
         GFncRunSQL(GSCnSqlConn, strSQL, 0)
 
         'strSQL = "select * into  #trades from temp_trades_s  "
