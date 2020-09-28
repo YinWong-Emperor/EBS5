@@ -95,7 +95,8 @@ Public Class ClsIntAdjS
 
     Protected Friend Function lFncExptIntAdj(ByVal ldtsData As DataSet, ByVal strExFile As String) As Boolean
 
-        Return GExportCSV(GStrExptDir, strExFile, ldtsData, " Acc_No, Acc_Name, Date, Int, Adj, IPO, Total ")
+        'Return GExportCSV(GStrExptDir, strExFile, ldtsData, " Acc_No, Acc_Name, Date, Int, Adj, IPO, Total ")
+        Return GExportCSV(GStrExptDir, strExFile, ldtsData, " Acc_No, Acc_Name, Date, Int, CredInt, Adj, IPO, Total ")
 
     End Function
 

@@ -40,6 +40,10 @@ Partial Class FrmDailyIPOAdj
         Me.btnExport = New ESL.myButton(Me.components)
         Me.btnDelete = New ESL.myButton(Me.components)
         Me.dtgIPO = New System.Windows.Forms.DataGridView()
+        Me.adjIPOID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.accno = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.adjDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tp2 = New System.Windows.Forms.TabPage()
         Me.txtIPO = New ESL.myAmountBox()
         Me.lblInfo = New System.Windows.Forms.Label()
@@ -51,10 +55,6 @@ Partial Class FrmDailyIPOAdj
         Me.btnSaveIPO = New ESL.myButton(Me.components)
         Me.txtAddClient = New ESL.myTextbox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.adjIPOID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.accno = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.adjDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tc.SuspendLayout()
         Me.tp1.SuspendLayout()
         CType(Me.nudMonth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -67,6 +67,7 @@ Partial Class FrmDailyIPOAdj
         '
         Me.btnCancel.Location = New System.Drawing.Point(503, 464)
         Me.btnCancel.Size = New System.Drawing.Size(53, 55)
+        Me.btnCancel.TabIndex = 6
         '
         'btnSave
         '
@@ -266,6 +267,43 @@ Partial Class FrmDailyIPOAdj
         Me.dtgIPO.Size = New System.Drawing.Size(568, 216)
         Me.dtgIPO.TabIndex = 0
         '
+        'adjIPOID
+        '
+        Me.adjIPOID.DataPropertyName = "adjIPOID"
+        Me.adjIPOID.HeaderText = "ipoID"
+        Me.adjIPOID.Name = "adjIPOID"
+        Me.adjIPOID.ReadOnly = True
+        Me.adjIPOID.Visible = False
+        Me.adjIPOID.Width = 10
+        '
+        'accno
+        '
+        Me.accno.DataPropertyName = "accno"
+        Me.accno.HeaderText = "Client Code"
+        Me.accno.Name = "accno"
+        Me.accno.ReadOnly = True
+        Me.accno.Width = 150
+        '
+        'adjDate
+        '
+        Me.adjDate.DataPropertyName = "adjDate"
+        DataGridViewCellStyle1.Format = "dd/MM/yyyy"
+        Me.adjDate.DefaultCellStyle = DataGridViewCellStyle1
+        Me.adjDate.HeaderText = "Date"
+        Me.adjDate.Name = "adjDate"
+        Me.adjDate.ReadOnly = True
+        Me.adjDate.Width = 150
+        '
+        'ipo
+        '
+        Me.ipo.DataPropertyName = "ipo"
+        DataGridViewCellStyle2.Format = "N2"
+        Me.ipo.DefaultCellStyle = DataGridViewCellStyle2
+        Me.ipo.HeaderText = "IPO"
+        Me.ipo.Name = "ipo"
+        Me.ipo.ReadOnly = True
+        Me.ipo.Width = 200
+        '
         'tp2
         '
         Me.tp2.Controls.Add(Me.txtIPO)
@@ -293,7 +331,7 @@ Partial Class FrmDailyIPOAdj
         Me.txtIPO.Location = New System.Drawing.Point(156, 117)
         Me.txtIPO.Name = "txtIPO"
         Me.txtIPO.Size = New System.Drawing.Size(159, 21)
-        Me.txtIPO.TabIndex = 10
+        Me.txtIPO.TabIndex = 1
         Me.txtIPO.Text = "0.00"
         Me.txtIPO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -386,43 +424,6 @@ Partial Class FrmDailyIPOAdj
         Me.Label11.Size = New System.Drawing.Size(203, 22)
         Me.Label11.TabIndex = 39
         Me.Label11.Text = "Daily IPO Adjustment"
-        '
-        'adjIPOID
-        '
-        Me.adjIPOID.DataPropertyName = "adjIPOID"
-        Me.adjIPOID.HeaderText = "ipoID"
-        Me.adjIPOID.Name = "adjIPOID"
-        Me.adjIPOID.ReadOnly = True
-        Me.adjIPOID.Visible = False
-        Me.adjIPOID.Width = 10
-        '
-        'accno
-        '
-        Me.accno.DataPropertyName = "accno"
-        Me.accno.HeaderText = "Client Code"
-        Me.accno.Name = "accno"
-        Me.accno.ReadOnly = True
-        Me.accno.Width = 150
-        '
-        'adjDate
-        '
-        Me.adjDate.DataPropertyName = "adjDate"
-        DataGridViewCellStyle1.Format = "dd/MM/yyyy"
-        Me.adjDate.DefaultCellStyle = DataGridViewCellStyle1
-        Me.adjDate.HeaderText = "Date"
-        Me.adjDate.Name = "adjDate"
-        Me.adjDate.ReadOnly = True
-        Me.adjDate.Width = 150
-        '
-        'ipo
-        '
-        Me.ipo.DataPropertyName = "ipo"
-        DataGridViewCellStyle2.Format = "N2"
-        Me.ipo.DefaultCellStyle = DataGridViewCellStyle2
-        Me.ipo.HeaderText = "IPO"
-        Me.ipo.Name = "ipo"
-        Me.ipo.ReadOnly = True
-        Me.ipo.Width = 200
         '
         'FrmDailyIPOAdj
         '
