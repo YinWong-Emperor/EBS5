@@ -1684,7 +1684,7 @@ BEGIN TRY
 			)
 		SELECT
 			accno,
-			@lastmonth,
+			tdate,
 			comm,
 			charge_currency
 		FROM
@@ -1721,7 +1721,7 @@ BEGIN TRY
 			)
 		SELECT
 			a.accno,
-			a.mth,
+			mth = c.tdate,
 			SUM(a.comm * b.ex_rate) AS comm,
 			0 AS adj,
 			0 AS ipo
@@ -1732,9 +1732,16 @@ BEGIN TRY
 			AND YEAR(a.mth) = YEAR(@lastmonth)
 			AND MONTH(a.mth) = MONTH(b.tdate)
 			AND MONTH(a.mth) = MONTH(@lastmonth)
+			AND a.mth = b.tdate
+			AND system_type = ''Futures''
+			JOIN dbo.view_month_exchangerate c
+			ON YEAR(c.tdate) = YEAR(a.mth)
+			AND MONTH(c.tdate) = MONTH(a.mth)
+			AND c.currency_in COLLATE DATABASE_DEFAULT = a.comm_curr COLLATE DATABASE_DEFAULT
+			AND c.system_type = ''Futures''
 		GROUP BY
 			a.accno,
-			a.mth
+			c.tdate
 		ORDER BY
 			a.accno;
 
@@ -1768,7 +1775,7 @@ BEGIN TRY
 '
  SET @sql15 = N'		--top 100 -- Debug test code
 		accno,
-		@fdbdate,
+		tdate,
 		comm,
 		charge_currency
 	FROM
@@ -1807,7 +1814,7 @@ BEGIN TRY
 		)
 	SELECT
 		a.accno,
-		a.mth,
+		mth = c.tdate,
 		SUM(a.comm * b.ex_rate) AS comm,
 		0 AS adj,
 		0 AS ipo
@@ -1818,9 +1825,16 @@ BEGIN TRY
 		AND YEAR(a.mth) = YEAR(@fdbdate)
 		AND MONTH(a.mth) = MONTH(b.tdate)
 		AND MONTH(a.mth) = MONTH(@fdbdate)
+		AND a.mth = b.tdate
+		AND system_type = ''Futures''
+		JOIN ESL.dbo.view_month_exchangerate c
+		ON YEAR(c.tdate) = YEAR(a.mth) 
+		AND MONTH(c.tdate) = MONTH(a.mth)
+		AND c.currency_in COLLATE DATABASE_DEFAULT = a.comm_curr COLLATE DATABASE_DEFAULT
+		AND c.system_type = ''Futures''
 	GROUP BY
 		a.accno,
-		a.mth
+		c.tdate
 	ORDER BY
 		a.accno;
 
