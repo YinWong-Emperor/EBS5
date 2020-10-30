@@ -7,7 +7,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
---EXEC [dbo].[s_Get_CommAdjRpt] 'ESL_LIQ','stock interest','ALL', '2019-01-01', '2019-02-01', 0, '', '', 0
+--EXEC [dbo].[s_Get_CommAdjRpt] 'ESL_LIQ','futures commission','ALL', '2019-03-01', '2019-03-01', 1, '', '', 0
 CREATE PROCEDURE [dbo].[s_Get_CommAdjRpt]
     @liqDB nvarchar(100),
 	@commOption nvarchar(100),
@@ -137,34 +137,36 @@ BEGIN
 
 			IF @commOption = 'stock commission' OR @commOption = 'futures commission'
 			   BEGIN
-				SET @sqlStr = 'SELECT accno AS accno_'+CONVERT(VARCHAR,@i)+ ', mth AS mth_'+CONVERT(VARCHAR,@i)+', 
-				COMM AS val_'+CONVERT(VARCHAR,@i)+', 
+				SET @sqlStr = 'SELECT ISNULL(' + @mtable + '.accno, ' + @nmtable + '.ACCNO) AS accno_'+CONVERT(VARCHAR,@i)+ ', ISNULL(mth, adjDate) AS mth_'+CONVERT(VARCHAR,@i)+', 
+				ISNULL(COMM, 0) AS val_'+CONVERT(VARCHAR,@i)+', 
 				CAST(0 AS DECIMAL(16,2)) AS adj_'+CONVERT(VARCHAR,@i)+', 
 				CAST(0 AS DECIMAL(16,2)) AS creadj_'+CONVERT(VARCHAR,@i)+',
-				 ipo AS ipo_'+CONVERT(VARCHAR,@i)+' 
+				 ISNULL(ipo, 0) AS ipo_'+CONVERT(VARCHAR,@i)+' 
 				 INTO ##temp 
 				 FROM '+@liqDB+'.dbo.'+@mtable+
-							' WHERE accno <> ''EMP'' AND DATEPART(yyyy, mth)=' +CONVERT(VARCHAR, YEAR(@indexDate))+ '
-							AND DATEPART(m,mth) = '+CONVERT(VARCHAR, MONTH(@indexDate))
+				 ' FULL JOIN ' + @nmtable + ' ON ' + @mtable + '.accno COLLATE DATABASE_DEFAULT = ' + @nmtable + '.ACCNO COLLATE DATABASE_DEFAULT AND DATEPART(yyyy, mth) = DATEPART(yyyy, adjDate) AND DATEPART(m, mth) = DATEPART(m, adjDate)' +
+							' WHERE ISNULL(' + @mtable + '.accno, ' + @nmtable + '.ACCNO) <> ''EMP'' AND ISNULL(DATEPART(yyyy, mth), DATEPART(yyyy, adjDate))=' +CONVERT(VARCHAR, YEAR(@indexDate))+ '
+							AND ISNULL(DATEPART(m,mth), DATEPART(m, adjDate)) = '+CONVERT(VARCHAR, MONTH(@indexDate))
 			   END
 			
 			IF @commOption = 'stock interest'
 			   BEGIN
-				SET @sqlStr = 'SELECT accno AS accno_'+CONVERT(VARCHAR,@i)+ ', mth AS mth_'+CONVERT(VARCHAR,@i)+', 
-				[int] AS val_'+CONVERT(VARCHAR,@i)+', 
+				SET @sqlStr = 'SELECT ISNULL(##' + @mtable + '.accno, ' + @nmtable + '.ACCNO) AS accno_'+CONVERT(VARCHAR,@i)+ ', ISNULL(mth, adjDate) AS mth_'+CONVERT(VARCHAR,@i)+', 
+				ISNULL([int], 0) AS val_'+CONVERT(VARCHAR,@i)+', 
 				CAST(0 AS DECIMAL(16,2)) AS adj_'+CONVERT(VARCHAR,@i)+', 
 				CAST(0 AS DECIMAL(16,2)) AS creadj_'+CONVERT(VARCHAR,@i)+',
-				 ipo AS ipo_'+CONVERT(VARCHAR,@i)+' 
+				 ISNULL(ipo, 0) AS ipo_'+CONVERT(VARCHAR,@i)+' 
 				 INTO ##temp 
 				 FROM ##'+@mtable+
-							' WHERE accno <> ''EMP'' AND DATEPART(yyyy, mth)=' +CONVERT(VARCHAR, YEAR(@indexDate))+ '
-							AND DATEPART(m,mth) = '+CONVERT(VARCHAR, MONTH(@indexDate))
+				 ' FULL JOIN ' + @nmtable + ' ON ##' + @mtable + '.accno COLLATE DATABASE_DEFAULT = ' + @nmtable + '.ACCNO COLLATE DATABASE_DEFAULT AND DATEPART(yyyy, ##' + @mtable + '.mth) = DATEPART(yyyy, ' + @nmtable + '.adjDate) AND DATEPART(m, ##' + @mtable + '.mth) = DATEPART(m, ' + @nmtable + '.adjDate)' +
+							' WHERE ISNULL(##' + @mtable + '.accno, ' + @nmtable + '.ACCNO) <> ''EMP'' AND ISNULL(DATEPART(yyyy, mth), DATEPART(yyyy, adjDate))=' +CONVERT(VARCHAR, YEAR(@indexDate))+ '
+							AND ISNULL(DATEPART(m,mth), DATEPART(m, adjDate)) = '+CONVERT(VARCHAR, MONTH(@indexDate))
 			   END
 
 
 			IF @nonZero = 1
 			   BEGIN
-				 SET @sqlStr = @sqlStr + ' AND (adj <> 0 OR ipo <> 0)'
+				SET @sqlStr = @sqlStr + ' AND (ISNULL(' + @nmtable + '.Adj, ' + CASE @commOption WHEN 'stock interest' THEN '##' ELSE '' END + @mtable + '.adj) <> 0 OR ipo <> 0)'	
 			   END
 
             IF @commOption = 'stock interest'
@@ -179,9 +181,9 @@ BEGIN
 				 End
 			   END
 
-		    --PRINT (@sqlStr)
+		    PRINT (@sqlStr)
 			EXEC (@sqlStr)
-
+			
 			SET @sqlStr = 'UPDATE ##temp SET adj_'+CONVERT(VARCHAR,@i)+' = adj, 
 			creadj_'+CONVERT(VARCHAR,@i)+' = adj
 				FROM dbo.'+ @nmtable + ' WHERE DATEPART(yyyy, adjDate)=' +CONVERT(VARCHAR, YEAR(@indexDate))+ '
@@ -374,6 +376,7 @@ BEGIN
 			 DROP TABLE ##cur_1
 		 END
 END
+
 
 
 GO
