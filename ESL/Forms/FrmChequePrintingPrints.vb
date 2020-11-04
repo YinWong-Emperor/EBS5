@@ -86,7 +86,7 @@ Public Class FrmChequePrintingPrints
         rbtPreview4PrintReport.Checked = True
 
         'checkbox Print Dialog
-        Me.chk_PrinterSelect.Checked = False
+        Me.chk_PrinterSelect.Checked = True
         Me.chk_PrinterSelect.Visible = False
     End Sub
 
@@ -213,14 +213,14 @@ Public Class FrmChequePrintingPrints
                 Else
                     ''''[Start] For Printer Dialog printing 
 
-                    Dim ret As String = DoPrintHelper_GetStringData_CheuqeToPrinter(dt)
+                    Dim ret As String = DoPrintHelper_GetStringData_CheuqeToString(dt)
                     Dim encoding As System.Text.Encoding = System.Text.Encoding.UTF8
                     Dim datas As Byte() = encoding.GetBytes(ret)
                     Dim dirPath As String = String.Empty
                     Dim filePath As String = String.Empty
                     Try
                         dirPath = "c:\\itas\\printout\\"
-                        filePath = IO.Path.Combine(dirPath, "output.prn")
+                        filePath = IO.Path.Combine(dirPath, "output.txt")
 
                         If IO.Directory.Exists(dirPath) = False Then IO.Directory.CreateDirectory(dirPath)
                         If IO.File.Exists(filePath) Then IO.File.Delete(filePath)
@@ -234,12 +234,14 @@ Public Class FrmChequePrintingPrints
 
                     Dim pDoc As System.Drawing.Printing.PrintDocument = New System.Drawing.Printing.PrintDocument()
                     pDoc.DocumentName = "Cheque Print"
+                    pDoc.DefaultPageSettings.PaperSize = New Printing.PaperSize("custom", 420, 594)
+                    pDoc.DefaultPageSettings.Landscape = False
+                    pDoc.DefaultPageSettings.Margins = New Printing.Margins(0.03, 0.04, 15, 15)
                     DlgPrint.Document = pDoc
                     If DlgPrint.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                         streamToPrint = New System.IO.StreamReader(filePath)
-                        printFont = New Font("Arial", 10)
+                        printFont = New Font("MingLiU", 12)
                         AddHandler pDoc.PrintPage, AddressOf Me.pDoc_PrintPage
-                        'pDoc.DefaultPageSettings.Landscape = True
                         pDoc.Print()
                         streamToPrint.Close()
                     Else
@@ -469,6 +471,138 @@ Public Class FrmChequePrintingPrints
         Return rets.ToString()
     End Function
 
+    Private Function DoPrintHelper_GetStringData_CheuqeToString(dt As DataTable) As String
+        Dim rets As New System.Text.StringBuilder
+        Dim cnt As Integer = 0
+        For Each item As DataRow In dt.Rows
+            cnt = cnt + 1
+            If cnt = 1 Then
+                'No pre line feed
+            ElseIf (cnt Mod 6) = 0 Then
+                '5 pre line feed
+                rets.Append(Environment.NewLine)
+                rets.Append(Environment.NewLine)
+                rets.Append(Environment.NewLine)
+                rets.Append(Environment.NewLine)
+                rets.Append(Environment.NewLine)
+            Else
+                '9 pre line feed
+                rets.Append(Environment.NewLine)
+                rets.Append(Environment.NewLine)
+                rets.Append(Environment.NewLine)
+                rets.Append(Environment.NewLine)
+                rets.Append(Environment.NewLine)
+                rets.Append(Environment.NewLine)
+                rets.Append(Environment.NewLine)
+                rets.Append(Environment.NewLine)
+                rets.Append(Environment.NewLine)
+            End If
+
+            Dim client_code As String = item.Field(Of String)("client_code").Trim()
+            Dim txn_date As DateTime? = item.Field(Of DateTime?)("txn_date")
+            Dim fullDateString As String = String.Empty
+            If txn_date IsNot Nothing Then
+                fullDateString = txn_date.Value.ToString("dd-MMM-yyyy", CultureInfo.GetCultureInfo("en-US"))
+            End If
+            Dim userName As String = item.Field(Of String)("name").Trim()
+            Dim names As List(Of String) = SplitWordsByLength(userName, 15, 3)
+            Dim name1 As String = String.Empty
+            Dim name2 As String = String.Empty
+            Dim name3 As String = String.Empty
+            If names.Count >= 1 AndAlso names(0) IsNot Nothing Then
+                name1 = names(0)
+            End If
+            If names.Count >= 2 AndAlso names(1) IsNot Nothing Then
+                name2 = names(1)
+            End If
+            If names.Count >= 3 AndAlso names(2) IsNot Nothing Then
+                name3 = names(2)
+            End If
+            Dim amount As Double = Convert.ToDouble(item("amount"))
+            Dim strAmount As String = amount.ToString("N").Trim()
+            Dim strAmountStarred As String = "***" + strAmount
+            Dim spellNumber As String = Trim(ClsSpellNumber.SpellNumber(amount))
+            Dim spellNumbers As List(Of String) = SplitWordsByLength(spellNumber, 49, 3)
+            Dim spellNumber1 As String = String.Empty
+            Dim spellNumber2 As String = String.Empty
+            Dim spellNumber3 As String = String.Empty
+            If spellNumbers.Count >= 1 AndAlso spellNumbers(0) IsNot Nothing Then
+                spellNumber1 = spellNumbers(0)
+            End If
+            If spellNumbers.Count >= 2 AndAlso spellNumbers(1) IsNot Nothing Then
+                spellNumber2 = spellNumbers(1)
+            End If
+            If spellNumbers.Count >= 3 AndAlso spellNumbers(2) IsNot Nothing Then
+                spellNumber3 = spellNumbers(2)
+            End If
+
+            'Row 1
+            rets.Append(Space(10))
+            rets.Append(client_code.PadRight(34))
+            rets.Append(client_code.PadRight(40))
+            rets.Append(Environment.NewLine)
+            'Row 2
+            rets.Append(Space(10))
+            rets.Append(client_code.PadRight(34))
+            rets.Append(client_code.PadRight(40))
+            rets.Append(Environment.NewLine)
+            'Row 3
+            rets.Append(Space(10))
+            rets.Append(fullDateString.PadRight(34))
+            rets.Append(fullDateString.PadRight(40))
+            rets.Append(String.Empty.PadRight(60))
+            rets.Append(fullDateString.PadRight(18))
+            rets.Append(Environment.NewLine)
+            'Row 4
+            rets.Append(Space(10))
+            rets.Append(name1.PadRight(34))
+            rets.Append(name1.PadRight(40))
+            rets.Append(Environment.NewLine)
+            'Row 5
+            rets.Append(Space(10))
+            rets.Append(name2.PadRight(34))
+            rets.Append(name2.PadRight(40))
+            rets.Append(Environment.NewLine)
+            'Row 6
+            rets.Append(Space(10))
+            rets.Append(name3.PadRight(34))
+            rets.Append(name3.PadRight(40))
+            rets.Append(userName.PadRight(62))
+            rets.Append(Environment.NewLine)
+            'Row 7
+            rets.Append(Environment.NewLine)
+            'Row 8
+            rets.Append(Space(10))
+            rets.Append(String.Empty.PadRight(34))
+            rets.Append(String.Empty.PadRight(40))
+            rets.Append(spellNumber1.PadRight(60))
+            rets.Append(Environment.NewLine)
+            'Row 9
+            rets.Append(Space(10))
+            rets.Append(String.Empty.PadRight(34))
+            rets.Append(String.Empty.PadRight(40))
+            rets.Append(spellNumber2.PadRight(60))
+            rets.Append(strAmountStarred.PadRight(18))
+            rets.Append(Environment.NewLine)
+            'Row 10
+            rets.Append(Space(10))
+            rets.Append(String.Empty.PadRight(34))
+            rets.Append(String.Empty.PadRight(40))
+            rets.Append(spellNumber3.PadRight(60))
+            rets.Append(Environment.NewLine)
+            'Row 11
+            rets.Append(Environment.NewLine)
+            'Row 12
+            rets.Append(Environment.NewLine)
+            'Row 13
+            rets.Append(Space(10))
+            rets.Append(strAmount.PadRight(34))
+            rets.Append(strAmount.PadRight(40))
+            rets.Append(Environment.NewLine)
+        Next
+        Return rets.ToString()
+    End Function
+
     Private Function DoPrintHelper_Number_GetArrSpell(sSpell As String) As String()
         '/* 转换逻辑翻译自 v3狐狸仔的Code: */
 
@@ -509,6 +643,26 @@ Public Class FrmChequePrintingPrints
 
         Return ret
 
+    End Function
+
+    Private Function SplitWordsByLength(ByVal str As String, ByVal LineLength As Integer, ByVal NoOfLine As Integer) As List(Of String)
+        Dim words As String() = str.Split(" ")
+        Dim parts As List(Of String) = New List(Of String)
+        Dim part As String = String.Empty
+        Dim partCounter As Integer = 1
+
+        For Each word As String In words
+            If part.Length + word.Length < LineLength Or partCounter >= NoOfLine Then
+                part += If(String.IsNullOrEmpty(part), word, " " & word)
+            Else
+                parts.Add(part)
+                part = word
+                partCounter += 1
+            End If
+        Next
+        parts.Add(part)
+
+        Return parts
     End Function
 
 #End Region
