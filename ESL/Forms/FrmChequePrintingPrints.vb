@@ -236,7 +236,9 @@ Public Class FrmChequePrintingPrints
                     pDoc.DocumentName = "Cheque Print"
                     pDoc.DefaultPageSettings.PaperSize = New Printing.PaperSize("custom", 420, 594)
                     pDoc.DefaultPageSettings.Landscape = False
-                    pDoc.DefaultPageSettings.Margins = New Printing.Margins(0.03, 0.04, 15, 15)
+                    'Margin Left 0.03mm, Right 0.04mm, Top 15mm, Bottom 15mm; below are in hundredth's inch
+                    pDoc.DefaultPageSettings.Margins = New Printing.Margins(0, 0, 59, 59)
+                    pDoc.OriginAtMargins = True
                     DlgPrint.Document = pDoc
                     If DlgPrint.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                         streamToPrint = New System.IO.StreamReader(filePath)

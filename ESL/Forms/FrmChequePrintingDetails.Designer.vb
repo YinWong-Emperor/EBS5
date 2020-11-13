@@ -48,12 +48,12 @@ Partial Class FrmChequePrintingDetails
         'btnCancel
         '
         Me.btnCancel.Location = New System.Drawing.Point(444, 186)
-        Me.btnCancel.TabIndex = 14
+        Me.btnCancel.TabIndex = 3
         '
         'btnSave
         '
         Me.btnSave.Location = New System.Drawing.Point(392, 186)
-        Me.btnSave.TabIndex = 13
+        Me.btnSave.TabIndex = 2
         Me.btnSave.Visible = True
         '
         'gbxMain
@@ -73,7 +73,7 @@ Partial Class FrmChequePrintingDetails
         Me.gbxMain.Location = New System.Drawing.Point(12, 12)
         Me.gbxMain.Name = "gbxMain"
         Me.gbxMain.Size = New System.Drawing.Size(482, 167)
-        Me.gbxMain.TabIndex = 6
+        Me.gbxMain.TabIndex = 0
         Me.gbxMain.TabStop = False
         '
         'btnCheckName
@@ -81,7 +81,8 @@ Partial Class FrmChequePrintingDetails
         Me.btnCheckName.Location = New System.Drawing.Point(241, 54)
         Me.btnCheckName.Name = "btnCheckName"
         Me.btnCheckName.Size = New System.Drawing.Size(90, 23)
-        Me.btnCheckName.TabIndex = 10
+        Me.btnCheckName.TabIndex = 5
+        Me.btnCheckName.TabStop = False
         Me.btnCheckName.Text = "Check Name"
         Me.btnCheckName.UseVisualStyleBackColor = True
         '
@@ -92,7 +93,7 @@ Partial Class FrmChequePrintingDetails
         Me.GroupBox1.Location = New System.Drawing.Point(337, 20)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(139, 66)
-        Me.GroupBox1.TabIndex = 9
+        Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Type"
         '
@@ -103,7 +104,7 @@ Partial Class FrmChequePrintingDetails
         Me.rdb_AE.Location = New System.Drawing.Point(61, 14)
         Me.rdb_AE.Name = "rdb_AE"
         Me.rdb_AE.Size = New System.Drawing.Size(40, 19)
-        Me.rdb_AE.TabIndex = 6
+        Me.rdb_AE.TabIndex = 1
         Me.rdb_AE.TabStop = True
         Me.rdb_AE.Text = "AE"
         Me.rdb_AE.UseVisualStyleBackColor = True
@@ -114,7 +115,7 @@ Partial Class FrmChequePrintingDetails
         Me.rdb_Client.Location = New System.Drawing.Point(61, 39)
         Me.rdb_Client.Name = "rdb_Client"
         Me.rdb_Client.Size = New System.Drawing.Size(57, 19)
-        Me.rdb_Client.TabIndex = 7
+        Me.rdb_Client.TabIndex = 1
         Me.rdb_Client.Text = "Client"
         Me.rdb_Client.UseVisualStyleBackColor = True
         '
@@ -126,7 +127,7 @@ Partial Class FrmChequePrintingDetails
         Me.nudAmount.Minimum = New Decimal(New Integer() {1410065407, 2, 0, -2147352576})
         Me.nudAmount.Name = "nudAmount"
         Me.nudAmount.Size = New System.Drawing.Size(147, 21)
-        Me.nudAmount.TabIndex = 4
+        Me.nudAmount.TabIndex = 3
         Me.nudAmount.Tag = "1"
         Me.nudAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.nudAmount.ThousandsSeparator = True
@@ -140,7 +141,7 @@ Partial Class FrmChequePrintingDetails
         Me.amtSequence.Location = New System.Drawing.Point(88, 20)
         Me.amtSequence.Name = "amtSequence"
         Me.amtSequence.Size = New System.Drawing.Size(147, 21)
-        Me.amtSequence.TabIndex = 1
+        Me.amtSequence.TabIndex = 0
         Me.amtSequence.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'dtpTxnDate
@@ -150,7 +151,7 @@ Partial Class FrmChequePrintingDetails
         Me.dtpTxnDate.Location = New System.Drawing.Point(308, 128)
         Me.dtpTxnDate.Name = "dtpTxnDate"
         Me.dtpTxnDate.Size = New System.Drawing.Size(168, 21)
-        Me.dtpTxnDate.TabIndex = 5
+        Me.dtpTxnDate.TabIndex = 4
         '
         'txtClientName
         '
@@ -159,7 +160,7 @@ Partial Class FrmChequePrintingDetails
         Me.txtClientName.MaxLength = 120
         Me.txtClientName.Name = "txtClientName"
         Me.txtClientName.Size = New System.Drawing.Size(388, 21)
-        Me.txtClientName.TabIndex = 3
+        Me.txtClientName.TabIndex = 2
         '
         'txtClientCode
         '
@@ -167,7 +168,7 @@ Partial Class FrmChequePrintingDetails
         Me.txtClientCode.MaxLength = 8
         Me.txtClientCode.Name = "txtClientCode"
         Me.txtClientCode.Size = New System.Drawing.Size(147, 21)
-        Me.txtClientCode.TabIndex = 2
+        Me.txtClientCode.TabIndex = 1
         '
         'Label5
         '
@@ -222,7 +223,7 @@ Partial Class FrmChequePrintingDetails
         Me.btnEdit.Location = New System.Drawing.Point(12, 188)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(50, 55)
-        Me.btnEdit.TabIndex = 10
+        Me.btnEdit.TabIndex = 4
         Me.btnEdit.Text = "Edit"
         Me.btnEdit.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnEdit.UseVisualStyleBackColor = True
@@ -236,7 +237,7 @@ Partial Class FrmChequePrintingDetails
         Me.btnDel.Location = New System.Drawing.Point(392, 186)
         Me.btnDel.Name = "btnDel"
         Me.btnDel.Size = New System.Drawing.Size(50, 55)
-        Me.btnDel.TabIndex = 11
+        Me.btnDel.TabIndex = 2
         Me.btnDel.Text = "Delete"
         Me.btnDel.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnDel.UseVisualStyleBackColor = True
