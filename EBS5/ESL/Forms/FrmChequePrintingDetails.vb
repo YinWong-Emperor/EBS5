@@ -313,6 +313,11 @@
                 btnSave.Visible = False
 
         End Select
+
+        'Start P191038-715 Chris Chan
+        txtClientCode.Focus()
+        txtClientCode.Select()
+        'End P191038-715 Chris Chan
     End Sub
 
     Private Sub txtClientCode_KeyDown(sender As Object, e As KeyEventArgs) Handles txtClientCode.KeyDown
@@ -322,4 +327,26 @@
             End If
         End If
     End Sub
+
+    'Start P191038-715 Chris Chan
+    Private Sub nudAmount_Enter(sender As Object, e As EventArgs) Handles nudAmount.Enter
+        CType(sender, myNumericUpDown).Select(0, Me.ActiveControl.ToString().Length)
+    End Sub
+
+    Private Sub rdb_AE_CheckedChanged(sender As Object, e As EventArgs) Handles rdb_AE.CheckedChanged
+        CType(sender, RadioButton).TabStop = False
+    End Sub
+
+    Private Sub rdb_Client_CheckedChanged(sender As Object, e As EventArgs) Handles rdb_Client.CheckedChanged
+        CType(sender, RadioButton).TabStop = False
+    End Sub
+
+    Private Sub rdb_AE_TabStopChanged(sender As Object, e As EventArgs) Handles rdb_AE.TabStopChanged
+        CType(sender, RadioButton).TabStop = False
+    End Sub
+
+    Private Sub rdb_Client_TabStopChanged(sender As Object, e As EventArgs) Handles rdb_Client.TabStopChanged
+        CType(sender, RadioButton).TabStop = False
+    End Sub
+    'End P191038-715 Chris Chan
 End Class

@@ -25,7 +25,7 @@
 
         '加载范围
         Dim dt As DataTable = cls.funcGetRunCodesForPrint()
-        Dim ret_dt As IQueryable(Of String) = dt.AsEnumerable().AsQueryable().Select(Function(x) x.Field(Of String)(0))
+        Dim ret_dt As IQueryable(Of String) = dt.AsEnumerable().AsQueryable().Select(Function(x) x.Field(Of String)(0).Trim())
         cbxRangeFrom.DataSource = ret_dt.ToArray()
         cbxRangeFrom.SelectedIndex = -1
         cbxRangeTo.DataSource = ret_dt.ToArray()
