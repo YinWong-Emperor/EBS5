@@ -17,6 +17,7 @@ GO
 -- 2. 修改?入????考【?明1】
 -- 3. 
 -- ============================================= 
+--EXEC s_Ins_ImportData 'G2BS_RET.G2SB_UAT4_PROD','G2BF_RET.G2FB_UAT4_PROD','ESL_LIQ','BALANCE','','admin', '2019-03-13', '2020-12-03 17:08'
 ALTER PROCEDURE [dbo].[s_Ins_ImportData]
 	@G2BSDB nvarchar(100),
 	@G2BFDB nvarchar(100),
@@ -75,36 +76,36 @@ BEGIN
 	-- 2. ([^\r\n;]{1})\r\n[\t ]*\r\n --> ${1};\r\n\r\n -- 不是以;?尾，后面有一?空行的添加;
 	-- ---------- Test Code End ----------;
 
-DECLARE @sql1 NVARCHAR(4000)
-DECLARE @sql2 NVARCHAR(4000)
-DECLARE @sql3 NVARCHAR(4000)
-DECLARE @sql4 NVARCHAR(4000)
-DECLARE @sql5 NVARCHAR(4000)
-DECLARE @sql6 NVARCHAR(4000)
-DECLARE @sql7 NVARCHAR(4000)
-DECLARE @sql8 NVARCHAR(4000)
-DECLARE @sql9 NVARCHAR(4000)
-DECLARE @sql10 NVARCHAR(4000)
-DECLARE @sql11 NVARCHAR(4000)
-DECLARE @sql12 NVARCHAR(4000)
-DECLARE @sql13 NVARCHAR(4000)
-DECLARE @sql14 NVARCHAR(4000)
-DECLARE @sql15 NVARCHAR(4000)
-DECLARE @sql16 NVARCHAR(4000)
-DECLARE @sql17 NVARCHAR(4000)
-DECLARE @sql18 NVARCHAR(4000)
-DECLARE @sql19 NVARCHAR(4000)
-DECLARE @sql20 NVARCHAR(4000)
-DECLARE @sql21 NVARCHAR(4000)
-DECLARE @sql22 NVARCHAR(4000)
-DECLARE @sql23 NVARCHAR(4000)
-DECLARE @sql24 NVARCHAR(4000)
-DECLARE @sql25 NVARCHAR(4000)
-DECLARE @sql26 NVARCHAR(4000)
-DECLARE @sql27 NVARCHAR(4000)
-DECLARE @sql28 NVARCHAR(4000)
-DECLARE @sql29 NVARCHAR(4000)
-DECLARE @sql30 NVARCHAR(4000)
+DECLARE @sql1 NVARCHAR(MAX)
+DECLARE @sql2 NVARCHAR(MAX)
+DECLARE @sql3 NVARCHAR(MAX)
+DECLARE @sql4 NVARCHAR(MAX)
+DECLARE @sql5 NVARCHAR(MAX)
+DECLARE @sql6 NVARCHAR(MAX)
+DECLARE @sql7 NVARCHAR(MAX)
+DECLARE @sql8 NVARCHAR(MAX)
+DECLARE @sql9 NVARCHAR(MAX)
+DECLARE @sql10 NVARCHAR(MAX)
+DECLARE @sql11 NVARCHAR(MAX)
+DECLARE @sql12 NVARCHAR(MAX)
+DECLARE @sql13 NVARCHAR(MAX)
+DECLARE @sql14 NVARCHAR(MAX)
+DECLARE @sql15 NVARCHAR(MAX)
+DECLARE @sql16 NVARCHAR(MAX)
+DECLARE @sql17 NVARCHAR(MAX)
+DECLARE @sql18 NVARCHAR(MAX)
+DECLARE @sql19 NVARCHAR(MAX)
+DECLARE @sql20 NVARCHAR(MAX)
+DECLARE @sql21 NVARCHAR(MAX)
+DECLARE @sql22 NVARCHAR(MAX)
+DECLARE @sql23 NVARCHAR(MAX)
+DECLARE @sql24 NVARCHAR(MAX)
+DECLARE @sql25 NVARCHAR(MAX)
+DECLARE @sql26 NVARCHAR(MAX)
+DECLARE @sql27 NVARCHAR(MAX)
+DECLARE @sql28 NVARCHAR(MAX)
+DECLARE @sql29 NVARCHAR(MAX)
+DECLARE @sql30 NVARCHAR(MAX)
   SET @sql1 = N'	
 
 	DECLARE @tempG2BSDB			nvarchar(100);
@@ -402,22 +403,32 @@ BEGIN TRY
 	--WHERE
 	--	e.currency_code = r.currency;
 		
-	-- 跟EBS3??的?果（把?据Update成第1???）
+	---- 跟EBS3??的?果（把?据Update成第1???）
+	--UPDATE
+	--	#temp_view_er_client_fund_movement
+	--SET
+	--	orig_amount = floor(tb.amount), -- 跟EBS3向下取整的?理
+	--	amount = tb.amount * tb.rate
+	--FROM (
+	--	SELECT TOP 1
+	--		e.amount,
+	--		r.rate
+	--	FROM
+	--		#temp_view_er_client_fund_movement e,
+	--		#temp_view_er_exchange_rate r
+	--	WHERE
+	--		e.currency_code = r.currency
+	--) tb;
+
 	UPDATE
 		#temp_view_er_client_fund_movement
 	SET
-		orig_amount = floor(tb.amount), -- 跟EBS3向下取整的?理
-		amount = tb.amount * tb.rate
-	FROM (
-		SELECT TOP 1
-			e.amount,
-			r.rate
-		FROM
-			#temp_view_er_client_fund_movement e,
+		orig_amount = amount,
+		amount = amount * r.rate
+	FROM 	#temp_view_er_client_fund_movement e,
 			#temp_view_er_exchange_rate r
-		WHERE
+	WHERE
 			e.currency_code = r.currency
-	) tb;
 
 	-- #temp_view_er_client_portfolio  客?有价?券收市价（已?算）
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
@@ -460,21 +471,31 @@ BEGIN TRY
 	--	e.currency_code = r.currency;
 		
 	-- 跟EBS3??的?果（把?据Update成第1???）
+	--UPDATE
+	--	#temp_view_er_client_portfolio
+	--SET
+	--	orig_closing_price = floor(tb.closing_price), -- 跟EBS3向下取整的?理
+	--	closing_price = tb.closing_price * tb.rate
+	--FROM (
+	--	SELECT TOP 1
+	--		e.closing_price,
+	--		r.rate
+	--	FROM
+	--		#temp_view_er_client_portfolio e,
+	--		#temp_view_er_exchange_rate r
+	--	WHERE
+	--		e.currency_code = r.currency
+	--) tb;
+
 	UPDATE
 		#temp_view_er_client_portfolio
 	SET
-		orig_closing_price = floor(tb.closing_price), -- 跟EBS3向下取整的?理
-		closing_price = tb.closing_price * tb.rate
-	FROM (
-		SELECT TOP 1
-			e.closing_price,
-			r.rate
-		FROM
-			#temp_view_er_client_portfolio e,
+		orig_closing_price = closing_price,
+		closing_price = closing_price * r.rate
+	FROM 	#temp_view_er_client_portfolio e,
 			#temp_view_er_exchange_rate r
 		WHERE
-			e.currency_code = r.currency
-	) tb;
+			e.currency_code = r.currency;
 
 	-- new_temp_ststktxnlst_view.prg
 	-- #temp_view_er_client_trade_namt_with_fee  客? ??值（已?算）
@@ -871,6 +892,7 @@ BEGIN TRY
 	INTO #temp_testport_view
 	FROM
 		#temp_view_er_client_portfolio
+	WHERE (onhand <> 0 OR unsettled_buy_qty <> 0 OR unsettled_sell_qty <> 0)
 	ORDER BY
 		accno;
 
@@ -1059,7 +1081,14 @@ BEGIN TRY
 		@tmpIbsStTxnDate
 	);
 
-
+	TRUNCATE TABLE ' + @LiqDB + N'.dbo.IBSSTTXNDATE;
+	INSERT INTO	' + @LiqDB + N'.dbo.IBSSTTXNDATE
+		(
+			t2_date
+		)
+	VALUES (
+		@tradeDate
+	);
 
 	-- 表 Testbal --> Liq.testbal  AE 金?（原有）
 	SET @currentStep = @currentStep + 1
@@ -1113,10 +1142,10 @@ BEGIN TRY
 		N''Save data - Liq.staemaster  ...'';
 
 	-- 清?据
-	TRUNCATE TABLE ' + @LiqDB + N'.[dbo].[staemaster];
+	--TRUNCATE TABLE ' + @LiqDB + N'.[dbo].[staemaster];
 
-	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
-		N''Save data - Liq.staemaster - DELETE All.'';
+	--EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
+		--N''Save data - Liq.staemaster - DELETE All.'';
 
 	-- 插入?据
 	INSERT INTO
@@ -1127,15 +1156,30 @@ BEGIN TRY
 		)
 	SELECT
 		RTRIM(aeno),
-		name
+		RTRIM(name)
 	FROM
 		' + @G2BSDB + N'.dbo.ae_master
+	WHERE RTRIM(aeno) not in (SELECT rtrim(run_code) FROM ' + @LiqDB + N'.[dbo].[staemaster])
 	-- ae_view
 	ORDER BY
 		aeno;
 
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''Save data - Liq.staemaster - INSERT.'';
+
+	UPDATE M
+	SET M.run_name = G.aename,
+	M.branch_name = G.branchname
+	FROM ' + @LiqDB + N'.[dbo].[staemaster] M
+	JOIN
+	(SELECT RTRIM(a.aeno) as aeno, RTRIM(a.name) as aename, RTRIM(ISNULL(b.name,'''')) as branchname
+	FROM ' + @G2BSDB + N'.dbo.ae_master a
+	LEFT JOIN ' + @G2BSDB + N'.dbo.branch_master b
+	ON a.bhid=b.bhid) G
+	ON M.run_code = G.aeno;
+
+	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
+		N''Save data - Liq.staemaster - UPDATE.'';
 
 
 	-- 表 StStkTxnLst --> st_stk_txn_lst 
@@ -1364,6 +1408,11 @@ BEGIN TRY
 	ORDER BY
 		acc;
 
+	DELETE FROM ' + @LiqDB + N'.dbo.client_fund_movement;
+	INSERT INTO ' + @LiqDB + N'.dbo.client_fund_movement(accno, amount, amount_type) 
+	SELECT LTRIM(RTRIM(acc)), amt, amt_type
+	FROM #temp_ibscaccupl_view;	
+
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''Save data - ibs_cac_cup - INSERT.'';
 
@@ -1393,7 +1442,9 @@ BEGIN TRY
 			mkt_value,
 			margin_ratio,
 			margin_value,
-			suspend_flag
+			suspend_flag,
+			net_qty_onhand,
+			net_market_value
 		)
 	SELECT
 		LTRIM(RTRIM(accno)),
@@ -1424,7 +1475,19 @@ BEGIN TRY
 				 P.underreg_qty + P.onhand
 			) * P.closing_price * P.margin_ratio / 100
 		),
-		Suspended
+		Suspended,
+		CONVERT(
+			NUMERIC(16, 4),
+			(
+				 P.net_onhand_qty
+			)
+		),
+		CONVERT(
+			NUMERIC(16, 4),
+			(
+				 P.net_onhand_qty * P.closing_price
+			)
+		)
 	FROM
 		#temp_view_er_client_portfolio AS P
 	ORDER BY
@@ -1433,6 +1496,17 @@ BEGIN TRY
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''Save data - st_clt_portfolio - INSERT.'';
 
+	DELETE FROM ' + @LiqDB + N'.dbo.STPortfolio;
+
+	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
+		N''Save data - STPortfolio - DELETE.'';
+
+	INSERT INTO ' + @LiqDB + N'.dbo.STPortfolio(clt_code, stk_code, qty, market_value, net_qty, net_market_value, ldate)
+	SELECT clt_code, stk_code, qty_onhand, mkt_value, net_qty_onhand, net_market_value, getdate()
+    FROM st_clt_portfolio
+
+	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
+		N''Save data - STPortfolio - INSERT.'';
 
 
 	-- 表 monthcomm --> Liq.monthcomm
@@ -1766,8 +1840,6 @@ BEGIN TRY
 			,[comm_curr]
 		)
 	SELECT 
-'
- SET @sql15 = N'		--top 100 -- Debug test code
 		accno,
 		tdate,
 		comm,
@@ -1783,7 +1855,6 @@ BEGIN TRY
 
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''Save data - Liq.monthcommdetailf - INSERT.'';
-
 	
 	-- ?除 ' + @LiqDB + N'.dbo.monthcommf ?月?据
 	DELETE FROM
@@ -1795,7 +1866,6 @@ BEGIN TRY
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''Save data - Liq.monthcommf - DELETE.'';
 
-
 	-- 添加 ' + @LiqDB + N'.dbo.monthcommf ?月?据
 	INSERT INTO
 		' + @LiqDB + N'.dbo.monthcommf
@@ -1806,6 +1876,8 @@ BEGIN TRY
 			,[adj]
 			,[ipo]
 		)
+'
+SET @sql15 = N'	
 	SELECT
 		a.accno,
 		mth = b.tdate,
@@ -1829,7 +1901,6 @@ BEGIN TRY
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''Save data - Liq.monthcommf - INSERT.'';
 
-		
 	-- 表 monthint --> Liq.monthint（原有）
 	SET
 		@currentStep = @currentStep + 1
@@ -1891,16 +1962,57 @@ BEGIN TRY
 
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''Save data - Liq.monthint - INSERT.'';
+	
+	DELETE FROM ' + @LiqDB + N'.dbo.CommissionMaster 
+	WHERE YEAR(TDate) = YEAR(@sdbdate)
+	AND MONTH(TDate) = MONTH(@sdbdate)
 
+	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
+		N''Save data - Liq.CommissionMaster - DELETE.'';
+	
+	INSERT INTO ' + @LiqDB + N'.dbo.CommissionMaster
+		SELECT AccType=''Securities'', ISNULL(A.AccNo, B.AccNo) AS AccNo, ISNULL(A.Comm, 0) As Comm, ISNULL(A.TDate, B.TDate) AS TDate, ISNULL(B.Interest, 0) AS Interest, ISNULL(A.Ccy, B.Ccy) AS Ccy, GETDATE() AS LastUpdateDate
+		FROM
+		(
+		SELECT accno AS AccNo, tdate AS TDate, SUM(ISNULL(comm,0)) AS Comm, currency_code_trade As Ccy
+		FROM ' + @G2BSDB + N'.dbo.view_G2B_client_trade_dt_with_comm
+		WHERE YEAR(tdate)=YEAR(@sdbdate) 
+		AND MONTH(tdate)=MONTH(@sdbdate)
+		AND (tradetype = ''0'' OR tradetype = ''4'')
+		GROUP BY accno, tdate, currency_code_trade
+		) A
+		FULL OUTER JOIN
+		(
+		SELECT accno AS AccNo, fm_date AS TDate, -1*SUM(int_amt) AS Interest, name_s as Ccy
+		FROM ' + @G2BSDB + N'.dbo.view_it_client_accrue_int
+		WHERE YEAR(to_date) = YEAR(@sdbdate)
+		AND MONTH(to_date) = MONTH(@sdbdate)
+		GROUP BY accno, fm_date, name_s
+		) B
+		ON A.AccNo = B.AccNo
+		AND A.TDate = B.TDate
 
+		UNION ALL
+
+		SELECT AccType=''Futures'', accno AS AccNo, SUM(ISNULL(comm,0)) AS Comm, tdate AS TDate, 0 AS Interest, charge_currency AS Ccy, GETDATE() AS LastUpdateDate
+		FROM ' + @G2BFDB + N'.dbo.view_it_G2B_client_trade_dt_with_comm
+		WHERE YEAR(tdate) = YEAR(@fdbdate)
+		AND MONTH(tdate) = MONTH(@fdbdate)
+		AND comm IS NOT NULL
+		GROUP BY accno, tdate, charge_currency
+
+	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
+		N''Save data - Liq.CommissionMaster - INSERT.'';
+'
+SET @sql16 = N'
 	--------------------------------------------------------------------------------------------------------------------
 	-- 表 table_itas_ebs3 --> ' + @BalanceDB + N'.dbo.acbal （原有）??
 	--SELECT Acbal.accno, Acbal.tdate, Acbal.led_bal, Acbal.ava_bal
 	--FROM dbo.acbal
 	SET @currentStep = @currentStep + 1
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
-'
- SET @sql16 = N'		N''Save data - Bal.acbal  ...'';
+
+	N''Save data - Bal.acbal  ...'';
 
 	DELETE FROM
 		' + @BalanceDB + N'.dbo.acbal
@@ -1934,7 +2046,6 @@ BEGIN TRY
 		N''Save data - Bal.acbal - INSERT.'';
 
 
-	/*  TODO: debug:EBS3?行出?，?有?行
 	-- 添加 ??表 #stockcon
 	SELECT
 		accno,
@@ -1942,12 +2053,10 @@ BEGIN TRY
 		stock_code,
 		net_onhand_qty AS qty,
 		100.0000 AS percentage,
-		(underreg_qty + onhand) * closing_price * 1 AS market_value -- TODO：EBS3?法??，先用*1代替，debug
+		(underreg_qty + onhand) * closing_price AS market_value
 	INTO #stockcon
 	FROM
-		' + @G2BSDB + N'.dbo.view_ER_client_portfolio a
-		LEFT OUTER JOIN ' + @G2BSDB + N'.dbo.currency_exchange b ON b.cuid = a.cuid
-		AND b.cuid_ex = ''1'';
+		' + @G2BSDB + N'.dbo.view_ER_client_portfolio;
 
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''Save data - #stockcon - INSERT.'';
@@ -1997,7 +2106,7 @@ BEGIN TRY
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''Save data - #stockcon - UPDATE2.'';
 
-	 添加???据
+	-- 添加???据
 	INSERT INTO
 		#stockcon(
 			accno,
@@ -2019,54 +2128,81 @@ BEGIN TRY
 
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''Save data - #stockcon - INSERT2.'';
-	*/;
 
 	-- 表 stockconcentration --> ' + @BalanceDB + N'.dbo.stockconcentration （原有） ??
 	SET @currentStep = @currentStep + 1
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''Save data - stockconcentration  ...'';
 	
-	DECLARE @lcDate datetime
-	SET
-		@lcDate = DATEADD(d, DATEDIFF(d, 0, @sdbdate), 0)-- 去掉??部分;
+	--DECLARE @lcDate datetime
+	--SET
+	--	@lcDate = DATEADD(d, DATEDIFF(d, 0, @sdbdate), 0)-- 去掉??部分;
 
 	-- ?除 stockconcentration ?天?据
 	DELETE FROM
 		' + @BalanceDB + N'.dbo.stockconcentration
 	WHERE
-		tdate = @lcDate;
+		tdate = @sdbdate;
 
 '
  SET @sql17 = N'	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''Save data - stockconcentration - DELETE.'';
 
 	
-	/*  TODO: debug:EBS3?行出?，?有?行（前面生成#stockcon出?）
+	
 	---- 添加 stockconcentration ?天?据 
-	--INSERT INTO
-	--	' + @BalanceDB + N'.dbo.stockconcentration(
-	--		accno,
-	--		tdate,
-	--		stock_code,
-	--		qty,
-	--		percentage,
-	--		market_value
-	--	)
-	--SELECT
-	--	accno,
-	--	@sdbdate,
-	--	stock_code,
-	--	qty,
-	--	percentage,
-	--	market_value
-	--FROM
-	--	#stockcon;
+	INSERT INTO
+		' + @BalanceDB + N'.dbo.stockconcentration(
+			accno,
+			tdate,
+			stock_code,
+			qty,
+			percentage,
+			market_value
+		)
+	SELECT
+		accno,
+		sdbdate,
+		stock_code,
+		qty,
+		percentage,
+		market_value
+	FROM
+		#stockcon;
 
-	--EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
-	--	N''Save data - Bal.stockconcentration - INSERT.'';
-	*/;
+	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
+		N''Save data - Bal.stockconcentration - INSERT.'';
 
 
+	DELETE FROM
+		' + @LiqDB + N'.dbo.stockconcentration
+	WHERE
+		tdate = @sdbdate;
+
+	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
+		N''Save data - liq.stockconcentration - DELETE.'';
+
+	INSERT INTO
+		' + @LiqDB + N'.dbo.stockconcentration(
+			accno,
+			tdate,
+			stock_code,
+			qty,
+			percentage,
+			market_value
+		)
+	SELECT
+		accno,
+		sdbdate,
+		stock_code,
+		qty,
+		percentage,
+		market_value
+	FROM
+		#stockcon;
+
+	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
+		N''Save data - liq.stockconcentration - INSERT.'';
 
 
 	--sttxndate --> Liq.sttxndate（原有）
@@ -2961,8 +3097,7 @@ debugBeginStep:
 		s_qty IS NULL;
 
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
-'
- SET @sql23 = N'		N''Save data - #a - INSERT.'';
+		N''Save data - #a - INSERT.'';
 
 	UPDATE
 		#stcltnetbuy_tmp
@@ -2978,7 +3113,8 @@ debugBeginStep:
 
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''Save data - #stcltnetbuy_tmp - UPDATE.'';
-
+'
+ SET @sql23 = N'
 	SELECT
 		clt_code,
 		stk_code,
@@ -3026,6 +3162,20 @@ debugBeginStep:
 		n_qty > 0
 	GROUP BY
 		clt_code;
+
+	DELETE FROM ' + @LiqDB + N'.dbo.client_mkt_mrg;
+	INSERT INTO ' + @LiqDB + N'.dbo.client_mkt_mrg(client_code, market_value, margin_value) 
+	SELECT clt_code, mkt_value, margin_value
+	FROM #stcltnet_tmp2;
+
+	DELETE FROM ' + @LiqDB + N'.dbo.client_liq_master;
+	INSERT INTO ' + @LiqDB + N'.dbo.client_liq_master(CLT_CODE,CLT_TYPE,CLT_NAME,RUN_CODE,CR_LIMIT,CR_BAL,DR_BAL,DEPOSIT,
+	WITHDRAWAL,AVAIL_BAL,MKT_VALUE,MARGIN_VALUE,MARGIN_RATIO,NET_TRADE,T1_UNREALIZED,T2_UNREALIZED,
+	INTEREST,MC_CR_BAL,MC_DR_BAL,MC_ACT_RATIO,MC_DUE,MC_T2,MC_OVERDRAFT,MC_TOTAL,OS_DAY,SHORT) 
+	SELECT CLT_CODE,CLT_TYPE,CLT_NAME,RUN_CODE,CR_LIMIT,CR_BAL,DR_BAL,DEPOSIT,WITHDRAWAL,AVAIL_BAL,
+	MKT_VALUE,MARGIN_VALUE,MARGIN_RATIO,NET_TRADE,T1_UNREALIZED,T2_UNREALIZED,INTEREST,MC_CR_BAL,
+	MC_DR_BAL,MC_ACT_RATIO,MC_DUE,MC_T2,MC_OVERDRAFT,MC_TOTAL,OS_DAY,SHORT 
+	from ' + @LiqDB + N'.dbo.STCLTMASTER;
 
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''Save data - #stcltnet_tmp2 - INSERT.'';
@@ -4147,7 +4297,23 @@ BEGIN
 		'''' AS [message];
 END
 '
- EXEC('' + @sql1 + @sql2 + @sql3 + @sql4 + @sql5 + @sql6 + @sql7 + @sql8 + @sql9 + @sql10 + @sql11 + @sql12 + @sql13 + @sql14 + @sql15 + @sql16 + @sql17 + @sql18 + @sql19 + @sql20 + @sql21 + @sql22 + @sql23 + @sql24 + @sql25 + @sql26 + @sql27 + @sql28 + @sql29 + @sql30)
+declare @sqlAll nvarchar(MAX)
+SET @sqlAll = @sql1 + @sql2 + @sql3 + @sql4 + @sql5 + @sql6 + @sql7 + @sql8 + @sql9 + @sql10 + @sql11 + @sql12 + @sql13 + @sql14 + @sql15 + @sql16 + @sql17 + @sql18 + @sql19 + @sql20 + @sql21 + @sql22 + @sql23 + @sql24 + @sql25 + @sql26 + @sql27 + @sql28 + @sql29 + @sql30
+DECLARE @Counter INT
+SET @Counter = 0
+DECLARE @TotalPrints INT
+SET @TotalPrints = (LEN(@sqlAll) / 4000) + 1
+WHILE @Counter < @TotalPrints 
+BEGIN
+    --PRINT SUBSTRING(@sqlAll, @Counter * 4000, 4000)
+    SET @Counter = @Counter + 1
+END
+
+--PRINT(LEN(@sql1)) PRINT(LEN(@sql2)) PRINT(LEN(@sql3)) PRINT(LEN(@sql4)) PRINT(LEN(@sql5)) PRINT(LEN(@sql6))  PRINT(LEN(@sql7)) PRINT(LEN(@sql8)) PRINT(LEN(@sql9)) PRINT(LEN(@sql10))
+--PRINT(LEN(@sql11)) PRINT(LEN(@sql12)) PRINT(LEN(@sql13)) PRINT(LEN(@sql14)) PRINT(LEN(@sql15)) PRINT(LEN(@sql16)) PRINT(LEN(@sql17)) PRINT(LEN(@sql18)) PRINT(LEN(@sql19)) PRINT(LEN(@sql20))
+--PRINT(LEN(@sql21)) PRINT(LEN(@sql22)) PRINT(LEN(@sql23)) PRINT(LEN(@sql24)) PRINT(LEN(@sql25)) PRINT(LEN(@sql26)) PRINT(LEN(@sql27)) PRINT(LEN(@sql28)) PRINT(LEN(@sql29)) PRINT(LEN(@sql30))
+EXEC (@sqlAll)
+ --EXEC('' + @sql1 + @sql2 + @sql3 + @sql4 + @sql5 + @sql6 + @sql7 + @sql8 + @sql9 + @sql10 + @sql11 + @sql12 + @sql13 + @sql14 + @sql15 + @sql16 + @sql17 + @sql18 + @sql19 + @sql20 + @sql21 + @sql22 + @sql23 + @sql24 + @sql25 + @sql26 + @sql27 + @sql28 + @sql29 + @sql30)
 	--------- Content End -----------
 
 END
