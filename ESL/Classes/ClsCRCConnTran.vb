@@ -244,200 +244,200 @@ Public Class ClsCRCConnTran
         Return dt
     End Function
 
-    Protected Friend Function FncGenReport(ByVal tin1 As Date, ByVal tin2 As Date, ByVal type As String) As ReportClass
-        Dim t1 As String = Format(tin1, "yyyy/MM/dd")
-        Dim t2 As String = Format(tin2, "yyyy/MM/dd")
-        Dim rpt As ReportClass = New rptCRCConTrans
-        Dim str As String = "select list_name as list, clt_code as client, '' as name"
-        For i As Integer = 1 To 23
-            str = str & ", 0.00 as balance" & i
-        Next
-        str = str & ", 0.00 as min from contran order by list_name"
-        Dim dt As DataTable = New DtsConnectedTransaction.CRCConTransDataTable
-        dt = GFncRtnDS(GSCnSqlConn, str).Tables(0)
-        Dim timeDt As DataTable
-        If type = "ipo_loan" Then
-            timeDt = GFncRtnDS(GSCnSqlConn, "select distinct loan_date as tdate from ipoloan where loan_date between '" & t1 & "' and '" & t2 & "' order by loan_date").Tables(0)
-        Else
-            timeDt = GFncRtnDS(GSCnBalConn, "select distinct tdate from acbal where tdate between '" & t1 & "' and '" & t2 & "' order by tdate").Tables(0)
-        End If
-        Dim day As Integer = timeDt.Rows.Count
-        If day = 0 Then
-            Return Nothing
-        End If
+    'Protected Friend Function FncGenReport(ByVal tin1 As Date, ByVal tin2 As Date, ByVal type As String) As ReportClass
+    '    Dim t1 As String = Format(tin1, "yyyy/MM/dd")
+    '    Dim t2 As String = Format(tin2, "yyyy/MM/dd")
+    '    Dim rpt As ReportClass = New rptCRCConTrans
+    '    Dim str As String = "select list_name as list, clt_code as client, '' as name"
+    '    For i As Integer = 1 To 23
+    '        str = str & ", 0.00 as balance" & i
+    '    Next
+    '    str = str & ", 0.00 as min from contran order by list_name"
+    '    Dim dt As DataTable = New DtsConnectedTransaction.CRCConTransDataTable
+    '    dt = GFncRtnDS(GSCnSqlConn, str).Tables(0)
+    '    Dim timeDt As DataTable
+    '    If type = "ipo_loan" Then
+    '        timeDt = GFncRtnDS(GSCnSqlConn, "select distinct loan_date as tdate from ipoloan where loan_date between '" & t1 & "' and '" & t2 & "' order by loan_date").Tables(0)
+    '    Else
+    '        timeDt = GFncRtnDS(GSCnBalConn, "select distinct tdate from acbal where tdate between '" & t1 & "' and '" & t2 & "' order by tdate").Tables(0)
+    '    End If
+    '    Dim day As Integer = timeDt.Rows.Count
+    '    If day = 0 Then
+    '        Return Nothing
+    '    End If
 
-        Dim str1 As String = "select a.clt_code, a.clt_name"
-        Dim str2 As String = " from STCLTMASTER a "
-        For i As Integer = 0 To day - 1
-            If type = "ipo_loan" Then
-                str = "select client_code as accno, " & type & " as balance into #m" & i + 1 & " from ipoloan where loan_date = '" & Format(CDate(GFncNoNullString(timeDt.Rows(i).Item("tdate")).Trim), "yyyy/MM/dd") & "'"
-                GFncRunSQL(GSCnSqlConn, str)
-            Else
-                str = "select accno, " & type & " as balance into #m" & i + 1 & " from acbal where tdate = '" & Format(CDate(GFncNoNullString(timeDt.Rows(i).Item("tdate")).Trim), "yyyy/MM/dd") & "'"
-                GFncRunSQL(GSCnBalConn, str)
-            End If
-            GFncRunSQL(GSCnLiqConn, str)
-            str1 = str1 & ", #m" & i + 1 & ".balance as balance" & i + 1
-            str2 = str2 & "left join #m" & i + 1 & " on a.clt_code = #m" & i + 1 & ".accno "
-        Next
-        str = str1 & str2 & "order by a.clt_code"
-        Dim tempDT As DataTable = GFncRtnDS(GSCnLiqConn, str).Tables(0)
-        For i As Integer = 0 To day - 1
-            str = "drop table #m" & i + 1
-            GFncRunSQL(GSCnLiqConn, str)
-        Next
-        For Each dr As DataRow In dt.Rows
-            For i As Integer = 0 To day - 1
-                If dr("balance" & i + 1) > 0 Then
-                    dr("balance" & i + 1) = 0
-                End If
-            Next
-        Next
-        Dim clt As String = ""
-        Dim list As String = dt.Rows(0).Item("list").ToString.Trim
-        Dim minimum(22) As Double
-        Dim startRow As Integer = 0
-        Dim current As Integer = -1
-
-
-        '''''''''''''''''
-        Dim mtin1 As Date
-        If tin1.Month < 4 Then
-            mtin1 = New Date(tin1.Year - 1, 4, 1)
-        Else
-            mtin1 = New Date(tin1.Year, 4, 1)
-            'mtin1.AddMonths(2)
-            'AddMonths(4 - mtin1.Month)
-            'mtin1.AddDays(1 - mtin1.Day)
-        End If
-
-        Dim mt1 As String = Format(mtin1, "yyyy/MM/dd")
-        Dim mt2 As String = Format(tin2, "yyyy/MM/dd")
-        't1 = "2008/06/01"
-        't2 = "2008/06/10"
-        Dim mrpt As ReportClass = New rptCRCConTrans
-        Dim mstr As String = "select list_name as list, clt_code as client, '' as name"
-        For i As Integer = 1 To 23
-            mstr = mstr & ", 0.00 as balance" & i
-        Next
-        mstr = mstr & ", 0.00 as min from contran order by list_name"
-        Dim mdt As DataTable = New DtsConnectedTransaction.CRCConTransDataTable
-        mdt = GFncRtnDS(GSCnSqlConn, mstr).Tables(0)
-        Dim mtimeDt As DataTable
-        If type = "ipo_loan" Then
-            mtimeDt = GFncRtnDS(GSCnLiqConn, "select distinct loan_date as tdate from ipoloan where loan_date between '" & mt1 & "' and '" & mt2 & "' order by tdate").Tables(0)
-        Else
-            mtimeDt = GFncRtnDS(GSCnLiqConn, "select distinct tdate from acbal where tdate between '" & mt1 & "' and '" & mt2 & "' order by tdate").Tables(0)
-        End If
-        Dim mday As Integer = mtimeDt.Rows.Count
-        If mday = 0 Then
-            Return Nothing
-        End If
-
-        Dim mstr1 As String = "select a.clt_code, a.clt_name"
-        Dim mstr2 As String = " from STCLTMASTER a "
-        For i As Integer = 0 To mday - 1
-            If type = "ipo_loan" Then
-                mstr = "select client_code as accno, " & type & " as balance into #m" & i + 1 & " from ipoloan where loan_date = '" & Format(CDate(GFncNoNullString(mtimeDt.Rows(i).Item("tdate")).Trim), "yyyy/MM/dd") & "'"
-
-            Else
-                mstr = "select accno, " & type & " as balance into #m" & i + 1 & " from acbal where tdate = '" & Format(CDate(GFncNoNullString(mtimeDt.Rows(i).Item("tdate")).Trim), "yyyy/MM/dd") & "'"
-            End If
-            GFncRunSQL(GSCnLiqConn, mstr)
-            mstr1 = mstr1 & ", #m" & i + 1 & ".balance as balance" & i + 1
-            mstr2 = mstr2 & "left join #m" & i + 1 & " on a.clt_code = #m" & i + 1 & ".accno "
-        Next
-        mstr = mstr1 & mstr2 & "order by a.clt_code"
-        Dim mtempDT As DataTable = GFncRtnDS(GSCnLiqConn, mstr).Tables(0)
-        For i As Integer = 0 To mday - 1
-            mstr = "drop table #m" & i + 1
-            GFncRunSQL(GSCnLiqConn, mstr)
-        Next
-        For Each dr As DataRow In mtempDT.Rows
-            For i As Integer = 0 To mday - 1
-                If dr("balance" & i + 1).ToString.Trim <> "" Then
-                    If dr("balance" & i + 1) > 0 Then
-                        dr("balance" & i + 1) = 0
-                    End If
-                End If
-            Next
-        Next
-        For Each dr As DataRow In tempDT.Rows
-            For i As Integer = 0 To day - 1
-                If dr("balance" & i + 1).ToString.Trim <> "" Then
-                    If dr("balance" & i + 1) > 0 Then
-                        dr("balance" & i + 1) = 0
-                    End If
-                End If
-            Next
-        Next
-
-        ''''''''''''''''''''''
-
-        For Each dr As DataRow In dt.Rows
-            current += 1
-            If dr("list").ToString.Trim <> list Or current = dt.Rows.Count - 1 Then
-                list = dr("list").ToString.Trim
-                dt.Rows(startRow).Item("min") = getMin(minimum, mday)
-                startRow = current
-            End If
-
-            clt = dr("client").ToString.Trim
-            For Each tempdr As DataRow In mtempDT.Rows
-                If tempdr("clt_code").ToString.Trim > clt Then
-                    Exit For
-                End If
-                If tempdr("clt_code").ToString.Trim = clt Then
-                    For i As Integer = 0 To mday - 1
-                        If tempdr("balance" & i + 1).ToString.Trim <> "" Then
-                            If tempdr("balance" & i + 1) < 0 Then
-                                minimum(i) += tempdr("balance" & i + 1)
-                            End If
-                        End If
-                    Next
-                    Exit For
-                End If
-            Next
-            For Each tempdr As DataRow In tempDT.Rows
-                If tempdr("clt_code").ToString.Trim > clt Then
-                    Exit For
-                End If
-                If tempdr("clt_code").ToString.Trim = clt Then
-                    dr("name") = GFncNoNullString(tempdr("clt_name").ToString.Trim)
-                    For i As Integer = 0 To day - 1
-                        dr("balance" & i + 1) = GFncNoNullValue(tempdr("balance" & i + 1))
-                    Next
-                    Exit For
-                End If
-            Next
-        Next
+    '    Dim str1 As String = "select a.clt_code, a.clt_name"
+    '    Dim str2 As String = " from STCLTMASTER a "
+    '    For i As Integer = 0 To day - 1
+    '        If type = "ipo_loan" Then
+    '            str = "select client_code as accno, " & type & " as balance into #m" & i + 1 & " from ipoloan where loan_date = '" & Format(CDate(GFncNoNullString(timeDt.Rows(i).Item("tdate")).Trim), "yyyy/MM/dd") & "'"
+    '            GFncRunSQL(GSCnSqlConn, str)
+    '        Else
+    '            str = "select accno, " & type & " as balance into #m" & i + 1 & " from acbal where tdate = '" & Format(CDate(GFncNoNullString(timeDt.Rows(i).Item("tdate")).Trim), "yyyy/MM/dd") & "'"
+    '            GFncRunSQL(GSCnBalConn, str)
+    '        End If
+    '        GFncRunSQL(GSCnLiqConn, str)
+    '        str1 = str1 & ", #m" & i + 1 & ".balance as balance" & i + 1
+    '        str2 = str2 & "left join #m" & i + 1 & " on a.clt_code = #m" & i + 1 & ".accno "
+    '    Next
+    '    str = str1 & str2 & "order by a.clt_code"
+    '    Dim tempDT As DataTable = GFncRtnDS(GSCnLiqConn, str).Tables(0)
+    '    For i As Integer = 0 To day - 1
+    '        str = "drop table #m" & i + 1
+    '        GFncRunSQL(GSCnLiqConn, str)
+    '    Next
+    '    For Each dr As DataRow In dt.Rows
+    '        For i As Integer = 0 To day - 1
+    '            If dr("balance" & i + 1) > 0 Then
+    '                dr("balance" & i + 1) = 0
+    '            End If
+    '        Next
+    '    Next
+    '    Dim clt As String = ""
+    '    Dim list As String = dt.Rows(0).Item("list").ToString.Trim
+    '    Dim minimum(22) As Double
+    '    Dim startRow As Integer = 0
+    '    Dim current As Integer = -1
 
 
+    '    '''''''''''''''''
+    '    Dim mtin1 As Date
+    '    If tin1.Month < 4 Then
+    '        mtin1 = New Date(tin1.Year - 1, 4, 1)
+    '    Else
+    '        mtin1 = New Date(tin1.Year, 4, 1)
+    '        'mtin1.AddMonths(2)
+    '        'AddMonths(4 - mtin1.Month)
+    '        'mtin1.AddDays(1 - mtin1.Day)
+    '    End If
 
-        rpt.SetDataSource(dt)
-        rpt.SetParameterValue("user", Trim(GStrloginID))
-        rpt.SetParameterValue("day", day)
-        If type = "led_bal" Then
-            rpt.SetParameterValue("Type", "Ledger Balance")
-        ElseIf type = "ava_bal" Then
-            rpt.SetParameterValue("Type", "Available Balance")
-        Else
-            rpt.SetParameterValue("Type", "IPO Loan")
-        End If
+    '    Dim mt1 As String = Format(mtin1, "yyyy/MM/dd")
+    '    Dim mt2 As String = Format(tin2, "yyyy/MM/dd")
+    '    't1 = "2008/06/01"
+    '    't2 = "2008/06/10"
+    '    Dim mrpt As ReportClass = New rptCRCConTrans
+    '    Dim mstr As String = "select list_name as list, clt_code as client, '' as name"
+    '    For i As Integer = 1 To 23
+    '        mstr = mstr & ", 0.00 as balance" & i
+    '    Next
+    '    mstr = mstr & ", 0.00 as min from contran order by list_name"
+    '    Dim mdt As DataTable = New DtsConnectedTransaction.CRCConTransDataTable
+    '    mdt = GFncRtnDS(GSCnSqlConn, mstr).Tables(0)
+    '    Dim mtimeDt As DataTable
+    '    If type = "ipo_loan" Then
+    '        mtimeDt = GFncRtnDS(GSCnLiqConn, "select distinct loan_date as tdate from ipoloan where loan_date between '" & mt1 & "' and '" & mt2 & "' order by tdate").Tables(0)
+    '    Else
+    '        mtimeDt = GFncRtnDS(GSCnLiqConn, "select distinct tdate from acbal where tdate between '" & mt1 & "' and '" & mt2 & "' order by tdate").Tables(0)
+    '    End If
+    '    Dim mday As Integer = mtimeDt.Rows.Count
+    '    If mday = 0 Then
+    '        Return Nothing
+    '    End If
 
-        For i As Integer = 0 To 7
-            If i + 16 < day Then
-                rpt.SetParameterValue("day" & i + 1 & "", GFncNoNullString(timeDt.Rows(i).Item("tdate")) & vbCrLf & GFncNoNullString(timeDt.Rows(i + 8).Item("tdate")) & vbCrLf & GFncNoNullString(timeDt.Rows(i + 16).Item("tdate")))
-            ElseIf i + 8 < day Then
-                rpt.SetParameterValue("day" & i + 1 & "", GFncNoNullString(timeDt.Rows(i).Item("tdate")) & vbCrLf & GFncNoNullString(timeDt.Rows(i + 8).Item("tdate")))
-            ElseIf i < day Then
-                rpt.SetParameterValue("day" & i + 1 & "", GFncNoNullString(timeDt.Rows(i).Item("tdate")))
-            Else
-                rpt.SetParameterValue("day" & i + 1 & "", "")
-            End If
-        Next
-        Return rpt
-    End Function
+    '    Dim mstr1 As String = "select a.clt_code, a.clt_name"
+    '    Dim mstr2 As String = " from STCLTMASTER a "
+    '    For i As Integer = 0 To mday - 1
+    '        If type = "ipo_loan" Then
+    '            mstr = "select client_code as accno, " & type & " as balance into #m" & i + 1 & " from ipoloan where loan_date = '" & Format(CDate(GFncNoNullString(mtimeDt.Rows(i).Item("tdate")).Trim), "yyyy/MM/dd") & "'"
+
+    '        Else
+    '            mstr = "select accno, " & type & " as balance into #m" & i + 1 & " from acbal where tdate = '" & Format(CDate(GFncNoNullString(mtimeDt.Rows(i).Item("tdate")).Trim), "yyyy/MM/dd") & "'"
+    '        End If
+    '        GFncRunSQL(GSCnLiqConn, mstr)
+    '        mstr1 = mstr1 & ", #m" & i + 1 & ".balance as balance" & i + 1
+    '        mstr2 = mstr2 & "left join #m" & i + 1 & " on a.clt_code = #m" & i + 1 & ".accno "
+    '    Next
+    '    mstr = mstr1 & mstr2 & "order by a.clt_code"
+    '    Dim mtempDT As DataTable = GFncRtnDS(GSCnLiqConn, mstr).Tables(0)
+    '    For i As Integer = 0 To mday - 1
+    '        mstr = "drop table #m" & i + 1
+    '        GFncRunSQL(GSCnLiqConn, mstr)
+    '    Next
+    '    For Each dr As DataRow In mtempDT.Rows
+    '        For i As Integer = 0 To mday - 1
+    '            If dr("balance" & i + 1).ToString.Trim <> "" Then
+    '                If dr("balance" & i + 1) > 0 Then
+    '                    dr("balance" & i + 1) = 0
+    '                End If
+    '            End If
+    '        Next
+    '    Next
+    '    For Each dr As DataRow In tempDT.Rows
+    '        For i As Integer = 0 To day - 1
+    '            If dr("balance" & i + 1).ToString.Trim <> "" Then
+    '                If dr("balance" & i + 1) > 0 Then
+    '                    dr("balance" & i + 1) = 0
+    '                End If
+    '            End If
+    '        Next
+    '    Next
+
+    '    ''''''''''''''''''''''
+
+    '    For Each dr As DataRow In dt.Rows
+    '        current += 1
+    '        If dr("list").ToString.Trim <> list Or current = dt.Rows.Count - 1 Then
+    '            list = dr("list").ToString.Trim
+    '            dt.Rows(startRow).Item("min") = getMin(minimum, mday)
+    '            startRow = current
+    '        End If
+
+    '        clt = dr("client").ToString.Trim
+    '        For Each tempdr As DataRow In mtempDT.Rows
+    '            If tempdr("clt_code").ToString.Trim > clt Then
+    '                Exit For
+    '            End If
+    '            If tempdr("clt_code").ToString.Trim = clt Then
+    '                For i As Integer = 0 To mday - 1
+    '                    If tempdr("balance" & i + 1).ToString.Trim <> "" Then
+    '                        If tempdr("balance" & i + 1) < 0 Then
+    '                            minimum(i) += tempdr("balance" & i + 1)
+    '                        End If
+    '                    End If
+    '                Next
+    '                Exit For
+    '            End If
+    '        Next
+    '        For Each tempdr As DataRow In tempDT.Rows
+    '            If tempdr("clt_code").ToString.Trim > clt Then
+    '                Exit For
+    '            End If
+    '            If tempdr("clt_code").ToString.Trim = clt Then
+    '                dr("name") = GFncNoNullString(tempdr("clt_name").ToString.Trim)
+    '                For i As Integer = 0 To day - 1
+    '                    dr("balance" & i + 1) = GFncNoNullValue(tempdr("balance" & i + 1))
+    '                Next
+    '                Exit For
+    '            End If
+    '        Next
+    '    Next
+
+
+
+    '    rpt.SetDataSource(dt)
+    '    rpt.SetParameterValue("user", Trim(GStrloginID))
+    '    rpt.SetParameterValue("day", day)
+    '    If type = "led_bal" Then
+    '        rpt.SetParameterValue("Type", "Ledger Balance")
+    '    ElseIf type = "ava_bal" Then
+    '        rpt.SetParameterValue("Type", "Available Balance")
+    '    Else
+    '        rpt.SetParameterValue("Type", "IPO Loan")
+    '    End If
+
+    '    For i As Integer = 0 To 7
+    '        If i + 16 < day Then
+    '            rpt.SetParameterValue("day" & i + 1 & "", GFncNoNullString(timeDt.Rows(i).Item("tdate")) & vbCrLf & GFncNoNullString(timeDt.Rows(i + 8).Item("tdate")) & vbCrLf & GFncNoNullString(timeDt.Rows(i + 16).Item("tdate")))
+    '        ElseIf i + 8 < day Then
+    '            rpt.SetParameterValue("day" & i + 1 & "", GFncNoNullString(timeDt.Rows(i).Item("tdate")) & vbCrLf & GFncNoNullString(timeDt.Rows(i + 8).Item("tdate")))
+    '        ElseIf i < day Then
+    '            rpt.SetParameterValue("day" & i + 1 & "", GFncNoNullString(timeDt.Rows(i).Item("tdate")))
+    '        Else
+    '            rpt.SetParameterValue("day" & i + 1 & "", "")
+    '        End If
+    '    Next
+    '    Return rpt
+    'End Function
 
     Protected Friend Function FncGenReport1(ByVal tin1 As Date, ByVal tin2 As Date, ByVal type As String) As ReportClass
         Dim rpt As ReportClass = New rptCRCConTrans
@@ -640,174 +640,174 @@ Public Class ClsCRCConnTran
         End Try
     End Function
 
-    Protected Friend Function FncExport(ByVal tin1 As Date, ByVal tin2 As Date, ByVal type As String) As Boolean
-        Dim t1 As String = Format(tin1, "yyyy/MM/dd")
-        Dim t2 As String = Format(tin2, "yyyy/MM/dd")
-        t1 = "2008/06/01"
-        t2 = "2008/06/10"
-        Dim rpt As ReportClass = New rptCRCConTrans
-        Dim str As String = "select list_name as list, clt_code as client, '' as name"
-        For i As Integer = 1 To 25
-            str = str & ", 0.00 as balance" & i
-        Next
-        str = str & ", 0.00 as min from contran order by list_name"
-        Dim dt As DataTable = New DtsConnectedTransaction.CRCConTransDataTable
-        dt = GFncRtnDS(GSCnSqlConn, str).Tables(0)
-        Dim timeDt As DataTable
-        If type = "ipo_loan" Then
-            timeDt = GFncRtnDS(GSCnLiqConn, "select distinct loan_date as tdate from ipoloan where loan_date between '" & t1 & "' and '" & t2 & "' order by tdate").Tables(0)
-        Else
-            timeDt = GFncRtnDS(GSCnLiqConn, "select distinct tdate from acbal where tdate between '" & t1 & "' and '" & t2 & "' order by tdate").Tables(0)
-        End If
-        Dim day As Integer = timeDt.Rows.Count
-        If day = 0 Then
-            Return Nothing
-        End If
+    'Protected Friend Function FncExport(ByVal tin1 As Date, ByVal tin2 As Date, ByVal type As String) As Boolean
+    '    Dim t1 As String = Format(tin1, "yyyy/MM/dd")
+    '    Dim t2 As String = Format(tin2, "yyyy/MM/dd")
+    '    t1 = "2008/06/01"
+    '    t2 = "2008/06/10"
+    '    Dim rpt As ReportClass = New rptCRCConTrans
+    '    Dim str As String = "select list_name as list, clt_code as client, '' as name"
+    '    For i As Integer = 1 To 25
+    '        str = str & ", 0.00 as balance" & i
+    '    Next
+    '    str = str & ", 0.00 as min from contran order by list_name"
+    '    Dim dt As DataTable = New DtsConnectedTransaction.CRCConTransDataTable
+    '    dt = GFncRtnDS(GSCnSqlConn, str).Tables(0)
+    '    Dim timeDt As DataTable
+    '    If type = "ipo_loan" Then
+    '        timeDt = GFncRtnDS(GSCnLiqConn, "select distinct loan_date as tdate from ipoloan where loan_date between '" & t1 & "' and '" & t2 & "' order by tdate").Tables(0)
+    '    Else
+    '        timeDt = GFncRtnDS(GSCnLiqConn, "select distinct tdate from acbal where tdate between '" & t1 & "' and '" & t2 & "' order by tdate").Tables(0)
+    '    End If
+    '    Dim day As Integer = timeDt.Rows.Count
+    '    If day = 0 Then
+    '        Return Nothing
+    '    End If
 
-        Dim str1 As String = "select a.clt_code, a.clt_name"
-        Dim str2 As String = " from STCLTMASTER a "
-        For i As Integer = 0 To day - 1
-            If type = "ipo_loan" Then
-                str = "select client_code as accno, " & type & " as balance into #m" & i + 1 & " from ipoloan where loan_date = '" & Format(CDate(GFncNoNullString(timeDt.Rows(i).Item("tdate")).Trim), "yyyy/MM/dd") & "'"
+    '    Dim str1 As String = "select a.clt_code, a.clt_name"
+    '    Dim str2 As String = " from STCLTMASTER a "
+    '    For i As Integer = 0 To day - 1
+    '        If type = "ipo_loan" Then
+    '            str = "select client_code as accno, " & type & " as balance into #m" & i + 1 & " from ipoloan where loan_date = '" & Format(CDate(GFncNoNullString(timeDt.Rows(i).Item("tdate")).Trim), "yyyy/MM/dd") & "'"
 
-            Else
-                str = "select accno, " & type & " as balance into #m" & i + 1 & " from acbal where tdate = '" & Format(CDate(GFncNoNullString(timeDt.Rows(i).Item("tdate")).Trim), "yyyy/MM/dd") & "'"
-            End If
-            GFncRunSQL(GSCnLiqConn, str)
-            str1 = str1 & ", #m" & i + 1 & ".balance as balance" & i + 1
-            str2 = str2 & "left join #m" & i + 1 & " on a.clt_code = #m" & i + 1 & ".accno "
-        Next
-        str = str1 & str2 & "order by a.clt_code"
-        Dim tempDT As DataTable = GFncRtnDS(GSCnLiqConn, str).Tables(0)
-        For i As Integer = 0 To day - 1
-            str = "drop table #m" & i + 1
-            GFncRunSQL(GSCnLiqConn, str)
-        Next
-        For Each dr As DataRow In dt.Rows
-            For i As Integer = 0 To day - 1
-                If dr("balance" & i + 1) > 0 Then
-                    dr("balance" & i + 1) = 0
-                End If
-            Next
-        Next
+    '        Else
+    '            str = "select accno, " & type & " as balance into #m" & i + 1 & " from acbal where tdate = '" & Format(CDate(GFncNoNullString(timeDt.Rows(i).Item("tdate")).Trim), "yyyy/MM/dd") & "'"
+    '        End If
+    '        GFncRunSQL(GSCnLiqConn, str)
+    '        str1 = str1 & ", #m" & i + 1 & ".balance as balance" & i + 1
+    '        str2 = str2 & "left join #m" & i + 1 & " on a.clt_code = #m" & i + 1 & ".accno "
+    '    Next
+    '    str = str1 & str2 & "order by a.clt_code"
+    '    Dim tempDT As DataTable = GFncRtnDS(GSCnLiqConn, str).Tables(0)
+    '    For i As Integer = 0 To day - 1
+    '        str = "drop table #m" & i + 1
+    '        GFncRunSQL(GSCnLiqConn, str)
+    '    Next
+    '    For Each dr As DataRow In dt.Rows
+    '        For i As Integer = 0 To day - 1
+    '            If dr("balance" & i + 1) > 0 Then
+    '                dr("balance" & i + 1) = 0
+    '            End If
+    '        Next
+    '    Next
 
-        Dim strExFile As String = "CRCCT_" & type & Format(Now(), "yyyyMMdd") & ".xls"
-        Dim strFiles() As String
-        Dim alignCentre As Integer = -4108
-        Dim alignRight As Integer = -4152
-        Dim edgeTop As Integer = 8
-        Dim edgeBottom As Integer = 9
-        Dim edgeLeft As Integer = 1
-        Dim edgeRight As Integer = 2
-        Dim continuous As Integer = 1
-        Dim ldouble As Integer = -4119
-        Dim dot As Integer = -4118
-        Dim xlApp As Object
-        Dim xlWorkBook As Object
-        Dim xlWorkSheet As Object
-        Dim xlRange As Object
-        xlApp = CreateObject("Excel.Application")
-        xlWorkBook = xlApp.Workbooks.Add()
-        xlWorkBook.Activate()
-        xlApp.Visible = False
-        xlWorkSheet = xlWorkBook.Worksheets("Sheet1")
-        Try
-            strFiles = System.IO.Directory.GetFiles(GStrExptDir, strExFile)
-            For Each strFile As String In strFiles
-                Application.DoEvents()
-                System.IO.File.Delete(strFile)
-            Next
-            xlWorkSheet.Columns("A:A").ColumnWidth = 20
-            xlWorkSheet.Columns("B:B").ColumnWidth = 12
-            xlWorkSheet.Columns("C:C").ColumnWidth = 35
-            xlWorkSheet.Columns("D:D").ColumnWidth = 14
-            xlWorkSheet.Columns("E:E").ColumnWidth = 14
-            xlWorkSheet.Columns("F:F").ColumnWidth = 14
-            xlWorkSheet.Columns("G:G").ColumnWidth = 14
-            xlWorkSheet.Columns("H:H").ColumnWidth = 14
-            xlWorkSheet.Columns("I:I").ColumnWidth = 14
-            xlWorkSheet.Columns("J:J").ColumnWidth = 14
-            xlWorkSheet.Columns("K:K").ColumnWidth = 14
-            xlWorkSheet.Columns("L:L").ColumnWidth = 14
-            xlWorkSheet.Columns("M:M").ColumnWidth = 14
-            xlWorkSheet.Columns("N:N").ColumnWidth = 14
-            xlWorkSheet.Columns("O:O").ColumnWidth = 14
-            xlWorkSheet.Columns("P:P").ColumnWidth = 14
-            xlWorkSheet.Columns("Q:Q").ColumnWidth = 14
-            xlWorkSheet.Columns("R:R").ColumnWidth = 14
-            xlWorkSheet.Columns("S:S").ColumnWidth = 14
-            xlWorkSheet.Columns("T:T").ColumnWidth = 14
-            xlWorkSheet.Columns("U:U").ColumnWidth = 14
-            xlWorkSheet.Columns("V:V").ColumnWidth = 14
-            xlWorkSheet.Columns("W:W").ColumnWidth = 14
-            xlWorkSheet.Columns("X:X").ColumnWidth = 14
-            xlWorkSheet.Columns("Y:Y").ColumnWidth = 14
-            xlWorkSheet.Columns("Z:Z").ColumnWidth = 14
+    '    Dim strExFile As String = "CRCCT_" & type & Format(Now(), "yyyyMMdd") & ".xls"
+    '    Dim strFiles() As String
+    '    Dim alignCentre As Integer = -4108
+    '    Dim alignRight As Integer = -4152
+    '    Dim edgeTop As Integer = 8
+    '    Dim edgeBottom As Integer = 9
+    '    Dim edgeLeft As Integer = 1
+    '    Dim edgeRight As Integer = 2
+    '    Dim continuous As Integer = 1
+    '    Dim ldouble As Integer = -4119
+    '    Dim dot As Integer = -4118
+    '    Dim xlApp As Object
+    '    Dim xlWorkBook As Object
+    '    Dim xlWorkSheet As Object
+    '    Dim xlRange As Object
+    '    xlApp = CreateObject("Excel.Application")
+    '    xlWorkBook = xlApp.Workbooks.Add()
+    '    xlWorkBook.Activate()
+    '    xlApp.Visible = False
+    '    xlWorkSheet = xlWorkBook.Worksheets("Sheet1")
+    '    Try
+    '        strFiles = System.IO.Directory.GetFiles(GStrExptDir, strExFile)
+    '        For Each strFile As String In strFiles
+    '            Application.DoEvents()
+    '            System.IO.File.Delete(strFile)
+    '        Next
+    '        xlWorkSheet.Columns("A:A").ColumnWidth = 20
+    '        xlWorkSheet.Columns("B:B").ColumnWidth = 12
+    '        xlWorkSheet.Columns("C:C").ColumnWidth = 35
+    '        xlWorkSheet.Columns("D:D").ColumnWidth = 14
+    '        xlWorkSheet.Columns("E:E").ColumnWidth = 14
+    '        xlWorkSheet.Columns("F:F").ColumnWidth = 14
+    '        xlWorkSheet.Columns("G:G").ColumnWidth = 14
+    '        xlWorkSheet.Columns("H:H").ColumnWidth = 14
+    '        xlWorkSheet.Columns("I:I").ColumnWidth = 14
+    '        xlWorkSheet.Columns("J:J").ColumnWidth = 14
+    '        xlWorkSheet.Columns("K:K").ColumnWidth = 14
+    '        xlWorkSheet.Columns("L:L").ColumnWidth = 14
+    '        xlWorkSheet.Columns("M:M").ColumnWidth = 14
+    '        xlWorkSheet.Columns("N:N").ColumnWidth = 14
+    '        xlWorkSheet.Columns("O:O").ColumnWidth = 14
+    '        xlWorkSheet.Columns("P:P").ColumnWidth = 14
+    '        xlWorkSheet.Columns("Q:Q").ColumnWidth = 14
+    '        xlWorkSheet.Columns("R:R").ColumnWidth = 14
+    '        xlWorkSheet.Columns("S:S").ColumnWidth = 14
+    '        xlWorkSheet.Columns("T:T").ColumnWidth = 14
+    '        xlWorkSheet.Columns("U:U").ColumnWidth = 14
+    '        xlWorkSheet.Columns("V:V").ColumnWidth = 14
+    '        xlWorkSheet.Columns("W:W").ColumnWidth = 14
+    '        xlWorkSheet.Columns("X:X").ColumnWidth = 14
+    '        xlWorkSheet.Columns("Y:Y").ColumnWidth = 14
+    '        xlWorkSheet.Columns("Z:Z").ColumnWidth = 14
 
-            xlWorkSheet.Cells(1, 1) = "Client Group"
-            xlWorkSheet.Cells(1, 2) = "Client Code"
-            xlWorkSheet.Cells(1, 3) = "Client Name"
-            For i As Integer = 4 To day + 3
-                xlWorkSheet.Cells(1, i) = timeDt.Rows(i - 4).Item("tdate").ToString.Substring(0, timeDt.Rows(i - 4).Item("tdate").ToString.IndexOf(" ")).Trim
-            Next
-            xlRange = xlWorkSheet.Range(xlWorkSheet.Cells(1, 1), xlWorkSheet.Cells(1, 3 + day))
-            xlRange.Font.Bold = True
-            xlRange.Borders(edgeBottom).LineStyle = continuous
-            xlRange.Borders(edgeBottom).Weight = 3
+    '        xlWorkSheet.Cells(1, 1) = "Client Group"
+    '        xlWorkSheet.Cells(1, 2) = "Client Code"
+    '        xlWorkSheet.Cells(1, 3) = "Client Name"
+    '        For i As Integer = 4 To day + 3
+    '            xlWorkSheet.Cells(1, i) = timeDt.Rows(i - 4).Item("tdate").ToString.Substring(0, timeDt.Rows(i - 4).Item("tdate").ToString.IndexOf(" ")).Trim
+    '        Next
+    '        xlRange = xlWorkSheet.Range(xlWorkSheet.Cells(1, 1), xlWorkSheet.Cells(1, 3 + day))
+    '        xlRange.Font.Bold = True
+    '        xlRange.Borders(edgeBottom).LineStyle = continuous
+    '        xlRange.Borders(edgeBottom).Weight = 3
 
-            Dim row As Integer = 2
-            Dim clt As String = ""
-            Dim list As String = dt.Rows(0).Item("list").ToString.Trim
-            Dim startRow As Integer = 0
-            For Each dr As DataRow In dt.Rows
-                If dr("list").ToString.Trim <> list Then
-                    xlRange = xlWorkSheet.Range(xlWorkSheet.Cells(row, 1), xlWorkSheet.Cells(row, 3 + day))
-                    xlRange.Borders(edgeBottom).LineStyle = continuous
-                    xlRange.Borders(edgeBottom).Weight = 2
-                    list = dr("list").ToString.Trim
-                    row += 1
-                End If
-                row += 1
-                clt = dr("client").ToString.Trim
-                For Each tempdr As DataRow In tempDT.Rows
-                    If tempdr("clt_code").ToString.Trim > clt Then
-                        Exit For
-                    End If
-                    If tempdr("clt_code").ToString.Trim = clt Then
-                        xlWorkSheet.Cells(row, 1) = "=""" & dr("list").ToString.Trim & """"
-                        xlWorkSheet.Cells(row, 2) = "=""" & clt & """"
-                        xlWorkSheet.Cells(row, 3) = tempdr("clt_name").ToString.Trim
-                        For i As Integer = 0 To day - 1
-                            xlWorkSheet.Cells(row, 4 + i) = GFncNoNullValue(tempdr("balance" & i + 1))
-                        Next
-                        Exit For
-                    End If
-                Next
-            Next
-            xlRange = xlWorkSheet.Range(xlWorkSheet.Cells(2, 1), xlWorkSheet.Cells(row, day + 3))
-            xlRange.Font.Name = "Times New Roman"
-            xlRange.NumberFormat = "#,##0.00_);(#,##0.00)"
+    '        Dim row As Integer = 2
+    '        Dim clt As String = ""
+    '        Dim list As String = dt.Rows(0).Item("list").ToString.Trim
+    '        Dim startRow As Integer = 0
+    '        For Each dr As DataRow In dt.Rows
+    '            If dr("list").ToString.Trim <> list Then
+    '                xlRange = xlWorkSheet.Range(xlWorkSheet.Cells(row, 1), xlWorkSheet.Cells(row, 3 + day))
+    '                xlRange.Borders(edgeBottom).LineStyle = continuous
+    '                xlRange.Borders(edgeBottom).Weight = 2
+    '                list = dr("list").ToString.Trim
+    '                row += 1
+    '            End If
+    '            row += 1
+    '            clt = dr("client").ToString.Trim
+    '            For Each tempdr As DataRow In tempDT.Rows
+    '                If tempdr("clt_code").ToString.Trim > clt Then
+    '                    Exit For
+    '                End If
+    '                If tempdr("clt_code").ToString.Trim = clt Then
+    '                    xlWorkSheet.Cells(row, 1) = "=""" & dr("list").ToString.Trim & """"
+    '                    xlWorkSheet.Cells(row, 2) = "=""" & clt & """"
+    '                    xlWorkSheet.Cells(row, 3) = tempdr("clt_name").ToString.Trim
+    '                    For i As Integer = 0 To day - 1
+    '                        xlWorkSheet.Cells(row, 4 + i) = GFncNoNullValue(tempdr("balance" & i + 1))
+    '                    Next
+    '                    Exit For
+    '                End If
+    '            Next
+    '        Next
+    '        xlRange = xlWorkSheet.Range(xlWorkSheet.Cells(2, 1), xlWorkSheet.Cells(row, day + 3))
+    '        xlRange.Font.Name = "Times New Roman"
+    '        xlRange.NumberFormat = "#,##0.00_);(#,##0.00)"
 
-            xlRange = xlWorkSheet.Range(xlWorkSheet.Cells(3, 3), xlWorkSheet.Cells(row, 3))
-            xlRange.Font.Size = 10
+    '        xlRange = xlWorkSheet.Range(xlWorkSheet.Cells(3, 3), xlWorkSheet.Cells(row, 3))
+    '        xlRange.Font.Size = 10
 
-            xlWorkBook.SaveAs(GStrExptDir & strExFile)
-            xlWorkBook.Close()
-            xlApp.Quit()
-            releaseObject(xlWorkSheet)
-            releaseObject(xlWorkBook)
-            releaseObject(xlApp)
-            GC.Collect()
-            GC.WaitForPendingFinalizers()
-            Return True
-        Catch ex As Exception
-            xlWorkBook.close()
-            xlApp.Quit()
-            GC.Collect()
-            GSubWriteErrLog(ex.Message)
-            GSubShowInfo(GFncGetSysMsg(89))
-        End Try
-    End Function
+    '        xlWorkBook.SaveAs(GStrExptDir & strExFile)
+    '        xlWorkBook.Close()
+    '        xlApp.Quit()
+    '        releaseObject(xlWorkSheet)
+    '        releaseObject(xlWorkBook)
+    '        releaseObject(xlApp)
+    '        GC.Collect()
+    '        GC.WaitForPendingFinalizers()
+    '        Return True
+    '    Catch ex As Exception
+    '        xlWorkBook.close()
+    '        xlApp.Quit()
+    '        GC.Collect()
+    '        GSubWriteErrLog(ex.Message)
+    '        GSubShowInfo(GFncGetSysMsg(89))
+    '    End Try
+    'End Function
 
     Private Sub releaseObject(ByVal obj As Object)
         Try
