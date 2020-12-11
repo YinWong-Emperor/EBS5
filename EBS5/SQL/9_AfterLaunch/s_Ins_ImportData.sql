@@ -787,50 +787,59 @@ BEGIN TRY
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''PTT - temp_ststktxnlst_view - ...'';
 
-	SELECT
-		A.client_code AS acc,
-		A.bs AS tn_type,
-		@tradeDate AS dt,
-		A.stkno AS coll,
-		A.price AS avg_pce,
-		A.qty,
-		A.price * A.qty AS g_amt,
-		A.comm AS comm_amt,
-		A.rebate,
-		A.stamp,
-		A.tran_levy AS levy,
-		A.I_C_levy AS tax,
-		A.trading_fee,
-		A.ccass_fee AS o_fee,
-		ABS(A.net_amount) AS net_amt
-	INTO #temp_ststktxnlst_view
-	FROM
-		' + @G2BSDB + N'.dbo.view_EMP_client_trade_namt_with_fee A
-	 WHERE
-		A.trade_date = @tradeDate;
+	--SELECT
+	--	A.client_code AS acc,
+	--	A.bs AS tn_type,
+	--	@tradeDate AS dt,
+	--	A.stkno AS coll,
+	--	A.price AS avg_pce,
+	--	A.qty,
+	--	A.price * A.qty AS g_amt,
+	--	A.comm AS comm_amt,
+	--	A.rebate,
+	--	A.stamp,
+	--	A.tran_levy AS levy,
+	--	A.I_C_levy AS tax,
+	--	A.trading_fee,
+	--	A.ccass_fee AS o_fee,
+	--	ABS(A.net_amount) AS net_amt
+	--INTO #temp_ststktxnlst_view
+	--FROM
+	--	' + @G2BSDB + N'.dbo.view_EMP_client_trade_namt_with_fee A
+	-- WHERE
+	--	A.trade_date = @tradeDate;
 
-	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
-		N''PTT - temp_ststktxnlst_view - UPDATE...'';
+	SELECT rtrim(A.client_code) as client_code, rtrim(A.bs) as inv_no, A.trade_date as tdate,
+                    rtrim(A.stkno) as stock_code, A.price as stock_price, A.qty as qty, A.price * A.qty as total, 
+                    A.comm as clientt_comm, A.rebate as ae_rebate, A.stamp as stamp_duty, A.tran_levy as levy,
+                    A.I_C_levy as ic_levy, A.tran_levy as trading_fee, A.ccass_fee as ccass_fee, 
+                    case when bs = ''S'' then ABS(A.net_amount) else 0.00 end as credit, 
+                    case when bs = ''S'' then 0.00 else ABS(A.net_amount) end as debit 
+                    into #temp_ststktxnlst_view
+                    FROM #temp_view_er_client_trade_namt_with_fee  A;
 
-	UPDATE
-		#temp_ststktxnlst_view
-	SET
-		acc = t.client_code,
-		tn_type = t.bs,
-		coll = t.stkno,
-		avg_pce = t.price,
-		qty = t.qty,
-		g_amt = t.price * t.qty,
-		comm_amt = t.comm,
-		rebate = t.rebate,
-		stamp = t.stamp,
-		levy = t.tran_levy,
-		tax = t.I_C_levy,
-		trading_fee = t.trading_fee,
-		o_fee = t.ccass_fee,
-		net_amt = ABS(t.net_amount)
-	FROM
-		#temp_view_er_client_trade_namt_with_fee t;
+	--EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
+	--	N''PTT - temp_ststktxnlst_view - UPDATE...'';
+
+	--UPDATE
+	--	#temp_ststktxnlst_view
+	--SET
+	--	acc = t.client_code,
+	--	tn_type = t.bs,
+	--	coll = t.stkno,
+	--	avg_pce = t.price,
+	--	qty = t.qty,
+	--	g_amt = t.price * t.qty,
+	--	comm_amt = t.comm,
+	--	rebate = t.rebate,
+	--	stamp = t.stamp,
+	--	levy = t.tran_levy,
+	--	tax = t.I_C_levy,
+	--	trading_fee = t.trading_fee,
+	--	o_fee = t.ccass_fee,
+	--	net_amt = ABS(t.net_amount)
+	--FROM
+	--	#temp_view_er_client_trade_namt_with_fee t;
 
 	-- #temp_testbal_view
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
@@ -1213,27 +1222,26 @@ BEGIN TRY
 			debit
 		)
 	SELECT
-		LTRIM(RTRIM(acc)),
-		LTRIM(RTRIM(tn_type)),
-		dt,
-		LTRIM(RTRIM(coll)),
-		avg_pce,
+		client_code,
+		inv_no,
+		tdate,
+		stock_code,
+		stock_price,
 		qty,
-		g_amt,
-		comm_amt,
-		rebate,
-		stamp,
+		total,
+		clientt_comm,
+		ae_rebate,
+		stamp_duty,
 		levy,
-		tax,
-		-- 不知?什么用????ic_levy
-		levy,
-		o_fee,
-		CASE WHEN tn_type = ''S'' THEN net_amt ELSE 0.00 END,
-		CASE WHEN tn_type = ''B'' THEN net_amt ELSE 0.00 END
+		ic_levy,
+		trading_fee,
+		ccass_fee,
+		credit,
+		debit
 	FROM
 		#temp_ststktxnlst_view
 	ORDER BY
-		acc;
+		client_code;
 
 	EXEC [s_Ins_ImportDataHistory] @tempgroup, @tempuser, @currentStep, @totleStep,
 		N''Save data - st_stk_txn_lst - INSERT.'';

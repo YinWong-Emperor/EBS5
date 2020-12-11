@@ -480,7 +480,7 @@ Public Class FrmChequePrintingPrints
             cnt = cnt + 1
             If cnt = 1 Then
                 'No pre line feed
-            ElseIf (cnt Mod 6) = 0 Then
+            ElseIf ((cnt - 1) Mod 6) = 0 Then
                 '5 pre line feed
                 rets.Append(Environment.NewLine)
                 rets.Append(Environment.NewLine)
