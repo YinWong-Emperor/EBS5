@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("EBS5")> 
+<Assembly: AssemblyTitle("EBS5_UAT")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("EBS5")> 
+<Assembly: AssemblyProduct("EBS5_UAT")> 
 <Assembly: AssemblyCopyright("")> 
 <Assembly: AssemblyTrademark("")> 
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.6.3")> 
-<Assembly: AssemblyFileVersion("1.0.6.3")> 
+<Assembly: AssemblyVersion("1.0.7.1")> 
+<Assembly: AssemblyFileVersion("1.0.7.1")> 
