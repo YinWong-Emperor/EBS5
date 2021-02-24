@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ReferencePath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\;C:\Program Files\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\</ReferencePath>
     <PublishUrlHistory>C:\Users\chrischanty\Documents\~Work\Program\EBS5_Publish\|C:\Users\chrischanty\Documents\~Work\Program\EBS5_UAT_Publish\|C:\Users\chrischanty\Documents\~Work\Program\EBS4_Publish\|C:\Users\woodiechan\Downloads\EBS4_2_1_0_0_20191119new\|C:\Users\woodiechan\Downloads\EBS4_2_1_0_0_20191119\</PublishUrlHistory>
-    <InstallUrlHistory>\\ebs.prod.ecg.emperorgroup.net\ebs\EBS5\|\\ebs.uat.ecg.eguat.net\ebs\EBS5\|\\ebs.uat.ecg.eguat.netebs.uat.ecg.eguat.net\ebs\EBS5\|\\ebs.prod.ecg.emperorgroup.net\ebs\EBS4\|\\eslntufoxa1.eguat.net\ebs2\ebs\</InstallUrlHistory>
+    <InstallUrlHistory>\\ebs.prod.ecg.emperorgroup.net\ebs\EBS5\|\\172.19.249.39\ebs\EBS5\|\\ebs.uat.ecg.eguat.net\ebs\EBS5\|\\ebs.uat.ecg.eguat.netebs.uat.ecg.eguat.net\ebs\EBS5\|\\ebs.prod.ecg.emperorgroup.net\ebs\EBS4\</InstallUrlHistory>
     <SupportUrlHistory>
     </SupportUrlHistory>
     <UpdateUrlHistory>

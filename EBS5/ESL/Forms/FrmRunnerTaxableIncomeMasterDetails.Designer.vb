@@ -796,6 +796,7 @@ Partial Class FrmRunnerTaxableIncomeMasterDetails
         Me.mnbxAdjustToTaxableIncome.DecimalPlaces = 2
         Me.mnbxAdjustToTaxableIncome.Location = New System.Drawing.Point(264, 64)
         Me.mnbxAdjustToTaxableIncome.Maximum = New Decimal(New Integer() {1874919423, 2328306, 0, 131072})
+        Me.mnbxAdjustToTaxableIncome.Minimum = New Decimal(New Integer() {1874919423, 2328306, 0, -2147352576})
         Me.mnbxAdjustToTaxableIncome.Name = "mnbxAdjustToTaxableIncome"
         Me.mnbxAdjustToTaxableIncome.Size = New System.Drawing.Size(150, 21)
         Me.mnbxAdjustToTaxableIncome.TabIndex = 1
