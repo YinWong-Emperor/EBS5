@@ -144,8 +144,8 @@ Public Class ClsSpellNumber
                 Case 19 : Result = "Nineteen"
                 Case Else
             End Select
-        ElseIf Val(Mid(Cents, 2, 1)) = 0 Then
-            Select Case Val(Left(Cents, 1))
+        ElseIf Val(Mid(Cents, 1, 1)) = 0 Then
+            Select Case Val(Left(Cents, 2))
                 Case 2 : Result = "Two"
                 Case 3 : Result = "Three"
                 Case 4 : Result = "Four"
