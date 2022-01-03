@@ -1038,6 +1038,10 @@ Public Module modCommon
             Return CDate("1900/01/01")
         ElseIf objNull.ToString.Trim = "" Then
             Return CDate("1900/01/01")
+            'Start [P191038-781] Chris Chan 20211108
+        ElseIf CDate(objNull) < CDate("1900/01/01") Then
+            Return CDate("1900/01/01")
+            'End [P191038-781] Chris Chan 20211108
         Else
             Return objNull
         End If
