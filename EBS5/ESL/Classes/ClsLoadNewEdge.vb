@@ -2,6 +2,10 @@ Imports System.Data.SqlClient
 Imports System.IO
 Imports CrystalDecisions.Shared
 Imports CrystalDecisions.CrystalReports.Engine
+'Start [P191038-781] Chris Chan 20211019
+Imports Excel = Microsoft.Office.Interop.Excel
+Imports System.Linq
+'End [P191038-781] Chris Chan 20211019
 
 Public Class ClsLoadNewEdge
 
@@ -227,8 +231,13 @@ Public Class ClsLoadNewEdge
     '    Return GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
     'End Function
 
+    'Start [P191038-781] Chris Chan 20211029
+    'Protected Friend Function lFncInsertNewedgeTrade(ByVal tdate As Date, ByVal buy As Long, ByVal sell As Long, ByVal monthcode As String, _
+    '    ByVal product As String, ByVal tprice As Double, ByVal dStrike As Double, ByVal sCallput As String, ByVal MDFlag As String, ByVal settleDate As Date, ByRef dt As DataTable) As Boolean
     Protected Friend Function lFncInsertNewedgeTrade(ByVal tdate As Date, ByVal buy As Long, ByVal sell As Long, ByVal monthcode As String, _
-        ByVal product As String, ByVal tprice As Double, ByVal dStrike As Double, ByVal sCallput As String, ByVal MDFlag As String, ByVal settleDate As Date, ByRef dt As DataTable) As Boolean
+        ByVal product As String, ByVal tprice As Double, ByVal dStrike As Double, ByVal sCallput As String, ByVal MDFlag As String, ByVal settleDate As Date, ByRef dt As DataTable, _
+        Optional ByVal comm As Double = 0, Optional ByVal clearing As Double = 0, Optional ByVal exchange As Double = 0) As Boolean
+        'End [P191038-781] Chris Chan 20211029
         Dim dr As DataRow = dt.NewRow
         dr("tdate") = CDate(tdate)
         dr("buy") = buy
@@ -241,6 +250,11 @@ Public Class ClsLoadNewEdge
         dr("seq") = dt.Rows.Count + 1
         dr("strike") = dStrike
         dr("callput") = sCallput
+        'Start [P191038-781] Chris Chan 20211029
+        dr("comm") = comm
+        dr("clearing") = clearing
+        dr("levy") = exchange
+        'End [P191038-781] Chris Chan 20211029
         dt.Rows.Add(dr)
     End Function
 
@@ -377,7 +391,7 @@ Public Class ClsLoadNewEdge
 
                                 Catch ex As Exception
                                     floating = 0.0
-        End Try
+                                End Try
                                 If tprice = 2310 Then
                                     Dim a As Integer = 0
                                 End If
@@ -708,8 +722,13 @@ Public Class ClsLoadNewEdge
         dt.Rows.Add(row)
     End Sub
 
+    'Start [P191038-781] Chris Chan 20211104
+    'Protected Friend Sub lFncInsertToLIQDataTable(ByVal tdate As String, ByVal odate As Date, ByVal buy As Long, ByVal sell As Long, ByVal monthcode As String, _
+    '    ByVal product As String, ByVal tprice As Double, ByVal dStrike As Double, ByVal sCallPut As String, ByVal MDFlag As String, ByVal settleDate As Date, ByRef dt As DataTable)
     Protected Friend Sub lFncInsertToLIQDataTable(ByVal tdate As String, ByVal odate As Date, ByVal buy As Long, ByVal sell As Long, ByVal monthcode As String, _
-        ByVal product As String, ByVal tprice As Double, ByVal dStrike As Double, ByVal sCallPut As String, ByVal MDFlag As String, ByVal settleDate As Date, ByRef dt As DataTable)
+        ByVal product As String, ByVal tprice As Double, ByVal dStrike As Double, ByVal sCallPut As String, ByVal MDFlag As String, ByVal settleDate As Date, ByRef dt As DataTable, _
+        Optional ByVal PL As Decimal = 0.0, Optional ByVal size As Decimal = 0.0)
+        'End [P191038-781] Chris Chan 20211104
         Dim row As DataRow = Nothing
         row = dt.NewRow()
         row("tdate") = GFncNoNullDate(tdate)
@@ -723,6 +742,10 @@ Public Class ClsLoadNewEdge
         row("callput") = sCallPut
         row("settle_date") = GFncNoNullDate(settleDate)
         row("monthly_daily") = MDFlag
+        'Start [P191038-781] Chris Chan 20211104
+        row("PL") = PL
+        row("size") = size
+        'End [P191038-781] Chris Chan 20211104
         dt.Rows.Add(row)
     End Sub
     Protected Friend Sub lFncInsertToLIQDataTable(ByVal tdate As String, ByVal odate As Date, ByVal buy As Long, ByVal sell As Long, ByVal monthcode As String, _
@@ -797,6 +820,29 @@ Public Class ClsLoadNewEdge
         End If
         OPDT.Rows.Add(dr)
     End Sub
+
+    'Start [P191038-781] Chris Chan 20211111
+    Protected Friend Sub lFncPrepareMarexOP(ByVal tdate As String, ByVal odate As Date, ByVal buy As Long, ByVal sell As Long, _
+        ByVal monthcode As String, ByVal product As String, ByVal tprice As Double, ByVal dStrike As Double, ByVal sCallPut As String, ByVal MDFlag As String, ByVal settleDate As Date, _
+        ByVal floating As Decimal, ByVal cprice As Decimal, ByVal size As Decimal, ByRef OPDT As DataTable)
+        Dim dr As DataRow = OPDT.NewRow
+        dr("tdate") = GFncNoNullDate(tdate)
+        dr("odate") = GFncNoNullDate(odate)
+        dr("buy") = buy
+        dr("sell") = sell
+        dr("product") = product.Trim
+        dr("monthcode") = monthcode.Trim
+        dr("price") = tprice
+        dr("strike") = dStrike
+        dr("callput") = sCallPut
+        dr("monthly_daily") = MDFlag.Trim
+        dr("settle_date") = GFncNoNullDate(settleDate)
+        dr("floating") = floating
+        dr("closing_price") = cprice
+        dr("size") = size
+        OPDT.Rows.Add(dr)
+    End Sub
+    'End [P191038-781] Chris Chan 20211111
 
     Protected Friend Sub lFncPrepareNewedgeOP(ByVal tdate As String, ByVal odate As Date, ByVal buy As Long, ByVal sell As Long, _
         ByVal monthcode As String, ByVal product As String, ByVal tprice As Double, ByVal dStrike As Double, ByVal sCallPut As String, ByVal MDFlag As String, ByVal settleDate As Date, _
@@ -966,7 +1012,10 @@ Public Class ClsLoadNewEdge
                 End If
             End If
         Next
-        Dim size As Integer = 0
+        'Start [P191038-781] Chris Chan 20211124
+        'Dim size As Integer = 0
+        Dim size As Decimal = 0.0
+        'End [P191038-781] Chris Chan 20211124
         If totalSell <> totalBuy Then
             size = Math.Round(PL / (totalSell - totalBuy))
             If size < 0 Then
@@ -1027,7 +1076,10 @@ Public Class ClsLoadNewEdge
 
         Dim MDFlag As String = ""
         Dim PL As Decimal = 0
-        Dim size As Integer = 0
+        'Start [P191038-781] Chris Chan 20211124
+        'Dim size As Integer = 0
+        Dim size As Decimal = 0.0
+        'End [P191038-781] Chris Chan 20211124
         Dim index As Integer = 0
         Dim iNextRow As Integer = 0
 
@@ -1120,10 +1172,16 @@ Public Class ClsLoadNewEdge
     Protected Function FncInsertTrans(ByVal dt As DataTable, ByVal MyTrans As SqlTransaction, ByVal pCounterParty As String) As Boolean
         Dim str As String = ""
         For Each dr As DataRow In dt.Rows
-            str = "insert into newedge_cap_trade_hist(tdate, buy, sell, monthcode, product, price, period, monthly_daily, settle_Date, contract_size, counterparty, strike, callput) values " & _
+            'Start [P191038-781] Chris Chan 20211108
+            'str = "insert into newedge_cap_trade_hist(tdate, buy, sell, monthcode, product, price, period, monthly_daily, settle_Date, contract_size, counterparty, strike, callput) values " & _
+            '    "('" & Format(GFncNoNullDate(dr("tdate")), "yyyy/MM/dd") & "', " & GFncNoNullValue(dr("buy")) & ", " & GFncNoNullValue(dr("sell")) & ", '" & _
+            '    GFncNoNullString(dr("monthcode")).Trim & "', '" & GFncNoNullString(GFncSqlQuote(dr("product"))).Trim & "', " & GFncNoNullValue(dr("price")) & ", 'Electronic', '" & _
+            '    GFncNoNullString(dr("monthly_daily")).Trim & "', '" & Format(GFncNoNullDate(dr("settle_date")), "yyyy/MM/dd") & "', " & GFncNoNullValue(dr("size")) & ", '" & pCounterParty & "' , " & GFncNoNullValue(dr("strike")) & ", '" & GFncNoNullString(dr("callput")).Trim & "')"
+            str = "insert into newedge_cap_trade_hist(tdate, buy, sell, monthcode, product, price, period, monthly_daily, settle_Date, contract_size, counterparty, strike, callput, comm, clearing, levy) values " & _
                 "('" & Format(GFncNoNullDate(dr("tdate")), "yyyy/MM/dd") & "', " & GFncNoNullValue(dr("buy")) & ", " & GFncNoNullValue(dr("sell")) & ", '" & _
                 GFncNoNullString(dr("monthcode")).Trim & "', '" & GFncNoNullString(GFncSqlQuote(dr("product"))).Trim & "', " & GFncNoNullValue(dr("price")) & ", 'Electronic', '" & _
-                GFncNoNullString(dr("monthly_daily")).Trim & "', '" & Format(GFncNoNullDate(dr("settle_date")), "yyyy/MM/dd") & "', " & GFncNoNullValue(dr("size")) & ", '" & pCounterParty & "' , " & GFncNoNullValue(dr("strike")) & ", '" & GFncNoNullString(dr("callput")).Trim & "')"
+                GFncNoNullString(dr("monthly_daily")).Trim & "', '" & Format(GFncNoNullDate(dr("settle_date")), "yyyy/MM/dd") & "', " & GFncNoNullValue(dr("size")) & ", '" & pCounterParty & "' , " & GFncNoNullValue(dr("strike")) & ", '" & GFncNoNullString(dr("callput")).Trim & "', " & GFncNoNullValue(dr("comm")) & ", " & GFncNoNullValue(dr("clearing")) & ", " & GFncNoNullValue(dr("levy")) & ")"
+            'End [P191038-781] Chris Chan 20211108
             GFncRunSQL(GSCnSqlConn, MyTrans, str)
         Next
     End Function
@@ -1645,12 +1703,14 @@ Public Class ClsLoadNewEdge
             sOut &= iTextSharp.text.pdf.parser.PdfTextExtractor.GetTextFromPage(oReader, i, its)
 
         Next
-        sOut = sOut.Replace("It is important that you check the statement carefully and promptly upon receipt.  This is even more important in volatile", "")
-        sOut = sOut.Replace("market conditions.   Any discrepancies, differences or objections should be reported by you as soon as possible and in any", "")
-        sOut = sOut.Replace("event no later than within one (1) business day of your receipt of our statement.  Your report should be made to your Account", "")
-        sOut = sOut.Replace("Executive and also to our Client Services Department via email to MFLClientServices@marexspectron.com.  After one (1) business", "")
-        sOut = sOut.Replace("day, this statement may be deemed by us to be correct and binding on you as conforming to your own records.", "")
-        sOut = sOut.Replace("'", " ")
+        'Start [P191038-781] 20210920
+        'sOut = sOut.Replace("It is important that you check the statement carefully and promptly upon receipt.  This is even more important in volatile", "")
+        'sOut = sOut.Replace("market conditions.   Any discrepancies, differences or objections should be reported by you as soon as possible and in any", "")
+        'sOut = sOut.Replace("event no later than within one (1) business day of your receipt of our statement.  Your report should be made to your Account", "")
+        'sOut = sOut.Replace("Executive and also to our Client Services Department via email to MFLClientServices@marexspectron.com.  After one (1) business", "")
+        'sOut = sOut.Replace("day, this statement may be deemed by us to be correct and binding on you as conforming to your own records.", "")
+        'sOut = sOut.Replace("'", " ")
+        'End [P191038-781] 20210920
         Return sOut.Split(vbLf)
     End Function
 
@@ -1661,8 +1721,21 @@ Public Class ClsLoadNewEdge
 
         For idx As Integer = 0 To pContent.Length - 1
             lstr = pContent(idx)
-            If lstr.IndexOf("STATEMENT DATE : ") >= 0 Then
+            'Start [P191038-781] 20210920
+            'If lstr.IndexOf("STATEMENT DATE : ") >= 0 Then
 
+            '    lstr = Trim(Replace(Replace(lstr, Chr(10), ""), Chr(13), ""))
+            '    lstr = Replace(lstr, "STATEMENT DATE : ", "")
+            '    ldate = "20" & lstr.Substring(6, 2) & "/" & lstr.Substring(3, 2) & "/" & lstr.Substring(0, 2)
+            '    Try
+            '        Dim dateTemp As Date = CDate(ldate)
+            '        Return ldate
+            '    Catch ex As Exception
+            '        Return ""
+            '    End Try
+            '    Exit For
+            'End If
+            If lstr.IndexOf("Statement Date:") >= 0 Then
                 lstr = Trim(Replace(Replace(lstr, Chr(10), ""), Chr(13), ""))
                 lstr = Replace(lstr, "STATEMENT DATE : ", "")
                 ldate = "20" & lstr.Substring(6, 2) & "/" & lstr.Substring(3, 2) & "/" & lstr.Substring(0, 2)
@@ -1674,6 +1747,7 @@ Public Class ClsLoadNewEdge
                 End Try
                 Exit For
             End If
+            'End [P191038-781] 20210920
             i = i + 1
         Next
 
@@ -2115,4 +2189,481 @@ Public Class ClsLoadNewEdge
 
         Return Nothing
     End Function
+
+    'Start [P191038-781] Chris Chan 20211019
+
+    Protected Friend Function lFncGetTradeDateFromMarexExcel(ByVal filename As String)
+        Dim strTradeDate = ""
+        Dim xlApp As Excel.Application = New Excel.Application
+        Dim xlWorkBook As Excel.Workbook = xlApp.Workbooks.Open(filename)
+        Dim xlWorkSheet As Excel.Worksheet = New Excel.Worksheet
+        'Dim range As Object = Nothing
+        Try
+            If xlWorkBook.Worksheets.Count >= 1 Then
+                xlWorkSheet = xlWorkBook.Worksheets("TRADE CONFIRMATION")
+                If xlWorkSheet Is Nothing Then
+                    Throw New Exception("Excel Format is invalid")
+                End If
+                'range = xlWorkSheet.UsedRange
+                If xlWorkSheet.Cells(2, 2).value.ToString.Trim = "Statement Date:" Then
+                    Try
+                        Dim tDate As Date = xlWorkSheet.Cells(2, 3).value
+                        strTradeDate = tDate.ToString("yyyy/MM/dd")
+                    Catch ex As Exception
+                        Throw New Exception("Date Format Error")
+                    End Try
+                Else
+                    Throw New Exception("Cannot locate Trade Date")
+                End If
+            Else
+                Throw New Exception("No sheet is found")
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Read Excel Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        Finally
+            xlWorkBook.Close()
+            xlApp.Quit()
+            releaseObject(xlApp)
+            releaseObject(xlWorkBook)
+            releaseObject(xlWorkSheet)
+            'releaseObject(range)
+        End Try
+        Return strTradeDate
+    End Function
+
+    Protected Friend Function lFncGetTradeDataFromMarexExcel(ByVal filename As String, ByVal trade_date As String)
+        Dim xlApp As Excel.Application = New Excel.Application
+        Dim xlWorkBook As Excel.Workbook = xlApp.Workbooks.Open(filename)
+        Dim ws_TRANS As Excel.Worksheet
+        Dim ws_LIQ As Excel.Worksheet
+        Dim ws_OP As Excel.Worksheet
+        Dim range As Excel.Range
+        Dim MyTrans As SqlTransaction = Nothing
+        Try
+
+
+            'Validate Excel
+            Dim sheets As Excel.Sheets = xlWorkBook.Worksheets
+            ws_TRANS = sheets("TRADE CONFIRMATION")
+            ws_LIQ = sheets("REALISED P&L")
+            ws_OP = sheets("OPEN POSITION")
+            If sheets.Count < 3 OrElse ws_TRANS Is Nothing OrElse ws_LIQ Is Nothing OrElse ws_OP Is Nothing Then
+                Throw New Exception("Required worksheets not found")
+            End If
+
+            'Get Details in tabs
+            Dim rowcount As Integer = 0
+            Dim readtype As Integer = 0
+
+            Dim lvalue As String = ""
+            Dim tdate As Date = Nothing
+            Dim tbuy As Long = 0
+            Dim tsell As Long = 0
+            Dim tmonthcode As String = ""
+            Dim tproduct As String = ""
+            Dim dStrike As Double = 0
+            Dim sCallPut As String = ""
+            Dim sCurrency As String = ""
+            Dim tprice As Double = 0
+            Dim comm As Double = 0
+            Dim clearing As Double = 0
+            Dim exchange As Double = 0
+            Dim total As Double = 0
+            Dim MDFlag As String = "M"
+            Dim settleDate As Date = GFncNoNullDate("1900/01/01")
+            Dim floating As Decimal = 0.0
+            Dim PL As Decimal = 0.0
+            Dim size As Decimal = 0.0
+
+            Dim OPDT As DataTable = New dtsNewedge.OpenPositionDataTable
+            Dim LQDT As DataTable = New dtsNewedge.LiqPositionDataTable
+            Dim TransDt As DataTable = New dtsNewedge.TransDataTable
+            Dim LiqHeader As DataTable = New dtsNewedge.LiqHeaderDataTable
+
+            MyTrans = GSCnSqlConn.BeginTransaction
+
+            'Trade Confirmation tab
+            readtype = 1
+            range = ws_TRANS.UsedRange
+            rowcount = range.Rows.Count
+            For i As Integer = 4 To rowcount
+                lFncInitializeValues(lvalue, tdate, tbuy, tsell, tmonthcode, tproduct, dStrike, sCallPut, sCurrency, tprice, comm, clearing, exchange, total, MDFlag, settleDate, floating, PL, size)
+                Dim tranType As String = ""
+                tranType = ws_TRANS.Cells(i, 7).value()
+                If (tranType = "INS") Then
+                    lvalue = ws_TRANS.Cells(i, 15).value
+                    If (lvalue = "Buy") Then
+                        tbuy = ws_TRANS.Cells(i, 16).value
+                    ElseIf (lvalue = "Sell") Then
+                        tsell = ws_TRANS.Cells(i, 16).value
+                    Else
+                    End If
+
+                    lvalue = ws_TRANS.Cells(i, 8).value
+                    tmonthcode = CDate(lvalue).ToString("yyyyMM").Substring(2, 4)
+                    settleDate = GFncNoNullDate("1900/01/01")
+                    settleDate = CDate(lvalue).ToString("yyyy/MM/dd")
+
+                    lvalue = ws_TRANS.Cells(i, 9).value
+                    If (lvalue.Trim() = "LME") Then
+                        MDFlag = "D"
+                    Else
+                        MDFlag = "M"
+                    End If
+
+                    lvalue = ws_TRANS.Cells(i, 11).value
+                    tproduct = lvalue.Trim()
+
+                    lvalue = ws_TRANS.Cells(i, 18).value
+                    If Not String.IsNullOrEmpty(lvalue) Then
+                        dStrike = CDbl(lvalue)
+                    End If
+
+                    lvalue = ws_TRANS.Cells(i, 13).value
+                    If Not String.IsNullOrEmpty(lvalue) Then
+                        sCallPut = lvalue.Trim()
+                    End If
+
+                    lvalue = ws_TRANS.Cells(i, 17).value
+                    If Not String.IsNullOrEmpty(lvalue) Then
+                        tprice = CDbl(lvalue)
+                    End If
+
+                    lvalue = ws_TRANS.Cells(i, 12).value
+                    If Not String.IsNullOrEmpty(lvalue) Then
+                        sCurrency = lvalue.Trim()
+                    End If
+
+                    lvalue = ws_TRANS.Cells(i, 22).value
+                    If Not String.IsNullOrEmpty(lvalue) Then
+                        clearing = CDbl(lvalue) * -1
+                    End If
+
+                    lvalue = ws_TRANS.Cells(i, 24).value
+                    If Not String.IsNullOrEmpty(lvalue) Then
+                        clearing = clearing + CDbl(lvalue) * -1
+                    End If
+
+                    lvalue = ws_TRANS.Cells(i, 23).value
+                    If Not String.IsNullOrEmpty(lvalue) Then
+                        comm = CDbl(lvalue) * -1
+                    End If
+
+                    lvalue = ws_TRANS.Cells(i, 25).value
+                    If Not String.IsNullOrEmpty(lvalue) Then
+                        exchange = CDbl(lvalue) * -1
+                    End If
+
+                    'Add to DataTable TransDt for Comfirmed Trades
+                    lFncInsertNewedgeTrade(trade_date, tbuy, tsell, tmonthcode, tproduct, tprice, dStrike, sCallPut, MDFlag, settleDate, TransDt, comm, clearing, exchange)
+
+                ElseIf String.IsNullOrEmpty(tranType) Then
+                    Exit For
+                End If
+            Next
+
+            Dim lstFee = (From r In TransDt.AsEnumerable()
+                        Group r By rgroup = New With {
+                                                Key .tdate = r.Field(Of Date)("tdate"),
+                                                Key .monthcode = r.Field(Of String)("monthcode"),
+                                                Key .product = r.Field(Of String)("product")
+                                            } Into Group
+                        Select New With {
+                                    Key .tdate = rgroup.tdate,
+                                    Key .monthcode = rgroup.monthcode,
+                                    Key .product = rgroup.product,
+                                    Key .comm = Group.Sum(Function(x) x.Field(Of Decimal)("comm")),
+                                    Key .clearing = Group.Sum(Function(x) x.Field(Of Decimal)("clearing")),
+                                    Key .levy = Group.Sum(Function(x) x.Field(Of Decimal)("levy"))
+                                    }
+                        )
+
+            'Realised P&L tab
+            readtype = 2
+            range = ws_LIQ.UsedRange
+            rowcount = range.Rows.Count
+            For i As Integer = 4 To rowcount
+                lFncInitializeValues(lvalue, tdate, tbuy, tsell, tmonthcode, tproduct, dStrike, sCallPut, sCurrency, tprice, comm, clearing, exchange, total, MDFlag, settleDate, floating, PL, size)
+                Dim tranType As String = ""
+                tranType = ws_LIQ.Cells(i, 4).value()
+                If (tranType = "NS") Then
+                    tbuy = ws_LIQ.Cells(i, 9).value
+                    tsell = ws_LIQ.Cells(i, 10).value
+                    If (tsell < 0) Then
+                        tsell = tsell * -1
+                    End If
+
+                    lvalue = ws_LIQ.Cells(i, 8).value
+                    tmonthcode = CDate(lvalue).ToString("yyyyMM").Substring(2, 4)
+                    settleDate = GFncNoNullDate("1900/01/01")
+                    settleDate = CDate(lvalue).ToString("yyyy/MM/dd")
+
+                    lvalue = ws_LIQ.Cells(i, 6).value
+                    If (lvalue.Trim() = "LME") Then
+                        MDFlag = "D"
+                    Else
+                        MDFlag = "M"
+                    End If
+
+                    lvalue = ws_LIQ.Cells(i, 7).value
+                    tproduct = lvalue.Trim()
+
+                    lvalue = ws_LIQ.Cells(i, 11).value
+                    If Not String.IsNullOrEmpty(lvalue) Then
+                        tprice = CDbl(lvalue)
+                    End If
+
+                    Dim cprice As Double = 0
+                    lvalue = ws_LIQ.Cells(i, 12).value
+                    If Not String.IsNullOrEmpty(lvalue) Then
+                        cprice = CDbl(lvalue)
+                    End If
+
+                    lvalue = ws_LIQ.Cells(i, 13).value
+                    If Not String.IsNullOrEmpty(lvalue) Then
+                        PL = CDec(lvalue)
+                    End If
+
+                    If (cprice - tprice <> 0) Then
+                        size = PL / (cprice - tprice)
+                    End If
+
+                    lvalue = ws_LIQ.Cells(i, 14).value
+                    If Not String.IsNullOrEmpty(lvalue) Then
+                        sCurrency = lvalue.Trim()
+                    End If
+
+                    lvalue = ws_LIQ.Cells(i, 22).value
+                    If Not String.IsNullOrEmpty(lvalue) Then
+                        clearing = CDbl(lvalue) * -1
+                    End If
+
+                    'Add to DataTable LQDT for Realised Trades
+                    If tbuy > 0 Then
+                        lFncInsertToLIQDataTable(trade_date, tdate, tbuy, 0, tmonthcode, tproduct, tprice, dStrike, sCallPut, MDFlag, settleDate, LQDT, 0, size)
+                    End If
+                    If tsell > 0 Then
+                        lFncInsertToLIQDataTable(trade_date, tdate, 0, tsell, tmonthcode, tproduct, cprice, dStrike, sCallPut, MDFlag, settleDate, LQDT, PL, size)
+                    End If
+
+                ElseIf String.IsNullOrEmpty(tranType) Then
+                    Exit For
+                End If
+            Next
+
+            'Add PL to LiqHeader
+
+            Dim lstPL = (From r In LQDT.AsEnumerable()
+                        Group r By rgroup = New With {
+                                                Key .tdate = r.Field(Of Date)("tdate"),
+                                                Key .monthcode = r.Field(Of String)("monthcode"),
+                                                Key .product = r.Field(Of String)("product"),
+                                                Key .settle_date = r.Field(Of Date)("settle_date"),
+                                                Key .monthly_daily = r.Field(Of String)("monthly_daily"),
+                                                Key .size = r.Field(Of Decimal)("size"),
+                                                Key .strike = r.Field(Of Decimal)("strike"),
+                                                Key .callput = r.Field(Of String)("callput")
+                                            } Into Group
+                        Select New With {
+                                    Key .tdate = rgroup.tdate,
+                                    Key .monthcode = rgroup.monthcode,
+                                    Key .product = rgroup.product,
+                                    Key .settle_date = rgroup.settle_date,
+                                    Key .monthly_daily = rgroup.monthly_daily,
+                                    Key .size = rgroup.size,
+                                    Key .strike = rgroup.strike,
+                                    Key .callput = rgroup.callput,
+                                    Key .PL = Group.Sum(Function(x) x.Field(Of Decimal)("PL"))
+                                    }
+                        )
+
+            For Each p As Object In lstPL
+                Dim ndr As DataRow = LiqHeader.NewRow
+                ndr("tdate") = GFncNoNullDate(p.tdate)
+                ndr("product") = p.product
+                ndr("monthcode") = p.monthcode
+                ndr("settle_date") = GFncNoNullDate(p.settle_date)
+                ndr("PL") = p.PL
+                ndr("monthly_daily") = p.monthly_daily
+                ndr("strike") = p.strike
+                ndr("callput") = p.callput
+                ndr("size") = p.size
+                LiqHeader.Rows.Add(ndr)
+            Next
+
+
+            'Open Position tab
+            readtype = 3
+            range = ws_OP.UsedRange
+            rowcount = range.Rows.Count
+            For i As Integer = 4 To rowcount
+                lFncInitializeValues(lvalue, tdate, tbuy, tsell, tmonthcode, tproduct, dStrike, sCallPut, sCurrency, tprice, comm, clearing, exchange, total, MDFlag, settleDate, floating, PL, size)
+                Try
+                    lvalue = ws_OP.Cells(i, 2).value
+                    Dim opDate As Date = CDate(lvalue)
+                Catch ex As Exception
+                    Exit For
+                End Try
+
+                lvalue = ws_OP.Cells(i, 3).value
+                tdate = lvalue
+
+                lvalue = ws_OP.Cells(i, 13).value
+                Dim vol As Long = lvalue
+                If (vol > 0) Then
+                    tbuy = vol
+                Else
+                    tsell = vol * -1
+                End If
+
+                lvalue = ws_OP.Cells(i, 8).value
+                tmonthcode = CDate(lvalue).ToString("yyyyMM").Substring(2, 4)
+                settleDate = GFncNoNullDate("1900/01/01")
+                settleDate = CDate(lvalue).ToString("yyyy/MM/dd")
+
+                lvalue = ws_OP.Cells(i, 5).value
+                If (lvalue.Trim() = "LME") Then
+                    MDFlag = "D"
+                Else
+                    MDFlag = "M"
+                End If
+
+                lvalue = ws_OP.Cells(i, 7).value
+                tproduct = lvalue.Trim()
+
+                lvalue = ws_OP.Cells(i, 11).value
+                If Not String.IsNullOrEmpty(lvalue) Then
+                    dStrike = CDbl(lvalue)
+                End If
+
+                lvalue = ws_OP.Cells(i, 12).value
+                If Not String.IsNullOrEmpty(lvalue) Then
+                    sCallPut = lvalue.Trim()
+                End If
+
+                lvalue = ws_OP.Cells(i, 14).value
+                If Not String.IsNullOrEmpty(lvalue) Then
+                    tprice = CDbl(lvalue)
+                End If
+
+                lvalue = ws_OP.Cells(i, 17).value
+                If Not String.IsNullOrEmpty(lvalue) Then
+                    sCurrency = lvalue.Trim()
+                End If
+
+                Dim cprice As Decimal = 0
+                lvalue = ws_OP.Cells(i, 15).value
+                If Not String.IsNullOrEmpty(lvalue) Then
+                    cprice = CDec(lvalue)
+                End If
+
+                'lvalue = ws_OP.Cells(i, 16).value
+                'If Not String.IsNullOrEmpty(lvalue) Then
+                '    floating = CDec(lvalue)
+                'End If
+
+                Dim vMargin As Decimal = 0.0
+                lvalue = ws_OP.Cells(i, 16).value
+                If Not String.IsNullOrEmpty(lvalue) Then
+                    vMargin = CDec(lvalue)
+                End If
+
+                'lvalue = ws_OP.Cells(i, 18).value
+                'If Not String.IsNullOrEmpty(lvalue) Then
+                '    size = CInt(lvalue)
+                'End If
+
+                If (sCallPut <> "") Then
+                    size = vMargin / (vol * cprice)
+                Else
+                    If (cprice <> tprice And vol <> 0) Then
+                        size = vMargin / (vol * (cprice - tprice))
+                    End If
+                End If
+
+                floating = CDec((cprice - tprice) * size * vol)
+
+                lFncPrepareMarexOP(trade_date, tdate, tbuy, tsell, tmonthcode, tproduct, tprice, dStrike, sCallPut, MDFlag, settleDate, floating, cprice, size, OPDT)
+
+            Next
+
+            'Replace zero size with same product size
+            For Each row As DataRow In OPDT.Rows
+                If (row.Item("size") = 0) Then
+                    Dim dr As DataRow = OPDT.Select("product='" & row.Item("product") & "'" & " AND monthcode='" & row.Item("monthcode") & "'" & " AND callput='" & row.Item("callput") & "'" & "AND strike='" & row.Item("strike") & "'" & " AND size>0").First()
+                    If (dr IsNot Nothing) Then
+                        row.Item("size") = dr.Item("size")
+                    End If
+                End If
+            Next
+
+            'Delete Imported records
+            lFncDeleteImported(trade_date, MyTrans, "Marex")
+            'Insert fee to DB
+            For Each f As Object In lstFee
+                lFncInsertNewedgeFeeOP(CDate(f.tdate).ToString("yyyy/MM/dd"), f.monthcode, f.product, f.comm, f.clearing, f.levy, (f.comm + f.clearing + f.levy), MyTrans, "Marex")
+            Next
+
+            'insert contract_size into transaction table
+            FncTransSize(OPDT, LQDT, TransDt)
+
+            'insert transaction
+            FncInsertTrans(TransDt, MyTrans, "Marex")
+
+            'insert liquid position and its header (header for storing the PL)
+            FncInsertCP(LQDT, LiqHeader, MyTrans, "Marex")
+
+            'insert open position
+            FncInsertOP(OPDT, MyTrans, "Marex")
+
+            'Commit
+            MyTrans.Commit()
+            MyTrans = Nothing
+        Catch ex As Exception
+            If GSCnLiqConn.State <> ConnectionState.Closed Then
+                If (MyTrans IsNot Nothing) Then
+                    MyTrans.Rollback()
+                End If
+            End If
+            MessageBox.Show(ex.Message, "Read Excel Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            GSubWriteErrLog(ex.Message)
+        Finally
+            xlWorkBook.Close()
+            xlApp.Quit()
+            releaseObject(xlApp)
+            releaseObject(xlWorkBook)
+            releaseObject(ws_TRANS)
+            releaseObject(ws_LIQ)
+            releaseObject(ws_OP)
+            releaseObject(range)
+        End Try
+
+        Return Nothing
+    End Function
+
+    'End [P191038-781] Chris Chan 20211019
+
+    'Start [P191038-781] Chris Chan 20211029
+    Protected Friend Function lFncInitializeValues(ByRef lvalue As String, ByRef tdate As Date, ByRef tbuy As Long, ByRef tsell As Long, ByRef tmonthcode As String, ByRef tproduct As String, ByRef dStrike As Double, ByRef sCallPut As String, ByRef sCurrency As String, ByRef tprice As Double, ByRef comm As Double, ByRef clearing As Double, ByRef exchange As Double, ByRef total As Double, ByRef MDFlag As String, ByRef settleDate As Date, ByRef floating As Decimal, ByRef PL As Decimal, ByRef size As Decimal)
+        lvalue = ""
+        tdate = Nothing
+        tbuy = 0
+        tsell = 0
+        tmonthcode = ""
+        tproduct = ""
+        dStrike = 0
+        sCallPut = ""
+        sCurrency = ""
+        tprice = 0
+        comm = 0
+        clearing = 0
+        exchange = 0
+        total = 0
+        MDFlag = "M"
+        settleDate = GFncNoNullDate("1900/01/01")
+        floating = 0.0
+        PL = 0.0
+        size = 0.0
+    End Function
+    'End [P191038-781] Chris Chan 20211029
 End Class

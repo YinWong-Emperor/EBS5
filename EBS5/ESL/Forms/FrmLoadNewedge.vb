@@ -91,11 +91,16 @@ Public Class FrmLoadNewedge
         Dim filename As String = ""
         Dim lstr As String = ""
         Try
-            openFileDialog1.Filter = "PDF (*.pdf) |*.pdf"
+            'Start [P191038-781 Chris Chan 20211019
+            openFileDialog1.Filter = "Excel File (*.xlsx) |*.xlsx"
+            'End [P191038-781 Chris Chan 20211019
             If (openFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK) Then
                 filename = openFileDialog1.FileName
-                Dim lcContent As String() = cls.GetTextFromMarexPDF(filename)
-                lstr = cls.lFncGetTradeDateFromMarexPDF(lcContent)
+                'Start [P191038-781] Chris Chan 20211019
+                'Dim lcContent As String() = cls.GetTextFromMarexPDF(filename)
+                'lstr = cls.lFncGetTradeDateFromMarexPDF(lcContent)
+                lstr = cls.lFncGetTradeDateFromMarexExcel(filename)
+                'End [P191038-781] Chris Chan 20211019
                 If (lstr = "") Then
                     GSubShowInfo(GFncGetSysMsg(34))
                     Return
@@ -107,11 +112,18 @@ Public Class FrmLoadNewedge
                     '    End If
                     'Else
                     'End If
-                    cls.lFncGetTradeDataFromMarexPDF(filename, lstr)
+                    'Start [P191038-781] Chris Chan 20211019
+                    'cls.lFncGetTradeDataFromMarexPDF(filename, lstr)
+                    Me.UseWaitCursor = True
+                    Application.DoEvents()
+                    cls.lFncGetTradeDataFromMarexExcel(filename, lstr)
+                    Me.UseWaitCursor = False
+                    'End [P191038-781] Chris Chan 20211019
                     GSubShowInfo(GFncGetSysMsg(8))
                 End If
             End If
         Catch ex As Exception
+            Me.UseWaitCursor = False
             GSubWriteErrLog(ex.Message)
             Return
         End Try
