@@ -2590,7 +2590,10 @@ Public Class ClsLoadNewEdge
             'Replace zero size with same product size
             For Each row As DataRow In OPDT.Rows
                 If (row.Item("size") = 0) Then
-                    Dim dr As DataRow = OPDT.Select("product='" & row.Item("product") & "'" & " AND monthcode='" & row.Item("monthcode") & "'" & " AND callput='" & row.Item("callput") & "'" & "AND strike='" & row.Item("strike") & "'" & " AND size>0").First()
+                    'Start [P191038-802] Chris Chan 20220114
+                    'Dim dr As DataRow = OPDT.Select("product='" & row.Item("product") & "'" & " AND monthcode='" & row.Item("monthcode") & "'" & " AND callput='" & row.Item("callput") & "'" & "AND strike='" & row.Item("strike") & "'" & " AND size>0").First()
+                    Dim dr As DataRow = OPDT.Select("product='" & row.Item("product") & "'" & " AND monthcode='" & row.Item("monthcode") & "'" & " AND callput='" & row.Item("callput") & "'" & "AND strike='" & row.Item("strike") & "'" & " AND size>0").FirstOrDefault()
+                    'End [P191038-802] Chris Chan 20220114
                     If (dr IsNot Nothing) Then
                         row.Item("size") = dr.Item("size")
                     End If
@@ -2615,6 +2618,10 @@ Public Class ClsLoadNewEdge
 
             'insert open position
             FncInsertOP(OPDT, MyTrans, "Marex")
+
+            'Start [P191038-803] Chris Chan 20220114
+            lFncInsertNewedgeConetent(trade_date, "Imported by Excel", 1, MyTrans, "Marex")
+            'End [P191038-803] Chris Chan 20220114
 
             'Commit
             MyTrans.Commit()
