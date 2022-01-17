@@ -46,9 +46,9 @@
     <InstallUrl>\\ebs.prod.ecg.emperorgroup.net\ebs\EBS5\</InstallUrl>
     <ProductName>EBS5</ProductName>
     <PublisherName>EBS5</PublisherName>
-    <MinimumRequiredVersion>1.0.7.7</MinimumRequiredVersion>
-    <ApplicationRevision>7</ApplicationRevision>
-    <ApplicationVersion>1.0.7.7</ApplicationVersion>
+    <MinimumRequiredVersion>1.0.7.8</MinimumRequiredVersion>
+    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationVersion>1.0.7.8</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
