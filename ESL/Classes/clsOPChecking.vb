@@ -469,11 +469,17 @@ Public Class clsOPChecking
             newedgeDr = Nothing
             type = GFncNoNullString(edr("type")).Trim
             If type = "O" Then
-                newedgeDr = nDt.Select("pcode = '" & pCode & "' and monthcode = '" & mCode & "' and MDFlag = 'D' and sDay = " & sDate & " and (strike = " & pStrike & " OR strike*CSize=" & pStrike * pCSize & ") and callput = '" & pCallPut & "'", "")
+                'Dennis 2022/01/28 START
+                'newedgeDr = nDt.Select("pcode = '" & pCode & "' and monthcode = '" & mCode & "' and MDFlag = 'D' and sDay = " & sDate & " and (strike = " & pStrike & " OR strike*CSize=" & pStrike * pCSize & ") and callput = '" & pCallPut & "'", "")
+                newedgeDr = nDt.Select("  type = '" & type & "' and  pcode = '" & pCode & "' and monthcode = '" & mCode & "' and MDFlag = 'D' and sDay = " & sDate & " and (strike = " & pStrike & " OR strike*CSize=" & pStrike * pCSize & ") and callput = '" & pCallPut & "'", "")
+
+                'Dennis 2022/01/28 END
                 If newedgeDr.Length > 0 Then
                     InsertClosingPrice(edr, newedgeDr(0))
-                Else
-                    newedgeDr = nDt.Select("pcode = '" & pCode & "' and monthcode = '" & mCode & "' and MDFlag = 'M'" & " and (strike = " & pStrike & " OR strike*CSize=" & pStrike * pCSize & ") and callput = '" & pCallPut & "'", "")
+                Else 'Dennis 2022/01/28 START
+                    'newedgeDr = nDt.Select("  pcode = '" & pCode & "' and monthcode = '" & mCode & "' and MDFlag = 'M'" & " and (strike = " & pStrike & " OR strike*CSize=" & pStrike * pCSize & ") and callput = '" & pCallPut & "'", "")
+                    newedgeDr = nDt.Select("  type = '" & type & "' and pcode = '" & pCode & "' and monthcode = '" & mCode & "' and MDFlag = 'M'" & " and (strike = " & pStrike & " OR strike*CSize=" & pStrike * pCSize & ") and callput = '" & pCallPut & "'", "")
+                    'Dennis 2022/01/28 END
                     If newedgeDr.Length > 0 Then
                         InsertClosingPrice(edr, newedgeDr(0))
                     Else
