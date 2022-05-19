@@ -133,6 +133,7 @@ Public Class ClsSpellNumber
         Result = ""
         If Val(Left(Cents, 1)) = 1 Then
             Select Case Val(Cents)
+                Case 10 : Result = "Ten"
                 Case 11 : Result = "Eleven"
                 Case 12 : Result = "Twelve"
                 Case 13 : Result = "Thirteen"
@@ -146,6 +147,7 @@ Public Class ClsSpellNumber
             End Select
         ElseIf Val(Mid(Cents, 1, 1)) = 0 Then
             Select Case Val(Left(Cents, 2))
+                Case 1 : Result = "One"
                 Case 2 : Result = "Two"
                 Case 3 : Result = "Three"
                 Case 4 : Result = "Four"
