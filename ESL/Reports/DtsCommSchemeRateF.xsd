@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DtsCommSchemeRateF" targetNamespace="http://tempuri.org/DtsCommSchemeRateF.xsd" xmlns:mstns="http://tempuri.org/DtsCommSchemeRateF.xsd" xmlns="http://tempuri.org/DtsCommSchemeRateF.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ESL_LIQConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="ESL_LIQConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ESL.My.MySettings.GlobalReference.Default.ESL_LIQConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DtsCommSchemeRateFTableAdapter" GeneratorDataComponentClassName="DtsCommSchemeRateFTableAdapter" Name="DtsCommSchemeRateF" UserDataComponentName="DtsCommSchemeRateFTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ESL_LIQConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select 
+cast ('' as nvarchar(20)) as ae_no, 
+cast ('' as nvarchar(50)) as acc_group, 
+cast ('' as nvarchar(20)) as acc_no, 
+cast ('' as nvarchar(20)) as product_group, 
+cast ('' as nvarchar(20)) as comm_type, 
+cast ('' as nvarchar(20)) as rate_type, 
+cast (0 as decimal(18,4)) as turnover_from, 
+cast (0 as decimal(18,4)) as turnover_to, 
+cast (0 as decimal(18,4)) as comm_rate, 
+cast (0 as decimal(18,4)) as brok_per_lot</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ae_no" DataSetColumn="ae_no" />
+              <Mapping SourceColumn="acc_group" DataSetColumn="acc_group" />
+              <Mapping SourceColumn="acc_no" DataSetColumn="acc_no" />
+              <Mapping SourceColumn="product_group" DataSetColumn="product_group" />
+              <Mapping SourceColumn="comm_type" DataSetColumn="comm_type" />
+              <Mapping SourceColumn="rate_type" DataSetColumn="rate_type" />
+              <Mapping SourceColumn="turnover_from" DataSetColumn="turnover_from" />
+              <Mapping SourceColumn="turnover_to" DataSetColumn="turnover_to" />
+              <Mapping SourceColumn="comm_rate" DataSetColumn="comm_rate" />
+              <Mapping SourceColumn="brok_per_lot" DataSetColumn="brok_per_lot" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DtsCommSchemeRateF" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DtsCommSchemeRateF" msprop:Generator_DataSetName="DtsCommSchemeRateF">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtsCommSchemeRateF" msprop:Generator_UserTableName="DtsCommSchemeRateF" msprop:Generator_RowDeletedName="DtsCommSchemeRateFRowDeleted" msprop:Generator_TableClassName="DtsCommSchemeRateFDataTable" msprop:Generator_RowChangedName="DtsCommSchemeRateFRowChanged" msprop:Generator_RowClassName="DtsCommSchemeRateFRow" msprop:Generator_RowChangingName="DtsCommSchemeRateFRowChanging" msprop:Generator_RowEvArgName="DtsCommSchemeRateFRowChangeEvent" msprop:Generator_RowEvHandlerName="DtsCommSchemeRateFRowChangeEventHandler" msprop:Generator_TablePropName="_DtsCommSchemeRateF" msprop:Generator_TableVarName="tableDtsCommSchemeRateF" msprop:Generator_RowDeletingName="DtsCommSchemeRateFRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ae_no" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ae_no" msprop:Generator_ColumnPropNameInRow="ae_no" msprop:Generator_ColumnVarNameInTable="columnae_no" msprop:Generator_ColumnPropNameInTable="ae_noColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="acc_group" msdata:ReadOnly="true" msprop:Generator_UserColumnName="acc_group" msprop:Generator_ColumnPropNameInRow="acc_group" msprop:Generator_ColumnVarNameInTable="columnacc_group" msprop:Generator_ColumnPropNameInTable="acc_groupColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="acc_no" msdata:ReadOnly="true" msprop:Generator_UserColumnName="acc_no" msprop:Generator_ColumnPropNameInRow="acc_no" msprop:Generator_ColumnVarNameInTable="columnacc_no" msprop:Generator_ColumnPropNameInTable="acc_noColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="product_group" msdata:ReadOnly="true" msprop:Generator_UserColumnName="product_group" msprop:Generator_ColumnPropNameInRow="product_group" msprop:Generator_ColumnVarNameInTable="columnproduct_group" msprop:Generator_ColumnPropNameInTable="product_groupColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="comm_type" msdata:ReadOnly="true" msprop:Generator_UserColumnName="comm_type" msprop:Generator_ColumnPropNameInRow="comm_type" msprop:Generator_ColumnVarNameInTable="columncomm_type" msprop:Generator_ColumnPropNameInTable="comm_typeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rate_type" msdata:ReadOnly="true" msprop:Generator_UserColumnName="rate_type" msprop:Generator_ColumnPropNameInRow="rate_type" msprop:Generator_ColumnVarNameInTable="columnrate_type" msprop:Generator_ColumnPropNameInTable="rate_typeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="turnover_from" msdata:ReadOnly="true" msprop:Generator_UserColumnName="turnover_from" msprop:Generator_ColumnPropNameInRow="turnover_from" msprop:Generator_ColumnVarNameInTable="columnturnover_from" msprop:Generator_ColumnPropNameInTable="turnover_fromColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="turnover_to" msdata:ReadOnly="true" msprop:Generator_UserColumnName="turnover_to" msprop:Generator_ColumnPropNameInRow="turnover_to" msprop:Generator_ColumnVarNameInTable="columnturnover_to" msprop:Generator_ColumnPropNameInTable="turnover_toColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="comm_rate" msdata:ReadOnly="true" msprop:Generator_UserColumnName="comm_rate" msprop:Generator_ColumnPropNameInRow="comm_rate" msprop:Generator_ColumnVarNameInTable="columncomm_rate" msprop:Generator_ColumnPropNameInTable="comm_rateColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="brok_per_lot" msdata:ReadOnly="true" msprop:Generator_UserColumnName="brok_per_lot" msprop:Generator_ColumnPropNameInRow="brok_per_lot" msprop:Generator_ColumnVarNameInTable="columnbrok_per_lot" msprop:Generator_ColumnPropNameInTable="brok_per_lotColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

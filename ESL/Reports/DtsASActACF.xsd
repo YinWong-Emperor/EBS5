@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DtsASActACF" targetNamespace="http://tempuri.org/DtsASActACF.xsd" xmlns:mstns="http://tempuri.org/DtsASActACF.xsd" xmlns="http://tempuri.org/DtsASActACF.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ESL_LIQConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="ESL_LIQConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ESL.My.MySettings.GlobalReference.Default.ESL_LIQConnectionString1" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DtsASActACFTableAdapter" GeneratorDataComponentClassName="DtsASActACFTableAdapter" Name="DtsASActACF" UserDataComponentName="DtsASActACFTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ESL_LIQConnectionString1 (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT CAST('' as nvarchar(10)) accno, CAST('' as nvarchar(50)) accname,  CAST('' as nvarchar(10)) as aeno, CAST(getdate() as datetime) as lastTradeDate</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="accno" DataSetColumn="accno" />
+              <Mapping SourceColumn="accname" DataSetColumn="accname" />
+              <Mapping SourceColumn="aeno" DataSetColumn="aeno" />
+              <Mapping SourceColumn="lastTradeDate" DataSetColumn="lastTradeDate" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DtsASActACF" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DtsASActACF" msprop:Generator_DataSetName="DtsASActACF">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtsASActACF" msprop:Generator_UserTableName="DtsASActACF" msprop:Generator_RowDeletedName="DtsASActACFRowDeleted" msprop:Generator_RowChangedName="DtsASActACFRowChanged" msprop:Generator_RowClassName="DtsASActACFRow" msprop:Generator_RowChangingName="DtsASActACFRowChanging" msprop:Generator_RowEvArgName="DtsASActACFRowChangeEvent" msprop:Generator_RowEvHandlerName="DtsASActACFRowChangeEventHandler" msprop:Generator_TableClassName="DtsASActACFDataTable" msprop:Generator_TableVarName="tableDtsASActACF" msprop:Generator_RowDeletingName="DtsASActACFRowDeleting" msprop:Generator_TablePropName="_DtsASActACF">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="accno" msdata:ReadOnly="true" msprop:Generator_UserColumnName="accno" msprop:Generator_ColumnVarNameInTable="columnaccno" msprop:Generator_ColumnPropNameInRow="accno" msprop:Generator_ColumnPropNameInTable="accnoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="accname" msdata:ReadOnly="true" msprop:Generator_UserColumnName="accname" msprop:Generator_ColumnVarNameInTable="columnaccname" msprop:Generator_ColumnPropNameInRow="accname" msprop:Generator_ColumnPropNameInTable="accnameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="aeno" msdata:ReadOnly="true" msprop:Generator_UserColumnName="aeno" msprop:Generator_ColumnVarNameInTable="columnaeno" msprop:Generator_ColumnPropNameInRow="aeno" msprop:Generator_ColumnPropNameInTable="aenoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="lastTradeDate" msdata:ReadOnly="true" msprop:Generator_UserColumnName="lastTradeDate" msprop:Generator_ColumnVarNameInTable="columnlastTradeDate" msprop:Generator_ColumnPropNameInRow="lastTradeDate" msprop:Generator_ColumnPropNameInTable="lastTradeDateColumn" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

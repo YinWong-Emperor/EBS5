@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>Emperor Futures Limited - Password Notification Letter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=big5">
+<style>
+td {color: #000000}
+</style>
+<base target="_blank">
+</head>
+
+<body bgcolor="#FFFFFF">
+<p><center><img src=cid:all_logo></center><hr>
+<font size="2" face="arial">
+<p>Dear %USERNAME%,
+<p>Thanks very much for opening an online futures trading account in our company. For your kind information, the following is the instruction related to using our trading platform.
+<p><img src=cid:en_title_platform_dl>
+<br>Please download the installation file of trading platform by clicking the following buttons. In order to ensure a satisfactory downloading speed, please click the button of "CN Download" if you are currently in China. Otherwises, please click the button of "HK Download".
+<br><a href="http://emperorcapital.com/filemanager/common/sptrader_r846/sptrader_emp_setup_r846.exe"><img src=cid:en_but_hk_dl border="0"></a> <a href="http://emperorcapital.com/filemanager/common/sptrader_r846/sptrader_emp_setup_r846.exe"><img src=cid:en_but_dl border="0"></a>
+<p><img src=cid:en_title_platform_install>
+<br>Please kindly read the installation guideline below
+<br><a href="http://www.sharppoint.com.hk/eng/main/download_main.htm"><img src=cid:en_but_install border="0"></a>
+<p><img src=cid:en_title_platform_login>
+<br>After the installation, please launch the sptrader by clicking this icon in your desktop <img src=cid:all_icon> and login the platform with the following information.
+<br><img src=cid:en_login_demo>
+<br>Host: 220.241.155.37
+<br>User Id: Your Client ID
+<br>Password: Please find your password in the lower part of e-mail
+<p><img src=cid:en_title_platform_operation>
+<br>After the initial login of the platform, the password should be changed. The new password should  contain at least 8 digitals and contain both english letter and number. In order to confirm your smooth operation of platform, please freely browse the detailed user guide by clicking the following button.
+<br><a href="http://www.sharppoint.com.hk/sphelp/r827/eng/contents.php?lang=0"><img src=cid:en_but_guide border="0"></a>
+<hr>
+<p><img src=cid:en_subtitle_password>
+<p><font size="3">Your initial password: <b>%TRADE_CODE%</font></b>
+<br><img src=cid:all_caution>：After the initial login of the platform, the password should be changed. The new password should  contain at least 8 digitals and contain both english letter and number.<br><b>Although the password will be changed, the initial password above will <u>always</u> be your phone dealing password for placing order for overseas futures. Please keep it carefully.</b>
+<hr>
+<p><img src=cid:en_subtitle_local_rule>
+<ol>
+<li>Trading Hours (Hong Kong Time)
+<table>
+ <tr>
+  <td width="80"><font size="2">Pre-opening Session</font></td>
+  <td width="95"><font size="2">8:45am</font></td>
+  <td width="20"><font size="2">to</font></td>
+  <td><font size="2">9:15am</font></td>
+ </tr>
+ <tr>
+  <td><font size="2">Morning Session</font></td>
+  <td><font size="2">09:15am</font></td>
+  <td><font size="2">to</font></td>
+  <td><font size="2">12:00pm</font></td>
+ </tr>
+ <tr>
+  <td><font size="2">Afternoon Session</font></td>
+  <td><font size="2">1:00pm</font></td>
+  <td><font size="2">to</font></td>
+  <td><font size="2">4:15pm</font></td>
+ </tr>
+</table>
+(*Not applicable under special circumstances and during Hong Kong Public Holidays)<p>
+<li>You can contact our Customer Service Department via phone (852) 2919 2919 or utilize the online trading system to give order instructions. After an order is placed on the trading platform, you can call our Customer Service Department to amend or cancel that unexecuted order instruction. Any transaction concluded via Customer Service Department will be charged a commission according to company's standard rates. Any order instructions placed via Customer Service Department will be reflected on the trading platform in real time, you can amend or cancel that order in the same way before the transaction is executed. The client acknowledge that it may not be possible to amend or cancel his instructions or orders once given.
+<p>
+<li>The commission, levy, and trading fee would not be deducted from your cash balance in trading account, until the next trading day and before 9:00am.<p>
+<li>Please be kindly reminded to place enough margin deposit before placing order. For the margin requirement, generally our company would apply the margin requirement according to HKEx, you can check the latest margin requirement in <a href="http://www.hkex.com.hk/tradinfo/futuresmargin/margin.htm">HKEx website</a>. And our company reserves the rights to charge a higher margin requirement before notifying clients. Margin call will be issued when the Net Asset Vaue ("NAV") of Client's account is less than 80%* of the Initial Margin. The amount of Additional Margin shall be an amount that would sufficiently restore the NAV to full amount of Initial Margin as required by our company. Failure of the client, for whatever reason, to deposit full amount of addition margins before the prescribed time or the NAV of Client's account is less than 50%* of the Initial Margin, would result in strict settlement of the client's position(s) in whole or in part by our company at any market price(s) at our absolute discretion without prior notice to client.<br><b>* Our company has the right to change at any time as deemed necessary.</b><p>
+<li>If you have forgotten your login password to the trading platform, please contact our Customer Service Dept at (852) 2919 2919. We will reset your password and send it to you through e-mail.<p>
+<li>Here are the order types:<p><b><u>Normal Order</u></b><br>Normal Order is a limit order with specified price and quantity. If the order is not immediately matched, it will stay as a queued order until the market closes for the day.<p>
+<b><u>Fill-AND-Kill Order</u></b><br>
+"Fill and Kill" order is a limit order that will be immediately matched with as many contracts available in the market as possible and the remaining unmatched quantity will be cancelled.<p>
+<b><u>Fill-OR-Kill Order</u></b><br>
+"Fill or Kill" order is a limit order that has to immediately and exactly match the specified price and quantity; otherwise the order will be cancelled.<p>
+<u><b>Auction Order</b></u><br>
+An order where a bid or offer price is not specified and is entered into the Hong Kong Automated Trading System (HKATS) during the pre-market opening period for execution at the *Calculated Opening Price (COP).
+<br>When investors enter an auction order, they are prepared to buy or sell at the COP. Depending on market conditions, not all auction orders may be matched on market opening. As a result, unmatched auction orders will be converted to limit orders at *COP, or the best bid price or the best ask price after the market reopens.
+<br><b>Note:</b> A COP (Calculated Opening Price) is calculated during the pre-market opening period and serves as the market opening price for the corresponding product. A COP will be calculated only if the highest bid price of the Limit Orders entered into HKATS is greater than or equal to the lowest ask price of the Limit Orders. For more information, please visit HKEx website <a href="http://www.hkex.com.hk/" target="_blank">www.hkex.com.hk</a>.
+</ol>
+*In case of any emergency (such as adverse weather condition), you are requested to pay attention to the news or announcements made by the Hong Kong Exchanges and Clearing Limited.
+<p><img src=cid:en_subtitle_global_rule>
+<ol>
+<li>Trading Times: Depends on different products<p>
+<li>You can contact our Overseas Futures Dealing Room via phone (852) 2106 3729 or utilize the online trading system to give order instructions. After an order is placed on the trading platform, you can call our Overseas Futures Dealing Room to amend or cancel that unexecuted order instruction. Any transaction concluded via  Overseas Futures Dealing Room will be charged a commission according to company's standard rates. Any order instructions placed via  Overseas Futures Dealing Room will be reflected on the trading platform in real time, you can amend or cancel that order in the same way before the transaction is executed. The client acknowledge that it may not be possible to amend or cancel his instructions or orders once given.<p>
+<li>The commission, levy, and trading fee would not be deducted from your cash balance in trading account, until the next trading day and before 9:00am.<p>
+<li>Please be kindly reminded to place enough margin deposit before placing order. For the margin requirement, generally our company would use margin requirement according to the related Exchanges as a reference, you can check the latest margin requirement in related Exchanges' website which could be found in the part of <a href="http://www.emperorcapital.com/eng/links/">"Hyperlink"</a> in this website. And our company reserves the rights to adjust the margin requirement before notifying clients. For U.S. Futures, Margin call will be issued when the NAV of Client's account is less than 70%* of the Initial Margin. For Japan Futures, Margin call will be issued when the NAV of Client's account is less than 50%* of the Initial Margin. The amount of Additional Margin shall be an amount that would sufficiently restore the NAV to full amount of Initial Margin as required by our company. Failure of the client, for whatever reason, to deposit full amount of addition margins before the prescribed time or the NAV of Client's account is less than 20%* (for U.S. Futures) or less than 50%* (for Japan Futures) of the Initial Margin, would result in strict settlement of the client's position(s) in whole or in part by our company at any market price(s) at our absolute discretion without prior notice to client.<br><b>* Our company has the right to change at any time as deemed necessary.</b><p>
+<li>If you have forgotten your login password to the trading platform, please contact our Customer Service Dept at (852) 2919 2919. We will reset your password and send it to you through e-mail.</ol>
+<p>
+<hr><p>
+<img src=cid:en_subtitle_spec>
+<table width="400"><br>
+ <tr align="center">
+  <td bgcolor="#ffae00"><font size="2"><b>Item</b></font></td>
+  <td bgcolor="#ffae00"><font size="2"><b>Recommendation</b></font></td>
+ </tr>
+ <tr align="center">
+  <td bgcolor="#EEEEEE"><font size="2"><b>CPU:</font></b></td>
+  <td bgcolor="#C78D02"><font size="2" color="white"><b>Pentium III 800 MHz or above</b></font></td>
+ </tr>
+ <tr align="center">
+  <td bgcolor="#EEEEEE"><font size="2"><b>RAM:</font></b></td>
+  <td bgcolor="#C78D02"><font size="2" color="white"><b>256 MB or above</b></font></td>
+ </tr>
+ <tr align="center">
+  <td bgcolor="#EEEEEE"><font size="2"><b>Harddisc Space:</font></b></td>
+  <td bgcolor="#C78D02"><font size="2" color="white"><b>100 MB or above</b></font></td>
+ </tr>
+ <tr align="center">
+  <td bgcolor="#EEEEEE"><font size="2"><b>OS:</font></b></td>
+  <td bgcolor="#C78D02"><font size="2" color="white"><b>Win 98/ME/NT/2000/XP</b></font></td>
+ </tr>
+ <tr align="center">
+  <td bgcolor="#EEEEEE"><font size="2"><b>Resolution:</font></b></td>
+  <td bgcolor="#C78D02"><font size="2" color="white"><b>1024x768 or above</b></font></td>
+ </tr>
+ <tr align="center">
+  <td bgcolor="#EEEEEE"><font size="2"><b>Monitor:</font></b></td>
+  <td bgcolor="#C78D02"><font size="2" color="white"><b>19 inches or above</b></font></td>
+ </tr>
+ <tr align="center">
+  <td bgcolor="#EEEEEE"><font size="2"><b>Mouse and Keyboard:</font></b></td>
+  <td bgcolor="#C78D02"><font size="2" color="white"><b>Standard</b></font></td>
+ </tr>
+ <tr align="center">
+  <td bgcolor="#EEEEEE"><font size="2"><b>Network Connection:</font></b></td>
+  <td bgcolor="#C78D02"><font size="2" color="white"><b>128 kbps or above</b></font></td>
+ </tr>
+ <tr align="center">
+  <td bgcolor="#EEEEEE"><font size="2"><b>Firewall/Proxy settings (if applicable):</font></b></td>
+  <td bgcolor="#C78D02"><font size="2" color="white"><b>Open outgoing TCP port 8080 (Recommended)</b></font></td>
+ </tr>
+</table>
+<p><font size="3">Customer Service Department</font>
+<p><font size="3">Emperor Futures Limited</font>
+<p>
+<table>
+ <tr>
+  <td><font size="2">Hong Kong Hotline:</font></td><td><font size="2">(852) 2919 2919</font></td>
+ </tr>
+ <tr>
+  <td><font size="2">Northern China Toll-free Hotline:</font></td><td><font size="2">10800 852 1674</font></td>
+ </tr>
+ <tr>
+  <td><font size="2">Southern China Toll-free Hotline:</font></td><td><font size="2">10800 152 1674</font></td>
+ </tr>
+ <tr>
+  <td><font size="2">Southern China Toll-free Hotline:</font></td><td><font size="2">0800 349</font></td>
+ </tr>
+ <tr>
+  <td><font size="2">Oversea Dealing Hotline:</font></td><td><font size="2">(852) 2106 3729</font></td>
+ </tr>
+</table>
+</font>
+</body>
+</html>

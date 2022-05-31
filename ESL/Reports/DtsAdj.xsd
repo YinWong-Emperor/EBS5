@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DtsAdj" targetNamespace="http://tempuri.org/DtsAdj.xsd" xmlns:mstns="http://tempuri.org/DtsAdj.xsd" xmlns="http://tempuri.org/DtsAdj.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DtsAdj" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DtsAdj" msprop:Generator_DataSetName="DtsAdj">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_TablePropName="DataTable1" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="accno_1" msprop:Generator_UserColumnName="accno_1" msprop:Generator_ColumnPropNameInRow="accno_1" msprop:Generator_ColumnVarNameInTable="columnaccno_1" msprop:Generator_ColumnPropNameInTable="accno_1Column" type="xs:string" minOccurs="0" />
+              <xs:element name="adj_1" msprop:Generator_UserColumnName="adj_1" msprop:Generator_ColumnPropNameInRow="adj_1" msprop:Generator_ColumnVarNameInTable="columnadj_1" msprop:Generator_ColumnPropNameInTable="adj_1Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="creadj_1" msprop:Generator_UserColumnName="creadj_1" msprop:Generator_ColumnPropNameInRow="creadj_1" msprop:Generator_ColumnVarNameInTable="columncreadj_1" msprop:Generator_ColumnPropNameInTable="creadj_1Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ipo_1" msprop:Generator_UserColumnName="ipo_1" msprop:Generator_ColumnPropNameInRow="ipo_1" msprop:Generator_ColumnVarNameInTable="columnipo_1" msprop:Generator_ColumnPropNameInTable="ipo_1Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="adj_2" msprop:Generator_UserColumnName="adj_2" msprop:Generator_ColumnPropNameInRow="adj_2" msprop:Generator_ColumnVarNameInTable="columnadj_2" msprop:Generator_ColumnPropNameInTable="adj_2Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="creadj_2" msprop:Generator_UserColumnName="creadj_2" msprop:Generator_ColumnPropNameInRow="creadj_2" msprop:Generator_ColumnVarNameInTable="columncreadj_2" msprop:Generator_ColumnPropNameInTable="creadj_2Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ipo_2" msprop:Generator_UserColumnName="ipo_2" msprop:Generator_ColumnPropNameInRow="ipo_2" msprop:Generator_ColumnVarNameInTable="columnipo_2" msprop:Generator_ColumnPropNameInTable="ipo_2Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="adj_3" msprop:Generator_UserColumnName="adj_3" msprop:Generator_ColumnPropNameInRow="adj_3" msprop:Generator_ColumnVarNameInTable="columnadj_3" msprop:Generator_ColumnPropNameInTable="adj_3Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="creadj_3" msprop:Generator_UserColumnName="creadj_3" msprop:Generator_ColumnPropNameInRow="creadj_3" msprop:Generator_ColumnVarNameInTable="columncreadj_3" msprop:Generator_ColumnPropNameInTable="creadj_3Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ipo_3" msprop:Generator_UserColumnName="ipo_3" msprop:Generator_ColumnPropNameInRow="ipo_3" msprop:Generator_ColumnVarNameInTable="columnipo_3" msprop:Generator_ColumnPropNameInTable="ipo_3Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="adj_4" msprop:Generator_UserColumnName="adj_4" msprop:Generator_ColumnPropNameInRow="adj_4" msprop:Generator_ColumnVarNameInTable="columnadj_4" msprop:Generator_ColumnPropNameInTable="adj_4Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="creadj_4" msprop:Generator_UserColumnName="creadj_4" msprop:Generator_ColumnPropNameInRow="creadj_4" msprop:Generator_ColumnVarNameInTable="columncreadj_4" msprop:Generator_ColumnPropNameInTable="creadj_4Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ipo_4" msprop:Generator_UserColumnName="ipo_4" msprop:Generator_ColumnPropNameInRow="ipo_4" msprop:Generator_ColumnVarNameInTable="columnipo_4" msprop:Generator_ColumnPropNameInTable="ipo_4Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="adj_5" msprop:Generator_UserColumnName="adj_5" msprop:Generator_ColumnPropNameInRow="adj_5" msprop:Generator_ColumnVarNameInTable="columnadj_5" msprop:Generator_ColumnPropNameInTable="adj_5Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="creadj_5" msprop:Generator_UserColumnName="creadj_5" msprop:Generator_ColumnPropNameInRow="creadj_5" msprop:Generator_ColumnVarNameInTable="columncreadj_5" msprop:Generator_ColumnPropNameInTable="creadj_5Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ipo_5" msprop:Generator_UserColumnName="ipo_5" msprop:Generator_ColumnPropNameInRow="ipo_5" msprop:Generator_ColumnVarNameInTable="columnipo_5" msprop:Generator_ColumnPropNameInTable="ipo_5Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="adj_6" msprop:Generator_UserColumnName="adj_6" msprop:Generator_ColumnPropNameInRow="adj_6" msprop:Generator_ColumnVarNameInTable="columnadj_6" msprop:Generator_ColumnPropNameInTable="adj_6Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="creadj_6" msprop:Generator_UserColumnName="creadj_6" msprop:Generator_ColumnPropNameInRow="creadj_6" msprop:Generator_ColumnVarNameInTable="columncreadj_6" msprop:Generator_ColumnPropNameInTable="creadj_6Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ipo_6" msprop:Generator_UserColumnName="ipo_6" msprop:Generator_ColumnPropNameInRow="ipo_6" msprop:Generator_ColumnVarNameInTable="columnipo_6" msprop:Generator_ColumnPropNameInTable="ipo_6Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="adj_7" msprop:Generator_UserColumnName="adj_7" msprop:Generator_ColumnPropNameInRow="adj_7" msprop:Generator_ColumnVarNameInTable="columnadj_7" msprop:Generator_ColumnPropNameInTable="adj_7Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="creadj_7" msprop:Generator_UserColumnName="creadj_7" msprop:Generator_ColumnPropNameInRow="creadj_7" msprop:Generator_ColumnVarNameInTable="columncreadj_7" msprop:Generator_ColumnPropNameInTable="creadj_7Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ipo_7" msprop:Generator_UserColumnName="ipo_7" msprop:Generator_ColumnPropNameInRow="ipo_7" msprop:Generator_ColumnVarNameInTable="columnipo_7" msprop:Generator_ColumnPropNameInTable="ipo_7Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="adj_8" msprop:Generator_UserColumnName="adj_8" msprop:Generator_ColumnPropNameInRow="adj_8" msprop:Generator_ColumnVarNameInTable="columnadj_8" msprop:Generator_ColumnPropNameInTable="adj_8Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="creadj_8" msprop:Generator_UserColumnName="creadj_8" msprop:Generator_ColumnPropNameInRow="creadj_8" msprop:Generator_ColumnVarNameInTable="columncreadj_8" msprop:Generator_ColumnPropNameInTable="creadj_8Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ipo_8" msprop:Generator_UserColumnName="ipo_8" msprop:Generator_ColumnPropNameInRow="ipo_8" msprop:Generator_ColumnVarNameInTable="columnipo_8" msprop:Generator_ColumnPropNameInTable="ipo_8Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="adj_9" msprop:Generator_UserColumnName="adj_9" msprop:Generator_ColumnPropNameInRow="adj_9" msprop:Generator_ColumnVarNameInTable="columnadj_9" msprop:Generator_ColumnPropNameInTable="adj_9Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="creadj_9" msprop:Generator_UserColumnName="creadj_9" msprop:Generator_ColumnPropNameInRow="creadj_9" msprop:Generator_ColumnVarNameInTable="columncreadj_9" msprop:Generator_ColumnPropNameInTable="creadj_9Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ipo_9" msprop:Generator_UserColumnName="ipo_9" msprop:Generator_ColumnPropNameInRow="ipo_9" msprop:Generator_ColumnVarNameInTable="columnipo_9" msprop:Generator_ColumnPropNameInTable="ipo_9Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="adj_10" msprop:Generator_UserColumnName="adj_10" msprop:Generator_ColumnPropNameInRow="adj_10" msprop:Generator_ColumnVarNameInTable="columnadj_10" msprop:Generator_ColumnPropNameInTable="adj_10Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="creadj_10" msprop:Generator_UserColumnName="creadj_10" msprop:Generator_ColumnPropNameInRow="creadj_10" msprop:Generator_ColumnVarNameInTable="columncreadj_10" msprop:Generator_ColumnPropNameInTable="creadj_10Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ipo_10" msprop:Generator_UserColumnName="ipo_10" msprop:Generator_ColumnPropNameInRow="ipo_10" msprop:Generator_ColumnVarNameInTable="columnipo_10" msprop:Generator_ColumnPropNameInTable="ipo_10Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="adj_11" msprop:Generator_UserColumnName="adj_11" msprop:Generator_ColumnPropNameInRow="adj_11" msprop:Generator_ColumnVarNameInTable="columnadj_11" msprop:Generator_ColumnPropNameInTable="adj_11Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="creadj_11" msprop:Generator_UserColumnName="creadj_11" msprop:Generator_ColumnPropNameInRow="creadj_11" msprop:Generator_ColumnVarNameInTable="columncreadj_11" msprop:Generator_ColumnPropNameInTable="creadj_11Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ipo_11" msprop:Generator_UserColumnName="ipo_11" msprop:Generator_ColumnPropNameInRow="ipo_11" msprop:Generator_ColumnVarNameInTable="columnipo_11" msprop:Generator_ColumnPropNameInTable="ipo_11Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="adj_12" msprop:Generator_UserColumnName="adj_12" msprop:Generator_ColumnPropNameInRow="adj_12" msprop:Generator_ColumnVarNameInTable="columnadj_12" msprop:Generator_ColumnPropNameInTable="adj_12Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="creadj_12" msprop:Generator_UserColumnName="creadj_12" msprop:Generator_ColumnPropNameInRow="creadj_12" msprop:Generator_ColumnVarNameInTable="columncreadj_12" msprop:Generator_ColumnPropNameInTable="creadj_12Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ipo_12" msprop:Generator_UserColumnName="ipo_12" msprop:Generator_ColumnPropNameInRow="ipo_12" msprop:Generator_ColumnVarNameInTable="columnipo_12" msprop:Generator_ColumnPropNameInTable="ipo_12Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="adj_all" msprop:Generator_UserColumnName="adj_all" msprop:Generator_ColumnPropNameInRow="adj_all" msprop:Generator_ColumnVarNameInTable="columnadj_all" msprop:Generator_ColumnPropNameInTable="adj_allColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="creadj_all" msprop:Generator_UserColumnName="creadj_all" msprop:Generator_ColumnPropNameInRow="creadj_all" msprop:Generator_ColumnVarNameInTable="columncreadj_all" msprop:Generator_ColumnPropNameInTable="creadj_allColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ipo_all" msprop:Generator_UserColumnName="ipo_all" msprop:Generator_ColumnPropNameInRow="ipo_all" msprop:Generator_ColumnVarNameInTable="columnipo_all" msprop:Generator_ColumnPropNameInTable="ipo_allColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

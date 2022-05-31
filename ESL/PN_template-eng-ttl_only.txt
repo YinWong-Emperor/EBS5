@@ -1,0 +1,115 @@
+Dear %USERNAME%, 
+
+Thanks very much for opening an online securities trading account in our company.
+
+-------------------------------------------------------------------------------
+
+Trading Platform Password 
+
+Your initial password: %TRADE_CODE% 
+Caution: Please go to securities part of "Online Trading" in www.emperorcapital.com to download and install the platform. After the initial login of the platform, the password is recommended to be changed. The new password should contain 6 to 8 digitals.
+
+If both Web-based Version and Download Version of trading platform have been opened, please be informed that "Single Password Policy" has been applied to both platforms. Change of password in one platform, will lead to the change of password for another platform.
+
+--------------------------------------------------------------------------------
+
+Securities Trading Rule
+
+1.  Trading hours (Hong Kong Time)   
+Pre-opening Session 9:00am to 9:30am
+Morning Session 9:30am to 12:00pm 
+Afternoon Session 1:00pm to 4:00pm 
+(*Not applicable under special circumstances and during Hong Kong Public Holidays)
+
+2. You can contact our customer service via phone or utilize the online trading system to give order instructions. After an order is placed on the trading platform, you can call our customer service to amend or cancel that order instruction. Any transaction concluded via customer service will be charged a commission according to company's standard rates. Any order instructions placed via customer service will be reflected on the trading platform in real time, you can amend or cancel that order in the same way before the transaction is executed.
+
+3. Please refer to the User Guide for the functions of the trading platform: http://www.emperorcapital.com/docs/online-trade-intro.ppt.
+
+4. For an efficient operation of the trading platform, we need to carry out data back up on each trading day, the trading platform will be suspended as follows:- 
+Sat 05:00 to 06:05 
+Sun to Fri 06:00 to 06:05 
+
+5. Before you place the order to purchase securities, you are required to deposit sufficient fund in the company. At present we do not provide online margin fund credit services.
+
+6. Order Type:
+Limit Order (LO) 
+Buy Limit Orders: The order price should fall at or 20 spreads lower than the prevailing market price.Sell Limit Orders: The order price should fall at or 20 spreads higher than the prevailing market price. 
+  
+At-Auction Order (AO) 
+An at-auction order is an order with no specified price and is entered into the trading system during the Pre-opening Session for execution at the final IEP. It enjoys a higher matching priority than an at-auction limit order.An at-auction order will be automatically cancelled if unmatched. 
+  
+At-Auction Limit Order (ALO) 
+An at-auction limit order is an order with a specified price and is entered into the trading system, but the entered ask/bid price must within the range of nine times higher/lower of current ask/bid price. ALO has a specified price at or more competitive than the final IEP. Depending on market conditions, not all at-auction orders can be matched. As a result, unmatched at-auction orders will be cancelled after order matching. 
+  
+Enhanced Limit Order (ELO) 
+An enhanced limit order allows matching of up to five price queues at a time. Unmatched ELO will become same price LO. Changes made of ELO input of ask/bid price should not lower/higher than current input price. Otherwise the system will reject any changes.
+
+7. For the buy limit order, the price must be set at the market price or within 20 spreads lower than the market price. For the sell limit order, the price must be set at the market price or within 20 spreads higher than the market price, otherwise the order instruction can not be delivered. 
+
+8. The trading instruction is only valid till day-ends, all instructions not successfully executed will not be carried forward to the next trading day. 
+
+9. If you have forgotten your login password to the trading platform, please contact our Customer Service Dept at (852) 2919 2919. We will reset your password and send it to you by e-mail or in a sealed envelope by post. 
+
+10. The commission charged for orders placed via online trading platform is separated from the commission charged for orders placed via phone. 
+
+11. By opening an online trading services, any new customers shall entitle 300 free real-time snapshot quotes per month. HKD$0.3 shall be charged for each additional quote used. And customers can use a maximum of 5,000 quotes per month. In order to reward support from customers, there is also an Online Trade Free Quotation Scheme as follows:-
+
+Monthly Turnover*: <$350,000
+Free Snapshot (click): 300
+
+Monthly Turnover*: >$350,000 and < $800,000
+Free Snapshot (click): 600
+
+Monthly Turnover*: >$800,000 and < $1,500,000
+Free Snapshot (click): 1,000
+
+Monthly Turnover*: >$1,500,000
+Free: Streaming Quotation
+
+* Turnover from the last trading day in the previous month and the second last trading day in the current month.
+
+Alternatively, customers can also choose our streaming quotation services with a monthly fee of HKD$390.00, the streaming quotation charge is charged in advanced. Full streaming quotation charge shall also be charged, even the services is started or is terminated in the middle of a month.
+
+--------------------------------------------------------------------------------
+
+System Requirement 
+
+Pentium III 500MHz, 192MB Memory, 2G Hard disk space
+
+Computer Screen / Screen Requirement
+800 x 600, 1024 x 768 or higher pixels, 24-bit color (If you want to use full screen control, please use 800 x 600 pixels.) 
+
+Operating System 
+Chinese/English MicroSoft Windows XP 
+Chinese/English MicroSoft Windows 2000 Professional 
+Chinese/English MicroSoft Windows Millennium 
+Chinese/English MicroSoft Windows NT 4.0 with Service Pack 5
+Chinese/English MicroSoft Windows 98 Second Edition 
+
+Web Browser
+Internet Explorer 5.5 or higher version installed with MicroSoft Java VM (Microsoft Java VM 5.0.0.3167 or higher version)
+
+MicroSoft Java VM 
+Since i-Trade is using Java Applet technique, Java VM MUST be installed in your Internet Explorer. 
+Download the most updated Microsoft Java VM: http://www.netvigator.com/netvigator/smn/download/msjavx86.exe
+
+Internet Connection 
+Minimum Requirement: 56kbps Modem 
+Suggestion: broadband transmission or dedicated line 
+
+Chinese Support
+I-Trade is using Microsoft Windows's default Chinese typeface to show Chinese characters, no need to install extra Chinese BOT.
+If your windows has been installed with default Chinese typeface, i-Trade can show Chinese already. 
+Traditional Chinese: ¡§MingLiu¡¨ or ¡§·s²Ó©úÅé¡¨ 
+Simplified Chinese: ¡§MS Song¡¨, ¡§§ºÊ^¡¨ or ¡§SimSun¡¨ 
+
+--------------------------------------------------------------------------------
+
+Customer Service Department 
+
+Emperor Securities Limited 
+
+Hong Kong Hotline: (852) 2919 2919 
+Northern China Toll-free Hotline: 10800 852 1674 
+Southern China Toll-free Hotline: 10800 152 1674 
+Macau Toll-free Hotline: 0800 349 
