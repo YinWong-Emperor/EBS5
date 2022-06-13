@@ -59,10 +59,11 @@ Public Class frmCRS
             writer.Formatting = Formatting.Indented
             writer.Indentation = 2
 
-            writer.WriteStartElement("crs", "AEOI_Report", "http://www.ird.gov.hk/AEOI/crs/v1/HK_XMLSchema_v1.0.xsd") 'start AEOI_Report
-            writer.WriteAttributeString("xmlns", "cfc", Nothing, "http://www.ird.gov.hk/AEOI/aeoitypes/v1")
-            writer.WriteAttributeString("xmlns", "crs", Nothing, "http://www.ird.gov.hk/AEOI/crs/v1")
+            writer.WriteStartElement("crs", "AEOI_Report", "http://www.ird.gov.hk/AEOI/crs/v2/HK_XMLSchema_v2.0.xsd") 'start AEOI_Report
+            writer.WriteAttributeString("xmlns", "cfc", Nothing, "http://www.ird.gov.hk/AEOI/aeoitypes/v2")
+            writer.WriteAttributeString("xmlns", "crs", Nothing, "http://www.ird.gov.hk/AEOI/crs/v2")
             writer.WriteAttributeString("xmlns", "xsi", Nothing, "http://www.w3.org/2001/XMLSchema-instance")
+            writer.WriteAttributeString("version", "2.0")
 
             Me.GenerateMessageSpec(writer)
 
@@ -440,7 +441,7 @@ Public Class frmCRS
 
         If Me.rbSecurities.Checked Then
             Me.strAccType = "Securities"
-            Me.strAEOIid = "AE13315"
+            Me.strAEOIid = "AN18993"
             Me.strFIName = "Emperor Securities Limited"
         Else
             Me.strAccType = "Futures"
