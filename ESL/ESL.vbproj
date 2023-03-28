@@ -46,9 +46,9 @@
     <InstallUrl>\\ebs.prod.ecg.emperorgroup.net\ebs\EBS5\</InstallUrl>
     <ProductName>EBS5</ProductName>
     <PublisherName>EBS5</PublisherName>
-    <MinimumRequiredVersion>1.0.7.10</MinimumRequiredVersion>
-    <ApplicationRevision>10</ApplicationRevision>
-    <ApplicationVersion>1.0.7.10</ApplicationVersion>
+    <MinimumRequiredVersion>1.0.7.11</MinimumRequiredVersion>
+    <ApplicationRevision>11</ApplicationRevision>
+    <ApplicationVersion>1.0.7.11</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -315,6 +315,11 @@
     <Compile Include="Classes\ClsFutureProductMaster.vb" />
     <Compile Include="Classes\ClsRunnerTaxableIncomeMaster.vb" />
     <Compile Include="Classes\ClsImportCRSAccountInfo.vb" />
+    <Compile Include="Classes\ClsCltBalSumUS.vb" />
+    <Compile Include="Classes\clsStressTestUS.vb" />
+    <Compile Include="Classes\ClsStockHoldingUS.vb" />
+    <Compile Include="Classes\ClsMrgCallUS.vb" />
+    <Compile Include="Classes\ClsRptDebitBalConUS.vb" />
     <Compile Include="Classes\XmlValidationErrorBuilder.vb" />
     <Compile Include="Components\myAmountBox.vb">
       <SubType>Component</SubType>
@@ -366,6 +371,36 @@
     </Compile>
     <Compile Include="Components\myTextBox.vb">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmRptMrgCallUS.Designer.vb">
+      <DependentUpon>FrmRptMrgCallUS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmRptMrgCallUS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmStockHoldingUS.Designer.vb">
+      <DependentUpon>FrmStockHoldingUS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmStockHoldingUS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmStressTestUS.Designer.vb">
+      <DependentUpon>FrmStressTestUS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmStressTestUS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmRptDebitBalConUS.Designer.vb">
+      <DependentUpon>FrmRptDebitBalConUS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmRptDebitBalConUS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCltBalSumUS.Designer.vb">
+      <DependentUpon>FrmCltBalSumUS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmCltBalSumUS.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmImportCRSAccountInfo.Designer.vb">
       <DependentUpon>FrmImportCRSAccountInfo.vb</DependentUpon>
@@ -992,6 +1027,12 @@
     <Compile Include="Forms\FrmImportData.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\FrmImportDataUS.Designer.vb">
+      <DependentUpon>FrmImportDataUS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmImportDataUS.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmIP.Designer.vb">
       <DependentUpon>frmIP.vb</DependentUpon>
     </Compile>
@@ -1531,6 +1572,36 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Reports\rptStrTestUS.vb">
+      <DependentUpon>rptStrTestUS.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\rptStrTest1US.vb">
+      <DependentUpon>rptStrTest1US.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RptMarginCallUS.vb">
+      <DependentUpon>RptMarginCallUS.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RptDebitBalConUS.vb">
+      <DependentUpon>RptDebitBalConUS.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RptCltBalSumUS.vb">
+      <DependentUpon>RptCltBalSumUS.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Reports\DtsDebitBalCon.vb">
       <DependentUpon>DtsDebitBalCon.xsd</DependentUpon>
@@ -2501,6 +2572,26 @@
       <SubType>Designer</SubType>
       <DependentUpon>myRadioButton.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmRptMrgCallUS.resx">
+      <DependentUpon>FrmRptMrgCallUS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmStockHoldingUS.resx">
+      <DependentUpon>FrmStockHoldingUS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmStressTestUS.resx">
+      <DependentUpon>FrmStressTestUS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmRptDebitBalConUS.resx">
+      <DependentUpon>FrmRptDebitBalConUS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCltBalSumUS.resx">
+      <DependentUpon>FrmCltBalSumUS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmImportCRSAccountInfo.resx">
       <DependentUpon>FrmImportCRSAccountInfo.vb</DependentUpon>
     </EmbeddedResource>
@@ -2898,6 +2989,9 @@
     <EmbeddedResource Include="Forms\FrmImportData.resx">
       <DependentUpon>FrmImportData.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmImportDataUS.resx">
+      <DependentUpon>FrmImportDataUS.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmIP.resx">
       <DependentUpon>frmIP.vb</DependentUpon>
     </EmbeddedResource>
@@ -3238,6 +3332,26 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptStrTestUS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptStrTestUS.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptStrTest1US.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptStrTest1US.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptMarginCallUS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptMarginCallUS.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptDebitBalConUS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptDebitBalConUS.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptCltBalSumUS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptCltBalSumUS.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RptCommAdjInt.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -247,6 +247,29 @@ Public Module ModFxCommon
 
     End Function
 
+    Public Function GFncGetTDateUS() As Date
+        Dim strSQL As String = ""
+        Dim dtTdate As Date
+        'Dim reader As SqlDataReader
+        Dim DtsReader As New DataSet
+
+        strSQL = "Select * from stcontrol_US "
+        DtsReader = GFncRtnDS(GSCnLiqConn, strSQL)
+
+        If DtsReader.Tables(0).Rows.Count > 0 Then
+            'reader.Read()
+            dtTdate = DtsReader.Tables(0).Rows(0).Item("tradeDate")
+        Else
+            dtTdate = CDate("1900/01/01")
+        End If
+
+        'reader.Close()
+        DtsReader.Dispose()
+        'CloseDRCon()
+        Return dtTdate
+
+    End Function
+
     Public Sub GSubWriteELog(ByVal StrError As String)
 
         GSubWriteErrLog(StrError, GStrEPath)

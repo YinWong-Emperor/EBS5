@@ -15,6 +15,7 @@ Public Class ClsImportData
             Return Nothing
         End Try
     End Function
+
     Protected Friend Function FncGetExecutingGroup() As Object
         Try
             Dim sqlCmd As SqlCommand = New SqlCommand("s_Get_ImportDataExecutingGroup", GSCnSqlConn)
@@ -57,6 +58,85 @@ Public Class ClsImportData
             Dim timestamp As String = Format(Now, "yyyyMMddHHmmssfff")
             ' parms
             AddParameter(sqlCmd, "G2BSDB", GStrG2BSDB)
+            AddParameter(sqlCmd, "G2BFDB", GStrG2BFDB)
+            AddParameter(sqlCmd, "LiqDB", GSCnLiqConn.Database.Trim)
+            AddParameter(sqlCmd, "BalanceDB", GSCnBalConn.Database.Trim)
+            AddParameter(sqlCmd, "group", group)
+            AddParameter(sqlCmd, "user", GStrloginID)
+            AddParameter(sqlCmd, "nextTradeDate", nextTradeDate)
+            AddParameter(sqlCmd, "timestamp", timestamp)
+
+            Dim result As DataTable = GFncRtnDS(sqlCmd).Tables(0)
+            If result Is Nothing Or result.Rows.Count <= 0 Then
+                Return "Import Error!"
+            Else
+                Dim item As DataRow = result.Rows(0)
+                If GFncNoNullIntValue(item("error")) <> 0 Then
+                    Return item("message")
+                Else
+                    Return Nothing
+                End If
+
+            End If
+        Catch ex As Exception
+            GSubWriteErrLog(ex.Message, "", False)
+            Return ex.Message
+        Finally
+            newConn.Close()
+        End Try
+    End Function
+
+    '----------------------------
+    '-- For US Margin
+    '----------------------------
+    Protected Friend Function FncGetProgressUS(ByVal group As String, ByVal stepId As Integer) As DataTable
+        Try
+            Dim sqlCmd As SqlCommand = New SqlCommand("s_Get_ImportDataProgressUS", GSCnSqlConn)
+            sqlCmd.CommandType = CommandType.StoredProcedure
+            ' parms
+            AddParameter(sqlCmd, "group", group)
+            AddParameter(sqlCmd, "stepId", stepId)
+
+            Return GFncRtnDS(sqlCmd).Tables(0)
+        Catch ex As Exception
+            GSubWriteErrLog(ex.Message, "", False)
+            Return Nothing
+        End Try
+    End Function
+
+    Protected Friend Function FncGetExecutingGroupUS() As Object
+        Try
+            Dim sqlCmd As SqlCommand = New SqlCommand("s_Get_ImportDataExecutingGroupUS", GSCnSqlConn)
+            sqlCmd.CommandType = CommandType.StoredProcedure
+            ' parms
+            'AddParameter(sqlCmd, "group", group)
+            'AddParameter(sqlCmd, "stepId", stepId)
+
+            Return GFncExecuteScalar(sqlCmd)
+        Catch ex As Exception
+            GSubWriteErrLog(ex.Message, "", False)
+            Return Nothing
+        End Try
+    End Function
+
+    Protected Friend Function FncGetG2BLastTradeDateUS() As Date
+        Dim sqlCmd As SqlCommand = New SqlCommand("s_Get_G2BSTradeDate", GSCnSqlConn)
+        sqlCmd.CommandType = CommandType.StoredProcedure
+        AddParameter(sqlCmd, "G2BSDB", GStrG2BS2DB)         'G2BS2DB: For US Margin     / G2BSDB for normal import
+        Dim dt As DataTable = GFncRtnDS(sqlCmd).Tables(0)
+        Dim g2bDate As Date = GFncNoNullDate(dt.Rows(0)("trade_date"))
+        Return g2bDate
+    End Function
+
+    Protected Friend Function FncImportDataUS(ByVal group As String, ByVal nextTradeDate As Date) As String
+        Dim newConn As SqlConnection = CType(GSCnSqlConn, ICloneable).Clone
+        newConn.Open()
+        Try
+            Dim sqlCmd As SqlCommand = New SqlCommand("s_Ins_ImportDataUS", newConn)
+            sqlCmd.CommandType = CommandType.StoredProcedure
+            Dim timestamp As String = Format(Now, "yyyyMMddHHmmssfff")
+            ' parms
+            AddParameter(sqlCmd, "G2BSDB", GStrG2BS2DB)     'G2BS2DB: For US Margin     / G2BSDB for normal import
             AddParameter(sqlCmd, "G2BFDB", GStrG2BFDB)
             AddParameter(sqlCmd, "LiqDB", GSCnLiqConn.Database.Trim)
             AddParameter(sqlCmd, "BalanceDB", GSCnBalConn.Database.Trim)

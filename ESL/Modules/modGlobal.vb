@@ -21,6 +21,7 @@ Public Module modGlobal
     Public GStrG2BSPRODDB As String
     Public GStrG2BFPRODDB As String
     Public GStrG2BSDB As String
+    Public GStrG2BS2DB As String    'For US Margin
     Public GStrG2BFDB As String
     Public GStrG2BSLMTHDB As String
     Public GStrG2BFLMTHDB As String

@@ -32,6 +32,7 @@ Public Class frmLogin
         GStrG2BSPRODDB = GSubGetESLDB("PG2BS")
         GStrG2BFPRODDB = GSubGetESLDB("PG2BF")
         GStrG2BSDB = GSubGetESLDB("G2BS")
+        GStrG2BS2DB = GSubGetESLDB("G2BS2")     'For US Margin
         GStrG2BFDB = GSubGetESLDB("G2BF")
         GStrG2BSLMTHDB = GSubGetESLDB("LG2BS")
         GStrG2BFLMTHDB = GSubGetESLDB("LG2BF")
