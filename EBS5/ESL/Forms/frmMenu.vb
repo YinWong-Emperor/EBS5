@@ -863,6 +863,10 @@ Public Class frmMenu
         ShowNewForm(FrmImportData)
     End Sub
 
+    Private Sub ImportDataUSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportDataUSToolStripMenuItem.Click
+        ShowNewForm(FrmImportDataUS)
+    End Sub
+
     Private Sub RunnerTaxableIncomeMasterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RunnerTaxableIncomeMasterToolStripMenuItem.Click
         ShowNewForm(FrmRunnerTaxableIncomeMaster)
     End Sub
@@ -927,4 +931,23 @@ Public Class frmMenu
         ShowNewForm(frmRptTradingActAlert)
     End Sub
 
+    Private Sub ClientBalanceSummaryReportUSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientBalanceSummaryReportUSToolStripMenuItem.Click
+        ShowNewForm(FrmCltBalSumUS)
+    End Sub
+
+    Private Sub MarginCallConcentrationReportUSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MarginCallConcentrationReportUSToolStripMenuItem.Click
+        ShowNewForm(FrmRptDebitBalConUS)
+    End Sub
+
+    Private Sub MarginCallReportUSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MarginCallReportUSToolStripMenuItem.Click
+        ShowNewForm(FrmRptMrgCallUS)
+    End Sub
+
+    Private Sub MarginClientStockHoldingsUSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MarginClientStockHoldingsUSToolStripMenuItem.Click
+        ShowNewForm(FrmStockHoldingUS)
+    End Sub
+
+    Private Sub StressTestReportUSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StressTestReportUSToolStripMenuItem.Click
+        ShowNewForm(FrmStressTestUS)
+    End Sub
 End Class

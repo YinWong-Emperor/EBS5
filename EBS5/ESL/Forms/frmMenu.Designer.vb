@@ -28,6 +28,7 @@ Partial Class frmMenu
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImportDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImportDataNewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ImportDataUSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserMaintenanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserChangePasswordToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AccessControlToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -116,6 +117,11 @@ Partial Class frmMenu
         Me.TradingActivityAlertReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FuturesTradingActivityAlertReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StockOptionsTradingActivityAlertReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClientBalanceSummaryReportUSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MarginCallConcentrationReportUSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MarginCallReportUSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MarginClientStockHoldingsUSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StressTestReportUSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MaintenanceToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClienToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientsOfMostCommissionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -251,7 +257,7 @@ Partial Class frmMenu
         'ToolStripStatusLabel
         '
         Me.ToolStripStatusLabel.Name = "ToolStripStatusLabel"
-        Me.ToolStripStatusLabel.Size = New System.Drawing.Size(41, 17)
+        Me.ToolStripStatusLabel.Size = New System.Drawing.Size(39, 17)
         Me.ToolStripStatusLabel.Text = "Status"
         '
         'MenuStrip1
@@ -268,7 +274,7 @@ Partial Class frmMenu
         '
         'ToolStripMenuItem1
         '
-        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImportDataToolStripMenuItem, Me.ImportDataNewToolStripMenuItem, Me.UserMaintenanceToolStripMenuItem, Me.UserChangePasswordToolStripMenuItem, Me.AccessControlToolStripMenuItem, Me.DatabaseBackupToolStripMenuItem, Me.DatabaseRestoreToolStripMenuItem, Me.ImportCommDataToolStripMenuItem})
+        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImportDataToolStripMenuItem, Me.ImportDataNewToolStripMenuItem, Me.ImportDataUSToolStripMenuItem, Me.UserMaintenanceToolStripMenuItem, Me.UserChangePasswordToolStripMenuItem, Me.AccessControlToolStripMenuItem, Me.DatabaseBackupToolStripMenuItem, Me.DatabaseRestoreToolStripMenuItem, Me.ImportCommDataToolStripMenuItem})
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(108, 20)
         Me.ToolStripMenuItem1.Text = "Maintenance (&S)"
@@ -276,55 +282,61 @@ Partial Class frmMenu
         'ImportDataToolStripMenuItem
         '
         Me.ImportDataToolStripMenuItem.Name = "ImportDataToolStripMenuItem"
-        Me.ImportDataToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.ImportDataToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.ImportDataToolStripMenuItem.Text = "Import Data (Old)"
         Me.ImportDataToolStripMenuItem.Visible = False
         '
         'ImportDataNewToolStripMenuItem
         '
         Me.ImportDataNewToolStripMenuItem.Name = "ImportDataNewToolStripMenuItem"
-        Me.ImportDataNewToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.ImportDataNewToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.ImportDataNewToolStripMenuItem.Text = "Import Data"
+        '
+        'ImportDataUSToolStripMenuItem
+        '
+        Me.ImportDataUSToolStripMenuItem.Name = "ImportDataUSToolStripMenuItem"
+        Me.ImportDataUSToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
+        Me.ImportDataUSToolStripMenuItem.Text = "Import Data (Same Day US)"
         '
         'UserMaintenanceToolStripMenuItem
         '
         Me.UserMaintenanceToolStripMenuItem.Enabled = False
         Me.UserMaintenanceToolStripMenuItem.Name = "UserMaintenanceToolStripMenuItem"
-        Me.UserMaintenanceToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.UserMaintenanceToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.UserMaintenanceToolStripMenuItem.Text = "User Maintenance"
         '
         'UserChangePasswordToolStripMenuItem
         '
         Me.UserChangePasswordToolStripMenuItem.Enabled = False
         Me.UserChangePasswordToolStripMenuItem.Name = "UserChangePasswordToolStripMenuItem"
-        Me.UserChangePasswordToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.UserChangePasswordToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.UserChangePasswordToolStripMenuItem.Text = "User Change Password"
         '
         'AccessControlToolStripMenuItem
         '
         Me.AccessControlToolStripMenuItem.Enabled = False
         Me.AccessControlToolStripMenuItem.Name = "AccessControlToolStripMenuItem"
-        Me.AccessControlToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.AccessControlToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.AccessControlToolStripMenuItem.Text = "Access Control"
         '
         'DatabaseBackupToolStripMenuItem
         '
         Me.DatabaseBackupToolStripMenuItem.Enabled = False
         Me.DatabaseBackupToolStripMenuItem.Name = "DatabaseBackupToolStripMenuItem"
-        Me.DatabaseBackupToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.DatabaseBackupToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.DatabaseBackupToolStripMenuItem.Text = "Database Backup"
         '
         'DatabaseRestoreToolStripMenuItem
         '
         Me.DatabaseRestoreToolStripMenuItem.Enabled = False
         Me.DatabaseRestoreToolStripMenuItem.Name = "DatabaseRestoreToolStripMenuItem"
-        Me.DatabaseRestoreToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.DatabaseRestoreToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.DatabaseRestoreToolStripMenuItem.Text = "Database Restore"
         '
         'ImportCommDataToolStripMenuItem
         '
         Me.ImportCommDataToolStripMenuItem.Name = "ImportCommDataToolStripMenuItem"
-        Me.ImportCommDataToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.ImportCommDataToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.ImportCommDataToolStripMenuItem.Text = "Import Comm. Data"
         '
         'FunctionsToolStripMenuItem
@@ -461,7 +473,7 @@ Partial Class frmMenu
         '
         'ReportsStripMenuItem
         '
-        Me.ReportsStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem4, Me.TradingHistToolStripMenuItem, Me.LiquToolStripMenuItem, Me.LiquidationToolStripMenuItem, Me.LiquidaionFeedBackListingToolStripMenuItem, Me.ExportClientBalanceListToolStripMenuItem, Me.ClientBalanceSummaryReportToolStripMenuItem, Me.AccountListingToolStripMenuItem, Me.ActiveAccountReportToolStripMenuItem, Me.ExortClientMasterToolStripMenuItem, Me.ExportClientMasterCustomToolStripMenuItem, Me.ExportClientMasterMailTS, Me.InternetTradeReportToolStripMenuItem, Me.CRCConnTranReportToolStripMenuItem, Me.MarginCallReportNewToolStripMenuItem, Me.MarginCallConcentrationReportToolStripMenuItem, Me.MarginClientStockHoldingsToolStripMenuItem, Me.LogReportToolStripMenuItem, Me.CreditLimitReportToolStripMenuItem, Me.CRCReportToolStripMenuItem, Me.AccountTradePatternFToolStripMenuItem, Me.ToolStripMenuItem6, Me.CCTReportToolStripMenuItem, Me.RepledgeStockToolStripMenuItem, Me.TradeHistoryReportToolStripMenuItem, Me.LargeCashDepositLogToolStripMenuItem, Me.ClientTurnoverTS, Me.ExternalAccountTS, Me.StockMonitorToolStripMenuItem, Me.FATCAToolStripMenuItem1, Me.ForeignMarketReportToolStripMenuItem, Me.AlertMonitoringSystemToolStripMenuItem})
+        Me.ReportsStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem4, Me.TradingHistToolStripMenuItem, Me.LiquToolStripMenuItem, Me.LiquidationToolStripMenuItem, Me.LiquidaionFeedBackListingToolStripMenuItem, Me.ExportClientBalanceListToolStripMenuItem, Me.ClientBalanceSummaryReportToolStripMenuItem, Me.AccountListingToolStripMenuItem, Me.ActiveAccountReportToolStripMenuItem, Me.ExortClientMasterToolStripMenuItem, Me.ExportClientMasterCustomToolStripMenuItem, Me.ExportClientMasterMailTS, Me.InternetTradeReportToolStripMenuItem, Me.CRCConnTranReportToolStripMenuItem, Me.MarginCallReportNewToolStripMenuItem, Me.MarginCallConcentrationReportToolStripMenuItem, Me.MarginClientStockHoldingsToolStripMenuItem, Me.LogReportToolStripMenuItem, Me.CreditLimitReportToolStripMenuItem, Me.CRCReportToolStripMenuItem, Me.AccountTradePatternFToolStripMenuItem, Me.ToolStripMenuItem6, Me.CCTReportToolStripMenuItem, Me.RepledgeStockToolStripMenuItem, Me.TradeHistoryReportToolStripMenuItem, Me.LargeCashDepositLogToolStripMenuItem, Me.ClientTurnoverTS, Me.ExternalAccountTS, Me.StockMonitorToolStripMenuItem, Me.FATCAToolStripMenuItem1, Me.ForeignMarketReportToolStripMenuItem, Me.AlertMonitoringSystemToolStripMenuItem, Me.ClientBalanceSummaryReportUSToolStripMenuItem, Me.MarginCallConcentrationReportUSToolStripMenuItem, Me.MarginCallReportUSToolStripMenuItem, Me.MarginClientStockHoldingsUSToolStripMenuItem, Me.StressTestReportUSToolStripMenuItem})
         Me.ReportsStripMenuItem.Name = "ReportsStripMenuItem"
         Me.ReportsStripMenuItem.Size = New System.Drawing.Size(83, 20)
         Me.ReportsStripMenuItem.Text = "Reports (&R)"
@@ -470,7 +482,7 @@ Partial Class frmMenu
         '
         Me.ToolStripMenuItem4.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadNewEdgeFileToolStripMenuItem, Me.NewedgeImportedStatusToolStripMenuItem, Me.NewedgeCommodityMToolStripMenuItem, Me.NewedgeTradeMasterToolStripMenuItem, Me.CPAdjustmentToolStripMenuItem, Me.OPAdjustmentTS, Me.TradeHistoryAdjustmentToolStripMenuItem, Me.PLAdjustmentMenuItem, Me.NewedgeDiffReportToolStripMenuItem, Me.FeeClassMasterToolStripMenuItem, Me.NewedgeProductMappingToolStripMenuItem, Me.NewedgeOpenPositionReportToolStripMenuItem, Me.AutoMatchReportToolStripMenuItem, Me.NewedgeAutoMatchReportToolStripMenuItem, Me.NewedgeFloatingAndPLReportToolStripMenuItem, Me.AdjustmentReportToolStripMenuItem2, Me.OpenPositionCheckingReportToolStripMenuItem, Me.FutureProductMasterMenuItem})
         Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(271, 22)
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(409, 22)
         Me.ToolStripMenuItem4.Text = "Futures"
         '
         'LoadNewEdgeFileToolStripMenuItem
@@ -585,117 +597,117 @@ Partial Class frmMenu
         'TradingHistToolStripMenuItem
         '
         Me.TradingHistToolStripMenuItem.Name = "TradingHistToolStripMenuItem"
-        Me.TradingHistToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.TradingHistToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.TradingHistToolStripMenuItem.Text = "Trading History"
         '
         'LiquToolStripMenuItem
         '
         Me.LiquToolStripMenuItem.Name = "LiquToolStripMenuItem"
-        Me.LiquToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.LiquToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.LiquToolStripMenuItem.Text = "Liquidaion Listing (Old)"
         Me.LiquToolStripMenuItem.Visible = False
         '
         'LiquidationToolStripMenuItem
         '
         Me.LiquidationToolStripMenuItem.Name = "LiquidationToolStripMenuItem"
-        Me.LiquidationToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.LiquidationToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.LiquidationToolStripMenuItem.Text = "Liquidation Listing"
         '
         'LiquidaionFeedBackListingToolStripMenuItem
         '
         Me.LiquidaionFeedBackListingToolStripMenuItem.Name = "LiquidaionFeedBackListingToolStripMenuItem"
-        Me.LiquidaionFeedBackListingToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.LiquidaionFeedBackListingToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.LiquidaionFeedBackListingToolStripMenuItem.Text = "Liquidaion FeedBack Listing"
         '
         'ExportClientBalanceListToolStripMenuItem
         '
         Me.ExportClientBalanceListToolStripMenuItem.Name = "ExportClientBalanceListToolStripMenuItem"
-        Me.ExportClientBalanceListToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.ExportClientBalanceListToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.ExportClientBalanceListToolStripMenuItem.Text = "Export Client Balance List"
         '
         'ClientBalanceSummaryReportToolStripMenuItem
         '
         Me.ClientBalanceSummaryReportToolStripMenuItem.Name = "ClientBalanceSummaryReportToolStripMenuItem"
-        Me.ClientBalanceSummaryReportToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.ClientBalanceSummaryReportToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.ClientBalanceSummaryReportToolStripMenuItem.Text = "Client Balance Summary Report"
         '
         'AccountListingToolStripMenuItem
         '
         Me.AccountListingToolStripMenuItem.Name = "AccountListingToolStripMenuItem"
-        Me.AccountListingToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.AccountListingToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.AccountListingToolStripMenuItem.Text = "Account Listing"
         '
         'ActiveAccountReportToolStripMenuItem
         '
         Me.ActiveAccountReportToolStripMenuItem.Name = "ActiveAccountReportToolStripMenuItem"
-        Me.ActiveAccountReportToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.ActiveAccountReportToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.ActiveAccountReportToolStripMenuItem.Text = "Active Account Report"
         '
         'ExortClientMasterToolStripMenuItem
         '
         Me.ExortClientMasterToolStripMenuItem.Name = "ExortClientMasterToolStripMenuItem"
-        Me.ExortClientMasterToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.ExortClientMasterToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.ExortClientMasterToolStripMenuItem.Text = "Export Client Master"
         '
         'ExportClientMasterCustomToolStripMenuItem
         '
         Me.ExportClientMasterCustomToolStripMenuItem.Name = "ExportClientMasterCustomToolStripMenuItem"
-        Me.ExportClientMasterCustomToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.ExportClientMasterCustomToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.ExportClientMasterCustomToolStripMenuItem.Text = "Export Client Master (Custom)"
         '
         'ExportClientMasterMailTS
         '
         Me.ExportClientMasterMailTS.Name = "ExportClientMasterMailTS"
-        Me.ExportClientMasterMailTS.Size = New System.Drawing.Size(271, 22)
+        Me.ExportClientMasterMailTS.Size = New System.Drawing.Size(409, 22)
         Me.ExportClientMasterMailTS.Text = "Export Client Master (Email Only)"
         '
         'InternetTradeReportToolStripMenuItem
         '
         Me.InternetTradeReportToolStripMenuItem.Name = "InternetTradeReportToolStripMenuItem"
-        Me.InternetTradeReportToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.InternetTradeReportToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.InternetTradeReportToolStripMenuItem.Text = "Internet Trade Report"
         '
         'CRCConnTranReportToolStripMenuItem
         '
         Me.CRCConnTranReportToolStripMenuItem.Name = "CRCConnTranReportToolStripMenuItem"
-        Me.CRCConnTranReportToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.CRCConnTranReportToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.CRCConnTranReportToolStripMenuItem.Text = "CRC Conn Tran Report"
         '
         'MarginCallReportNewToolStripMenuItem
         '
         Me.MarginCallReportNewToolStripMenuItem.Name = "MarginCallReportNewToolStripMenuItem"
-        Me.MarginCallReportNewToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.MarginCallReportNewToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.MarginCallReportNewToolStripMenuItem.Text = "Margin Call Report"
         '
         'MarginCallConcentrationReportToolStripMenuItem
         '
         Me.MarginCallConcentrationReportToolStripMenuItem.Name = "MarginCallConcentrationReportToolStripMenuItem"
-        Me.MarginCallConcentrationReportToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.MarginCallConcentrationReportToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.MarginCallConcentrationReportToolStripMenuItem.Text = "Debit Balance Concentration Report"
         '
         'MarginClientStockHoldingsToolStripMenuItem
         '
         Me.MarginClientStockHoldingsToolStripMenuItem.Name = "MarginClientStockHoldingsToolStripMenuItem"
-        Me.MarginClientStockHoldingsToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.MarginClientStockHoldingsToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.MarginClientStockHoldingsToolStripMenuItem.Text = "Margin Client Stock Holdings"
         '
         'LogReportToolStripMenuItem
         '
         Me.LogReportToolStripMenuItem.Name = "LogReportToolStripMenuItem"
-        Me.LogReportToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.LogReportToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.LogReportToolStripMenuItem.Text = "Log Report"
         '
         'CreditLimitReportToolStripMenuItem
         '
         Me.CreditLimitReportToolStripMenuItem.Name = "CreditLimitReportToolStripMenuItem"
-        Me.CreditLimitReportToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.CreditLimitReportToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.CreditLimitReportToolStripMenuItem.Text = "Client Account Statistics"
         '
         'CRCReportToolStripMenuItem
         '
         Me.CRCReportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OTRptToolStripMenuItem})
         Me.CRCReportToolStripMenuItem.Name = "CRCReportToolStripMenuItem"
-        Me.CRCReportToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.CRCReportToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.CRCReportToolStripMenuItem.Text = "CRC Report"
         '
         'OTRptToolStripMenuItem
@@ -707,64 +719,64 @@ Partial Class frmMenu
         'AccountTradePatternFToolStripMenuItem
         '
         Me.AccountTradePatternFToolStripMenuItem.Name = "AccountTradePatternFToolStripMenuItem"
-        Me.AccountTradePatternFToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.AccountTradePatternFToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.AccountTradePatternFToolStripMenuItem.Text = "Account Trade Pattern (F)"
         '
         'ToolStripMenuItem6
         '
         Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
-        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(271, 22)
+        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(409, 22)
         Me.ToolStripMenuItem6.Text = "Stress test Report"
         '
         'CCTReportToolStripMenuItem
         '
         Me.CCTReportToolStripMenuItem.Name = "CCTReportToolStripMenuItem"
-        Me.CCTReportToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.CCTReportToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.CCTReportToolStripMenuItem.Text = "CCT Report"
         '
         'RepledgeStockToolStripMenuItem
         '
         Me.RepledgeStockToolStripMenuItem.Name = "RepledgeStockToolStripMenuItem"
-        Me.RepledgeStockToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.RepledgeStockToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.RepledgeStockToolStripMenuItem.Text = "Re-pledge Stock "
         '
         'TradeHistoryReportToolStripMenuItem
         '
         Me.TradeHistoryReportToolStripMenuItem.Name = "TradeHistoryReportToolStripMenuItem"
-        Me.TradeHistoryReportToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.TradeHistoryReportToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.TradeHistoryReportToolStripMenuItem.Text = "Trade History Report (for CIES)"
         '
         'LargeCashDepositLogToolStripMenuItem
         '
         Me.LargeCashDepositLogToolStripMenuItem.Name = "LargeCashDepositLogToolStripMenuItem"
-        Me.LargeCashDepositLogToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.LargeCashDepositLogToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.LargeCashDepositLogToolStripMenuItem.Text = "Large Cash Deposit Log"
         '
         'ClientTurnoverTS
         '
         Me.ClientTurnoverTS.Name = "ClientTurnoverTS"
-        Me.ClientTurnoverTS.Size = New System.Drawing.Size(271, 22)
+        Me.ClientTurnoverTS.Size = New System.Drawing.Size(409, 22)
         Me.ClientTurnoverTS.Text = "Client Turnover Statisitcs (Futures)"
         '
         'ExternalAccountTS
         '
         Me.ExternalAccountTS.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.ExternalAccountTS.Name = "ExternalAccountTS"
-        Me.ExternalAccountTS.Size = New System.Drawing.Size(271, 22)
+        Me.ExternalAccountTS.Size = New System.Drawing.Size(409, 22)
         Me.ExternalAccountTS.Text = "External Account List"
         '
         'StockMonitorToolStripMenuItem
         '
         Me.StockMonitorToolStripMenuItem.Name = "StockMonitorToolStripMenuItem"
         Me.StockMonitorToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.StockMonitorToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.StockMonitorToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.StockMonitorToolStripMenuItem.Text = "Stock Monitor Report"
         '
         'FATCAToolStripMenuItem1
         '
         Me.FATCAToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FATCAAccountListToolStripMenuItem})
         Me.FATCAToolStripMenuItem1.Name = "FATCAToolStripMenuItem1"
-        Me.FATCAToolStripMenuItem1.Size = New System.Drawing.Size(271, 22)
+        Me.FATCAToolStripMenuItem1.Size = New System.Drawing.Size(409, 22)
         Me.FATCAToolStripMenuItem1.Text = "FATCA"
         '
         'FATCAAccountListToolStripMenuItem
@@ -776,14 +788,14 @@ Partial Class frmMenu
         'ForeignMarketReportToolStripMenuItem
         '
         Me.ForeignMarketReportToolStripMenuItem.Name = "ForeignMarketReportToolStripMenuItem"
-        Me.ForeignMarketReportToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.ForeignMarketReportToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.ForeignMarketReportToolStripMenuItem.Text = "Foreign Market Report"
         '
         'AlertMonitoringSystemToolStripMenuItem
         '
         Me.AlertMonitoringSystemToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TradingActivityParameterMaintenanceToolStripMenuItem, Me.IPCountryMappingDataImportToolStripMenuItem, Me.TradingActivityImportToolStripMenuItem, Me.TradingActivityAlertReportsToolStripMenuItem})
         Me.AlertMonitoringSystemToolStripMenuItem.Name = "AlertMonitoringSystemToolStripMenuItem"
-        Me.AlertMonitoringSystemToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.AlertMonitoringSystemToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
         Me.AlertMonitoringSystemToolStripMenuItem.Text = "Alert Monitoring System"
         '
         'TradingActivityParameterMaintenanceToolStripMenuItem
@@ -835,6 +847,36 @@ Partial Class frmMenu
         Me.StockOptionsTradingActivityAlertReportsToolStripMenuItem.Name = "StockOptionsTradingActivityAlertReportsToolStripMenuItem"
         Me.StockOptionsTradingActivityAlertReportsToolStripMenuItem.Size = New System.Drawing.Size(305, 22)
         Me.StockOptionsTradingActivityAlertReportsToolStripMenuItem.Text = "Stock Options Trading Activity Alert Reports"
+        '
+        'ClientBalanceSummaryReportUSToolStripMenuItem
+        '
+        Me.ClientBalanceSummaryReportUSToolStripMenuItem.Name = "ClientBalanceSummaryReportUSToolStripMenuItem"
+        Me.ClientBalanceSummaryReportUSToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
+        Me.ClientBalanceSummaryReportUSToolStripMenuItem.Text = "Client Balance Summary Report (Inlcuded Same Day US)"
+        '
+        'MarginCallConcentrationReportUSToolStripMenuItem
+        '
+        Me.MarginCallConcentrationReportUSToolStripMenuItem.Name = "MarginCallConcentrationReportUSToolStripMenuItem"
+        Me.MarginCallConcentrationReportUSToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
+        Me.MarginCallConcentrationReportUSToolStripMenuItem.Text = "Debit Balance Concentration Report (Included Same Day US)"
+        '
+        'MarginCallReportUSToolStripMenuItem
+        '
+        Me.MarginCallReportUSToolStripMenuItem.Name = "MarginCallReportUSToolStripMenuItem"
+        Me.MarginCallReportUSToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
+        Me.MarginCallReportUSToolStripMenuItem.Text = "Margin Call Report (Included Same Day US)"
+        '
+        'MarginClientStockHoldingsUSToolStripMenuItem
+        '
+        Me.MarginClientStockHoldingsUSToolStripMenuItem.Name = "MarginClientStockHoldingsUSToolStripMenuItem"
+        Me.MarginClientStockHoldingsUSToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
+        Me.MarginClientStockHoldingsUSToolStripMenuItem.Text = "Margin Client Stock Holdings (Included Same Day US)"
+        '
+        'StressTestReportUSToolStripMenuItem
+        '
+        Me.StressTestReportUSToolStripMenuItem.Name = "StressTestReportUSToolStripMenuItem"
+        Me.StressTestReportUSToolStripMenuItem.Size = New System.Drawing.Size(409, 22)
+        Me.StressTestReportUSToolStripMenuItem.Text = "Stress test Report (Included Same Day US)"
         '
         'MaintenanceToolStripMenuItem1
         '
@@ -1818,5 +1860,11 @@ Partial Class frmMenu
     Friend WithEvents FuturesTradingActivityAlertReportsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StockOptionsTradingActivityAlertReportsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ImportCRSAccountInfoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ImportDataUSToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ClientBalanceSummaryReportUSToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MarginCallConcentrationReportUSToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents StressTestReportUSToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MarginClientStockHoldingsUSToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MarginCallReportUSToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
