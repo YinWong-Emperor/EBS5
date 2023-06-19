@@ -20,19 +20,13 @@ Partial Class frmExchangeRate
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmExchangeRate))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmExchangeRate))
         Me.dgvExchangeRate = New System.Windows.Forms.DataGridView()
-        Me.exid = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.tdate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.type = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.currency = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.rate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.lupdtdate = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnEdit = New ESL.myButton(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lblCurrency = New System.Windows.Forms.Label()
@@ -44,6 +38,12 @@ Partial Class frmExchangeRate
         Me.cmbType = New ESL.myComboBox(Me.components)
         Me.btnSearch = New ESL.myButton(Me.components)
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.exid = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tdate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.type = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.currency = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.rate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lupdtdate = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgvExchangeRate, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.nudRate, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,86 +78,6 @@ Partial Class frmExchangeRate
         Me.dgvExchangeRate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvExchangeRate.Size = New System.Drawing.Size(533, 300)
         Me.dgvExchangeRate.TabIndex = 3
-        '
-        'exid
-        '
-        Me.exid.DataPropertyName = "exid"
-        DataGridViewCellStyle1.Format = "N0"
-        Me.exid.DefaultCellStyle = DataGridViewCellStyle1
-        Me.exid.Frozen = True
-        Me.exid.HeaderText = "exid"
-        Me.exid.Name = "exid"
-        Me.exid.ReadOnly = True
-        Me.exid.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.exid.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.exid.Visible = False
-        Me.exid.Width = 35
-        '
-        'tdate
-        '
-        Me.tdate.DataPropertyName = "tdate"
-        DataGridViewCellStyle2.Format = "dd/MM/yyyy"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.tdate.DefaultCellStyle = DataGridViewCellStyle2
-        Me.tdate.Frozen = True
-        Me.tdate.HeaderText = "Trade Date"
-        Me.tdate.Name = "tdate"
-        Me.tdate.ReadOnly = True
-        Me.tdate.Width = 110
-        '
-        'type
-        '
-        Me.type.DataPropertyName = "type"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.type.DefaultCellStyle = DataGridViewCellStyle3
-        Me.type.Frozen = True
-        Me.type.HeaderText = "Type"
-        Me.type.Name = "type"
-        Me.type.ReadOnly = True
-        Me.type.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.type.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'currency
-        '
-        Me.currency.DataPropertyName = "currency"
-        Me.currency.Frozen = True
-        Me.currency.HeaderText = "Currency"
-        Me.currency.Name = "currency"
-        Me.currency.ReadOnly = True
-        Me.currency.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.currency.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.currency.Width = 72
-        '
-        'rate
-        '
-        Me.rate.DataPropertyName = "rate"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "N4"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.rate.DefaultCellStyle = DataGridViewCellStyle4
-        Me.rate.Frozen = True
-        Me.rate.HeaderText = "Rate"
-        Me.rate.Name = "rate"
-        Me.rate.ReadOnly = True
-        Me.rate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.rate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'lupdtdate
-        '
-        Me.lupdtdate.DataPropertyName = "lupdtdate"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.Format = "dd/MM/yyyy HH:mm"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.lupdtdate.DefaultCellStyle = DataGridViewCellStyle5
-        Me.lupdtdate.Frozen = True
-        Me.lupdtdate.HeaderText = "Last Update Date"
-        Me.lupdtdate.Name = "lupdtdate"
-        Me.lupdtdate.ReadOnly = True
-        Me.lupdtdate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.lupdtdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.lupdtdate.Width = 129
         '
         'btnEdit
         '
@@ -195,7 +115,7 @@ Partial Class frmExchangeRate
         '
         'nudRate
         '
-        Me.nudRate.DecimalPlaces = 4
+        Me.nudRate.DecimalPlaces = 8
         Me.nudRate.Location = New System.Drawing.Point(385, 16)
         Me.nudRate.Maximum = New Decimal(New Integer() {-727379969, 232, 0, 262144})
         Me.nudRate.Name = "nudRate"
@@ -273,6 +193,85 @@ Partial Class frmExchangeRate
         Me.Label9.Size = New System.Drawing.Size(32, 15)
         Me.Label9.TabIndex = 0
         Me.Label9.Text = "Type"
+        '
+        'exid
+        '
+        Me.exid.DataPropertyName = "exid"
+        DataGridViewCellStyle1.Format = "N0"
+        Me.exid.DefaultCellStyle = DataGridViewCellStyle1
+        Me.exid.Frozen = True
+        Me.exid.HeaderText = "exid"
+        Me.exid.Name = "exid"
+        Me.exid.ReadOnly = True
+        Me.exid.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.exid.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.exid.Visible = False
+        Me.exid.Width = 35
+        '
+        'tdate
+        '
+        Me.tdate.DataPropertyName = "tdate"
+        DataGridViewCellStyle2.Format = "dd/MM/yyyy"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.tdate.DefaultCellStyle = DataGridViewCellStyle2
+        Me.tdate.Frozen = True
+        Me.tdate.HeaderText = "Trade Date"
+        Me.tdate.Name = "tdate"
+        Me.tdate.ReadOnly = True
+        Me.tdate.Width = 110
+        '
+        'type
+        '
+        Me.type.DataPropertyName = "type"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.type.DefaultCellStyle = DataGridViewCellStyle3
+        Me.type.Frozen = True
+        Me.type.HeaderText = "Type"
+        Me.type.Name = "type"
+        Me.type.ReadOnly = True
+        Me.type.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.type.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'currency
+        '
+        Me.currency.DataPropertyName = "currency"
+        Me.currency.Frozen = True
+        Me.currency.HeaderText = "Currency"
+        Me.currency.Name = "currency"
+        Me.currency.ReadOnly = True
+        Me.currency.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.currency.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.currency.Width = 72
+        '
+        'rate
+        '
+        Me.rate.DataPropertyName = "rate"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.rate.DefaultCellStyle = DataGridViewCellStyle4
+        Me.rate.Frozen = True
+        Me.rate.HeaderText = "Rate"
+        Me.rate.Name = "rate"
+        Me.rate.ReadOnly = True
+        Me.rate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.rate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'lupdtdate
+        '
+        Me.lupdtdate.DataPropertyName = "lupdtdate"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.Format = "dd/MM/yyyy HH:mm"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.lupdtdate.DefaultCellStyle = DataGridViewCellStyle5
+        Me.lupdtdate.Frozen = True
+        Me.lupdtdate.HeaderText = "Last Update Date"
+        Me.lupdtdate.Name = "lupdtdate"
+        Me.lupdtdate.ReadOnly = True
+        Me.lupdtdate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.lupdtdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.lupdtdate.Width = 129
         '
         'frmExchangeRate
         '
