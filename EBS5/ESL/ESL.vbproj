@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>ESL.My.MyApplication</StartupObject>
     <RootNamespace>ESL</RootNamespace>
-    <AssemblyName>EBS5</AssemblyName>
+    <AssemblyName>EBS5_UAT</AssemblyName>
     <MyType>WindowsForms</MyType>
     <SccProjectName>
     </SccProjectName>
@@ -33,7 +33,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Users\chrischanty\OneDrive - Emperor Group\Documents\~Work\Program\EBS5_Publish\</PublishUrl>
+    <PublishUrl>C:\Users\chrischanty\OneDrive - Emperor Group\Documents\~Work\Program\EBS5_UAT_Publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -43,12 +43,12 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>\\ebs.prod.ecg.emperorgroup.net\ebs\EBS5\</InstallUrl>
-    <ProductName>EBS5</ProductName>
-    <PublisherName>EBS5</PublisherName>
-    <MinimumRequiredVersion>1.0.7.11</MinimumRequiredVersion>
-    <ApplicationRevision>11</ApplicationRevision>
-    <ApplicationVersion>1.0.7.11</ApplicationVersion>
+    <InstallUrl>\\172.19.249.39\ebs\EBS5\</InstallUrl>
+    <ProductName>EBS5_UAT</ProductName>
+    <PublisherName>EBS5_UAT</PublisherName>
+    <MinimumRequiredVersion>1.0.7.13</MinimumRequiredVersion>
+    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationVersion>1.0.7.13</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -61,7 +61,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>EBS5.xml</DocumentationFile>
+    <DocumentationFile>EBS5_UAT.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -72,7 +72,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>EBS5.xml</DocumentationFile>
+    <DocumentationFile>EBS5_UAT.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -102,6 +102,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Ref\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -4614,6 +4616,56 @@
       <TargetPath>
       </TargetPath>
       <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.Common">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.DataVisualization">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.ProcessingObjectModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.WinForms">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.SqlServer.Types">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
