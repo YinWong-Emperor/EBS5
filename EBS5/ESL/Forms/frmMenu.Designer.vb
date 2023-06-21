@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmMenu
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -18,7 +18,7 @@ Partial Class frmMenu
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
@@ -223,6 +223,7 @@ Partial Class frmMenu
         Me.NotOptedOutClientListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NotOptedOutClientListemailOnlyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EmailAlertRecipientListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditReportDateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WindowsWToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CascadeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TitleVerticalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -1364,7 +1365,7 @@ Partial Class frmMenu
         '
         'ToolStripMenuItem3
         '
-        Me.ToolStripMenuItem3.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExportCreditLimitToolStripMenuItem, Me.SendPasswordEmailSToolStripMenuItem, Me.PasswordNotificationFuturesToolStripMenuItem, Me.FuturesOpenPositionAlertMasterToolStripMenuItem, Me.StockToolStripMenuItem1, Me.CouponMaintenanceToolStripMenuItem, Me.CIESAlertTS, Me.CIESToolStripMenuItem, Me.HSIMaintanceToolStripMenuItem, Me.CIESMaintenanceToolStripMenuItem, Me.ClientOptinoutMasterToolStripMenuItem, Me.OptedOutClientListToolStripMenuItem, Me.NotOptedOutClientListToolStripMenuItem, Me.NotOptedOutClientListemailOnlyToolStripMenuItem, Me.EmailAlertRecipientListToolStripMenuItem})
+        Me.ToolStripMenuItem3.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExportCreditLimitToolStripMenuItem, Me.SendPasswordEmailSToolStripMenuItem, Me.PasswordNotificationFuturesToolStripMenuItem, Me.FuturesOpenPositionAlertMasterToolStripMenuItem, Me.StockToolStripMenuItem1, Me.CouponMaintenanceToolStripMenuItem, Me.CIESAlertTS, Me.CIESToolStripMenuItem, Me.HSIMaintanceToolStripMenuItem, Me.CIESMaintenanceToolStripMenuItem, Me.ClientOptinoutMasterToolStripMenuItem, Me.OptedOutClientListToolStripMenuItem, Me.NotOptedOutClientListToolStripMenuItem, Me.NotOptedOutClientListemailOnlyToolStripMenuItem, Me.EmailAlertRecipientListToolStripMenuItem, Me.EditReportDateToolStripMenuItem})
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
         Me.ToolStripMenuItem3.Size = New System.Drawing.Size(72, 20)
         Me.ToolStripMenuItem3.Text = "Marketing"
@@ -1496,6 +1497,12 @@ Partial Class frmMenu
         Me.EmailAlertRecipientListToolStripMenuItem.Name = "EmailAlertRecipientListToolStripMenuItem"
         Me.EmailAlertRecipientListToolStripMenuItem.Size = New System.Drawing.Size(263, 22)
         Me.EmailAlertRecipientListToolStripMenuItem.Text = "Email Alert Recipient List"
+        '
+        'EditReportDateToolStripMenuItem
+        '
+        Me.EditReportDateToolStripMenuItem.Name = "EditReportDateToolStripMenuItem"
+        Me.EditReportDateToolStripMenuItem.Size = New System.Drawing.Size(263, 22)
+        Me.EditReportDateToolStripMenuItem.Text = "Edit Report Date"
         '
         'WindowsWToolStripMenuItem
         '
@@ -1838,6 +1845,7 @@ Partial Class frmMenu
     Friend WithEvents ForeignMarketReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents IRSToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EmailAlertRecipientListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents EditReportDateToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ImportFATCAInfoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FutureProductMasterMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ChequePrintingMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -1866,5 +1874,4 @@ Partial Class frmMenu
     Friend WithEvents StressTestReportUSToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MarginClientStockHoldingsUSToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MarginCallReportUSToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-
 End Class

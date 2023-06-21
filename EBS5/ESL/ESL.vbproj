@@ -33,7 +33,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Users\chrischanty\OneDrive - Emperor Group\Documents\~Work\Program\EBS5_UAT_Publish\</PublishUrl>
+    <PublishUrl>C:\Subversion\Publishing\EBS5\UAT\v1.0.7.17\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -46,9 +46,9 @@
     <InstallUrl>\\172.19.249.39\ebs\EBS5\</InstallUrl>
     <ProductName>EBS5_UAT</ProductName>
     <PublisherName>EBS5_UAT</PublisherName>
-    <MinimumRequiredVersion>1.0.7.13</MinimumRequiredVersion>
-    <ApplicationRevision>13</ApplicationRevision>
-    <ApplicationVersion>1.0.7.13</ApplicationVersion>
+    <MinimumRequiredVersion>1.0.7.17</MinimumRequiredVersion>
+    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationVersion>1.0.7.17</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -219,6 +219,7 @@
     <Compile Include="Classes\clsCRSNonGroup.vb" />
     <Compile Include="Classes\ClsDailyIPOAdj.vb" />
     <Compile Include="Classes\ClsDailyNetTrade.vb" />
+    <Compile Include="Classes\ClsEditReportDate.vb" />
     <Compile Include="Classes\ClsEmailAgentMaster.vb" />
     <Compile Include="Classes\ClsExportClient.vb" />
     <Compile Include="Classes\ClsExportFatcaAccountList.vb" />
@@ -373,6 +374,12 @@
     </Compile>
     <Compile Include="Components\myTextBox.vb">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmEditReportDate.Designer.vb">
+      <DependentUpon>FrmEditReportDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmEditReportDate.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmRptMrgCallUS.Designer.vb">
       <DependentUpon>FrmRptMrgCallUS.vb</DependentUpon>
@@ -2573,6 +2580,9 @@
     <EmbeddedResource Include="Components\myRadioButton.resx">
       <SubType>Designer</SubType>
       <DependentUpon>myRadioButton.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmEditReportDate.resx">
+      <DependentUpon>FrmEditReportDate.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmRptMrgCallUS.resx">
       <DependentUpon>FrmRptMrgCallUS.vb</DependentUpon>

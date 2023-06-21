@@ -950,4 +950,12 @@ Public Class frmMenu
     Private Sub StressTestReportUSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StressTestReportUSToolStripMenuItem.Click
         ShowNewForm(FrmStressTestUS)
     End Sub
+
+    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
+
+    End Sub
+
+    Private Sub EditReportDateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditReportDateToolStripMenuItem.Click
+        ShowNewForm(FrmEditReportDate)
+    End Sub
 End Class
