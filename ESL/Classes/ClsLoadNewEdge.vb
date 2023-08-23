@@ -6,6 +6,7 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports Excel = Microsoft.Office.Interop.Excel
 Imports System.Linq
 'End [P191038-781] Chris Chan 20211019
+Imports System.Globalization
 
 Public Class ClsLoadNewEdge
 
@@ -178,29 +179,63 @@ Public Class ClsLoadNewEdge
 
         Dim lstrSQL As String
 
-        lstrSQL = "delete from newedge_emp_op where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
-        GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
-        lstrSQL = "delete from newedge_cap_op where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
-        GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
-        lstrSQL = "delete from newedge_cap_op_adj where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
-        GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
-        lstrSQL = "delete from newedge_cap_trade_hist where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
-        GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
-        lstrSQL = "delete from newedge_cap_trade_hist_adj where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
-        GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
-        lstrSQL = "delete from newedge_cap_fee where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
-        GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
-        lstrSQL = "delete from newedge_content where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
-        GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
-        lstrSQL = "delete from newedge_cap_CP where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
-        GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
-        lstrSQL = "delete from newedge_cap_CP_adj where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
-        GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
-        lstrSQL = "delete from newedge_liq_header where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
-        GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
-        lstrSQL = "delete from newedge_liq_header_adj where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
-        GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+        If pCounterParty = "ADVDTN" Then
+            lstrSQL = "delete from newedge_cap_trade_hist where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty.Substring(0, 3) & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_cap_trade_hist_adj where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty.Substring(0, 3) & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_content where tdate = '" & trade_date & "' and content like '%" + pCounterParty + "%' and counterparty = '" & pCounterParty.Substring(0, 3) & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_cap_fee where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty.Substring(0, 3) & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
 
+        ElseIf pCounterParty = "ADVPAS" Then
+            lstrSQL = "delete from newedge_cap_CP where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty.Substring(0, 3) & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_cap_CP_adj where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty.Substring(0, 3) & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_liq_header where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty.Substring(0, 3) & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_liq_header_adj where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty.Substring(0, 3) & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_content where tdate = '" & trade_date & "' and content like '%" + pCounterParty + "%' and counterparty = '" & pCounterParty.Substring(0, 3) & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+
+        ElseIf pCounterParty = "ADVPOS" Then
+            lstrSQL = "delete from newedge_emp_op where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty.Substring(0, 3) & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_cap_op where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty.Substring(0, 3) & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_cap_op_adj where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty.Substring(0, 3) & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_content where tdate = '" & trade_date & "' and content like '%" + pCounterParty + "%' and counterparty = '" & pCounterParty.Substring(0, 3) & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+
+        Else
+            lstrSQL = "delete from newedge_emp_op where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_cap_op where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_cap_op_adj where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_cap_trade_hist where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_cap_trade_hist_adj where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_cap_fee where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_content where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_cap_CP where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_cap_CP_adj where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_liq_header where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+            lstrSQL = "delete from newedge_liq_header_adj where tdate = '" & trade_date & "' and counterparty = '" & pCounterParty & "'"
+            GFncRunSQL(GSCnSqlConn, MyTrans, lstrSQL, 0)
+
+        End If
 
     End Sub
 
@@ -2673,4 +2708,361 @@ Public Class ClsLoadNewEdge
         size = 0.0
     End Function
     'End [P191038-781] Chris Chan 20211029
+
+    'Johnathan Tse 20230727 starts..
+    Protected Friend Function lFncGetTradeDateFromAdv(ByVal filename As String)
+        Dim strTradeDate = ""
+        Dim xlApp As Excel.Application = New Excel.Application
+        Dim xlWorkBook As Excel.Workbook = xlApp.Workbooks.Open(filename)
+        Dim xlWorkSheet As Excel.Worksheet = New Excel.Worksheet
+        'Dim tDate As String
+
+        Try
+            If filename.Contains("ADVDTN") Or filename.Contains("ADVPAS") Or filename.Contains("ADVPOS") Then
+                'Dim tDate As String = (Path.GetFileName(filename).Substring(0, 8))
+                Dim tDate As Date = DateTime.ParseExact(Path.GetFileName(filename).Substring(0, 8), "yyyyMMdd", CultureInfo.InvariantCulture)
+                strTradeDate = tDate.ToString("yyyy/MM/dd")
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Read Excel Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            'GSubShowInfo("This is not a valid ADV source file name. (eg: yyyyMMddADVDTN.CSV)")
+        Finally
+            xlWorkBook.Close()
+            xlApp.Quit()
+            releaseObject(xlApp)
+            releaseObject(xlWorkBook)
+            releaseObject(xlWorkSheet)
+        End Try
+        Return strTradeDate
+    End Function
+
+    Protected Friend Function lFncGetTradeDataFromAdv(ByVal filename As String, ByVal trade_date As String)
+        Dim xlApp As Excel.Application = New Excel.Application
+        Dim xlWorkBook As Excel.Workbook = xlApp.Workbooks.Open(filename)
+        Dim ws_TRANS As Excel.Worksheet
+        Dim ws_LIQ As Excel.Worksheet
+        Dim ws_OP As Excel.Worksheet
+        Dim range As Excel.Range
+        Dim MyTrans As SqlTransaction = Nothing
+
+        Try
+            Dim OPDT As DataTable = New dtsNewedge.OpenPositionDataTable
+            Dim LQDT As DataTable = New dtsNewedge.LiqPositionDataTable
+            Dim TransDt As DataTable = New dtsNewedge.TransDataTable
+            Dim LiqHeader As DataTable = New dtsNewedge.LiqHeaderDataTable
+
+            Dim rowcount As Integer = 0
+            Dim readtype As Integer = 0
+
+            Dim lvalue As String = ""
+            Dim tdate As Date = Nothing
+            Dim tbuy As Long = 0
+            Dim tsell As Long = 0
+            Dim tmonthcode As String = ""
+            Dim tproduct As String = ""
+            Dim dStrike As Double = 0
+            Dim sCallPut As String = ""
+            Dim sCurrency As String = ""
+            Dim tprice As Double = 0
+            Dim comm As Double = 0
+            Dim clearing As Double = 0
+            Dim exchange As Double = 0
+            Dim total As Double = 0
+            Dim MDFlag As String = ""
+            Dim settleDate As Date = GFncNoNullDate("1900/01/01")
+            Dim floating As Decimal = 0.0
+            Dim PL As Decimal = 0.0
+            Dim size As Decimal = 0.0
+            Dim sheets As Excel.Sheets = xlWorkBook.Worksheets
+
+            'Johnathan Tse test 20230802 starts
+            Dim buyPrice As Decimal = 0.0
+            Dim sellPrice As Decimal = 0.0
+            Dim qty As Integer = 0
+            'Johnathan Tse test 20230802 ends
+
+            'Load trade confirmation ADVDTN.CSV.. 20230728 starts
+            If filename.Contains("ADVDTN") Then
+                'Delete Imported records
+                lFncDeleteImported(trade_date, MyTrans, "ADVDTN")
+                Dim sheet_name = Path.GetFileName(filename).Substring(0, Path.GetFileName(filename).Length - 4)
+                ws_TRANS = sheets(sheet_name)
+                range = ws_TRANS.UsedRange
+                rowcount = range.Rows.Count
+
+                For i As Integer = 2 To rowcount - 1
+                    lFncInitializeValues(lvalue, tdate, tbuy, tsell, tmonthcode, tproduct, dStrike, sCallPut, sCurrency, tprice, comm, clearing, exchange, total, MDFlag, settleDate, floating, PL, size)
+                    'trade_date = ws_TRANS.Cells(i, 2).value
+                    tdate = DateTime.ParseExact(trade_date, "yyyy/MM/dd", CultureInfo.InvariantCulture)
+                    'BUY/SELL = 1 then buy else sell
+                    If ws_TRANS.Cells(i, 6).value = 1 Then
+                        tbuy = ws_TRANS.Cells(i, 7).value
+                    Else
+                        tsell = ws_TRANS.Cells(i, 7).value
+                    End If
+                    tmonthcode = ws_TRANS.Cells(i, 10).value.ToString.Substring(2, 4)
+                    tproduct = ws_TRANS.Cells(i, 9).value
+                    tproduct = tproduct.Trim()
+                    tprice = ws_TRANS.Cells(i, 27).value
+                    dStrike = ws_TRANS.Cells(i, 12).value
+                    sCallPut = ws_TRANS.Cells(i, 13).value
+                    'MDFlag = "D"
+                    settleDate = DateTime.ParseExact(ws_TRANS.Cells(i, 54).value.substring(0, 6), "MMM yy", CultureInfo.InvariantCulture)
+                    Dim strSettleDate = settleDate.AddMonths(1).AddDays(-1).ToString("yyyyMMdd")
+                    'settleDate = settleDate.ToString("yyyyMMdd", CultureInfo.InvariantCulture)
+                    settleDate = DateTime.ParseExact(strSettleDate, "yyyyMMdd", CultureInfo.InvariantCulture)
+                    comm = ws_TRANS.Cells(i, 33).value * -1
+                    clearing = ws_TRANS.Cells(i, 35).value * -1
+                    exchange = ws_TRANS.Cells(i, 39).value * -1
+                    size = ws_TRANS.Cells(i, 61).value
+
+                    'Add to DataTable TransDt for Comfirmed Trades
+                    lFncInsertNewedgeTrade(tdate, tbuy, tsell, tmonthcode, tproduct, tprice, dStrike, sCallPut, MDFlag, settleDate, TransDt, comm, clearing, exchange)
+                Next
+
+                'TO-DO: load size to transaction confirmation trades..
+                getAndLoadContractSize(TransDt, MyTrans, "ADV", size)
+                'FncTransSize(OPDT, LQDT, TransDt)
+
+                Dim lstFee = (From r In TransDt.AsEnumerable()
+                        Group r By rgroup = New With {
+                                                Key .tdate = r.Field(Of Date)("tdate"),
+                                                Key .monthcode = r.Field(Of String)("monthcode"),
+                                                Key .product = r.Field(Of String)("product")
+                                            } Into Group
+                        Select New With {
+                                    Key .tdate = rgroup.tdate,
+                                    Key .monthcode = rgroup.monthcode,
+                                    Key .product = rgroup.product,
+                                    Key .comm = Group.Sum(Function(x) x.Field(Of Decimal)("comm")),
+                                    Key .clearing = Group.Sum(Function(x) x.Field(Of Decimal)("clearing")),
+                                    Key .levy = Group.Sum(Function(x) x.Field(Of Decimal)("levy"))
+                                    }
+                        )
+                'Insert fee to DB
+                For Each f As Object In lstFee
+                    lFncInsertNewedgeFeeOP(CDate(f.tdate).ToString("yyyy/MM/dd"), f.monthcode, f.product, f.comm, f.clearing, f.levy, (f.comm + f.clearing + f.levy), MyTrans, "ADV")
+                Next
+
+                'insert transaction
+                FncInsertTrans(TransDt, MyTrans, "ADV")
+                'insert content
+                lFncInsertNewedgeConetent(trade_date, "Imported ADVDTN by Excel", 1, MyTrans, "ADV")
+                'Load trade confirmation ends.. 20230728
+
+                'Johnathan Tse : Load Purchase & Sales starts.. 20230728
+            ElseIf filename.Contains("ADVPAS") Then
+                'Delete Imported records
+                lFncDeleteImported(trade_date, MyTrans, "ADVPAS")
+                Dim sheet_name = Path.GetFileName(filename).Substring(0, Path.GetFileName(filename).Length - 4)
+                ws_LIQ = sheets(sheet_name)
+                range = ws_LIQ.UsedRange
+                rowcount = range.Rows.Count
+
+                For i As Integer = 2 To rowcount - 1
+                    lFncInitializeValues(lvalue, tdate, tbuy, tsell, tmonthcode, tproduct, dStrike, sCallPut, sCurrency, tprice, comm, clearing, exchange, total, MDFlag, settleDate, floating, PL, size)
+                    'trade_date = ws_TRANS.Cells(i, 2).value
+                    tdate = DateTime.ParseExact(ws_LIQ.Cells(i, 2).value.ToString, "yyyyMMdd", CultureInfo.InvariantCulture)
+                    If ws_LIQ.Cells(i, 6).Value = 1 Then
+                        tbuy = ws_LIQ.Cells(i, 7).Value
+                        buyPrice = ws_LIQ.Cells(i, 26).Value
+                    Else
+                        tsell = ws_LIQ.Cells(i, 7).Value
+                        sellPrice = ws_LIQ.Cells(i, 26).Value
+                        qty = ws_LIQ.Cells(i, 7).Value
+                        size = getAndLoadContractSize(LQDT, MyTrans, "ADV", 0)
+                        PL = (sellPrice - buyPrice) * qty * size
+                    End If
+                    tmonthcode = ws_LIQ.Cells(i, 11).Value.ToString.Substring(2, 4)
+                    tproduct = ws_LIQ.Cells(i, 10).Value
+                    tproduct = tproduct.Trim()
+                    tprice = ws_LIQ.Cells(i, 26).Value
+                    dStrike = ws_LIQ.Cells(i, 12).value
+                    'sCallPut = 
+                    'MDFlag = "D"
+                    settleDate = DateTime.ParseExact(ws_LIQ.Cells(i, 49).value.substring(0, 6), "MMM yy", CultureInfo.InvariantCulture)
+                    Dim strSettleDate = settleDate.AddMonths(1).AddDays(-1).ToString("yyyyMMdd")
+                    'settleDate = settleDate.ToString("yyyyMMdd", CultureInfo.InvariantCulture)
+                    settleDate = DateTime.ParseExact(strSettleDate, "yyyyMMdd", CultureInfo.InvariantCulture)
+                    'getAndLoadContractSize(LQDT, MyTrans, "ADV")
+                    lFncInsertToLIQDataTable(trade_date, tdate, tbuy, tsell, tmonthcode, tproduct, tprice, dStrike, sCallPut, MDFlag, settleDate, LQDT, PL, size)
+                Next
+                'PL: need to add PL to liqheader starts..
+                Dim lstPL = (From r In LQDT.AsEnumerable()
+                            Group r By rgroup = New With {
+                                                    Key .tdate = r.Field(Of Date)("tdate"),
+                                                    Key .monthcode = r.Field(Of String)("monthcode"),
+                                                    Key .product = r.Field(Of String)("product"),
+                                                    Key .settle_date = r.Field(Of Date)("settle_date"),
+                                                    Key .monthly_daily = r.Field(Of String)("monthly_daily"),
+                                                    Key .size = r.Field(Of Decimal)("size"),
+                                                    Key .strike = r.Field(Of Decimal)("strike"),
+                                                    Key .callput = r.Field(Of String)("callput")
+                                                } Into Group
+                            Select New With {
+                                        Key .tdate = rgroup.tdate,
+                                        Key .monthcode = rgroup.monthcode,
+                                        Key .product = rgroup.product,
+                                        Key .settle_date = rgroup.settle_date,
+                                        Key .monthly_daily = rgroup.monthly_daily,
+                                        Key .size = rgroup.size,
+                                        Key .strike = rgroup.strike,
+                                        Key .callput = rgroup.callput,
+                                        Key .PL = Group.Sum(Function(x) x.Field(Of Decimal)("PL"))
+                                        }
+                            )
+
+                For Each p As Object In lstPL
+                    Dim ndr As DataRow = LiqHeader.NewRow
+                    ndr("tdate") = GFncNoNullDate(p.tdate)
+                    ndr("product") = p.product
+                    ndr("monthcode") = p.monthcode
+                    ndr("settle_date") = GFncNoNullDate(p.settle_date)
+                    ndr("PL") = p.PL
+                    ndr("monthly_daily") = p.monthly_daily
+                    ndr("strike") = p.strike
+                    ndr("callput") = p.callput
+                    ndr("size") = p.size
+                    LiqHeader.Rows.Add(ndr)
+                Next
+                'PL: need to add PL to liqheader ends..
+
+
+                'insert liquid position and its header (header for storing the PL)
+                FncInsertCP(LQDT, LiqHeader, MyTrans, "ADV")
+                'insert content
+                lFncInsertNewedgeConetent(trade_date, "Imported ADVPAS by Excel", 1, MyTrans, "ADV")
+                'Johnathan Tse : Load Purchase & Sales ends.. 20230728
+
+
+                'Johnathan Tse : Load open position starts..20230731
+            ElseIf filename.Contains("ADVPOS") Then
+                'Delete Imported records
+                lFncDeleteImported(trade_date, MyTrans, "ADVPOS")
+                Dim sheet_name = Path.GetFileName(filename).Substring(0, Path.GetFileName(filename).Length - 4)
+                ws_OP = sheets(sheet_name)
+                range = ws_OP.UsedRange
+                rowcount = range.Rows.Count
+                'Dim trade_account = ""
+
+                For i As Integer = 2 To rowcount - 1
+                    If ws_OP.Cells(i, 4).value <> "C9950" Then
+                        lFncInitializeValues(lvalue, tdate, tbuy, tsell, tmonthcode, tproduct, dStrike, sCallPut, sCurrency, tprice, comm, clearing, exchange, total, MDFlag, settleDate, floating, PL, size)
+                        'trade_date can be 0 in open positions, align to trade date
+                        If ws_OP.Cells(i, 17).value <> 0 Then
+                            tdate = DateTime.ParseExact(ws_OP.Cells(i, 17).value.ToString, "yyyyMMdd", CultureInfo.InvariantCulture)
+                        End If
+
+                        If ws_OP.Cells(i, 19).value = 1 Then
+                            tbuy = ws_OP.Cells(i, 20).value
+                        Else
+                            tsell = ws_OP.Cells(i, 20).value
+                        End If
+                        tmonthcode = ws_OP.Cells(i, 15).value.ToString.Substring(2, 4)
+                        tproduct = ws_OP.Cells(i, 8).value
+                        tproduct = tproduct.Trim()
+                        If ws_OP.Cells(i, 25).value.ToString.Trim() <> "" Then
+                            tprice = ws_OP.Cells(i, 25).value
+                        End If
+                        dStrike = ws_OP.Cells(i, 11).value
+                        sCallPut = ws_OP.Cells(i, 9).value
+                        'MDFlag = "D"
+                        settleDate = DateTime.ParseExact(ws_OP.Cells(i, 35).value.substring(0, 6), "MMM yy", CultureInfo.InvariantCulture)
+                        Dim strSettleDate = settleDate.AddMonths(1).AddDays(-1).ToString("yyyyMMdd")
+                        'settleDate = settleDate.ToString("yyyyMMdd", CultureInfo.InvariantCulture)
+                        settleDate = DateTime.ParseExact(strSettleDate, "yyyyMMdd", CultureInfo.InvariantCulture)
+                        Dim settlePrice = ws_OP.Cells(i, 23).value
+                        Dim tradePrice = ws_OP.Cells(i, 18).value
+                        qty = ws_OP.Cells(i, 20).value
+                        Dim cprice As Decimal = 0
+                        cprice = settlePrice
+                        size = ws_OP.Cells(i, 38).value
+
+                        If tradePrice <> 0 Then
+                            floating = (settlePrice - tradePrice) * qty * size
+                        End If
+                        'can use this function load?
+                        lFncPrepareMarexOP(trade_date, tdate, tbuy, tsell, tmonthcode, tproduct, tprice, dStrike, sCallPut, MDFlag, settleDate, floating, cprice, size, OPDT)
+                    End If
+                Next
+
+                'insert open position
+                FncInsertOP(OPDT, MyTrans, "ADV")
+                'insert content
+                lFncInsertNewedgeConetent(trade_date, "Imported ADVPOS by Excel", 1, MyTrans, "ADV")
+            End If
+
+            'insert contract_size into transaction table << how to do??
+            'FncTransSize(OPDT, LQDT, TransDt)
+
+
+            'insert transaction
+            'FncInsertTrans(TransDt, MyTrans, "ADV")
+            ''insert liquid position and its header (header for storing the PL)
+            'FncInsertCP(LQDT, LiqHeader, MyTrans, "ADV")
+            ''insert open position
+            'FncInsertOP(OPDT, MyTrans, "ADV")
+            ''insert content
+            'lFncInsertNewedgeConetent(trade_date, "Imported by Excel", 1, MyTrans, "ADV")
+
+            'Commit
+            'MyTrans.Commit()
+            'MyTrans.Rollback()
+            'MyTrans = Nothing
+
+        Catch ex As Exception
+            If GSCnLiqConn.State <> ConnectionState.Closed Then
+                If (MyTrans IsNot Nothing) Then
+                    MyTrans.Rollback()
+                End If
+            End If
+            MessageBox.Show(ex.Message, "Read Excel Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            GSubWriteErrLog(ex.Message)
+
+        Finally
+            xlWorkBook.Close()
+            xlApp.Quit()
+            releaseObject(xlApp)
+            releaseObject(xlWorkBook)
+            releaseObject(ws_TRANS)
+            releaseObject(ws_LIQ)
+            releaseObject(ws_OP)
+            releaseObject(range)
+        End Try
+    End Function
+
+    Protected Friend Function getAndLoadContractSize(ByVal dt As DataTable, ByVal mytrans As SqlTransaction, ByVal pCounterParty As String, ByVal pSize As Decimal)
+        Dim contractSize = pSize
+        Dim sql = ""
+        Dim result As DataTable
+        For Each dr As DataRow In dt.Rows
+            If contractSize = 0 Then
+                Dim monthcode = dr("monthcode")
+                Dim product = dr("product")
+                Dim MDflag = dr("monthly_daily")
+                Dim settleDate = Format(dr("settle_date"), "yyyyMMdd").ToString
+                Dim tdate As String = Format(dr("tDate"), "yyyyMMdd").ToString
+                sql = "select top 1 contract_size from newedge_cap_trade_hist where counterparty = '" + pCounterParty + "' and monthcode = '" + monthcode + "' and tdate = '" + tdate
+                sql += "' and product = '" + product + "' and monthly_daily = '" + MDflag + "' and settle_date = '" + settleDate + "' order by tid desc "
+                result = GFncRtnDS(GSCnSqlConn, sql, mytrans).Tables(0)
+                If result.Rows.Count > 0 Then
+                    contractSize = GFncNoNullValue(result.Rows(0).Item("contract_size"))
+
+                Else
+                    sql = "select top 1 contract_size from newedge_cap_op where counterparty = '" + pCounterParty + "' and monthcode = '" + monthcode + "' and tdate = '" + tdate
+                    sql += "' and product = '" + product + "' and monthly_daily = '" + MDflag + "' and settle_date = '" + settleDate + "' order by noid desc "
+                    result = GFncRtnDS(GSCnSqlConn, sql, mytrans).Tables(0)
+                    If result.Rows.Count > 0 Then
+                        contractSize = GFncNoNullValue(result.Rows(0).Item("contract_size"))
+                    End If
+                End If
+                dr("size") = contractSize
+            Else
+                dr("size") = contractSize
+            End If
+        Next
+        Return contractSize
+    End Function
+    'Johnathan Tse 20230727 ends..
 End Class

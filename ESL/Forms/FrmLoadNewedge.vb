@@ -128,4 +128,39 @@ Public Class FrmLoadNewedge
             Return
         End Try
     End Sub
+
+    Private Sub FrmLoadNewedge_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub btnLoadAdv_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoadAdv.Click
+        Dim openFileDialog1 As New System.Windows.Forms.OpenFileDialog
+        Dim lcheck As Boolean = False
+        Dim filename As String = ""
+        Dim lstr As String = ""
+        Try
+            'TO-DO: add logic for reloading.. reference MAREX
+            openFileDialog1.Filter = "CSV files (*.csv) |*.csv"
+            If (openFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK) Then
+                'filename = openFileDialog1.FileName.Substring(0, 8)
+                filename = openFileDialog1.FileName
+                lstr = cls.lFncGetTradeDateFromAdv(filename)
+                If (lstr = "") Then
+                    GSubShowInfo("Some error for loading the ADV source file name. (should be: yyyyMMddADVDTN.CSV)")
+                    Return
+                End If
+                If (GSubShowYNConfirm(lstr & GFncGetSysMsg(32)) = Windows.Forms.DialogResult.Yes) Then
+                    Me.UseWaitCursor = True
+                    Application.DoEvents()
+                    cls.lFncGetTradeDataFromAdv(filename, lstr)
+                    Me.UseWaitCursor = False
+                    GSubShowInfo(GFncGetSysMsg(8))
+                End If
+            End If
+        Catch ex As Exception
+            Me.UseWaitCursor = False
+            GSubWriteErrLog(ex.Message)
+            Return
+        End Try
+    End Sub
 End Class
