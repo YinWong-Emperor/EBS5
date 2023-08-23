@@ -19,27 +19,29 @@ Partial Class FrmLoadNewedge
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Me.btnLoad = New ESL.myButton(Me.components)
-        Me.Label1 = New System.Windows.Forms.Label
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.btnLoadPdf = New ESL.myButton(Me.components)
         Me.btnLoadMarex = New ESL.myButton(Me.components)
+        Me.btnLoadAdv = New ESL.myButton(Me.components)
         Me.SuspendLayout()
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(248, 83)
+        Me.btnCancel.Location = New System.Drawing.Point(183, 127)
+        Me.btnCancel.Size = New System.Drawing.Size(69, 55)
         Me.btnCancel.TabIndex = 1
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(192, 83)
+        Me.btnSave.Location = New System.Drawing.Point(230, 54)
         Me.btnSave.TabIndex = 3
         '
         'btnLoad
         '
         Me.btnLoad.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLoad.Location = New System.Drawing.Point(174, 83)
+        Me.btnLoad.Location = New System.Drawing.Point(127, 54)
         Me.btnLoad.Name = "btnLoad"
         Me.btnLoad.Size = New System.Drawing.Size(68, 55)
         Me.btnLoad.TabIndex = 0
@@ -61,7 +63,7 @@ Partial Class FrmLoadNewedge
         'btnLoadPdf
         '
         Me.btnLoadPdf.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLoadPdf.Location = New System.Drawing.Point(99, 83)
+        Me.btnLoadPdf.Location = New System.Drawing.Point(229, 54)
         Me.btnLoadPdf.Name = "btnLoadPdf"
         Me.btnLoadPdf.Size = New System.Drawing.Size(69, 55)
         Me.btnLoadPdf.TabIndex = 14
@@ -72,7 +74,7 @@ Partial Class FrmLoadNewedge
         'btnLoadMarex
         '
         Me.btnLoadMarex.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLoadMarex.Location = New System.Drawing.Point(24, 83)
+        Me.btnLoadMarex.Location = New System.Drawing.Point(77, 127)
         Me.btnLoadMarex.Name = "btnLoadMarex"
         Me.btnLoadMarex.Size = New System.Drawing.Size(69, 55)
         Me.btnLoadMarex.TabIndex = 15
@@ -80,10 +82,22 @@ Partial Class FrmLoadNewedge
         Me.btnLoadMarex.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnLoadMarex.UseVisualStyleBackColor = True
         '
+        'btnLoadAdv
+        '
+        Me.btnLoadAdv.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLoadAdv.Location = New System.Drawing.Point(29, 54)
+        Me.btnLoadAdv.Name = "btnLoadAdv"
+        Me.btnLoadAdv.Size = New System.Drawing.Size(69, 55)
+        Me.btnLoadAdv.TabIndex = 16
+        Me.btnLoadAdv.Text = "Load ADV"
+        Me.btnLoadAdv.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnLoadAdv.UseVisualStyleBackColor = True
+        '
         'FrmLoadNewedge
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.ClientSize = New System.Drawing.Size(324, 194)
+        Me.Controls.Add(Me.btnLoadAdv)
         Me.Controls.Add(Me.btnLoadMarex)
         Me.Controls.Add(Me.btnLoadPdf)
         Me.Controls.Add(Me.Label1)
@@ -97,6 +111,7 @@ Partial Class FrmLoadNewedge
         Me.Controls.SetChildIndex(Me.Label1, 0)
         Me.Controls.SetChildIndex(Me.btnLoadPdf, 0)
         Me.Controls.SetChildIndex(Me.btnLoadMarex, 0)
+        Me.Controls.SetChildIndex(Me.btnLoadAdv, 0)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -105,5 +120,6 @@ Partial Class FrmLoadNewedge
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnLoadPdf As ESL.myButton
     Friend WithEvents btnLoadMarex As ESL.myButton
+    Friend WithEvents btnLoadAdv As ESL.myButton
 
 End Class

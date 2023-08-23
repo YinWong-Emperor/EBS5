@@ -33,7 +33,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Subversion\Publishing\EBS5\UAT\v1.0.7.17\</PublishUrl>
+    <PublishUrl>C:\Subversion\Publishing\EBS5\UAT\v1.0.8.0\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -46,9 +46,9 @@
     <InstallUrl>\\172.19.249.39\ebs\EBS5\</InstallUrl>
     <ProductName>EBS5_UAT</ProductName>
     <PublisherName>EBS5_UAT</PublisherName>
-    <MinimumRequiredVersion>1.0.7.17</MinimumRequiredVersion>
-    <ApplicationRevision>17</ApplicationRevision>
-    <ApplicationVersion>1.0.7.17</ApplicationVersion>
+    <MinimumRequiredVersion>1.0.8.0</MinimumRequiredVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.8.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -3776,7 +3776,9 @@
     </None>
     <None Include="ClassDiagram2.cd" />
     <None Include="esl_TempKey_2017.pfx" />
-    <BaseApplicationManifest Include="My Project\app.manifest" />
+    <BaseApplicationManifest Include="My Project\app.manifest">
+      <SubType>Designer</SubType>
+    </BaseApplicationManifest>
     <EmbeddedResource Include="Ref\CrystalDecisions.ReportAppServer.ClientDoc.dll" />
     <EmbeddedResource Include="Ref\CrystalDecisions.ReportAppServer.DataDefModel.dll" />
     <EmbeddedResource Include="Ref\Ionic.Zip.dll" />

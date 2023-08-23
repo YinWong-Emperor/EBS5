@@ -2,8 +2,8 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ReferencePath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\;C:\Program Files\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\</ReferencePath>
-    <PublishUrlHistory>C:\Subversion\Publishing\EBS5\UAT\v1.0.7.17\|C:\Users\chrischanty\OneDrive - Emperor Group\Documents\~Work\Program\EBS5_UAT_Publish\|C:\Users\chrischanty\OneDrive - Emperor Group\Documents\~Work\Program\EBS5_Publish\|C:\Users\chrischanty\Documents\~Work\Program\EBS5_UAT_Publish\|C:\Users\chrischanty\Documents\~Work\Program\EBS5_Publish\</PublishUrlHistory>
-    <InstallUrlHistory>\\172.19.249.39\ebs\EBS5\|\\ebs.uat.ecg.eguat.net\ebs\EBS5\|\\ebs.prod.ecg.emperorgroup.net\ebs\EBS5\|\\ebs.uat.ecg.eguat.netebs.uat.ecg.eguat.net\ebs\EBS5\|\\ebs.prod.ecg.emperorgroup.net\ebs\EBS4\</InstallUrlHistory>
+    <PublishUrlHistory>C:\Subversion\Publishing\EBS5\UAT\v1.0.8.0\|C:\Subversion\Publishing\EBS5\UAT\v1.0.7.17\|C:\source\publish\EBS5\PROD\1.0.8.0\|C:\source\publish\EBS5\1.0.8.0\|C:\Users\chrischanty\OneDrive - Emperor Group\Documents\~Work\Program\EBS5_UAT_Publish\</PublishUrlHistory>
+    <InstallUrlHistory>\\172.19.249.39\ebs\EBS5\|\\ebs.prod.ecg.emperorgroup.net\ebs\EBS5\|\\ebs.uat.ecg.eguat.net\ebs\EBS5\|\\ebs.uat.ecg.eguat.netebs.uat.ecg.eguat.net\ebs\EBS5\|\\ebs.prod.ecg.emperorgroup.net\ebs\EBS4\</InstallUrlHistory>
     <SupportUrlHistory>
     </SupportUrlHistory>
     <UpdateUrlHistory>
