@@ -328,15 +328,27 @@ Public Class ClsImportFuturesComm
 
 
         'update sec trade ae, account and stock info
+        'Johnathan Tse 20230901 starts
         strSQL = " update  dbo.comm_trade_s " & _
                 " set aeno = left(ae, charindex(' ', ae)-1), " & _
                 " aename = substring(ae, charindex(' ', ae), len(ae) -1), " & _
                 " accno = left(acct, charindex(' ', acct)-1), " & _
                 " accname= ltrim(substring(acct, charindex(' ', acct), len(acct) -1)), " & _
-                " stkno = left(stk, charindex(' ', stk)-1), " & _
-                " stkname = ltrim(substring(stk, charindex(' ', stk), len(stk) -1)) " & _
+                " stkno = case when len(stk) = 10 then stk else left(stk, charindex(' ', stk)-1) end, " & _
+                " stkname = case when len(stk) = 10 then '' else ltrim(substring(stk, charindex(' ', stk), len(stk) -1)) end " & _
                 " where txmonth = '" & nyear & nmonth & "'"
         GFncRunSQL(GSCnSqlConn, MyTrans, strSQL, 0)
+        'Johnathan Tse 20230901 ends
+
+        'strSQL = " update  dbo.comm_trade_s " & _
+        '        " set aeno = left(ae, charindex(' ', ae)-1), " & _
+        '        " aename = substring(ae, charindex(' ', ae), len(ae) -1), " & _
+        '        " accno = left(acct, charindex(' ', acct)-1), " & _
+        '        " accname= ltrim(substring(acct, charindex(' ', acct), len(acct) -1)), " & _
+        '        " stkno = left(stk, charindex(' ', stk)-1), " & _
+        '        " stkname = ltrim(substring(stk, charindex(' ', stk), len(stk) -1)) " & _
+        '        " where txmonth = '" & nyear & nmonth & "'"
+        'GFncRunSQL(GSCnSqlConn, MyTrans, strSQL, 0)
 
         'strSQL = "update comm_trade_s " & _
         '            "set comm_trade_s.aeno = b.aeno, comm_trade_s.aename = b.ae_name, " & _
