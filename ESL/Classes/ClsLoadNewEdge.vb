@@ -2781,6 +2781,10 @@ Public Class ClsLoadNewEdge
             Dim sellPrice As Decimal = 0.0
             Dim qty As Integer = 0
             'Johnathan Tse test 20230802 ends
+            'Johnathan Tse: Load contract size 20230925 starts 
+            Dim contractMap As New Dictionary(Of String, String)
+            Dim calPrice As String = ""
+            'Johnathan Tse: Load contract size 20230925 ends
 
             'Load trade confirmation ADVDTN.CSV.. 20230728 starts
             If filename.Contains("ADVDTN") Then
@@ -2817,12 +2821,18 @@ Public Class ClsLoadNewEdge
                     exchange = ws_TRANS.Cells(i, 39).value * -1
                     size = ws_TRANS.Cells(i, 61).value
 
+                    'Johnathan Tse: Load contract size 20230925 starts 
+                    If Not contractMap.ContainsKey(tproduct) Then
+                        contractMap.Add(tproduct, size)
+                    End If
+                    'Johnathan Tse: Load contract size 20230925 ends
+
                     'Add to DataTable TransDt for Comfirmed Trades
                     lFncInsertNewedgeTrade(tdate, tbuy, tsell, tmonthcode, tproduct, tprice, dStrike, sCallPut, MDFlag, settleDate, TransDt, comm, clearing, exchange)
                 Next
 
                 'TO-DO: load size to transaction confirmation trades..
-                getAndLoadContractSize(TransDt, MyTrans, "ADV", size)
+                getAndLoadContractSizeForDTN(TransDt, MyTrans, "ADV", contractMap)
                 'FncTransSize(OPDT, LQDT, TransDt)
 
                 Dim lstFee = (From r In TransDt.AsEnumerable()
@@ -2864,16 +2874,21 @@ Public Class ClsLoadNewEdge
                     lFncInitializeValues(lvalue, tdate, tbuy, tsell, tmonthcode, tproduct, dStrike, sCallPut, sCurrency, tprice, comm, clearing, exchange, total, MDFlag, settleDate, floating, PL, size)
                     'trade_date = ws_TRANS.Cells(i, 2).value
                     tdate = DateTime.ParseExact(ws_LIQ.Cells(i, 2).value.ToString, "yyyyMMdd", CultureInfo.InvariantCulture)
+                    Dim stdate As String = tdate.ToString("yyyyMMdd")
+
                     If ws_LIQ.Cells(i, 6).Value = 1 Then
                         tbuy = ws_LIQ.Cells(i, 7).Value
                         buyPrice = ws_LIQ.Cells(i, 26).Value
+                        qty = ws_LIQ.Cells(i, 7).Value
+                        calPrice = buyPrice
                     Else
                         tsell = ws_LIQ.Cells(i, 7).Value
                         sellPrice = ws_LIQ.Cells(i, 26).Value
                         qty = ws_LIQ.Cells(i, 7).Value
-                        size = getAndLoadContractSize(LQDT, MyTrans, "ADV", 0)
-                        PL = (sellPrice - buyPrice) * qty * size
+                        calPrice = sellPrice
+                        'size = getAndLoadContractSize(LQDT, MyTrans, "ADV", 0, tmonthcode, stdate, tproduct, "M", strSettleDate)
                     End If
+
                     tmonthcode = ws_LIQ.Cells(i, 11).Value.ToString.Substring(2, 4)
                     tproduct = ws_LIQ.Cells(i, 10).Value
                     tproduct = tproduct.Trim()
@@ -2885,7 +2900,19 @@ Public Class ClsLoadNewEdge
                     Dim strSettleDate = settleDate.AddMonths(1).AddDays(-1).ToString("yyyyMMdd")
                     'settleDate = settleDate.ToString("yyyyMMdd", CultureInfo.InvariantCulture)
                     settleDate = DateTime.ParseExact(strSettleDate, "yyyyMMdd", CultureInfo.InvariantCulture)
-                    'getAndLoadContractSize(LQDT, MyTrans, "ADV")
+
+                    size = getAndLoadContractSize(LQDT, MyTrans, "ADV", 0, tmonthcode, stdate, tproduct, "M", strSettleDate, stdate)
+                    'Johnathan Tse : if user load PAS file first, cannot get contract size.. 20230925
+                    If size = 0 Then
+                        Dim msg As String = "Cannot load contract size on PAS file! Please load trade confirmation or open position first! (eg: ADVDTN.CSV or ADVPOS.CSV)"
+                        MessageBox.Show(msg, "Read Excel Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        Exit Function
+                    End If
+
+                    'Johnathan Tse : Add B/S logic to calculate PL starts..20230925
+                    PL = calPrice * qty * size
+                    PL = If(ws_LIQ.Cells(i, 6).Value = 1, PL * -1, PL)
+                    'Johnathan Tse : Add B/S logic to calculate PL ends..20230925
                     lFncInsertToLIQDataTable(trade_date, tdate, tbuy, tsell, tmonthcode, tproduct, tprice, dStrike, sCallPut, MDFlag, settleDate, LQDT, PL, size)
                 Next
                 'PL: need to add PL to liqheader starts..
@@ -2981,6 +3008,9 @@ Public Class ClsLoadNewEdge
 
                         If tradePrice <> 0 Then
                             floating = (settlePrice - tradePrice) * qty * size
+                            'Johnathan Tse : Add B/S logic to calculate floating starts..20230922
+                            floating = If(ws_OP.Cells(i, 19).value = 1, floating, floating * -1)
+                            'Johnathan Tse : Add B/S logic to calculate floating ends..20230922
                         End If
                         'can use this function load?
                         lFncPrepareMarexOP(trade_date, tdate, tbuy, tsell, tmonthcode, tproduct, tprice, dStrike, sCallPut, MDFlag, settleDate, floating, cprice, size, OPDT)
@@ -2992,24 +3022,6 @@ Public Class ClsLoadNewEdge
                 'insert content
                 lFncInsertNewedgeConetent(trade_date, "Imported ADVPOS by Excel", 1, MyTrans, "ADV")
             End If
-
-            'insert contract_size into transaction table << how to do??
-            'FncTransSize(OPDT, LQDT, TransDt)
-
-
-            'insert transaction
-            'FncInsertTrans(TransDt, MyTrans, "ADV")
-            ''insert liquid position and its header (header for storing the PL)
-            'FncInsertCP(LQDT, LiqHeader, MyTrans, "ADV")
-            ''insert open position
-            'FncInsertOP(OPDT, MyTrans, "ADV")
-            ''insert content
-            'lFncInsertNewedgeConetent(trade_date, "Imported by Excel", 1, MyTrans, "ADV")
-
-            'Commit
-            'MyTrans.Commit()
-            'MyTrans.Rollback()
-            'MyTrans = Nothing
 
         Catch ex As Exception
             If GSCnLiqConn.State <> ConnectionState.Closed Then
@@ -3032,37 +3044,42 @@ Public Class ClsLoadNewEdge
         End Try
     End Function
 
-    Protected Friend Function getAndLoadContractSize(ByVal dt As DataTable, ByVal mytrans As SqlTransaction, ByVal pCounterParty As String, ByVal pSize As Decimal)
+    Protected Friend Function getAndLoadContractSizeForDTN(ByVal dt As DataTable, ByVal mytrans As SqlTransaction, ByVal pCounterParty As String, ByVal pMap As Dictionary(Of String, String))
+        Dim contractSize As String = ""
+        Dim Sql = ""
+        For Each dr As DataRow In dt.Rows
+            'Johnathan Tse: Load contract size 20230925 starts
+            If pMap.Count <> 0 Then
+                pMap.TryGetValue(dr("product"), contractSize)
+                dr("size") = contractSize
+                'Johnathan Tse: Load contract size 20230925 ends             
+            End If
+        Next
+
+        Return contractSize
+    End Function
+
+    Protected Friend Function getAndLoadContractSize(ByVal dt As DataTable, ByVal mytrans As SqlTransaction, ByVal pCounterParty As String, ByVal pSize As Decimal,
+                                                     ByVal pMonthcode As String, ByVal pTdate As String, ByVal pProduct As String, ByVal pMDflag As String, ByVal pSettleDate As String, ByVal pTradeDate As String)
         Dim contractSize = pSize
         Dim sql = ""
         Dim result As DataTable
-        For Each dr As DataRow In dt.Rows
-            If contractSize = 0 Then
-                Dim monthcode = dr("monthcode")
-                Dim product = dr("product")
-                Dim MDflag = dr("monthly_daily")
-                Dim settleDate = Format(dr("settle_date"), "yyyyMMdd").ToString
-                Dim tdate As String = Format(dr("tDate"), "yyyyMMdd").ToString
-                sql = "select top 1 contract_size from newedge_cap_trade_hist where counterparty = '" + pCounterParty + "' and monthcode = '" + monthcode + "' and tdate = '" + tdate
-                sql += "' and product = '" + product + "' and monthly_daily = '" + MDflag + "' and settle_date = '" + settleDate + "' order by tid desc "
-                result = GFncRtnDS(GSCnSqlConn, sql, mytrans).Tables(0)
-                If result.Rows.Count > 0 Then
-                    contractSize = GFncNoNullValue(result.Rows(0).Item("contract_size"))
 
-                Else
-                    sql = "select top 1 contract_size from newedge_cap_op where counterparty = '" + pCounterParty + "' and monthcode = '" + monthcode + "' and tdate = '" + tdate
-                    sql += "' and product = '" + product + "' and monthly_daily = '" + MDflag + "' and settle_date = '" + settleDate + "' order by noid desc "
-                    result = GFncRtnDS(GSCnSqlConn, sql, mytrans).Tables(0)
-                    If result.Rows.Count > 0 Then
-                        contractSize = GFncNoNullValue(result.Rows(0).Item("contract_size"))
-                    End If
-                End If
-                dr("size") = contractSize
-            Else
-                dr("size") = contractSize
+        sql = "select top 1 contract_size from newedge_cap_op where counterparty = '" + pCounterParty + "' and monthcode = '" + pMonthcode +
+        "' and odate = '" + pTdate
+        sql += "' and product = '" + pProduct + "' and monthly_daily = '" + pMDflag + "' and settle_date = '" + pSettleDate + "' order by noid desc "
+        result = GFncRtnDS(GSCnSqlConn, sql, mytrans).Tables(0)
+        If result.Rows.Count > 0 Then
+            contractSize = GFncNoNullValue(result.Rows(0).Item("contract_size"))
+        Else
+            sql = "select top 1 contract_size from newedge_cap_trade_hist where counterparty = '" + pCounterParty + "' and monthcode = '" + pMonthcode + "' and tdate = '" + pTradeDate
+            sql += "' and product = '" + pProduct + "' and monthly_daily = '" + pMDflag + "' and settle_date = '" + pSettleDate + "'"
+            result = GFncRtnDS(GSCnSqlConn, sql, mytrans).Tables(0)
+            If result.Rows.Count > 0 Then
+                contractSize = GFncNoNullValue(result.Rows(0).Item("contract_size"))
             End If
-        Next
+        End If
+
         Return contractSize
     End Function
-    'Johnathan Tse 20230727 ends..
 End Class
