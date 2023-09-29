@@ -33,7 +33,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Subversion\Publishing\EBS5\UAT\v1.0.8.2\</PublishUrl>
+    <PublishUrl>C:\source\publish\EBS5\1.0.8.3\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -46,9 +46,9 @@
     <InstallUrl>\\172.19.249.39\ebs\EBS5\</InstallUrl>
     <ProductName>EBS5_UAT</ProductName>
     <PublisherName>EBS5_UAT</PublisherName>
-    <MinimumRequiredVersion>1.0.8.2</MinimumRequiredVersion>
-    <ApplicationRevision>2</ApplicationRevision>
-    <ApplicationVersion>1.0.8.2</ApplicationVersion>
+    <MinimumRequiredVersion>1.0.8.3</MinimumRequiredVersion>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>1.0.8.3</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>

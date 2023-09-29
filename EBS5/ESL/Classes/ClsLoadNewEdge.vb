@@ -2901,12 +2901,15 @@ Public Class ClsLoadNewEdge
                     'settleDate = settleDate.ToString("yyyyMMdd", CultureInfo.InvariantCulture)
                     settleDate = DateTime.ParseExact(strSettleDate, "yyyyMMdd", CultureInfo.InvariantCulture)
 
-                    size = getAndLoadContractSize(LQDT, MyTrans, "ADV", 0, tmonthcode, stdate, tproduct, "M", strSettleDate, stdate)
-                    'Johnathan Tse : if user load PAS file first, cannot get contract size.. 20230925
+                    'Johnathan Tse : remove trade date filter to get contract size, use map instead.. 20230928
+                    contractMap = getAndLoadContractSize(LQDT, MyTrans, "ADV", 0, tmonthcode, tproduct, "M", strSettleDate, contractMap)
+                    contractMap.TryGetValue(tproduct, size)
+                    'size = getAndLoadContractSize(LQDT, MyTrans, "ADV", 0, tmonthcode, stdate, tproduct, "M", strSettleDate, stdate, contractMap)
+                    'Johnathan Tse : if user load future product with no DTN / POS, will not get contract size.. 20230925
                     If size = 0 Then
-                        Dim msg As String = "Cannot load contract size on PAS file! Please load trade confirmation or open position first! (eg: ADVDTN.CSV or ADVPOS.CSV)"
+                        Dim msg As String = "Waning: Cannot load contract size on PAS file for product tracer number (" & tproduct & " - " & ws_LIQ.Cells(i, 47).Value & "), thus the PL calculation of this product may be wrong."
                         MessageBox.Show(msg, "Read Excel Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                        Exit Function
+                        'Exit Function
                     End If
 
                     'Johnathan Tse : Add B/S logic to calculate PL starts..20230925
@@ -3060,26 +3063,33 @@ Public Class ClsLoadNewEdge
     End Function
 
     Protected Friend Function getAndLoadContractSize(ByVal dt As DataTable, ByVal mytrans As SqlTransaction, ByVal pCounterParty As String, ByVal pSize As Decimal,
-                                                     ByVal pMonthcode As String, ByVal pTdate As String, ByVal pProduct As String, ByVal pMDflag As String, ByVal pSettleDate As String, ByVal pTradeDate As String)
+                                                     ByVal pMonthcode As String, ByVal pProduct As String, ByVal pMDflag As String, ByVal pSettleDate As String, ByVal pMap As Dictionary(Of String, String))
         Dim contractSize = pSize
         Dim sql = ""
         Dim result As DataTable
 
-        sql = "select top 1 contract_size from newedge_cap_op where counterparty = '" + pCounterParty + "' and monthcode = '" + pMonthcode +
-        "' and odate = '" + pTdate
-        sql += "' and product = '" + pProduct + "' and monthly_daily = '" + pMDflag + "' and settle_date = '" + pSettleDate + "' order by noid desc "
-        result = GFncRtnDS(GSCnSqlConn, sql, mytrans).Tables(0)
-        If result.Rows.Count > 0 Then
-            contractSize = GFncNoNullValue(result.Rows(0).Item("contract_size"))
-        Else
-            sql = "select top 1 contract_size from newedge_cap_trade_hist where counterparty = '" + pCounterParty + "' and monthcode = '" + pMonthcode + "' and tdate = '" + pTradeDate
-            sql += "' and product = '" + pProduct + "' and monthly_daily = '" + pMDflag + "' and settle_date = '" + pSettleDate + "'"
+        If Not pMap.ContainsKey(pProduct) Then
+            sql = "select top 1 contract_size from newedge_cap_op where counterparty = '" + pCounterParty + "' and monthcode = '" + pMonthcode + "' "
+            'sql += "and odate = '" + pTdate + "' "
+            sql += "and product = '" + pProduct + "' and monthly_daily = '" + pMDflag + "' and settle_date = '" + pSettleDate + "' "
+            'sql += "order by noid desc "
             result = GFncRtnDS(GSCnSqlConn, sql, mytrans).Tables(0)
             If result.Rows.Count > 0 Then
                 contractSize = GFncNoNullValue(result.Rows(0).Item("contract_size"))
+                pMap.Add(pProduct, contractSize)
+            Else
+                sql = "select top 1 contract_size from newedge_cap_trade_hist where counterparty = '" + pCounterParty + "' and monthcode = '" + pMonthcode + "' "
+                'sql += "and tdate = '" + pTradeDate + "' "
+                sql += "and product = '" + pProduct + "' and monthly_daily = '" + pMDflag + "' and settle_date = '" + pSettleDate + "' "
+                result = GFncRtnDS(GSCnSqlConn, sql, mytrans).Tables(0)
+                If result.Rows.Count > 0 Then
+                    contractSize = GFncNoNullValue(result.Rows(0).Item("contract_size"))
+                    pMap.Add(pProduct, contractSize)
+                End If
             End If
         End If
 
-        Return contractSize
+
+        Return pMap
     End Function
 End Class
