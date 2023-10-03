@@ -3071,8 +3071,10 @@ Public Class ClsLoadNewEdge
         If Not pMap.ContainsKey(pProduct) Then
             sql = "select top 1 contract_size from newedge_cap_op where counterparty = '" + pCounterParty + "' and monthcode = '" + pMonthcode + "' "
             'sql += "and odate = '" + pTdate + "' "
-            sql += "and product = '" + pProduct + "' and monthly_daily = '" + pMDflag + "' and settle_date = '" + pSettleDate + "' "
+            sql += "and product = '" + pProduct + "' and monthly_daily = '" + pMDflag
+            'sql += "' and settle_date = '" + pSettleDate + "' "
             'sql += "order by noid desc "
+            sql += "'"
             result = GFncRtnDS(GSCnSqlConn, sql, mytrans).Tables(0)
             If result.Rows.Count > 0 Then
                 contractSize = GFncNoNullValue(result.Rows(0).Item("contract_size"))
@@ -3080,7 +3082,9 @@ Public Class ClsLoadNewEdge
             Else
                 sql = "select top 1 contract_size from newedge_cap_trade_hist where counterparty = '" + pCounterParty + "' and monthcode = '" + pMonthcode + "' "
                 'sql += "and tdate = '" + pTradeDate + "' "
-                sql += "and product = '" + pProduct + "' and monthly_daily = '" + pMDflag + "' and settle_date = '" + pSettleDate + "' "
+                sql += "and product = '" + pProduct + "' and monthly_daily = '" + pMDflag
+                'sql += "' and settle_date = '" + pSettleDate + "' "
+                sql += "'"
                 result = GFncRtnDS(GSCnSqlConn, sql, mytrans).Tables(0)
                 If result.Rows.Count > 0 Then
                     contractSize = GFncNoNullValue(result.Rows(0).Item("contract_size"))
