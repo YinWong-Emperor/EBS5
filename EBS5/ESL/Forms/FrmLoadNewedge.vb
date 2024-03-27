@@ -146,7 +146,7 @@ Public Class FrmLoadNewedge
                 filename = openFileDialog1.FileName
                 lstr = cls.lFncGetTradeDateFromAdv(filename)
                 If (lstr = "") Then
-                    GSubShowInfo("Some error for loading the ADV source file name. (should be: yyyyMMddADVDTN.CSV)")
+                    GSubShowInfo("Some error for loading the ADV source file name. (should be: tran_yyyyMMdd.csv / pos_yyyyMMdd.csv / pns_yyyyMMdd.csv )")
                     Return
                 End If
                 If (GSubShowYNConfirm(lstr & GFncGetSysMsg(32)) = Windows.Forms.DialogResult.Yes) Then

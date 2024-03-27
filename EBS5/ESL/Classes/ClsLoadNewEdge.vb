@@ -2718,9 +2718,9 @@ Public Class ClsLoadNewEdge
         'Dim tDate As String
 
         Try
-            If filename.Contains("ADVDTN") Or filename.Contains("ADVPAS") Or filename.Contains("ADVPOS") Then
+            If filename.Contains("tran_") Or filename.Contains("pns_") Or filename.Contains("pos_") Then
                 'Dim tDate As String = (Path.GetFileName(filename).Substring(0, 8))
-                Dim tDate As Date = DateTime.ParseExact(Path.GetFileName(filename).Substring(0, 8), "yyyyMMdd", CultureInfo.InvariantCulture)
+                Dim tDate As Date = DateTime.ParseExact(Path.GetFileName(filename).Substring(Path.GetFileName(filename).Length - 12, 8), "yyyyMMdd", CultureInfo.InvariantCulture)
                 strTradeDate = tDate.ToString("yyyy/MM/dd")
             End If
 
@@ -2787,7 +2787,7 @@ Public Class ClsLoadNewEdge
             'Johnathan Tse: Load contract size 20230925 ends
 
             'Load trade confirmation ADVDTN.CSV.. 20230728 starts
-            If filename.Contains("ADVDTN") Then
+            If filename.Contains("tran_") Then
                 'Delete Imported records
                 lFncDeleteImported(trade_date, MyTrans, "ADVDTN")
                 Dim sheet_name = Path.GetFileName(filename).Substring(0, Path.GetFileName(filename).Length - 4)
@@ -2795,7 +2795,7 @@ Public Class ClsLoadNewEdge
                 range = ws_TRANS.UsedRange
                 rowcount = range.Rows.Count
 
-                For i As Integer = 2 To rowcount - 1
+                For i As Integer = 2 To rowcount
                     lFncInitializeValues(lvalue, tdate, tbuy, tsell, tmonthcode, tproduct, dStrike, sCallPut, sCurrency, tprice, comm, clearing, exchange, total, MDFlag, settleDate, floating, PL, size)
                     'trade_date = ws_TRANS.Cells(i, 2).value
                     tdate = DateTime.ParseExact(trade_date, "yyyy/MM/dd", CultureInfo.InvariantCulture)
@@ -2812,10 +2812,13 @@ Public Class ClsLoadNewEdge
                     dStrike = ws_TRANS.Cells(i, 12).value
                     sCallPut = ws_TRANS.Cells(i, 13).value
                     'MDFlag = "D"
-                    settleDate = DateTime.ParseExact(ws_TRANS.Cells(i, 54).value.substring(0, 6), "MMM yy", CultureInfo.InvariantCulture)
-                    Dim strSettleDate = settleDate.AddMonths(1).AddDays(-1).ToString("yyyyMMdd")
-                    'settleDate = settleDate.ToString("yyyyMMdd", CultureInfo.InvariantCulture)
-                    settleDate = DateTime.ParseExact(strSettleDate, "yyyyMMdd", CultureInfo.InvariantCulture)
+
+                    lvalue = ws_TRANS.Cells(i, 10).value
+                    If Not String.IsNullOrEmpty(lvalue) Then
+                        settleDate = DateTime.ParseExact(lvalue, "yyyyMM", CultureInfo.InvariantCulture)
+                        settleDate = settleDate.AddMonths(1).AddDays(-1)
+                    End If
+
                     comm = ws_TRANS.Cells(i, 33).value * -1
                     clearing = ws_TRANS.Cells(i, 35).value * -1
                     exchange = ws_TRANS.Cells(i, 39).value * -1
@@ -2862,7 +2865,7 @@ Public Class ClsLoadNewEdge
                 'Load trade confirmation ends.. 20230728
 
                 'Johnathan Tse : Load Purchase & Sales starts.. 20230728
-            ElseIf filename.Contains("ADVPAS") Then
+            ElseIf filename.Contains("pns_") Then
                 'Delete Imported records
                 lFncDeleteImported(trade_date, MyTrans, "ADVPAS")
                 Dim sheet_name = Path.GetFileName(filename).Substring(0, Path.GetFileName(filename).Length - 4)
@@ -2870,7 +2873,7 @@ Public Class ClsLoadNewEdge
                 range = ws_LIQ.UsedRange
                 rowcount = range.Rows.Count
 
-                For i As Integer = 2 To rowcount - 1
+                For i As Integer = 2 To rowcount
                     lFncInitializeValues(lvalue, tdate, tbuy, tsell, tmonthcode, tproduct, dStrike, sCallPut, sCurrency, tprice, comm, clearing, exchange, total, MDFlag, settleDate, floating, PL, size)
                     'trade_date = ws_TRANS.Cells(i, 2).value
                     tdate = DateTime.ParseExact(ws_LIQ.Cells(i, 2).value.ToString, "yyyyMMdd", CultureInfo.InvariantCulture)
@@ -2896,13 +2899,15 @@ Public Class ClsLoadNewEdge
                     dStrike = ws_LIQ.Cells(i, 12).value
                     'sCallPut = 
                     'MDFlag = "D"
-                    settleDate = DateTime.ParseExact(ws_LIQ.Cells(i, 49).value.substring(0, 6), "MMM yy", CultureInfo.InvariantCulture)
-                    Dim strSettleDate = settleDate.AddMonths(1).AddDays(-1).ToString("yyyyMMdd")
-                    'settleDate = settleDate.ToString("yyyyMMdd", CultureInfo.InvariantCulture)
-                    settleDate = DateTime.ParseExact(strSettleDate, "yyyyMMdd", CultureInfo.InvariantCulture)
+
+                    lvalue = ws_LIQ.Cells(i, 11).value
+                    If Not String.IsNullOrEmpty(lvalue) Then
+                        settleDate = DateTime.ParseExact(lvalue, "yyyyMM", CultureInfo.InvariantCulture)
+                        settleDate = settleDate.AddMonths(1).AddDays(-1)
+                    End If
 
                     'Johnathan Tse : remove trade date filter to get contract size, use map instead.. 20230928
-                    contractMap = getAndLoadContractSize(LQDT, MyTrans, "ADV", 0, tmonthcode, tproduct, "M", strSettleDate, contractMap)
+                    contractMap = getAndLoadContractSize(LQDT, MyTrans, "ADV", 0, tmonthcode, tproduct, "M", "", contractMap)
                     contractMap.TryGetValue(tproduct, size)
                     'size = getAndLoadContractSize(LQDT, MyTrans, "ADV", 0, tmonthcode, stdate, tproduct, "M", strSettleDate, stdate, contractMap)
                     'Johnathan Tse : if user load future product with no DTN / POS, will not get contract size.. 20230925
@@ -2967,7 +2972,7 @@ Public Class ClsLoadNewEdge
 
 
                 'Johnathan Tse : Load open position starts..20230731
-            ElseIf filename.Contains("ADVPOS") Then
+            ElseIf filename.Contains("pos_") Then
                 'Delete Imported records
                 lFncDeleteImported(trade_date, MyTrans, "ADVPOS")
                 Dim sheet_name = Path.GetFileName(filename).Substring(0, Path.GetFileName(filename).Length - 4)
@@ -2976,7 +2981,7 @@ Public Class ClsLoadNewEdge
                 rowcount = range.Rows.Count
                 'Dim trade_account = ""
 
-                For i As Integer = 2 To rowcount - 1
+                For i As Integer = 2 To rowcount
                     If ws_OP.Cells(i, 4).value <> "C9950" Then
                         lFncInitializeValues(lvalue, tdate, tbuy, tsell, tmonthcode, tproduct, dStrike, sCallPut, sCurrency, tprice, comm, clearing, exchange, total, MDFlag, settleDate, floating, PL, size)
                         'trade_date can be 0 in open positions, align to trade date
@@ -2989,19 +2994,30 @@ Public Class ClsLoadNewEdge
                         Else
                             tsell = ws_OP.Cells(i, 20).value
                         End If
-                        tmonthcode = ws_OP.Cells(i, 15).value.ToString.Substring(2, 4)
+
+                        lvalue = ws_OP.Cells(i, 15).value
+                        If Not String.IsNullOrEmpty(lvalue) Then
+                            tmonthcode = ws_OP.Cells(i, 15).value.ToString.Substring(2, 4)
+                        End If
+
                         tproduct = ws_OP.Cells(i, 8).value
                         tproduct = tproduct.Trim()
-                        If ws_OP.Cells(i, 25).value.ToString.Trim() <> "" Then
+
+                        lvalue = ws_OP.Cells(i, 25).value
+                        If Not String.IsNullOrEmpty(lvalue) Then
                             tprice = ws_OP.Cells(i, 25).value
                         End If
+
                         dStrike = ws_OP.Cells(i, 11).value
                         sCallPut = ws_OP.Cells(i, 9).value
                         'MDFlag = "D"
-                        settleDate = DateTime.ParseExact(ws_OP.Cells(i, 35).value.substring(0, 6), "MMM yy", CultureInfo.InvariantCulture)
-                        Dim strSettleDate = settleDate.AddMonths(1).AddDays(-1).ToString("yyyyMMdd")
-                        'settleDate = settleDate.ToString("yyyyMMdd", CultureInfo.InvariantCulture)
-                        settleDate = DateTime.ParseExact(strSettleDate, "yyyyMMdd", CultureInfo.InvariantCulture)
+
+                        lvalue = ws_OP.Cells(i, 15).value
+                        If Not String.IsNullOrEmpty(lvalue) Then
+                            settleDate = DateTime.ParseExact(lvalue, "yyyyMM", CultureInfo.InvariantCulture)
+                            settleDate = settleDate.AddMonths(1).AddDays(-1)
+                        End If
+
                         Dim settlePrice = ws_OP.Cells(i, 23).value
                         Dim tradePrice = ws_OP.Cells(i, 18).value
                         qty = ws_OP.Cells(i, 20).value
