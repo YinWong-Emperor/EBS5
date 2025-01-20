@@ -16,9 +16,9 @@ Public Class ClsImportFuturesComm
         Dim lds As DataSet
         Dim cnt As Integer = 0
 
-        strSQL = "Select * from comm_trade_s where txmonth = '" & nyear & nmonth & "'"
-        lds = GFncRtnDS(GSCnSqlConn, strSQL, 0)
-        cnt = lds.Tables(0).Rows.Count
+        'strSQL = "Select * from comm_trade_s where txmonth = '" & nyear & nmonth & "'"
+        'lds = GFncRtnDS(GSCnSqlConn, strSQL, 0)
+        'cnt = lds.Tables(0).Rows.Count
 
         strSQL = "Select * from comm_trade_f where txmonth = '" & nyear & nmonth & "'"
         lds = GFncRtnDS(GSCnSqlConn, strSQL, 0)
@@ -72,20 +72,11 @@ Public Class ClsImportFuturesComm
     End Function
 
     Protected Friend Sub lFncImportDataFromG2B(ByVal nyear As String, ByVal nmonth As String, ByVal smonth As String, ByRef strSQL As String)
-
-        Dim dbStoreProS As String = "G2BS_LASTM"
-        Dim dbStoreProF As String = "G2BF_LASTM"
-
-        'Dim dbStoreProS As String = "G2BS_RET"
-        'Dim dbStoreProF As String = "G2BF_RET"
         Dim dbStringS As String = GStrG2BSLMTHDB
         Dim dbStringF As String = GStrG2BFLMTHDB
 
-
-        'Dim dbStoreProS As String = "G2BS_UAT" 'for testing
-        'Dim dbStoreProF As String = "G2BF_UAT"
-        'Dim dbStringS As String = "G2BS_UAT.G2BS_RET_LASTM"
-        'Dim dbStringF As String = "G2BF_UAT.G2BF_UAT"
+        Dim g2bs As String() = dbStringS.Split(".")
+        Dim g2bf As String() = dbStringF.Split(".")
 
         'import securities data from afe
         'ae master
@@ -107,7 +98,7 @@ Public Class ClsImportFuturesComm
         '          " " & nyear & "'', ''''  ' ) "
         strSQL = "SELECT ae, acct, tdate, oid, stk, price, qty, grossamt, commission, comm_rate, tradetype, rebate " & _
                   "into #trades " & _
-                  "FROM OPENQUERY (" & dbStoreProS & ", 'SET FMTONLY OFF EXEC rpt_MSSAERDR03_ER ''366'', ''" & smonth & _
+                  "FROM OPENQUERY (" & g2bs(0) & ", 'SET FMTONLY OFF EXEC [" & g2bs(1) & "].[dbo].rpt_MSSAERDR03_ER ''366'', ''" & smonth & _
                   " " & nyear & "'', ''''  WITH RESULT SETS((p_month char(8),  p_cnt money,    groupfield varchar(111),  tdate char(15),  oid char(12),    tradetype char(1),  mkt char(44),  ccy_charge char(4),  AE char(60),  acct char(82),  stk char(41),  price decimal(19,6), qty decimal(18,6), grossamt decimal(38,6)  ,  commission money,  rebate money,  netamt_charge_ccy  decimal(38,6),  comm_rate decimal(18,6),  stamp varchar,  price_dp int,  qty_dp int,company_ccy char(4),grossamt_company_ccy decimal(18,6),commission_company_ccy decimal(18,6),  rebate_company_ccy decimal(18,6)) )' ) "
         GFncRunSQL(GSCnSqlConn, strSQL, 0)
 
@@ -173,7 +164,7 @@ Public Class ClsImportFuturesComm
         'strSQL = "SELECT * into #tradef " & _
         '          "FROM OPENQUERY (" & dbStoreProF & ", 'SET FMTONLY OFF;  EXEC  rpt_IT_DSFAERB01_ER ''999''  ' )"
         strSQL = "SELECT * into #tradef " & _
-                  "FROM OPENQUERY (" & dbStoreProF & ", 'SET FMTONLY OFF;  EXEC  rpt_IT_DSFAERB01_ER ''999''  WITH RESULT SETS (([A/E Code] char(20), [A/E Name] char(40) ,   [Account Code] char(20), [Name_1] nchar(60), [Name_2] nchar(40),   [Comdy] char(10), [Month] char(4), [CALL/PUT] char(1), [Strike] decimal(18,8),   s_price_str varchar(50),  day_dd int, night_dd int, tg_dd int,  commission_dd money, exchange_fee_dd money, ae_rebate_dd money,  commission_mm money, exchange_fee_mm money, ae_rebate_mm money,  day_mm int, night_mm int, tg_mm int,  [Market Name] char(60), [CCY] char(4)))' )"
+          "FROM OPENQUERY (" & g2bf(0) & ", 'SET FMTONLY OFF;  EXEC [" & g2bf(1) & "].[dbo].rpt_IT_DSFAERB01_ER ''999''  WITH RESULT SETS (([A/E Code] char(20), [A/E Name] char(40) ,   [Account Code] char(20), [Name_1] nchar(60), [Name_2] nchar(40),   [Comdy] char(10), [Month] char(4), [CALL/PUT] char(1), [Strike] decimal(18,8),   s_price_str varchar(50),  day_dd int, night_dd int, tg_dd int,  commission_dd money, exchange_fee_dd money, ae_rebate_dd money,  commission_mm money, exchange_fee_mm money, ae_rebate_mm money,  day_mm int, night_mm int, tg_mm int,  [Market Name] char(60), [CCY] char(4)))' )"
 
             GFncRunSQL(GSCnSqlConn, strSQL, 0)
 
@@ -186,9 +177,10 @@ Public Class ClsImportFuturesComm
         '            smonth & " " & nyear & "'', '' ''  ' ) " & _
         '            "where substring(tdate,4,2) = '" & nmonth & "' and substring(tdate,7,2) = '" & Right(nyear, 2) & "'"
         strSQL = "SELECT * into #comm " & _
-                        "FROM OPENQUERY (" & dbStoreProF & ", 'SET NOCOUNT ON; SET FMTONLY OFF;  EXEC  rpt_IT_MSFCRR14 ''999'', ''" & _
+                        "FROM OPENQUERY (" & g2bf(0) & ", 'SET NOCOUNT ON; SET FMTONLY OFF;  EXEC [" & g2bf(1) & "].[dbo].rpt_IT_MSFCRR14 ''999'', ''" & _
                         smonth & " " & nyear & "'', '' ''  WITH RESULT SETS ((cmid char(10), aeid char(10), aeno char(20), ae_name char(40),   oid varchar(11),  group_o char(10), acct nchar(60),  market char(68),  ccy char(4),comdy_code nvarchar(22),  dec_loc smallint, [MONTH] char(4),put_call char(1),s_price decimal(18,8),price_str varchar(50),s_price_str varchar(50),future_type char(1),  [TYPE] char(1), tdate char(15),  qty_day int,qty_night int,qty_tg int, comm money, exchange_fee money, levy money, rebate money,  m_qty_day int, m_qty_night int,m_qty_tg int,m_comm money,m_exchange_fee money,m_levy money, m_rebate money,  bhid char(10), tradetype char(1),  tranxdate_b char(20),  tranxdate_e char(20)))' ) " & _
                         "where substring(tdate,4,2) = '" & nmonth & "' and substring(tdate,7,2) = '" & Right(nyear, 2) & "'"
+
             GFncRunSQL(GSCnSqlConn, strSQL, 0)
 
             'strSQL = "select * into  #comm from temp_comm_f  "

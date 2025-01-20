@@ -11,6 +11,13 @@ Public Class ClsExportFatcaAccountList
         If (GSubShowYNConfirm(GFncGetSysMsg(27)) = Windows.Forms.DialogResult.Yes) Then
 
             Dim lstr As String = String.Empty
+            Dim strTmpSQL As String
+
+            strTmpSQL = "SELECT * INTO #tmp_client_master_2 FROM tmp_client_master_2 WHERE 1 <> 1"
+            GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
+
+            strTmpSQL = "INSERT INTO #tmp_client_master_2 EXEC [s_client_master_2] '" & GStrG2BSPRODDB & "', '" & GStrG2BFPRODDB & "';"
+            GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
 
             lstr += " SELECT accno,"
             lstr += "       name_1,"
@@ -46,12 +53,15 @@ Public Class ClsExportFatcaAccountList
             lstr += "       END AS suspend_field,"
             lstr += "       suspend_code,"
             lstr += "       sus_date"
-            lstr += "  FROM dbo.Vw_client_master_2 vwcm"
+            lstr += "  FROM dbo.#tmp_client_master_2 vwcm"
             lstr += " WHERE 1=1 "
             lstr += lstrSQL
             lstr += " ORDER BY accno ASC"
 
             ldtsTemp = GFncRtnDS(GSCnSqlConn, lstr, 0)
+
+            strTmpSQL = "DROP TABLE #tmp_client_master_2"
+            GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
 
             If (ldtsTemp.Tables(0).Rows.Count > 0) Then
                 ExportCSV(GStrExptDir, strExFile, ldtsTemp, " accno, name_1, nature_s, aeno, br_id, Account Type, FATCA acc_type, W form signed?, W form Signing Date, W form Expiry Date, US Citizen / Resident?, US born?, US address?,  US tel. no.?, Fund Transfer from/to US?, Auth. person with US address?, US 'in-care-of' or 'hold mail' address?, US EIN/SSN, Last Review Date,FATCA_Remarks, FATCA_GIIN, date_open, suspend_field, suspend_code, date_suspend ")

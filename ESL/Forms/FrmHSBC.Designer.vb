@@ -21,28 +21,24 @@ Partial Class FrmHSBC
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmHSBC))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmHSBC))
         Me.Label13 = New System.Windows.Forms.Label()
         Me.tc = New System.Windows.Forms.TabControl()
         Me.tp1 = New System.Windows.Forms.TabPage()
         Me.dtgSList = New System.Windows.Forms.DataGridView()
-        Me.tp2 = New System.Windows.Forms.TabPage()
-        Me.dtgFList = New System.Windows.Forms.DataGridView()
-        Me.btnExport = New ESL.myButton(Me.components)
-        Me.btnLoad = New ESL.myButton(Me.components)
         Me.vdate = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.accno = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.accountno = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -51,6 +47,8 @@ Partial Class FrmHSBC
         Me.cctype = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.chqdate = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.description = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tp2 = New System.Windows.Forms.TabPage()
+        Me.dtgFList = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -58,6 +56,8 @@ Partial Class FrmHSBC
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.fdescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnExport = New ESL.myButton(Me.components)
+        Me.btnLoad = New ESL.myButton(Me.components)
         Me.tc.SuspendLayout()
         Me.tp1.SuspendLayout()
         CType(Me.dtgSList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -126,65 +126,6 @@ Partial Class FrmHSBC
         Me.dtgSList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dtgSList.Size = New System.Drawing.Size(701, 354)
         Me.dtgSList.TabIndex = 6
-        '
-        'tp2
-        '
-        Me.tp2.Controls.Add(Me.dtgFList)
-        Me.tp2.Location = New System.Drawing.Point(4, 24)
-        Me.tp2.Name = "tp2"
-        Me.tp2.Padding = New System.Windows.Forms.Padding(3)
-        Me.tp2.Size = New System.Drawing.Size(721, 385)
-        Me.tp2.TabIndex = 1
-        Me.tp2.Text = "Futures"
-        Me.tp2.UseVisualStyleBackColor = True
-        '
-        'dtgFList
-        '
-        Me.dtgFList.AllowUserToAddRows = False
-        Me.dtgFList.AllowUserToDeleteRows = False
-        Me.dtgFList.AllowUserToResizeColumns = False
-        Me.dtgFList.AllowUserToResizeRows = False
-        Me.dtgFList.BackgroundColor = System.Drawing.Color.Linen
-        Me.dtgFList.ColumnHeadersHeight = 22
-        Me.dtgFList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.fdescription})
-        Me.dtgFList.GridColor = System.Drawing.Color.Linen
-        Me.dtgFList.Location = New System.Drawing.Point(3, 14)
-        Me.dtgFList.MultiSelect = False
-        Me.dtgFList.Name = "dtgFList"
-        Me.dtgFList.ReadOnly = True
-        Me.dtgFList.RowHeadersVisible = False
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtgFList.RowsDefaultCellStyle = DataGridViewCellStyle14
-        Me.dtgFList.RowTemplate.Height = 24
-        Me.dtgFList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dtgFList.Size = New System.Drawing.Size(715, 354)
-        Me.dtgFList.TabIndex = 56
-        '
-        'btnExport
-        '
-        Me.btnExport.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExport.Image = Global.ESL.My.Resources.Resources.export
-        Me.btnExport.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnExport.Location = New System.Drawing.Point(596, 503)
-        Me.btnExport.Name = "btnExport"
-        Me.btnExport.Size = New System.Drawing.Size(50, 55)
-        Me.btnExport.TabIndex = 55
-        Me.btnExport.Text = "Export"
-        Me.btnExport.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnExport.UseVisualStyleBackColor = True
-        '
-        'btnLoad
-        '
-        Me.btnLoad.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLoad.Image = CType(resources.GetObject("btnLoad.Image"), System.Drawing.Image)
-        Me.btnLoad.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnLoad.Location = New System.Drawing.Point(540, 503)
-        Me.btnLoad.Name = "btnLoad"
-        Me.btnLoad.Size = New System.Drawing.Size(50, 55)
-        Me.btnLoad.TabIndex = 53
-        Me.btnLoad.Text = "Load"
-        Me.btnLoad.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnLoad.UseVisualStyleBackColor = True
         '
         'vdate
         '
@@ -264,6 +205,39 @@ Partial Class FrmHSBC
         Me.description.ReadOnly = True
         Me.description.Width = 165
         '
+        'tp2
+        '
+        Me.tp2.Controls.Add(Me.dtgFList)
+        Me.tp2.Location = New System.Drawing.Point(4, 24)
+        Me.tp2.Name = "tp2"
+        Me.tp2.Padding = New System.Windows.Forms.Padding(3)
+        Me.tp2.Size = New System.Drawing.Size(721, 385)
+        Me.tp2.TabIndex = 1
+        Me.tp2.Text = "Futures"
+        Me.tp2.UseVisualStyleBackColor = True
+        '
+        'dtgFList
+        '
+        Me.dtgFList.AllowUserToAddRows = False
+        Me.dtgFList.AllowUserToDeleteRows = False
+        Me.dtgFList.AllowUserToResizeColumns = False
+        Me.dtgFList.AllowUserToResizeRows = False
+        Me.dtgFList.BackgroundColor = System.Drawing.Color.Linen
+        Me.dtgFList.ColumnHeadersHeight = 22
+        Me.dtgFList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.fdescription})
+        Me.dtgFList.GridColor = System.Drawing.Color.Linen
+        Me.dtgFList.Location = New System.Drawing.Point(3, 14)
+        Me.dtgFList.MultiSelect = False
+        Me.dtgFList.Name = "dtgFList"
+        Me.dtgFList.ReadOnly = True
+        Me.dtgFList.RowHeadersVisible = False
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtgFList.RowsDefaultCellStyle = DataGridViewCellStyle14
+        Me.dtgFList.RowTemplate.Height = 24
+        Me.dtgFList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dtgFList.Size = New System.Drawing.Size(715, 354)
+        Me.dtgFList.TabIndex = 56
+        '
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "Vdate"
@@ -334,10 +308,36 @@ Partial Class FrmHSBC
         Me.fdescription.ReadOnly = True
         Me.fdescription.Width = 240
         '
+        'btnExport
+        '
+        Me.btnExport.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExport.Image = Global.ESL.My.Resources.Resources.export
+        Me.btnExport.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnExport.Location = New System.Drawing.Point(596, 503)
+        Me.btnExport.Name = "btnExport"
+        Me.btnExport.Size = New System.Drawing.Size(50, 55)
+        Me.btnExport.TabIndex = 55
+        Me.btnExport.Text = "Export"
+        Me.btnExport.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnExport.UseVisualStyleBackColor = True
+        '
+        'btnLoad
+        '
+        Me.btnLoad.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLoad.Image = CType(resources.GetObject("btnLoad.Image"), System.Drawing.Image)
+        Me.btnLoad.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnLoad.Location = New System.Drawing.Point(540, 503)
+        Me.btnLoad.Name = "btnLoad"
+        Me.btnLoad.Size = New System.Drawing.Size(50, 55)
+        Me.btnLoad.TabIndex = 53
+        Me.btnLoad.Text = "Load"
+        Me.btnLoad.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnLoad.UseVisualStyleBackColor = True
+        '
         'FrmHSBC
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
-        Me.ClientSize = New System.Drawing.Size(739, 584)
+        Me.ClientSize = New System.Drawing.Size(739, 583)
         Me.Controls.Add(Me.btnExport)
         Me.Controls.Add(Me.btnLoad)
         Me.Controls.Add(Me.Label13)

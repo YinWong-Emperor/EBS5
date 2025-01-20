@@ -33,7 +33,6 @@ Partial Class FrmFatcaAccMaster
         Me.Label9 = New System.Windows.Forms.Label()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.dgvAccMaster = New System.Windows.Forms.DataGridView()
-        Me.tcClientOptIOMain = New System.Windows.Forms.TabControl()
         Me.Account_No = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Account_Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.client_type = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -53,6 +52,7 @@ Partial Class FrmFatcaAccMaster
         Me.TIN = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Last_Review_Date = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FATCA_Remarks = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tcClientOptIOMain = New System.Windows.Forms.TabControl()
         Me.TabPage1.SuspendLayout()
         CType(Me.dgvAccMaster, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tcClientOptIOMain.SuspendLayout()
@@ -207,16 +207,6 @@ Partial Class FrmFatcaAccMaster
         Me.dgvAccMaster.Size = New System.Drawing.Size(746, 255)
         Me.dgvAccMaster.TabIndex = 0
         '
-        'tcClientOptIOMain
-        '
-        Me.tcClientOptIOMain.Controls.Add(Me.TabPage1)
-        Me.tcClientOptIOMain.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.tcClientOptIOMain.Location = New System.Drawing.Point(12, 34)
-        Me.tcClientOptIOMain.Name = "tcClientOptIOMain"
-        Me.tcClientOptIOMain.SelectedIndex = 0
-        Me.tcClientOptIOMain.Size = New System.Drawing.Size(764, 358)
-        Me.tcClientOptIOMain.TabIndex = 8
-        '
         'Account_No
         '
         Me.Account_No.DataPropertyName = "Account_No"
@@ -359,6 +349,16 @@ Partial Class FrmFatcaAccMaster
         Me.FATCA_Remarks.HeaderText = "FATCA_Remarks"
         Me.FATCA_Remarks.Name = "FATCA_Remarks"
         Me.FATCA_Remarks.ReadOnly = True
+        '
+        'tcClientOptIOMain
+        '
+        Me.tcClientOptIOMain.Controls.Add(Me.TabPage1)
+        Me.tcClientOptIOMain.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.tcClientOptIOMain.Location = New System.Drawing.Point(12, 34)
+        Me.tcClientOptIOMain.Name = "tcClientOptIOMain"
+        Me.tcClientOptIOMain.SelectedIndex = 0
+        Me.tcClientOptIOMain.Size = New System.Drawing.Size(764, 358)
+        Me.tcClientOptIOMain.TabIndex = 8
         '
         'FrmFatcaAccMaster
         '

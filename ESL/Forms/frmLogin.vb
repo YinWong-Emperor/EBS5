@@ -282,6 +282,7 @@ Public Class frmLogin
             If GIsUAT Then lblVersion.Text &= " (UAT)"
 
             GStrDomainUser = System.Security.Principal.WindowsIdentity.GetCurrent.Name.Replace("\", "/")
+            GStrDisableSecuritiesButton = System.Configuration.ConfigurationManager.AppSettings.Get("Disable_Securities_Button")
         Catch ex As Exception
             GSubShowWarn(ex.Message)
             End

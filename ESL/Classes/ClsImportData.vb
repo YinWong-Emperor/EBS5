@@ -41,9 +41,9 @@ Public Class ClsImportData
     End Function
 
     Protected Friend Function FncGetG2BLastTradeDate() As Date
-        Dim sqlCmd As SqlCommand = New SqlCommand("s_Get_G2BSTradeDate", GSCnSqlConn)
+        Dim sqlCmd As SqlCommand = New SqlCommand("s_Get_G2BFTradeDate", GSCnSqlConn)
         sqlCmd.CommandType = CommandType.StoredProcedure
-        AddParameter(sqlCmd, "G2BSDB", GStrG2BSDB)
+        AddParameter(sqlCmd, "G2BFDB", GStrG2BFDB)
         Dim dt As DataTable = GFncRtnDS(sqlCmd).Tables(0)
         Dim g2bDate As Date = GFncNoNullDate(dt.Rows(0)("trade_date"))
         Return g2bDate

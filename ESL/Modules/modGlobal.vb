@@ -51,6 +51,7 @@ Public Module modGlobal
     Public GStrDomainUser As String         'Domain user name
     Public GStrExptDir As String = "C:\itas\"
     Public GIsUAT As Boolean
+    Public GStrDisableSecuritiesButton As String
     Public g_branch_name, g_rbranch, g_company, g_version, g_dir As String
     Public SystemDateFormat As String = "dd MMM yyyy"
     Public DecimalFormat As String = "0.00#############"

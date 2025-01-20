@@ -14,6 +14,9 @@ Public Class FrmClientMaster
         Me.comboAETo.DataSource = ldsDetail2.Tables("clt")
         Me.comboAETo.DisplayMember = "aeno"
 
+        If GStrDisableSecuritiesButton = "Y" Then
+            btnExportS.Enabled = False
+        End If
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click

@@ -22,16 +22,17 @@
         dtMarkets = gCls.GetMarkets()
         dtThirdParty = gCls.GetThirdParty()
 
-        If dtMarkets.Rows.Count > 0 Then
-            For Each row As DataRow In dtMarkets.Rows
-                If Not row.IsNull(dtMarkets.Columns("name_s")) Then
-                    sMarket = row("name_s").ToString.Trim()
-                    If sMarket = "MAMK" Or sMarket = "SG" Or sMarket = "SSE" Or sMarket = "SZEN" Or sMarket = "US" Then
-                        cboMarkets.Items.Add(sMarket)
+        If GStrDisableSecuritiesButton <> "Y" Then
+            If dtMarkets.Rows.Count > 0 Then
+                For Each row As DataRow In dtMarkets.Rows
+                    If Not row.IsNull(dtMarkets.Columns("name_s")) Then
+                        sMarket = row("name_s").ToString.Trim()
+                        If sMarket = "MAMK" Or sMarket = "SG" Or sMarket = "SSE" Or sMarket = "SZEN" Or sMarket = "US" Then
+                            cboMarkets.Items.Add(sMarket)
+                        End If
                     End If
-                End If
-
-            Next
+                Next
+            End If
         End If
 
         If dtThirdParty.Rows.Count > 0 Then

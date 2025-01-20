@@ -250,7 +250,7 @@ Public Class ClsAutopay
         If (emptyTbl) Then
             lstrSQL = " 1<>1 "
         Else
-            lstrSQL = " a.purpose = 0 and a.type = 1 and a.date >= '" & dateFrom & _
+            lstrSQL = " a.purpose = '0' and a.type = 1 and a.date >= '" & dateFrom & _
                       "' and a.date < '" & dateTo & "' order by a.date "
         End If
 
@@ -273,7 +273,7 @@ Public Class ClsAutopay
         If (emptyTbl) Then
             lstrSQL = " 1<>1 "
         Else
-            lstrSQL = " a.purpose = 0 and a.type = 1 and a.date >= '" & dateFrom & _
+            lstrSQL = " a.purpose = '0' and a.type = 1 and a.date >= '" & dateFrom & _
                       "' and a.date < '" & dateTo & "' order by a.date "
         End If
 
