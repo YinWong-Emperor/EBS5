@@ -258,7 +258,7 @@ Partial Class frmMenu
         'ToolStripStatusLabel
         '
         Me.ToolStripStatusLabel.Name = "ToolStripStatusLabel"
-        Me.ToolStripStatusLabel.Size = New System.Drawing.Size(39, 17)
+        Me.ToolStripStatusLabel.Size = New System.Drawing.Size(41, 17)
         Me.ToolStripStatusLabel.Text = "Status"
         '
         'MenuStrip1

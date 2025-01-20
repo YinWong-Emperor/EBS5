@@ -134,9 +134,11 @@ Public Class clsRptLargeCashDepositLog
         lstrSQL += " ) d on d.accno=e.accno order by accNo_forGrouping, d.accno, d.currency, d.vdate"
         GFncRunSQL(GSCnSqlConn, lstrSQL, 0)
 
+        'lstrSQL = " select *  into #tmp_cash_deposit from ( " & _
+        '            " select * from  #tmp_cash_deposit_s  " & _
+        '           " union all " & _
+        '            " select * from  #tmp_cash_deposit_f ) a "
         lstrSQL = " select *  into #tmp_cash_deposit from ( " & _
-                    " select * from  #tmp_cash_deposit_s  " & _
-                   " union all " & _
                     " select * from  #tmp_cash_deposit_f ) a "
         GFncRunSQL(GSCnSqlConn, lstrSQL, 0)
 

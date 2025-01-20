@@ -5,7 +5,15 @@ Public Class ClsClientOptInOut
 
     Protected Friend Function lFnSearchClientMaster(ByVal accNo As String, ByVal accName As String) As DataSet
         Dim ds As New DataSet
-        Dim lstr As String = "select accno,name_1,name_1_c,branch_name,aeno,ae_name,ae_email,RTRIM(nd_addr_1)+'  '+RTRIM(nd_addr_2)+'  '+RTRIM(nd_addr_3)+'  '+RTRIM(nd_addr_4) as nd_addr_1,RTRIM(addr_1)+'  '+RTRIM(addr_2)+'  '+RTRIM(addr_3)+'  '+RTRIM(addr_4) as addr_1,phone_1,phone_2,phone_3,email,mail_status,date_open,Last_tran_date,suspend_field,date_close,opt_in_out_date,case opt_in_out when 'I'then 'Opt-in' when 'O' then 'Opt-out' else null end 'opt_in_out' from vw_client_master a left outer join client_opt_in_out b on a.accno = b.acc_no collate database_default "
+        Dim strTmpSQL As String
+
+        strTmpSQL = "SELECT * INTO #tmp_client_master FROM tmp_client_master WHERE 1 <> 1"
+        GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
+
+        strTmpSQL = "INSERT INTO #tmp_client_master EXEC [s_client_master] '" & GStrG2BSPRODDB & "', '" & GStrG2BFPRODDB & "';"
+        GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
+
+        Dim lstr As String = "select accno,name_1,name_1_c,branch_name,aeno,ae_name,ae_email,RTRIM(nd_addr_1)+'  '+RTRIM(nd_addr_2)+'  '+RTRIM(nd_addr_3)+'  '+RTRIM(nd_addr_4) as nd_addr_1,RTRIM(addr_1)+'  '+RTRIM(addr_2)+'  '+RTRIM(addr_3)+'  '+RTRIM(addr_4) as addr_1,phone_1,phone_2,phone_3,email,mail_status,date_open,Last_tran_date,suspend_field,date_close,opt_in_out_date,case opt_in_out when 'I'then 'Opt-in' when 'O' then 'Opt-out' else null end 'opt_in_out' from #tmp_client_master a left outer join client_opt_in_out b on a.accno = b.acc_no collate database_default "
 
         Dim condition As String = ""
         Dim isFirstCondition As Boolean = True
@@ -25,22 +33,48 @@ Public Class ClsClientOptInOut
             End If
         End If
 
-
         ds = GFncRtnDS(GSCnSqlConn, lstr, "cltMaster")
+
+        strTmpSQL = "DROP TABLE #tmp_client_master"
+        GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
+
         Return ds
     End Function
 
     Protected Friend Function lFnGetClientMaster() As DataSet
         Dim ds As New DataSet
-        Dim lstr As String = "select accno,name_1,name_1_c,branch_name,aeno,ae_name,ae_email,RTRIM(nd_addr_1)+'  '+RTRIM(nd_addr_2)+'  '+RTRIM(nd_addr_3)+'  '+RTRIM(nd_addr_4) as nd_addr_1,RTRIM(addr_1)+'  '+RTRIM(addr_2)+'  '+RTRIM(addr_3)+'  '+RTRIM(addr_4) as addr_1,phone_1,phone_2,phone_3,email,mail_status,date_open,Last_tran_date,suspend_field,date_close,opt_in_out_date,case opt_in_out when 'I'then 'Opt-in' when 'O' then 'Opt-out' else null end 'opt_in_out' from vw_client_master a left outer join client_opt_in_out b on a.accno = b.acc_no collate database_default "
+        Dim strTmpSQL As String
+
+        strTmpSQL = "SELECT * INTO #tmp_client_master FROM tmp_client_master WHERE 1 <> 1"
+        GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
+
+        strTmpSQL = "INSERT INTO #tmp_client_master EXEC [s_client_master] '" & GStrG2BSPRODDB & "', '" & GStrG2BFPRODDB & "';"
+        GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
+
+        Dim lstr As String = "select accno,name_1,name_1_c,branch_name,aeno,ae_name,ae_email,RTRIM(nd_addr_1)+'  '+RTRIM(nd_addr_2)+'  '+RTRIM(nd_addr_3)+'  '+RTRIM(nd_addr_4) as nd_addr_1,RTRIM(addr_1)+'  '+RTRIM(addr_2)+'  '+RTRIM(addr_3)+'  '+RTRIM(addr_4) as addr_1,phone_1,phone_2,phone_3,email,mail_status,date_open,Last_tran_date,suspend_field,date_close,opt_in_out_date,case opt_in_out when 'I'then 'Opt-in' when 'O' then 'Opt-out' else null end 'opt_in_out' from #tmp_client_master a left outer join client_opt_in_out b on a.accno = b.acc_no collate database_default "
         ds = GFncRtnDS(GSCnSqlConn, lstr, "cltMaster")
+
+        strTmpSQL = "DROP TABLE #tmp_client_master"
+        GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
+
         Return ds
     End Function
 
     Protected Friend Function lfncCheckClientCode(ByVal client_code As String) As DataSet
         Dim ds As New DataSet
-        Dim lstr As String = "select name_1 from vw_client_master where accno = '" & client_code & "'"
+        Dim strTmpSQL As String
+
+        strTmpSQL = "SELECT * INTO #tmp_client_master FROM tmp_client_master WHERE 1 <> 1"
+        GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
+
+        strTmpSQL = "INSERT INTO #tmp_client_master EXEC [s_client_master] '" & GStrG2BSPRODDB & "', '" & GStrG2BFPRODDB & "';"
+        GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
+
+        Dim lstr As String = "select name_1 from #tmp_client_master where accno = '" & client_code & "'"
         ds = GFncRtnDS(GSCnSqlConn, lstr, "cltMaster")
+
+        strTmpSQL = "DROP TABLE #tmp_client_master"
+        GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
         Return ds
     End Function
 

@@ -57,4 +57,14 @@ Public Class FrmAccStat
 
     End Sub
 
+    Private Sub FrmAccStat_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If GStrDisableSecuritiesButton = "Y" Then
+            RBFutures.Select()
+            RBStock.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+
+    End Sub
 End Class

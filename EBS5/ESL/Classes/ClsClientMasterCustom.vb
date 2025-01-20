@@ -22,9 +22,21 @@
         Dim strSubSQLfrelae As String = ""
         Dim strTitle As String = ""
 
+        Dim strTmpSQL As String
+
+        strTmpSQL = "SELECT * INTO #tmp_client_master FROM tmp_client_master WHERE 1 <> 1"
+        GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
+
+        strTmpSQL = "INSERT INTO #tmp_client_master EXEC [s_client_master] '" & GStrG2BSPRODDB & "', '" & GStrG2BFPRODDB & "';"
+        GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
+
+        strTmpSQL = "SELECT * INTO #tmp_client_master_2 FROM tmp_client_master_2 WHERE 1 <> 1"
+        GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
+
+        strTmpSQL = "INSERT INTO #tmp_client_master_2 EXEC [s_client_master_2] '" & GStrG2BSPRODDB & "', '" & GStrG2BFPRODDB & "';"
+        GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
 
         strTitle = "ccd_ref, accno, name_1, name_1_c, account_type, " & sTitleToBeIncludedOutput
-
 
         If sFieldsToBeIncludedOutput.Length <> 0 Then
             sFieldsToBeIncludedOutput = sViewAbbrev2 & ".ccd_ref, " & sViewAbbrev1 & ".accno, " & sViewAbbrev1 & ".name_1, " & sViewAbbrev1 & ".name_1_c, " & sViewAbbrev1 & ".client_type, " & sFieldsToBeIncludedOutput
@@ -123,7 +135,7 @@
                         "SELECT " & sViewAbbrev1 & ".accno, " & sViewAbbrev1 & ".nature_s, " & sViewAbbrev1 & ".gender_s, " & sViewAbbrev1 & ".name_1, " & sViewAbbrev1 & ".name_1_c, " & sViewAbbrev1 & ".aeno, " & sViewAbbrev1 & ".br_id, " & sViewAbbrev1 & ".phone_1, " & sViewAbbrev1 & ".phone_2, " & sViewAbbrev1 & ".phone_3, " & sViewAbbrev1 & ".fax, " & sViewAbbrev1 & ".email, " & sViewAbbrev1 & ".addr_1, " & sViewAbbrev1 & ".addr_2, " & sViewAbbrev1 & ".addr_3, " & sViewAbbrev1 & ".addr_4, " & sViewAbbrev1 & ".bank_code_1, " & sViewAbbrev1 & ".date_open,  " & sViewAbbrev1 & ".pstat, " & sViewAbbrev1 & ".suspend_field, " & sViewAbbrev1 & ".suspend_code, " & sViewAbbrev1 & ".date_close, " & sViewAbbrev1 & ".mail_status, " & sViewAbbrev1 & ".category, " & sViewAbbrev1 & ".relationship, " & sViewAbbrev1 & ".relationstaff, " & sViewAbbrev1 & ".relationae,  " & sViewAbbrev1 & ".nd_addr_1, " & sViewAbbrev1 & ".nd_addr_2, " & sViewAbbrev1 & ".nd_addr_3, " & sViewAbbrev1 & ".nd_addr_4, " & sViewAbbrev1 & ".Last_Tran_Date, " & sViewAbbrev1 & ".ae_name, " & sViewAbbrev1 & ".ae_email, " & sViewAbbrev1 & ".branch_name, " & sViewAbbrev1 & ".client_type, " & sViewAbbrev1 & ".ClientBranch, " & sViewAbbrev1 & ".aid, " & sViewAbbrev1 & ".notes, ISNULL(" & sViewAbbrev1 & ".net_trade_lmt,0) AS net_trade_lmt, ISNULL(" & sViewAbbrev1 & ".credit_lmt, 0) AS credit_lmt, " & sViewAbbrev1 & ".type, " & sViewAbbrev1 & ".FeeClass FROM" & _
                         "( " & _
                             "SELECT DISTINCT " & sViewAbbrev1 & ".accno, " & sViewAbbrev1 & ".nature_s, " & sViewAbbrev1 & ".gender_s, " & sViewAbbrev1 & ".name_1, " & sViewAbbrev1 & ".name_1_c, " & sViewAbbrev1 & ".aeno, " & sViewAbbrev1 & ".br_id, " & sViewAbbrev1 & ".phone_1, " & sViewAbbrev1 & ".phone_2, " & sViewAbbrev1 & ".phone_3, " & sViewAbbrev1 & ".fax, " & sViewAbbrev1 & ".email, " & sViewAbbrev1 & ".addr_1, " & sViewAbbrev1 & ".addr_2, " & sViewAbbrev1 & ".addr_3, " & sViewAbbrev1 & ".addr_4, bal.bank_code_1, " & sViewAbbrev1 & ".date_open,  " & sViewAbbrev1 & ".pstat, " & sViewAbbrev1 & ".suspend_field, " & sViewAbbrev1 & ".suspend_code, " & sViewAbbrev1 & ".date_close, " & sViewAbbrev1 & ".mail_status, " & sViewAbbrev1 & ".category, " & sViewAbbrev1 & ".relationship, " & sViewAbbrev1 & ".relationstaff, " & sViewAbbrev1 & ".relationae,  " & sViewAbbrev1 & ".nd_addr_1, " & sViewAbbrev1 & ".nd_addr_2, " & sViewAbbrev1 & ".nd_addr_3, " & sViewAbbrev1 & ".nd_addr_4, " & sViewAbbrev1 & ".Last_Tran_Date, " & sViewAbbrev1 & ".ae_name, " & sViewAbbrev1 & ".ae_email, " & sViewAbbrev1 & ".branch_name, " & sViewAbbrev1 & ".client_type, clb.ClientBranch, " & sViewAbbrev1 & ".aid, " & sViewAbbrev1 & ".notes, ISNULL(mc.net_trade_lmt,0) AS net_trade_lmt, ISNULL(bal.credit_lmt, 0) AS credit_lmt, CASE clms.type WHEN '2' THEN 'Cash' WHEN '1' THEN 'Margin' END AS type, fcs.FeeClass " & _
-                            "FROM vw_client_master " & sViewAbbrev1 & " " & _
+                            "FROM #tmp_client_master " & sViewAbbrev1 & " " & _
                             "INNER JOIN " & _
                             "( " & _
                             "SELECT clms.aid, clms.type FROM  " & GStrG2BSDB & ".dbo.client_master_s clms WHERE 1=1 " & strSubSQLsclms & " " & _
@@ -185,7 +197,7 @@
                             "WHERE " & sViewAbbrev1 & ".client_type='Securities' OR " & sViewAbbrev1 & ".client_type='CIES' " & _
                             "UNION " & _
                             "SELECT DISTINCT " & sViewAbbrev1 & ".accno, " & sViewAbbrev1 & ".nature_s, " & sViewAbbrev1 & ".gender_s, " & sViewAbbrev1 & ".name_1, " & sViewAbbrev1 & ".name_1_c, RTRIM(" & sViewAbbrev1 & ".aeno) AS aeno, " & sViewAbbrev1 & ".br_id, " & sViewAbbrev1 & ".phone_1, " & sViewAbbrev1 & ".phone_2, " & sViewAbbrev1 & ".phone_3, " & sViewAbbrev1 & ".fax, " & sViewAbbrev1 & ".email, " & sViewAbbrev1 & ".addr_1, " & sViewAbbrev1 & ".addr_2, " & sViewAbbrev1 & ".addr_3, " & sViewAbbrev1 & ".addr_4, bal.bank_code_1, " & sViewAbbrev1 & ".date_open,  " & sViewAbbrev1 & ".pstat, " & sViewAbbrev1 & ".suspend_field, " & sViewAbbrev1 & ".suspend_code, " & sViewAbbrev1 & ".date_close, " & sViewAbbrev1 & ".mail_status, " & sViewAbbrev1 & ".category, " & sViewAbbrev1 & ".relationship, " & sViewAbbrev1 & ".relationstaff, " & sViewAbbrev1 & ".relationae,  " & sViewAbbrev1 & ".nd_addr_1, " & sViewAbbrev1 & ".nd_addr_2, " & sViewAbbrev1 & ".nd_addr_3, " & sViewAbbrev1 & ".nd_addr_4, " & sViewAbbrev1 & ".Last_Tran_Date, " & sViewAbbrev1 & ".ae_name, " & sViewAbbrev1 & ".ae_email, " & sViewAbbrev1 & ".branch_name, " & sViewAbbrev1 & ".client_type, clms.ClientBranch, " & sViewAbbrev1 & ".aid, " & sViewAbbrev1 & ".notes, ISNULL(mc.net_trade_lmt,0) AS net_trade_lmt, ISNULL(bal.credit_lmt, 0) AS credit_lmt, CASE WHEN SUBSTRING(" & sViewAbbrev1 & ".accno, 1,3) = '000' THEN 'Margin' ELSE 'Cash' END AS type, clms.FeeClass " & _
-                            "FROM vw_client_master " & sViewAbbrev1 & " " & _
+                            "FROM #tmp_client_master " & sViewAbbrev1 & " " & _
                             "INNER JOIN " & _
                             "( " & _
                                 "SELECT clms.aid, clms.type, clms.aeid, clms.bhid, clms.fcid,bm.name as ClientBranch, fc.FeeClass FROM  " & GStrG2BFDB & ".dbo.client_master clm " & _
@@ -246,14 +258,19 @@
                     "" & sViewAbbrev2 & ".MAMK, " & _
                     "" & sViewAbbrev2 & ".ae_name , " & _
                     "" & sViewAbbrev2 & ".ae_email , " & _
-                    "" & sViewAbbrev2 & ".branch_name," & sViewAbbrev2 & ".ccd_ref, " & sViewAbbrev2 & ".nationality_1 FROM dbo.vw_client_master_2 " & sViewAbbrev2 & " " & _
+                    "" & sViewAbbrev2 & ".branch_name," & sViewAbbrev2 & ".ccd_ref, " & sViewAbbrev2 & ".nationality_1 FROM dbo.#tmp_client_master_2 " & sViewAbbrev2 & " " & _
                     "WHERE 1=1 " & strSQLv2 & " " & _
                     ") " & sViewAbbrev2 & " " & _
                     "ON " & sViewAbbrev2 & ".accno=" & sViewAbbrev1 & ".accno AND " & sViewAbbrev2 & ".aid=" & sViewAbbrev1 & ".aid AND " & sViewAbbrev2 & ".client_type=" & sViewAbbrev1 & ".client_type " & _
                     "WHERE 1=1 ORDER BY " & sViewAbbrev1 & ".accno ASC "
 
-
         ldtsData = GFncRtnDS(GSCnSqlConn, strSQL, 0)
+
+        strTmpSQL = "DROP TABLE #tmp_client_master"
+        GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
+
+        strTmpSQL = "DROP TABLE #tmp_client_master_2"
+        GFncRunSQL(GSCnSqlConn, strTmpSQL, 0)
 
         Return GExportCSV(GStrExptDir, strExFile, ldtsData, strTitle, True)
 

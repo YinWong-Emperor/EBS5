@@ -93,7 +93,7 @@ Public Class ClsUserMnt
 
         'Dim DtRAccess As SqlDataReader
         Dim DtSAccess As New DataSet
-        DtSAccess = GFncRtnDS(GSCnSqlConn, "Select * from Menu_Access where MnAUserID = '" & StrUserID & "' and MnAMenuCode = '" & StrObjectName & "'")
+        DtSAccess = GFncRtnDS(GSCnSqlConn, "Select * from Menu_Access ma LEFT OUTER JOIN menuDisable md ON ma.MnAMenuCode = md. MnAMenuCode where ma.MnAUserID = '" & StrUserID & "' and ma.MnAMenuCode = '" & StrObjectName & "' AND (md.disableFlag IS NULL OR md.disableFlag <> 1)")
         'DtRAccess.Read()
         If DtSAccess.Tables(0).Rows.Count > 0 Then
             GetRights = True

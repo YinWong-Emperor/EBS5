@@ -19,46 +19,46 @@ Partial Class FrmPLAdj
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPLAdj))
-        Me.tabctrlMain = New System.Windows.Forms.TabControl
-        Me.View = New System.Windows.Forms.TabPage
-        Me.DataGridView = New System.Windows.Forms.DataGridView
-        Me.Grid_adjTDate = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Grid_AdjOpnBal = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Grid_counterparty = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Grid_AdjNopnBal = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Grid_lupduser = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Grid_lupddate = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Grid_AdjRemark = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.SearchCriteria = New System.Windows.Forms.GroupBox
-        Me.txtSearchTDate = New System.Windows.Forms.DateTimePicker
+        Me.tabctrlMain = New System.Windows.Forms.TabControl()
+        Me.View = New System.Windows.Forms.TabPage()
+        Me.DataGridView = New System.Windows.Forms.DataGridView()
+        Me.Grid_adjTDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Grid_AdjOpnBal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Grid_counterparty = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Grid_AdjNopnBal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Grid_lupduser = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Grid_lupddate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Grid_AdjRemark = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SearchCriteria = New System.Windows.Forms.GroupBox()
+        Me.txtSearchTDate = New System.Windows.Forms.DateTimePicker()
         Me.txtSearchCounterParty = New ESL.myComboBox(Me.components)
         Me.showAll = New ESL.myButton(Me.components)
         Me.btnSearch = New ESL.myButton(Me.components)
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Add = New System.Windows.Forms.TabPage
-        Me.txtLUpdUser = New ESL.myAmountBox
-        Me.txtLUpdDate = New ESL.myAmountBox
-        Me.txtTDate = New ESL.myDateTimePicker
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Add = New System.Windows.Forms.TabPage()
+        Me.txtLUpdUser = New ESL.myAmountBox()
+        Me.txtLUpdDate = New ESL.myAmountBox()
+        Me.txtTDate = New ESL.myDateTimePicker()
         Me.txtCounterparty = New ESL.myComboBox(Me.components)
-        Me.txtRemarks = New ESL.myTextbox
-        Me.txtPLAdjCounter = New ESL.myAmountBox
-        Me.txtPLAdj = New ESL.myAmountBox
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
+        Me.txtRemarks = New ESL.myTextbox()
+        Me.txtPLAdjCounter = New ESL.myAmountBox()
+        Me.txtPLAdj = New ESL.myAmountBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.btnAddModify = New ESL.myButton(Me.components)
         Me.btnAddDelete = New ESL.myButton(Me.components)
         Me.btnAddSave = New ESL.myButton(Me.components)
         Me.btnAddBack = New ESL.myButton(Me.components)
         Me.btnAdd = New ESL.myButton(Me.components)
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label13 = New System.Windows.Forms.Label
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.tabctrlMain.SuspendLayout()
         Me.View.SuspendLayout()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -101,7 +101,7 @@ Partial Class FrmPLAdj
         Me.DataGridView.AllowUserToAddRows = False
         Me.DataGridView.AllowUserToDeleteRows = False
         Me.DataGridView.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView.BackgroundColor = System.Drawing.Color.Linen
         Me.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Grid_adjTDate, Me.Grid_AdjOpnBal, Me.Grid_counterparty, Me.Grid_AdjNopnBal, Me.Grid_lupduser, Me.Grid_lupddate, Me.Grid_AdjRemark})
@@ -275,6 +275,8 @@ Partial Class FrmPLAdj
         'txtLUpdUser
         '
         Me.txtLUpdUser.DecimalPoints = 2
+        Me.txtLUpdUser.EnabledRemoveTrailingZero = False
+        Me.txtLUpdUser.IntLen = 9
         Me.txtLUpdUser.Location = New System.Drawing.Point(467, 40)
         Me.txtLUpdUser.Name = "txtLUpdUser"
         Me.txtLUpdUser.Size = New System.Drawing.Size(134, 21)
@@ -285,6 +287,8 @@ Partial Class FrmPLAdj
         'txtLUpdDate
         '
         Me.txtLUpdDate.DecimalPoints = 2
+        Me.txtLUpdDate.EnabledRemoveTrailingZero = False
+        Me.txtLUpdDate.IntLen = 9
         Me.txtLUpdDate.Location = New System.Drawing.Point(467, 93)
         Me.txtLUpdDate.Name = "txtLUpdDate"
         Me.txtLUpdDate.Size = New System.Drawing.Size(134, 21)
@@ -321,6 +325,8 @@ Partial Class FrmPLAdj
         'txtPLAdjCounter
         '
         Me.txtPLAdjCounter.DecimalPoints = 2
+        Me.txtPLAdjCounter.EnabledRemoveTrailingZero = False
+        Me.txtPLAdjCounter.IntLen = 9
         Me.txtPLAdjCounter.Location = New System.Drawing.Point(189, 174)
         Me.txtPLAdjCounter.Name = "txtPLAdjCounter"
         Me.txtPLAdjCounter.Size = New System.Drawing.Size(134, 21)
@@ -331,6 +337,8 @@ Partial Class FrmPLAdj
         'txtPLAdj
         '
         Me.txtPLAdj.DecimalPoints = 2
+        Me.txtPLAdj.EnabledRemoveTrailingZero = False
+        Me.txtPLAdj.IntLen = 9
         Me.txtPLAdj.Location = New System.Drawing.Point(189, 128)
         Me.txtPLAdj.Name = "txtPLAdj"
         Me.txtPLAdj.Size = New System.Drawing.Size(134, 21)
@@ -343,7 +351,7 @@ Partial Class FrmPLAdj
         Me.Label8.AutoSize = True
         Me.Label8.Location = New System.Drawing.Point(33, 174)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(126, 15)
+        Me.Label8.Size = New System.Drawing.Size(125, 15)
         Me.Label8.TabIndex = 45
         Me.Label8.Text = "PL Adj. (Counterparty)"
         '
@@ -448,7 +456,7 @@ Partial Class FrmPLAdj
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(59, 131)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(79, 15)
+        Me.Label4.Size = New System.Drawing.Size(78, 15)
         Me.Label4.TabIndex = 9
         Me.Label4.Text = "G2BF PL Adj."
         '

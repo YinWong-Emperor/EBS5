@@ -19,10 +19,10 @@ Partial Class FrmFeeClsMaster
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Me.rbProd = New ESL.myRadioButton(Me.components)
         Me.rbUAT = New ESL.myRadioButton(Me.components)
-        Me.txtDB = New ESL.myTextbox
+        Me.txtDB = New ESL.myTextbox()
         Me.SuspendLayout()
         '
         'btnCancel
@@ -51,7 +51,7 @@ Partial Class FrmFeeClsMaster
         Me.rbUAT.Checked = True
         Me.rbUAT.Location = New System.Drawing.Point(175, 51)
         Me.rbUAT.Name = "rbUAT"
-        Me.rbUAT.Size = New System.Drawing.Size(48, 19)
+        Me.rbUAT.Size = New System.Drawing.Size(47, 19)
         Me.rbUAT.TabIndex = 7
         Me.rbUAT.TabStop = True
         Me.rbUAT.Text = "UAT"
