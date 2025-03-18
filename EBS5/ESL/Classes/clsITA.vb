@@ -451,8 +451,8 @@ Public Class clsITA
                         End If
                         dr("ACCNO") = text
                         text = GFncNoNullString(val(3))
-                        If text.Length > 500 Then
-                            Errors &= "Column No.: 4, Error: Activity Details cannot be longer than 500 characters; "
+                        If text.Length > 2000 Then
+                            Errors &= "Column No.: 4, Error: Activity Details cannot be longer than 2000 characters; "
                             ErrorCount += 1
                         End If
                         dr("ACTYDETAIL") = text
