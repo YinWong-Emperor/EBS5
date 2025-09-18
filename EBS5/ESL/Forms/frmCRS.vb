@@ -190,17 +190,51 @@ Public Class frmCRS
             writer.WriteString(row("AccBal").ToString())
             writer.WriteEndElement() 'end AccountBalance
 
-            If row("payment_type").ToString().Trim() <> "" Then
+            If row("Dividend").ToString().Trim() = "Y" Then
                 writer.WriteStartElement("crs:Payment") 'start Payment
                 writer.WriteStartElement("crs:Type") 'start Type
-
-                writer.WriteString(row("payment_type").ToString())
+                writer.WriteString("CRS501")
                 writer.WriteEndElement() 'end Type
                 writer.WriteStartElement("crs:PaymentAmnt") 'start PaymentAmnt
                 writer.WriteAttributeString("currCode", "HKD")
-                writer.WriteString(row("payment_value").ToString())
+                writer.WriteString(row("DividendAmount").ToString())
                 writer.WriteEndElement() 'end PaymentAmnt
+                writer.WriteEndElement() 'end Payment
+            End If
 
+            If row("Interest").ToString().Trim() = "Y" Then
+                writer.WriteStartElement("crs:Payment") 'start Payment
+                writer.WriteStartElement("crs:Type") 'start Type
+                writer.WriteString("CRS502")
+                writer.WriteEndElement() 'end Type
+                writer.WriteStartElement("crs:PaymentAmnt") 'start PaymentAmnt
+                writer.WriteAttributeString("currCode", "HKD")
+                writer.WriteString(row("InterestAmount").ToString())
+                writer.WriteEndElement() 'end PaymentAmnt
+                writer.WriteEndElement() 'end Payment
+            End If
+
+            If row("Redemption").ToString().Trim() = "Y" Then
+                writer.WriteStartElement("crs:Payment") 'start Payment
+                writer.WriteStartElement("crs:Type") 'start Type
+                writer.WriteString("CRS503")
+                writer.WriteEndElement() 'end Type
+                writer.WriteStartElement("crs:PaymentAmnt") 'start PaymentAmnt
+                writer.WriteAttributeString("currCode", "HKD")
+                writer.WriteString(row("RedemptionAmount").ToString())
+                writer.WriteEndElement() 'end PaymentAmnt
+                writer.WriteEndElement() 'end Payment
+            End If
+
+            If row("OtherPayment").ToString().Trim() = "Y" Then
+                writer.WriteStartElement("crs:Payment") 'start Payment
+                writer.WriteStartElement("crs:Type") 'start Type
+                writer.WriteString("CRS504")
+                writer.WriteEndElement() 'end Type
+                writer.WriteStartElement("crs:PaymentAmnt") 'start PaymentAmnt
+                writer.WriteAttributeString("currCode", "HKD")
+                writer.WriteString(row("OtherPaymentAmount").ToString())
+                writer.WriteEndElement() 'end PaymentAmnt
                 writer.WriteEndElement() 'end Payment
             End If
 
@@ -389,25 +423,56 @@ Public Class frmCRS
                 Me.GenerateControllingPerson(cpRows, writer)
             End If
 
-
-
-
             writer.WriteStartElement("crs:AccountBalance") 'start AccountBalance
             writer.WriteAttributeString("currCode", "HKD")
             writer.WriteString(row("AccBal").ToString())
             writer.WriteEndElement() 'end AccountBalance
 
-            If row("payment_type").ToString().Trim() <> "" Then
+            If row("Dividend").ToString().Trim() = "Y" Then
                 writer.WriteStartElement("crs:Payment") 'start Payment
                 writer.WriteStartElement("crs:Type") 'start Type
-
-                writer.WriteString(row("payment_type").ToString())
+                writer.WriteString("CRS501")
                 writer.WriteEndElement() 'end Type
                 writer.WriteStartElement("crs:PaymentAmnt") 'start PaymentAmnt
                 writer.WriteAttributeString("currCode", "HKD")
-                writer.WriteString(row("payment_value").ToString())
+                writer.WriteString(row("DividendAmount").ToString())
                 writer.WriteEndElement() 'end PaymentAmnt
+                writer.WriteEndElement() 'end Payment
+            End If
 
+            If row("Interest").ToString().Trim() = "Y" Then
+                writer.WriteStartElement("crs:Payment") 'start Payment
+                writer.WriteStartElement("crs:Type") 'start Type
+                writer.WriteString("CRS502")
+                writer.WriteEndElement() 'end Type
+                writer.WriteStartElement("crs:PaymentAmnt") 'start PaymentAmnt
+                writer.WriteAttributeString("currCode", "HKD")
+                writer.WriteString(row("InterestAmount").ToString())
+                writer.WriteEndElement() 'end PaymentAmnt
+                writer.WriteEndElement() 'end Payment
+            End If
+
+            If row("Redemption").ToString().Trim() = "Y" Then
+                writer.WriteStartElement("crs:Payment") 'start Payment
+                writer.WriteStartElement("crs:Type") 'start Type
+                writer.WriteString("CRS503")
+                writer.WriteEndElement() 'end Type
+                writer.WriteStartElement("crs:PaymentAmnt") 'start PaymentAmnt
+                writer.WriteAttributeString("currCode", "HKD")
+                writer.WriteString(row("RedemptionAmount").ToString())
+                writer.WriteEndElement() 'end PaymentAmnt
+                writer.WriteEndElement() 'end Payment
+            End If
+
+            If row("OtherPayment").ToString().Trim() = "Y" Then
+                writer.WriteStartElement("crs:Payment") 'start Payment
+                writer.WriteStartElement("crs:Type") 'start Type
+                writer.WriteString("CRS504")
+                writer.WriteEndElement() 'end Type
+                writer.WriteStartElement("crs:PaymentAmnt") 'start PaymentAmnt
+                writer.WriteAttributeString("currCode", "HKD")
+                writer.WriteString(row("OtherPaymentAmount").ToString())
+                writer.WriteEndElement() 'end PaymentAmnt
                 writer.WriteEndElement() 'end Payment
             End If
 
